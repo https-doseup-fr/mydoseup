@@ -1022,6 +1022,18 @@ document.addEventListener("selectstart",e=>{if(e.target.tagName!=="INPUT")e.prev
     Tous droits réservés · Reproduction interdite
   </div>
   <div class="footer-credits">📩 contact&#64;doseup&#46;fr</div>
+  <div style="margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.08)">
+    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+      <button onclick="document.getElementById('privacyModal').style.display='block'" 
+        style="background:transparent;border:1px solid rgba(255,255,255,0.18);color:rgba(255,255,255,0.60);font-size:11px;font-weight:700;padding:10px 20px;border-radius:10px;cursor:pointer;font-family:'DM Sans',sans-serif;letter-spacing:0.06em">
+        📋 Mentions légales
+      </button>
+      <button onclick="document.getElementById('privacyModal').style.display='block'"
+        style="background:transparent;border:1px solid rgba(255,255,255,0.18);color:rgba(255,255,255,0.60);font-size:11px;font-weight:700;padding:10px 20px;border-radius:10px;cursor:pointer;font-family:'DM Sans',sans-serif;letter-spacing:0.06em">
+        🔒 Confidentialité
+      </button>
+    </div>
+  </div>
   <button class="src-btn" onclick="document.getElementById('srcPanel').classList.toggle('open');this.textContent=document.getElementById('srcPanel').classList.contains('open')?'📖 Sources ▲':'📖 Sources ▼'">📖 Sources ▼</button>
   <div class="src-panel" id="srcPanel">
     <div class="src-nm">Ashwagandha</div>
@@ -1899,5 +1911,15 @@ function refuseCookies(){
 })();
 </script>
 </div>
+<script>
+(function(){
+  var host = window.location.hostname;
+  var ok = ['doseup.fr','www.doseup.fr','localhost','127.0.0.1','yanis5777.github.io'];
+  if(ok.indexOf(host) === -1){
+    document.body.style.cssText='background:#0A0F1A;color:#FFF;font-family:sans-serif;text-align:center;padding:60px 20px';
+    document.body.innerHTML='<div style="max-width:400px;margin:0 auto"><div style="font-size:48px;margin-bottom:20px">⚠️</div><h1 style="font-size:22px;margin-bottom:12px">Contenu non autorisé</h1><p style="color:rgba(255,255,255,0.6);line-height:1.7;margin-bottom:24px">Ce site est une copie non autorisée. Le contenu original est sur doseup.fr</p><a href="https://doseup.fr" style="background:linear-gradient(90deg,#1565C0,#7B1FA2);color:#FFF;padding:12px 28px;border-radius:10px;text-decoration:none;font-weight:700">Visiter doseup.fr</a></div>';
+  }
+})();
+</script>
 </body>
 </html>
