@@ -186,118 +186,122 @@ body.F .footer-logo span{color:inherit;-webkit-text-fill-color:inherit}
 .src-nm{color:rgba(255,255,255,0.65);font-weight:700;margin:12px 0 4px;font-size:12px}
 ::-webkit-scrollbar{width:0;height:0}
 
-/* ═══════════════════════════════════════
-   RESPONSIVE — TABLETTE & PC
-   ═══════════════════════════════════════ */
 
-/* Tablette (600px+) */
-@media (min-width: 600px) {
-  body {
-    max-width: 100% !important;
-    background: #080510 !important;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    min-height: 100vh;
-    padding: 0;
-  }
-  body.F { background: #080510 !important; }
-  body.M { background: #060810 !important; }
+:root{--peau:#E07A5F;--cheveux:#9C27B0;--energie:#2A9D8F;--testo:#1565C0;--muscu:#2D936C;--sommeil:#1976D2;--poids:#E76F51;--immun:#00897B;--cerveau:#5E35B1;--os:#43A047;--coeur:#E53935;--digest:#00ACC1;--libido:#8E24AA;--detox:#43A047;--mental:#7B1FA2;--protein:#F57C00;--anti:#FF8F00;--vision:#0288D1}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;-webkit-font-smoothing:antialiased}
+html{scroll-behavior:auto;background:#0A0F1A}
+body{font-family:"DM Sans",sans-serif;font-size:15px;line-height:1.6;max-width:430px;margin:0 auto;overflow-x:hidden;min-height:100vh;background:#0A0F1A !important;color:#E2EBF5}
+body.F{background:#0D0818 !important;color:#EDE8F8}
 
-  .app-wrapper {
-    max-width: 680px;
-    width: 100%;
-    margin: 0 auto;
-    border-radius: 0;
-    min-height: 100vh;
-    box-shadow: 0 0 120px rgba(0,0,0,0.9);
-  }
+/* ═══ RESPONSIVE COMPLET ═══ */
 
-  .obj-grid {
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 12px;
-    padding: 20px 18px;
-  }
-
-  .obj-tile {
-    padding: 18px 15px 16px;
-  }
-
-  .obj-nm { font-size: 15px; }
-  .sc-nm { font-size: 17px; }
-  .sb-lbl { font-size: 12px; }
+/* Tablette 768px+ */
+@media(min-width:768px){
+  html,body{max-width:100% !important;background:#060410 !important;}
+  body.F{background:#060410 !important;}
+  body.M{background:#040610 !important;}
+  body{display:flex;justify-content:center;padding:0;margin:0;}
+  .app-wrapper{max-width:600px;width:100%;min-height:100vh;border-radius:0;}
 }
 
-/* Desktop (900px+) */
-@media (min-width: 900px) {
-  body {
-    background: #050408 !important;
-    padding: 40px 0;
-    align-items: flex-start;
+/* Desktop 1100px+ — PLEIN ÉCRAN avec sidebar */
+@media(min-width:1100px){
+  html{background:#050310 !important;}
+  body,body.F,body.M{
+    background:transparent !important;
+    max-width:100% !important;
+    display:block;
+    padding:0;margin:0;
   }
-  body.F { background: #050408 !important; }
-  body.M { background: #040608 !important; }
-
-  .app-wrapper {
-    max-width: 820px;
-    border-radius: 24px;
-    min-height: auto;
-    box-shadow: 0 8px 80px rgba(0,0,0,0.95), 0 0 0 1px rgba(255,255,255,0.04);
+  body::before{
+    content:'';
+    position:fixed;inset:0;
+    background:radial-gradient(ellipse at 25% 30%,rgba(21,101,192,0.12) 0%,transparent 55%),
+               radial-gradient(ellipse at 75% 70%,rgba(123,31,162,0.12) 0%,transparent 55%),
+               #05030F;
+    z-index:0;
   }
-
-  .header {
-    border-radius: 24px 24px 0 0;
-    padding: 20px 24px 0;
+  .app-wrapper{
+    position:relative;z-index:1;
+    max-width:100%;width:100%;
+    min-height:100vh;
+    border-radius:0;
+    background:transparent !important;
+    box-shadow:none;
+    display:grid;
+    grid-template-columns:280px 1fr;
+    grid-template-rows:auto;
+    align-items:start;
   }
-
-  .obj-grid {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 14px;
-    padding: 24px 22px;
+  /* Header en sidebar fixe à gauche */
+  .header{
+    position:sticky;top:0;
+    grid-column:1;
+    height:100vh;
+    display:flex;flex-direction:column;
+    padding:32px 24px;
+    background:rgba(255,255,255,0.03) !important;
+    border-right:1px solid rgba(255,255,255,0.06);
+    border-radius:0;
   }
-
-  .obj-tile {
-    padding: 20px 16px 18px;
-    border-radius: 18px;
+  /* Tabs en sidebar */
+  .tabs{
+    flex-direction:column;
+    gap:8px;
+    background:transparent;
+    border:none;
+    padding:0;
+    margin-top:24px;
   }
-
-  .obj-ico { font-size: 30px; margin-bottom: 10px; }
-  .obj-nm { font-size: 14px; }
-  .obj-count { font-size: 12px; }
-
-  .sc { border-radius: 18px; }
-  .sc-nm { font-size: 18px; }
-
-  .tabs { padding: 0 22px; }
-  .search-wrap { padding: 10px 22px; }
-
-  .footer {
-    border-radius: 0 0 24px 24px;
-    padding: 32px 24px;
+  .tab{
+    border-radius:12px;
+    padding:12px 16px;
+    text-align:left;
+    border-bottom:none !important;
+    border:1px solid transparent;
   }
-
-  /* Scrollbar stylisée */
-  .app-wrapper::-webkit-scrollbar { width: 6px; }
-  .app-wrapper::-webkit-scrollbar-track { background: transparent; }
-  .app-wrapper::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.12); border-radius: 3px; }
+  .tab.on{
+    background:rgba(255,255,255,0.08);
+    border-color:rgba(255,255,255,0.12) !important;
+  }
+  /* Barre de recherche dans sidebar */
+  .search-wrap{padding:0;margin-top:16px;}
+  .search{width:100%;}
+  /* Switch H/F dans sidebar */
+  .g-switch{margin-top:16px;}
+  /* Contenu principal à droite */
+  .panels-wrap,#panel-obj,#panel-az,#searchPanel{
+    grid-column:2;
+    max-width:900px;
+    margin:0 auto;
+    padding:32px 28px;
+    width:100%;
+  }
+  /* Footer en bas de sidebar */
+  .footer{
+    grid-column:1;
+    border-top:1px solid rgba(255,255,255,0.06);
+    border-radius:0;
+    padding:20px 24px;
+  }
+  /* Grid 3 colonnes pour les bulles */
+  .obj-grid{
+    grid-template-columns:repeat(3,1fr);
+    gap:16px;
+    padding:0;
+  }
+  /* Cards plus larges */
+  .sc{margin-bottom:12px;}
+  .sc-nm{font-size:18px;}
 }
 
-/* Grand écran (1200px+) — fond avec halos */
-@media (min-width: 1200px) {
-  body::before {
-    content: '';
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: radial-gradient(ellipse at 30% 20%, rgba(21,101,192,0.08) 0%, transparent 50%),
-                radial-gradient(ellipse at 70% 80%, rgba(123,31,162,0.08) 0%, transparent 50%);
-    pointer-events: none;
-    z-index: 0;
-  }
-  .app-wrapper {
-    position: relative;
-    z-index: 1;
-    max-width: 860px;
-  }
+/* Ultra large 1400px+ */
+@media(min-width:1400px){
+  .app-wrapper{max-width:1000px !important;}
+  .obj-grid{grid-template-columns:repeat(5,1fr);}
+}
+@media(min-width:1600px){
+  .app-wrapper{max-width:1100px !important;}
 }
 </style>
 
