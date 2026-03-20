@@ -301,6 +301,9 @@ body.F .footer-logo span{color:inherit;-webkit-text-fill-color:inherit}
 }
 </style>
 
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","name":"doseUp","url":"https://doseup.fr","description":"Guide des compléments alimentaires — dosages, effets et conseils personnalisés par genre.","author":{"@type":"Person","name":"Yanis Bensaadi"}}
+</script>
 </head>
 <body class="F">
 <div class="app-wrapper">
@@ -413,7 +416,7 @@ body.F .footer-logo span{color:inherit;-webkit-text-fill-color:inherit}
     </div>
   </div>
   <button class="src-btn" onclick="document.getElementById('srcPanel').classList.toggle('open');this.textContent=document.getElementById('srcPanel').classList.contains('open')?'📖 Sources ▲':'📖 Sources ▼'">📖 Sources ▼</button>
-  <div class="src-panel" id="srcPanel" style="display:none;padding:16px 14px">
+  <div class="src-panel" id="srcPanel" style="padding:16px 14px">
   <div style="font-size:13px;color:rgba(255,255,255,0.55);line-height:1.9">
     <div class="src-nm">Ashwagandha</div>
     Ambiye et al. (2013) — Étude clinique KSM-66. Evidence-Based Complementary Medicine<br>Wankhede et al. (2015) — Force musculaire. Journal ISSN<br>Dongre et al. (2015) — Fonction sexuelle féminine. BioMed Research International
@@ -1219,7 +1222,20 @@ function setG(g){
   // Update logo tagline
   const tag=document.querySelector(".logo-tag");
   if(tag) tag.textContent=g==="F"?"Guide des Compléments":"Guide des Compléments";
-  buildGrid();buildAZ();clearS();backToGrid();
+  // Mémoriser l'onglet actif
+  const wasAZ = document.getElementById('panel-az') && 
+                document.getElementById('panel-az').classList.contains('on');
+  buildGrid();buildAZ();
+  if(wasAZ){
+    // Rester sur A-Z
+    document.querySelectorAll('.tab').forEach(b=>b.classList.remove('on'));
+    document.querySelectorAll('.panel').forEach(p=>p.classList.remove('on'));
+    document.getElementById('panel-az').classList.add('on');
+    const azBtn=document.querySelector('.tab:last-child');
+    if(azBtn) azBtn.classList.add('on');
+  } else {
+    clearS();backToGrid();
+  }
 }
 
 function buildGrid(){
