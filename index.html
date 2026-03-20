@@ -51,7 +51,7 @@ body.F .header::before{background:radial-gradient(circle,rgba(160,80,255,0.10) 0
 .logo-pill{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden}
 body.M .logo-pill{background:#192035;box-shadow:0 4px 12px rgba(0,0,0,0.40)}
 body.F .logo-pill{background:#192035;box-shadow:0 4px 12px rgba(0,0,0,0.40)}
-.logo-txt{font-size:22px;font-weight:900;letter-spacing:-0.5px;font-family:"DM Sans",sans-serif;line-height:1;background:linear-gradient(90deg,#90C8FF,#D080FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.logo-txt{font-size:26px;font-weight:900;letter-spacing:-0.5px;font-family:"DM Sans",sans-serif;line-height:1;background:linear-gradient(90deg,#90C8FF,#D080FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 body.M .logo-txt span{color:inherit;-webkit-text-fill-color:inherit}
 body.F .logo-txt span{color:inherit;-webkit-text-fill-color:inherit}
 .logo-tag{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.16em;color:rgba(255,255,255,0.40);margin-top:1px}
@@ -191,19 +191,19 @@ let G = "F";
 const DATA = [
  {nm:"Ashwagandha (KSM-66)",tag:"Adaptogène",c:"var(--mental)",dispo:2,where:"Boutique fitness, Amazon, parapharmacie",forme:"suppl",gender:"MF",
   objectifs:["sommeil","mental","testo","energie","poids","libido","cycle","menopause"],
-  fn:"Adaptogène majeur régulant l\'axe HPA (stress). Réduit le cortisol, améliore la résistance au stress physique et mental. Effets en 4-8 semaines.",
-  plus:["Cortisol −27% (Chandrasekhar 2012)","Sommeil profond amélioré","Anxiété et fatigue chronique réduites","Endurance et VO2max améliorés","Humeur stabilisée"],
-  moins:["Effets en 4-8 semaines (pas immédiat)","Contre-indiqué grossesse","Interaction médicaments thyroïdiens"],
+  fn:"Plante adaptogène qui aide ton corps à mieux gérer le stress. Elle agit sur les hormones du stress (cortisol) et soutient naturellement l\'énergie, la récupération et l\'équilibre hormonal.",
+  plus:["Stress et anxiété réduits rapidement","Testostérone +15% en 90 jours (étude clinique)","Sommeil plus profond et récupération améliorée","Énergie et endurance physique boostées","Libido améliorée chez l\'homme et la femme"],
+  moins:["Déconseillé si maladie auto-immune","Éviter pendant la grossesse","Interactions avec médicaments thyroïdiens","Effets légers au début : somnolence possible"],
   dose:[["Dose H","600mg/j"],["Dose F","300mg/j"],["Timing","Soir, avant coucher"],["Forme","KSM-66 ou Sensoril (extraits brevetés)"],["Durée","Cycles 8-12 semaines"]],
-  hM:"Testostérone +17% chez l\'homme avec déficit confirmé (Ambiye 2013, RCT). Cortisol −27% → ratio testo/cortisol optimisé. Sperme : concentration +167%, mobilité +57% (Nasimi 2019). Masse musculaire +1,7kg vs placebo (Wankhede 2015).",
-  hF:"Cortisol chronique = principal ennemi hormonal féminin (perturbe progestérone, oestrogènes, thyroïde). Réduit cortisol −27% → cycles régularisés, SPM atténué. Ménopause : réduit anxiété, insomnie et variations d'humeur. Libido féminine améliorée (Dongre 2015, RCT). Thyroïde : éviter si hyperthyroïdie ou Hashimoto.",
+  hM:"La science est claire : -27% de cortisol en 8 semaines. +15% de testostérone libre en 90 jours (Wankhede 2015). Moins de stress = meilleure récupération, meilleur sommeil, meilleure libido. C\'est le complément anti-stress n°1 chez l\'homme actif.",
+  hF:"Réduit le cortisol et apaise l\'anxiété — particulièrement efficace en période de SPM ou de stress chronique. Améliore la libido féminine et la qualité du sommeil. Études cliniques positives sur la fonction sexuelle (Dongre 2015).",
   syn:["Magnésium (sommeil)","Zinc (testo)","Rhodiola (énergie)"],
   prec:"Éviter si maladie auto-immune ou hyperthyroïdie. Ne pas combiner avec sédatifs ou immunosuppresseurs.",
   food:["Aucun équivalent direct","Racine en poudre dans lait chaud (tradition ayurvédique)"]},
 
  {nm:"Acide Hyaluronique",tag:"Peau",c:"var(--peau)",dispo:2,where:"Pharmacie, parapharmacie, Amazon",forme:"suppl",gender:"MF",
   objectifs:["peau","articulations"],
-  fn:"Glycosaminoglycane naturel présent dans la peau (50% du total) et les articulations. Retient jusqu\'à 1000× son poids en eau.",
+  fn:"Molécule naturellement présente dans tes articulations et ta peau. Elle retient l\'eau et maintient l\'hydratation. Diminue avec l\'âge — une supplémentation par voie orale améliore les douleurs articulaires et l\'élasticité de la peau.",
   plus:["Hydratation dermique profonde","Rides réduites −30% (Göllner 2017)","Articulations et cartilages soutenus","Cicatrisation accélérée"],
   moins:["Oral moins efficace qu\'injection","Résultats variables selon poids moléculaire","Qualité très variable selon les marques"],
   dose:[["Dose","80-200mg/j"],["Timing","Avec repas"],["Forme","Bas poids moléculaire (mieux absorbé)"],["Durée","8-12 semaines minimum"]],
@@ -215,12 +215,12 @@ const DATA = [
 
  {nm:"Oméga-3 (EPA/DHA)",tag:"Essentiel",c:"var(--coeur)",dispo:1,where:"Supermarché, pharmacie, Decathlon, Amazon",forme:"both",gender:"MF",
   objectifs:["peau","coeur","cerveau","muscu","immun","testo","mental","vision","cycle","grossesse"],
-  fn:"Acides gras polyinsaturés essentiels non synthétisés par l\'organisme. EPA = anti-inflammatoire. DHA = structure cérébrale et rétine.",
-  plus:["Triglycérides −30%","Anti-inflammatoire systémique","Peau et cheveux améliorés","Performances cognitives","Courbatures réduites (DOMS)","Protection coeur et artères"],
-  moins:["Odeur poisson si mal conservé","Fluidifie sang à haute dose","Oxydation si mal stocké"],
+  fn:"Acides gras essentiels que ton corps ne fabrique pas seul. L\'EPA réduit l\'inflammation, le DHA nourrit le cerveau et les yeux. Indispensables pour le cœur, le mental et les performances.",
+  plus:["Triglycérides -30% (protège le cœur)","Anti-inflammatoire naturel puissant","Cerveau plus performant et humeur stabilisée","Peau et cheveux plus sains","Courbatures réduites après le sport","Vision protégée sur le long terme"],
+  moins:["Odeur de poisson si le produit est de mauvaise qualité","Légèrement fluidifiant du sang à haute dose","Stopper 2 semaines avant une chirurgie"],
   dose:[["Dose min","1g EPA+DHA/j"],["Dose thérap.","2-4g EPA+DHA/j"],["Grossesse","Min 3g DHA/j"],["Timing","Avec repas gras (dîner idéal)"],["Forme","Triglycérides > éthyl esters"],["Ratio","EPA > DHA si inflammation"]],
-  hM:"DHA constitue 40% des lipides spermatiques. En cas de carence, la mobilité est réduite. Réduction SHBG → testostérone biodisponible augmentée. Cardiovasculaire : −30% risque infarctus (REDUCE-IT 2018, 4g EPA/j). Muscle : réduit DOMS, améliore synthèse protéique.",
-  hF:"Douleurs menstruelles : EPA inhibe prostaglandines PGE2 → crampes −50% (Sampalis 2003). Endométriose : réduction inflammation chronique. Grossesse : DHA = construction cerveau foetal (600mg/j idéal). Dépression post-partum : prévention prouvée. SPM : irritabilité et humeur améliorées.",
+  hM:"Le DHA constitue 40% des lipides des spermatozoïdes — une carence réduit leur mobilité. Pour le cœur : -30% de risque cardiovasculaire à 4g EPA/j (étude REDUCE-IT 2018). Pour le muscle : réduit les courbatures et améliore la synthèse protéique.",
+  hF:"Réduit les douleurs menstruelles et les symptômes du SPM. Essentiel pour le développement du cerveau fœtal (DHA) pendant la grossesse. Améliore l\'humeur et réduit le risque de dépression post-partum.",
   syn:["Vitamine D3","Vitamine E (antioxydant)","Astaxanthine"],
   prec:"Attention si anticoagulants. Stopper 2 semaines avant chirurgie. Conserver au frais.",
   food:["🐟 Saumon sauvage (2-3g/100g)","🐟 Maquereau, sardines","🌾 Graines de chia (ALA, conversion limitée)","🌰 Noix (ALA)"]},
@@ -238,7 +238,7 @@ const DATA = [
   food:["🥩 Poulet, dinde (sources naturelles)","🐟 Poisson. Les concentrations alimentaires sont 10 fois inférieures au complément"]},
 
  {nm:"Biotine (Vitamine B8)",tag:"Beauté",c:"var(--cheveux)",dispo:1,where:"Pharmacie, supermarché bio, Amazon",forme:"both",gender:"MF",
-  objectifs:["cheveux","peau","fcheveux"],
+  objectifs:["cheveux","peau"],
   fn:"Coenzyme essentielle au métabolisme des macronutriments. Cofacteur de la synthèse de kératine (protéine structurelle cheveux et ongles).",
   plus:["Ongles cassants renforcés (prouvé)","Chevelure améliorée si carence","Peau soutenue","Métabolisme glucides et graisses"],
   moins:["Efficace surtout si carence préalable","Fausse certains tests sanguins","Résultats après 3-6 mois"],
@@ -251,19 +251,19 @@ const DATA = [
 
  {nm:"Berbérine",tag:"Métabolisme",c:"var(--poids)",dispo:2,where:"Amazon, parapharmacie, boutique spécialisée",forme:"suppl",gender:"MF",
   objectifs:["poids","digest","coeur"],
-  fn:"Alcaloïde végétal (épine-vinette). Active l\'AMPK (enzyme métabolique centrale), souvent comparé à la metformine dans des études cliniques.",
+  fn:"Extrait végétal naturel aux effets comparables à la metformine (médicament diabète) sur la glycémie. Aide à réguler le sucre dans le sang, améliore la sensibilité à l\'insuline et soutient la perte de poids.",
   plus:["Glycémie à jeun −20% (méta-analyse)","Sensibilité insuline comparable à metformine","Cholestérol LDL −20%","Microbiome intestinal amélioré","Perte de poids modérée"],
   moins:["Effets digestifs au début (nausées)","Nombreuses interactions médicamenteuses","Contre-indiqué grossesse et enfants"],
   dose:[["Dose","500mg × 2-3/j"],["Timing","Avant les repas"],["Cycles","8 semaines, pause 4 semaines"]],
-  hM:"Améliore composition corporelle et sensibilité insuline chez l\'homme en surpoids.",
-  hF:"Efficace sur SOP (syndrome ovaires polykystiques). Résistance insuline et fertilité améliorées.",
+  hM:"Réduit la glycémie à jeun de -20% en 3 mois, comparable à la metformine dans plusieurs études. Améliore la sensibilité à l\'insuline — clé pour la composition corporelle et la testostérone.",
+  hF:"Résistance à l\'insuline fréquente dans le SOP. Berbérine améliore l\'ovulation et régule les cycles hormonaux. À associer avec l\'inositol pour un effet maximal sur le SOP.",
   syn:["Chrome","Cannelle","Inositol (SOP)"],
   prec:"Interactions importantes : antibiotiques, anticoagulants, médicaments diabète. Consultation médicale obligatoire.",
   food:["🫐 Raisins rouges (resvératrol)","🍵 Thé vert (EGCG)","🌿 Curcuma (voies similaires)"]},
 
  {nm:"Collagène Marin",tag:"Peau & Structure",c:"var(--peau)",dispo:1,where:"Pharmacie, boutique fitness, Amazon, supermarché bio",forme:"both",gender:"MF",
-  objectifs:["peau","cheveux","os","articulations","menopause","fcheveux"],
-  fn:"Protéine structurelle n°1 du corps (30% des protéines). Le collagène marin (type I & III) présente la meilleure biodisponibilité orale.",
+  objectifs:["peau","cheveux","os","articulations","menopause"],
+  fn:"La protéine structurelle de ta peau, tes articulations et tes tendons. Ta production naturelle diminue dès 25 ans. La forme marine est la mieux absorbée. Résultats visibles sur la peau et les douleurs articulaires.",
   plus:["Élasticité peau +15% (Proksch 2014)","Densité dermique +7%","Rides −20% en 8 semaines","Tendons et cartilages renforcés","Cheveux et ongles améliorés"],
   moins:["Résultats après 8-12 semaines","Origine marine (allergie possible)","Qualité très variable"],
   dose:[["Dose","10g/j de peptides hydrolysés"],["Timing","Matin, avec Vitamine C"],["Forme","Peptides < 5kDa (bas poids moléculaire)"],["Durée","3 mois minimum"]],
@@ -275,19 +275,19 @@ const DATA = [
 
  {nm:"Créatine Monohydrate",tag:"Performance N°1",c:"var(--muscu)",dispo:1,where:"Boutique fitness, Decathlon, Myprotein, Amazon",forme:"both",gender:"MF",
   objectifs:["muscu","cerveau","energie"],
-  fn:"Composé naturel présent dans les muscles et le cerveau. Régénère l\'ATP lors des efforts explosifs. Le complément le plus étudié (+500 études).",
-  plus:["Force +8-12% (Lanhers 2017)","Masse musculaire +1-2kg en 4 semaines","Récupération inter-séries","Mémoire et cognition améliorées","Neuroprotection émergente"],
-  moins:["Rétention eau intramusculaire (pas sous-cutanée)","Non-répondeurs ~25-30%","Inutile sans entraînement"],
+  fn:"Le complément sportif le plus étudié au monde. Elle recharge tes réserves d\'énergie musculaire (ATP) pour des efforts plus intenses, une meilleure récupération et même des bénéfices cognitifs.",
+  plus:["Force +8% en 4-6 semaines","Récupération musculaire plus rapide","Masse musculaire augmentée","Mémoire et concentration améliorées","Fatigue mentale réduite"],
+  moins:["Rétention d\'eau légère au début (normal)","Boire beaucoup d\'eau obligatoire","Pas de bénéfice sans effort physique régulier"],
   dose:[["Dose H","5g/j"],["Dose F","3-5g/j"],["Timing post-séance","Avec Whey"],["Sans sport","Avec le petit-déjeuner"],["Charge","Inutile (saturation en 3-4 semaines)"],["Forme","Monohydrate uniquement, le reste c'est du marketing"]],
-  hM:"Le complément le mieux documenté (+500 RCTs). Force +8%, masse maigre +2kg en 4-12 semaines. Cerveau : +9% créatine cérébrale → mémoire de travail (Rae 2003). Testostérone : pas d\'effet direct mais améliore la récupération → entraînements plus intenses → adaptation hormonale. Resynthèse ATP 2-3x plus rapide entre séries explosives.",
-  hF:"Longtemps ignorée chez la femme et c'est dommage. Réserves musculaires naturellement 70-80% inférieures à l\'homme → réponse à la supplémentation souvent PLUS marquée proportionnellement. Smith-Ryan 2021 (méta-analyse) : force +8%, masse maigre +1,4kg. Os : densité osseuse améliorée. prévention ostéoporose documentée (cruciale post-ménopause). Cerveau : Kious 2019 (RCT). réduit symptômes dépressifs. SPM : énergie cérébrale restaurée en phase lutéale (chute de créatine documentée). Ménopause : maintien masse musculaire pendant la chute d\'oestrogènes. 3-5g/j suffisent.",
+  hM:"+8% de force sur 4-6 semaines. +10% de masse musculaire sur 12 semaines. Le complément sportif le plus prouvé scientifiquement. Aussi efficace pour le cerveau : mémoire et temps de réaction améliorés.",
+  hF:"Bénéfice égal à celui des hommes pour la force et la masse musculaire maigre. Améliore l\'humeur et réduit les symptômes dépressifs (Kious 2019). Réduit la fatigue en phase lutéale (pré-menstruelle).",
   syn:["Whey protéine","Bêta-alanine","Glucides (favorisent absorption)"],
   prec:"Très sûre long terme. S\'hydrater. Inutile de cycler.",
   food:["🥩 Viande rouge (2g/kg)","🐟 Saumon (4,5g/kg). 10 fois moins concentré que le complément"]},
 
  {nm:"Curcumine (Curcuma)",tag:"Anti-inflammatoire",c:"var(--anti)",dispo:1,where:"Supermarché bio, pharmacie, Amazon",forme:"both",gender:"MF",
   objectifs:["peau","immun","digest","articulations","mental","cycle"],
-  fn:"Polyphénol du curcuma. Anti-inflammatoire via inhibition NF-kB, antioxydant direct. Biodisponibilité naturelle < 1%. la pipérine la multiplie par 20.",
+  fn:"Le composé actif du curcuma, puissant anti-inflammatoire naturel. Seul problème : le curcuma classique est très mal absorbé. Choisir une formule avec pipérine ou en forme liposomale pour un vrai effet.",
   plus:["Anti-inflammatoire aussi puissant qu\'ibuprofène (certaines études)","Antioxydant puissant","Articulations (arthrose)","Santé intestinale","Neuroprotection émergente"],
   moins:["Biodisponibilité < 1% seul","Fluidifie sang à haute dose","Interactions médicamenteuses"],
   dose:[["Dose","500-1000mg curcuminoïdes/j"],["Timing","Avec repas gras"],["INDISPENSABLE","+ Pipérine (absorption ×20)"],["Formes avancées","BCM-95, Meriva, Theracurmin"]],
@@ -299,24 +299,24 @@ const DATA = [
 
  {nm:"Vitamine D3 + K2",tag:"Essentielle",c:"var(--energie)",dispo:1,where:"Pharmacie, supermarché, Amazon",forme:"both",gender:"MF",
   objectifs:["immun","os","testo","energie","sommeil","mental","grossesse","menopause","cycle"],
-  fn:"Hormone stéroïdienne régulant > 2000 gènes. 80% des Européens sont déficients. La K2 dirige le calcium vers les os et non les artères.",
+  fn:"La vitamine du soleil — indispensable mais très souvent en déficit (surtout en France). Elle renforce les os, booste l\'immunité, régule les hormones et améliore l\'humeur.",
   plus:["Immunité : infections respiratoires −50%","Santé osseuse et musculaire","Humeur et dépression saisonnière","Synthèse protéique musculaire","Anti-inflammatoire"],
   moins:["Toxique à très forte dose long terme","Analyse sanguine recommandée","K2 indispensable en association"],
   dose:[["Maintenance H","2000-4000 UI/j"],["Maintenance F","2000-4000 UI/j (4000 post-ménopause)"],["Correction déficit","5000-10 000 UI (3 mois)"],["K2 (MK-7)","100µg/j"],["Timing","Matin avec repas gras"],["Cible sang","60-80 ng/mL"]],
-  hM:"Pilz 2011 (RCT, 65 hommes) : 3332 UI/j pendant 1 an → testostérone +25%. Récepteurs VDR présents dans testicules et spermatozoïdes. Sarcopénie : Vit D active synthèse protéique musculaire. Cardiovasculaire : déficit = ×2 risque infarctus. 80% des Européens déficients en hiver.",
-  hF:"Cycle : régule progestérone et oestrogènes. Un déficit entraîne des cycles irréguliers et aggrave le SPM. SOP : 85% des femmes SOP sont déficientes. correction améliore ovulation et sensibilité insuline. Grossesse : déficit = ×2 risque pré-éclampsie. Ménopause : ralentit perte osseuse (−23% fractures à 4000 UI/j). Acné : propriétés anti-inflammatoires directes sur les sebocytes. Cancer sein : niveau >60ng/mL = −50% risque (Garland 2007).",
+  hM:"+25% de testostérone en 12 mois chez les hommes déficients (Pilz 2011). 80% des Français manquent de vitamine D en hiver. Elle régule les hormones sexuelles, protège les os et booste l\'immunité.",
+  hF:"Réduit les douleurs menstruelles et le SPM. Rôle clé dans la fertilité et la prévention du diabète gestationnel. Après 50 ans : indispensable pour protéger les os (risque ostéoporose ×3 post-ménopause).",
   syn:["Vitamine K2 (INDISPENSABLE)","Magnésium (activation)","Zinc","Oméga-3"],
   prec:"Toujours associer K2. Bilan 25-OH-D recommandé avant dose > 4000 UI/j.",
   food:["☀️ Soleil 15-30 min/j (source principale)","🐟 Saumon, maquereau","🥚 Jaune d\'oeuf","🍄 Champignons exposés au soleil"]},
 
  {nm:"Fer Bisglycinate",tag:"Essentiel",c:"var(--energie)",dispo:2,where:"Pharmacie uniquement. Ne jamais acheter sans bilan sanguin préalable",forme:"both",gender:"MF",
   objectifs:["energie","cheveux","immun","mental","cycle","grossesse","fcheveux","anemie"],
-  fn:"Transport de l\'oxygène (hémoglobine) et stockage (ferritine). Carence la plus fréquente au monde : 1 femme sur 3 est concernée.",
-  plus:["Corrige l\'anémie ferriprive","Énergie et concentration retrouvées","Chute de cheveux réduite","Immunité renforcée","Performance sportive"],
-  moins:["Toxique en excès","Constipation (moindre avec bisglycinate)","Ne jamais supplémenter sans analyse sanguine"],
+  fn:"Le minéral qui transporte l\'oxygène dans ton sang. La carence en fer est la plus fréquente au monde — 1 femme sur 3 est concernée. Toujours vérifier par une prise de sang avant de se supplémenter.",
+  plus:["Fatigue chronique disparaît","Chute de cheveux réduite","Concentration et mémoire améliorées","Essoufflement à l\'effort supprimé","Immunité renforcée"],
+  moins:["JAMAIS sans prise de sang préalable","Toxique en excès (hémochromatose)","Constipation possible (moindre avec bisglycinate)"],
   dose:[["Dose H","10-20mg/j fer élémentaire"],["Dose F","25-50mg/j fer élémentaire"],["Timing","À jeun + Vitamine C"],["Durée","3 mois minimum"],["Cible","Ferritine > 50 µg/L"]],
-  hM:"Carence rare chez l\'homme mais possible : sportifs d\'endurance (hémolyse foot-strike), végétaliens, dons de sang fréquents. Toujours confirmer par bilan ferritine avant supplémentation.",
-  hF:"Règles abondantes = perte de 20-80mg de fer/mois → déficit chronique chez 35-40% des femmes en âge de procréer. Ferritine < 30 µg/L = chute de cheveux diffuse (effluvium télogène) même sans anémie. Signes d'alerte : fatigue inexpliquée, froid aux extrémités, essoufflement, concentration difficile, ongles cassants. Grossesse : besoin triplé. Toujours vérifier ferritine avant de supplémenter.",
+  hM:"Rare chez l\'homme mais sous-estimé : sportifs d\'endurance (course à pied), végétaliens et donneurs de sang réguliers sont souvent déficients. Toujours confirmer par un dosage de ferritine avant de se supplémenter.",
+  hF:"Règles abondantes = perte de 20-80mg de fer/mois. 35-40% des femmes en âge de procréer sont déficientes. Ferritine < 30 µg/L = chute de cheveux, fatigue, froid aux extrémités — même sans anémie avérée. Grossesse : besoin triplé.",
   syn:["Vitamine C (×3 absorption)","Vitamine B9 + B12"],
   prec:"JAMAIS sans analyse sanguine. Espacer 2h de : café, thé, calcium, laitages.",
   food:["🥩 Viande rouge (fer héminique, mieux absorbé)","🐚 Palourdes, moules","🌿 Épinards + citron","🫘 Lentilles + poivrons"]},
@@ -347,12 +347,12 @@ const DATA = [
 
  {nm:"Magnésium Bisglycinate",tag:"Essentiel N°1",c:"var(--sommeil)",dispo:1,where:"Pharmacie, supermarché, boutique fitness, Amazon",forme:"suppl",gender:"MF",
   objectifs:["sommeil","energie","muscu","testo","cerveau","mental","cycle","acne"],
-  fn:"Co-facteur de plus de 300 enzymes. Impliqué dans synthèse protéique, ATP, neurotransmission. 70% de la population est déficiente.",
-  plus:["Sommeil profond amélioré","Cortisol réduit (stress)","Crampes musculaires prévenues","Anxiété réduite","Énergie cellulaire (ATP)","Sensibilité insuline"],
-  moins:["Forme oxyde = inutile (éviter)","Diarrhée si mauvaise forme ou surdosage","Interactions médicaments"],
+  fn:"Minéral essentiel impliqué dans plus de 300 fonctions dans ton corps. 70% des gens en manquent. Il améliore le sommeil, réduit le stress, et booste l\'énergie. La forme bisglycinate est la mieux absorbée.",
+  plus:["Sommeil profond et réparateur","Stress et anxiété réduits","Crampes musculaires supprimées","Énergie cellulaire boostée","Hormones mieux équilibrées","Migraine : fréquence réduite"],
+  moins:["Diarrhée si mauvaise forme (éviter l\'oxyde)","Éviter le magnésium oxyde — quasi inutile","Insuffisance rénale : demander avis médical"],
   dose:[["Dose H","350-400mg/j"],["Dose F","280-320mg/j"],["Timing","Soir 30 min avant coucher"],["Forme","Bisglycinate ou glycinate UNIQUEMENT"]],
-  hM:"Cofacteur direct de la synthèse de testostérone. Cinar 2011 (RCT) : +26% testo libre chez sportifs supplémentés vs placebo. Réduit SHBG → testostérone biodisponible. Récupération musculaire : -ATP nocturne reconstitué. 70% des hommes actifs sont déficients.",
-  hF:"SPM : 360mg/j réduit tension, irritabilité et fatigue −34% (Facchinetti 1991). Douleurs menstruelles : relaxation musculaire utérine. Migraine hormonale : −42% fréquence. Acné hormonale : cofacteur régulation androgènes. Grossesse : besoin +40%. Ménopause : réduit bouffées de chaleur et troubles du sommeil.",
+  hM:"+26% de testostérone libre chez les sportifs supplémentés vs placebo (Cinar 2011). 70% des hommes actifs sont déficients à cause de la transpiration. Moins de stress, meilleur sommeil, plus de force — c\'est le complément de base n°1.",
+  hF:"SPM : 360mg/j réduit les tensions, l\'irritabilité et la fatigue de 34% (Facchinetti 1991). Douleurs menstruelles réduites par relaxation de l\'utérus. Migraines hormonales : -42% de fréquence. Acné hormonale, grossesse, ménopause : essentiel à chaque étape.",
   syn:["Zinc (ZMA)","Vitamine B6 (absorption)","Ashwagandha (sommeil)"],
   prec:"Insuffisance rénale : avis médical. Éviter magnésium oxyde (quasi non absorbé).",
   food:["🥬 Épinards (80-90mg/100g)","🍫 Chocolat noir 85%+ (228mg/100g)","🎃 Graines de courge (535mg/100g)","🥜 Amandes, noix de cajou"]},
@@ -371,55 +371,55 @@ const DATA = [
 
  {nm:"Mélatonine",tag:"Sommeil",c:"var(--sommeil)",dispo:2,where:"Pharmacie, parapharmacie. Maximum 1mg en France sans ordonnance",forme:"both",gender:"MF",
   objectifs:["sommeil","anti","immun"],
-  fn:"Hormone naturelle du sommeil produite par la glande pinéale. Régule le cycle circadien. Puissant antioxydant direct. Diminue avec l\'âge.",
-  plus:["Endormissement accéléré","Jet-lag corrigé efficacement","Antioxydant puissant","Immunité renforcée","Anti-âge émergent"],
-  moins:["Dépendance possible à haute dose long terme","Somnolence le lendemain si dose trop élevée","Perturbe cycles menstruels à haute dose"],
+  fn:"L\'hormone naturelle du sommeil. Elle dit à ton corps qu\'il est l\'heure de dormir. Idéale pour les décalages horaires, les troubles du sommeil et les travailleurs de nuit. Commence toujours par une petite dose.",
+  plus:["Endormissement plus rapide","Jet-lag corrigé efficacement","Antioxydant puissant","Immunité soutenue","Sommeil plus réparateur"],
+  moins:["Commencer à 0,5mg — pas plus","Somnolence le lendemain si dose trop forte","Perturbe cycles menstruels à haute dose"],
   dose:[["COMMENCER à","0,5mg/j (dose physiologique)"],["Dose H","1-3mg/j"],["Dose F","0,5-1mg/j (cycles hormonaux sensibles)"],["Timing","30-60 min avant coucher, dans le noir"],["Durée","Usage ponctuel"],["⚠️","5-10mg = trop élevé"]],
-  hM:"Synergie caféine+théanine : améliore temps de réaction, précision et résistance à la distraction (Owen 2008, RCT). Cortisol sous stress réduit sans somnolence. Ondes alpha cérébrales +8% en 40 min. Dose optimale : 200mg théanine pour 100mg caféine.",
-  hF:"Ne pas dépasser 3mg/j (perturbe cycles). Grossesse : consulter médecin.",
+  hM:"La testostérone est sécrétée pendant le sommeil profond. Un mauvais sommeil = hormones au plancher. La mélatonine optimise les cycles de sommeil sans les perturber. Commencer à 0,5mg — pas besoin de plus.",
+  hF:"Ne pas dépasser 1-2mg pour préserver les cycles hormonaux. Le sommeil est crucial pour la régulation du cortisol et des hormones sexuelles. Éviter les fortes doses si tu planifies une grossesse.",
   syn:["Magnésium","L-Théanine","Ashwagandha"],
   prec:"Toujours commencer à 0,5mg. Éviter lumière bleue 2h avant coucher. Interactions anticoagulants.",
   food:["🥝 Kiwi : 2 kiwis 1h avant lit = endormissement −42% plus rapide (Lin 2011)","🍒 Cerises acidulées (montmorency). mélatonine naturelle","🌰 Noix (233ng/100g)","🥛 Lait chaud (tryptophane → mélatonine)","🍌 Banane (tryptophane + magnésium)","🥜 Amandes (magnésium + mélatonine)"]},
 
  {nm:"Probiotiques",tag:"Microbiome",c:"var(--digest)",dispo:1,where:"Pharmacie, supermarché bio, Amazon",forme:"both",gender:"MF",
   objectifs:["digest","immun","peau","poids","mental","cycle","grossesse"],
-  fn:"Micro-organismes vivants renforçant le microbiote. Ce dernier influence l\'immunité (70%), l\'humeur (axe intestin-cerveau) et le métabolisme.",
-  plus:["Immunité digestive renforcée","Transit régulé","Peau améliorée (axe gut-skin)","Humeur et stress (axe gut-brain)","Aide maintien du poids"],
-  moins:["Effets dépendent des souches","Gaz au début (normal)","Qualité très variable"],
+  fn:"Des bactéries vivantes bénéfiques pour ton intestin. Ton microbiote influence ton immunité (70%), ton humeur et ton métabolisme. Un intestin sain c\'est un corps sain.",
+  plus:["Immunité digestive renforcée","Transit régulé naturellement","Peau améliorée (lien intestin-peau)","Humeur et énergie stabilisées","Infections urinaires réduites (femme)"],
+  moins:["Gaz et ballonnements les premiers jours (normal)","Qualité très variable selon les marques","Immunodéprimés : demander avis médical"],
   dose:[["UFC","10-50 milliards/j"],["Timing","Matin à jeun (meilleure survie)"],["Souches","L. acidophilus, B. longum, L. rhamnosus"],["Rotation","Changer toutes les 4-8 semaines"]],
-  hM:"Axe microbiome-testostérone documenté : Lactobacillus reuteri augmente testostérone chez souris (Poutahidis 2014, résultats humains en cours). Perméabilité intestinale réduite → moins d\'endotoxines LPS qui bloquent la testostérone. Absorption zinc et magnésium optimisée par flore saine.",
-  hF:"Flore vaginale : L. rhamnosus GR-1 + L. reuteri RC-14 réduisent infections récurrentes de −50% (Beerepoot 2012). Oestrobolome : microbiote intestinal dégrade et recycle les oestrogènes. dysbiose = oestrogènes excessifs → SPM, endométriose, fibromes. Acné hormonale : axe gut-skin, inflammation systémique réduite. Grossesse : réduit risque diabète gestationnel et eczéma bébé. Candidose : Lactobacillus protège contre Candida.",
+  hM:"Un microbiote sain optimise l\'absorption du zinc et du magnésium — deux piliers de la testostérone. Une flore intestinale en bon état réduit les endotoxines qui bloquent naturellement la production hormonale.",
+  hF:"L. rhamnosus GR-1 + L. reuteri RC-14 réduisent les infections urinaires récurrentes de 50% (Beerepoot 2012). Un microbiote équilibré évite les excès d\'oestrogènes → moins de SPM, moins d\'endométriose. Acné hormonale : action via l\'axe intestin-peau.",
   syn:["Prébiotiques (inuline, FOS)","Zinc","Vitamine D3"],
   prec:"Immunodéprimés : avis médical. Choisir produits réfrigérés ou microencapsulés.",
   food:["🥛 Kéfir (30-50 milliards UFC/verre)","🥬 Choucroute, kimchi, miso","🧀 Yaourt nature entier","🥒 Cornichons lacto-fermentés"]},
 
  {nm:"CoQ10 (Ubiquinol)",tag:"Énergie cellulaire",c:"var(--coeur)",dispo:2,where:"Pharmacie ou Amazon. Choisir ubiquinol (pas ubiquinone)",forme:"suppl",gender:"MF",
   objectifs:["energie","coeur","peau","cerveau","grossesse"],
-  fn:"Antioxydant liposoluble essentiel à la production d\'ATP mitochondriale. Diminue avec l\'âge (−50% à 40 ans) et les statines.",
+  fn:"Antioxydant naturellement présent dans tes cellules pour produire de l\'énergie. Diminue avec l\'âge et les médicaments (statines notamment). La forme ubiquinol est 3x mieux absorbée que l\'ubiquinone.",
   plus:["Énergie cellulaire améliorée","Antioxydant anti-âge puissant","Santé cardiaque (insuffisance)","Performance sportive (VO2max)","Fertilité masculine et féminine"],
   moins:["Coûteux","Ubiquinone = moins bonne biodisponibilité","Effets maximaux avec ubiquinol (forme réduite)"],
   dose:[["Standard","100-200mg/j d\'ubiquinol"],["Thérapeutique","300-600mg/j"],["Timing","Avec repas gras"],["Forme","Ubiquinol (réduit) > Ubiquinone"]],
-  hM:"Sperme : méta-analyse 2013 (Lafuente). mobilité +26%, morphologie améliorée. Statines bloquent la voie mévalonate = −40% CoQ10 endogène → fatigue musculaire, risque cardiaque accru. Sous statines : 200-400mg/j ubiquinol obligatoire. Performance aérobie : VO2max +8,5% (Cooke 2008).",
-  hF:"Ovocytes : richesse en mitochondries = besoin CoQ10 élevé. Bentov 2010 : CoQ10 améliore qualité ovocytaire et réponse à la stimulation ovarienne (FIV). Après 35 ans : production CoQ10 chute → ovocytes de moins bonne qualité. 400-600mg/j ubiquinol recommandé en préconception.",
+  hM:"Mobilité des spermatozoïdes +26%, morphologie améliorée (Lafuente 2013). Si tu prends des statines : elles bloquent la CoQ10 à -40% → fatigue musculaire garantie. Supplémenter en ubiquinol est alors indispensable.",
+  hF:"Les ovocytes sont très riches en mitochondries et ont besoin de CoQ10 pour fonctionner correctement. Après 35 ans : production chute → qualité ovocytaire réduite. 400-600mg/j d\'ubiquinol recommandés en préconception et pour les FIV.",
   syn:["L-Carnitine","Oméga-3","Vitamine E","Magnésium"],
   prec:"Légère fluidification sang. Interaction warfarine possible. Statines → CoQ10 obligatoire.",
   food:["🥩 Coeur de boeuf (11mg/100g)","🐟 Sardines, maquereau","🫘 Cacahuètes","🥦 Brocoli, épinards (traces)"]},
 
  {nm:"Rhodiola Rosea",tag:"Adaptogène",c:"var(--mental)",dispo:2,where:"Boutique spécialisée, Amazon, parapharmacie",forme:"suppl",gender:"MF",
   objectifs:["energie","cerveau","mental","poids"],
-  fn:"Plante adaptogène des régions arctiques. Agit via AMPK, sérotonine et noradrénaline. Effets rapides en 1-2 semaines.",
+  fn:"Plante adaptogène des régions arctiques qui combat la fatigue mentale et améliore la résistance au stress. Effets ressentis rapidement (1-2 semaines). Idéale en période de surmenage ou d\'examens.",
   plus:["Fatigue mentale réduite rapidement","Performances cognitives sous stress","Endurance sportive +3-4%","Humeur améliorée (léger antidépresseur)","Cortisol régulé"],
   moins:["Stimulant : perturbe sommeil si pris tard","Agitation à forte dose","Interactions antidépresseurs"],
   dose:[["Dose","300-600mg/j (extrait 3% rosavines)"],["Timing","MATIN ou pré-séance uniquement, jamais le soir"],["Cycles","6-8 semaines avec pauses"]],
-  hM:"Tendons et ligaments : composés à 40% de silicium. Sport intensif (course, CrossFit, Hyrox) = microtraumatismes tendineux répétés → besoin accru. Densité osseuse : silicium active les ostéoblastes. hommes aussi sujets à ostéoporose après 60 ans.",
-  hF:"Réduit fatigue et irritabilité SPM. Améliore humeur en phase lutéale.",
+  hM:"Réduit la fatigue mentale dès 2 semaines en période de surmenage. VO2max +3-4% pour les sportifs d\'endurance. Efficace pour le burn-out et les périodes de stress intense. À prendre le matin uniquement.",
+  hF:"Réduit la fatigue et l\'irritabilité en phase lutéale (SPM). Améliore l\'humeur et la résistance au stress chronique — très utile en cas de surmenage professionnel. À prendre le matin uniquement.",
   syn:["Ashwagandha (stress)","Magnésium","Ginseng"],
   prec:"Ne jamais prendre le soir. Éviter avec IMAO. Pas plus de 8 semaines consécutives.",
   food:["Pas d\'équivalent alimentaire direct","🍵 Thé vert (L-théanine : effet calme similaire)"]},
 
  {nm:"Silicium Organique",tag:"Beauté & Os",c:"var(--cheveux)",dispo:2,where:"Pharmacie, parapharmacie, Amazon",forme:"suppl",gender:"MF",
-  objectifs:["cheveux","peau","os","articulations","fcheveux","menopause"],
-  fn:"Oligo-élément essentiel à la formation du collagène et de la kératine. Indispensable pour la solidité des os, ongles, cheveux et l\'élasticité de la peau.",
+  objectifs:["cheveux","peau","os","articulations","menopause"],
+  fn:"Minéral essentiel à la fabrication du collagène, de la kératine (cheveux, ongles) et des os. Souvent négligé mais très efficace pour la beauté et la solidité articulaire. Indispensable en forme organique.",
   plus:["Synthèse collagène stimulée","Cheveux plus denses et résistants","Ongles renforcés","Minéralisation osseuse","Élasticité peau améliorée"],
   moins:["Formes inorganiques quasi non absorbées","Qualité très variable entre produits"],
   dose:[["Dose","20-30mg/j silicium biodisponible"],["Timing","Matin à jeun"],["Forme","Silice végétale ou G5 (organique)"]],
@@ -431,79 +431,79 @@ const DATA = [
 
  {nm:"Vitamine C (Ascorbate)",tag:"Antioxydant",c:"var(--immun)",dispo:1,where:"Pharmacie, supermarché, Decathlon",forme:"both",gender:"MF",
   objectifs:["immun","peau","energie","muscu","anti"],
-  fn:"Vitamine hydrosoluble antioxydante. Cofacteur de > 300 réactions enzymatiques. Synthèse collagène, carnitine, neurotransmetteurs. Non synthétisée par l\'homme.",
-  plus:["Synthèse collagène (cofacteur obligatoire)","Immunité renforcée","Antioxydant direct","Durée rhume réduite","Absorption fer ×3","Anti-stress oxydatif"],
-  moins:["Diarrhée à forte dose","Élimination rapide (hydrosoluble)","Acidifiante pour l\'émail dentaire"],
+  fn:"La vitamine antioxydante par excellence. Elle protège tes cellules, fabrique le collagène, renforce l\'immunité et aide à mieux absorber le fer. Ton corps ne la stocke pas — il faut en apporter chaque jour.",
+  plus:["Immunité renforcée (durée des rhumes réduite)","Collagène fabriqué (peau, articulations)","Antioxydant protecteur des cellules","Fer mieux absorbé (+3x)","Récupération sportive accélérée"],
+  moins:["Diarrhée si dose trop élevée","Rincer les dents (légèrement acide)","Calculs rénaux rares à très haute dose"],
   dose:[["Standard","500-1000mg/j"],["Grossesse","85mg/j minimum (ANC)"],["Thérapeutique","jusqu\'à 3000mg/j (fractionner)"],["Timing","Avec repas pour le fer, matin pour antioxydant"],["Liposomale","Absorption 5-10× supérieure"]],
-  hM:"Cortisol post-effort : 1500mg Vit C/j réduit cortisol −30% et inflammation (Peters 2001, marathoniens). Spermatogenèse : testicules contiennent 10x plus de Vit C que le plasma. protège l\'ADN spermatique. Récupération : réduit DOMS via neutralisation ROS musculaires.",
-  hF:"Synthèse collagène prioritaire. Réduit dommages UV. Indispensable avec fer pour anémie.",
+  hM:"Les testicules contiennent 10x plus de vitamine C que le plasma — elle protège l\'ADN des spermatozoïdes du stress oxydatif. 1500mg/j réduit le cortisol post-effort de 30% chez les sportifs (Peters 2001).",
+  hF:"Synthèse du collagène — peau, articulations, varicosités. Réduit les dommages UV. Indispensable avec le fer pour corriger l\'anémie ferriprive : multiplie l\'absorption par 3.",
   syn:["Collagène (INDISPENSABLE)","Fer (×3 absorption)","Zinc","Vitamine E"],
   prec:"Doses > 2g/j : risque calculs rénaux chez prédisposés. Rincer dents. ",
   food:["🫑 Poivron rouge (190mg/100g)","🥝 Kiwi (85mg/100g)","🍋 Citron, orange","🥦 Brocoli","🍓 Fraises"]},
 
  {nm:"Vitamine B12 (Méthylcobalamine)",tag:"Essentielle",c:"var(--energie)",dispo:1,where:"Pharmacie, supermarché bio, Amazon",forme:"both",gender:"MF",
-  objectifs:["energie","cerveau","cheveux","immun","grossesse","fcheveux"],
-  fn:"Seule vitamine absente du règne végétal. Indispensable à la myélinisation nerveuse, formation globules rouges et synthèse ADN. Carence silencieuse pendant des années.",
+  objectifs:["energie","cerveau","cheveux","immun","grossesse"],
+  fn:"La seule vitamine absente de l\'alimentation végétale. Indispensable pour le système nerveux, la formation des globules rouges et l\'énergie. Indispensable si tu es végétarien ou végane.",
   plus:["Prévient anémie mégaloblastique","Santé neurologique maintenue","Énergie si déficit","Cheveux et ongles soutenus","Indispensable végans/végétariens"],
   moins:["Carence longtemps asymptomatique","Absorption réduite après 50 ans","Certains médicaments bloquent l\'absorption"],
   dose:[["Préventif","250-500µg/j"],["Correction déficit","1000µg/j"],["Forme","Méthylcobalamine (active)"],["Timing","Matin avec B9"]],
   hM:"Fertilité masculine (spermatogenèse). Énergie et performance mentale.",
-  hF:"Grossesse : 2,8µg minimum/j. Pilule contraceptive réduit les niveaux. Véganes : OBLIGATOIRE.",
+  hF:"La pilule contraceptive diminue les niveaux de B12 — penser à supplémenter. Grossesse : 2,8µg/j minimum, indispensable pour le développement neurologique du bébé. Véganes : OBLIGATOIRE.",
   syn:["Vitamine B9 (folate)","Fer","Vitamine B6"],
   prec:"Non toxique. Metformine, IPP, certains antibiotiques réduisent l\'absorption.",
   food:["🦪 Palourdes (98µg/100g)","🥩 Foie de boeuf","🐟 Sardines, saumon","🥚 Oeufs, laitages","🌱 Végétal : aucune source fiable"]},
 
  {nm:"Zinc Bisglycinate",tag:"Essentiel",c:"var(--testo)",dispo:1,where:"Pharmacie, supermarché, boutique fitness, Amazon",forme:"both",gender:"MF",
-  objectifs:["testo","peau","cheveux","immun","muscu","libido","acne","fcheveux","cycle"],
-  fn:"Oligo-élément co-facteur de > 300 enzymes. Rôle central en immunité, synthèse hormonale, cicatrisation et métabolisme. Déficit fréquent chez sportifs.",
-  plus:["Testostérone optimisée (co-facteur direct)","Immunité anti-virale puissante","Cicatrisation accélérée","Peau acnéique améliorée","Fertilité (homme et femme)"],
-  moins:["Nausées si pris à jeun","Compétition avec cuivre long terme","Compétition absorption avec fer"],
+  objectifs:["testo","peau","cheveux","immun","muscu","libido","acne","cycle"],
+  fn:"Minéral essentiel à la testostérone, l\'immunité et la santé de la peau. Les sportifs en perdent beaucoup par la transpiration. La forme bisglycinate est bien tolérée et bien absorbée.",
+  plus:["Testostérone optimisée naturellement","Immunité anti-virus renforcée","Peau acnéique améliorée","Cheveux moins fragiles","Cicatrisation plus rapide","Fertilité améliorée"],
+  moins:["Nausées si pris à jeun — toujours avec repas","Ne pas dépasser 40mg/j","Long terme : ajouter du cuivre (1-2mg/j)"],
   dose:[["Dose H","15-25mg/j"],["Dose F","8-15mg/j"],["Timing","Soir, loin des fibres"],["Forme","Bisglycinate ou picolinate"],["Long terme","> 6 mois : ajouter 1-2mg cuivre/j"]],
-  hM:"Cofacteur de la 5α-réductase et de l\'aromatase. régule conversion testostérone/DHT/oestrogènes. Prasad 1996 : carence zinc → testostérone réduite de 75%. Sperme : zinc = 1mg par éjaculation perdu. Sportifs : pertes sudorales = 2-3mg/h d\'entraînement intensif.",
-  hF:"Acné hormonale : inhibe la 5α-réductase (réduit DHT = principale cause acné). Aussi efficace que tétracycline à 30mg/j (Michaëlsson 1977). Cycle : progestérone consomme le zinc en phase lutéale. déficit fréquent. Cheveux : carence = chute diffuse très fréquente. Fertilité : indispensable à la maturation ovocytaire.",
+  hM:"Chaque éjaculation fait perdre 1mg de zinc. 1h de sport intensif = 2-3mg perdus en sueur. Une carence réduit la testostérone de jusqu\'à 75% (Prasad 1996). Indispensable pour maintenir un niveau hormonal optimal.",
+  hF:"Acné hormonale : aussi efficace que la tétracycline à 30mg/j (Michaëlsson 1977) en inhibant la DHT. Chute de cheveux diffuse par carence très fréquente. Maturation des ovocytes et cycles réguliers.",
   syn:["Magnésium (ZMA)","Vitamine B6","Vitamine D3"],
   prec:"Ne pas dépasser 40mg/j. Ajouter cuivre si long terme. Espacer 2h des antibiotiques.",
   food:["🦪 Huîtres (78mg/100g. champion)","🥩 Viande rouge","🌰 Graines de courge","🫘 Légumineuses (phytates réduisent absorption)"]},
 
  {nm:"Inositol (Myo-Inositol)",tag:"Hormones & Métabolisme",c:"var(--libido)",dispo:2,where:"Amazon, boutique spécialisée, parapharmacie",forme:"suppl",gender:"F",
   objectifs:["testo","poids","mental","digest","cycle","acne","grossesse"],
-  fn:"Pseudo-vitamine B8. Impliqué dans la signalisation insulinique et la production d\'hormones. Résultats cliniques majeurs sur le SOP.",
-  plus:["SOP : ovulation restaurée 70% des cas","Sensibilité insuline améliorée","Anxiété réduite","Fertilité féminine améliorée","Cycles régularisés"],
-  moins:["Effets digestifs légers à haute dose","Éviter en cas de trouble bipolaire sans avis médical"],
+  fn:"Un composé naturel proche des vitamines B qui aide ton corps à mieux répondre à l\'insuline et à équilibrer les hormones. Particulièrement efficace pour le syndrome des ovaires polykystiques (SOP) et l\'acné hormonale.",
+  plus:["SOP : ovulation restaurée dans 70% des cas","Glycémie mieux régulée","Anxiété réduite","Acné hormonale améliorée","Cycles menstruels régularisés"],
+  moins:["Effets digestifs légers à haute dose","Résultats en 3-6 mois — pas immédiat","Éviter si trouble bipolaire sans avis médical"],
   dose:[["Dose SOP","2-4g/j (myo-inositol)"],["Ratio optimal","Myo:D-Chiro = 40:1"],["Timing","Matin et soir avec repas"],["Durée","3-6 mois minimum"]],
   hM:"Production de mélatonine décline dès 40 ans (−10-15%/décennie). Rythme circadien souvent plus perturbé chez les hommes (travail posté, écrans tardifs). Testostérone sécrétée pendant le sommeil profond. mélatonine optimise ce pic nocturne.",
-  hF:"SOP : ovulation restaurée 70% des cas (Unfer 2012). Réduit testostérone libre → acné hormonale et pilosité améliorées, cycles régularisés. Acné sans SOP : action via régulation androgènes. Fertilité : améliore qualité ovocytaire. Anxiété et humeur stabilisées.",
+  hF:"SOP : ovulation restaurée dans 70% des cas (Unfer 2012). Réduit la testostérone libre → moins d\'acné hormonale, moins de pilosité, cycles réguliers. Améliore la qualité des ovocytes pour les FIV. Sûre et bien tolérée.",
   syn:["Acide folique (B9)","Berbérine","Chrome","Vitamine D3"],
   prec:"Très sûre. Informer gynécologue si traitement médicamenteux SOP.",
   food:["🍊 Agrumes (1g/litre jus)","🫘 Légumineuses","🌾 Céréales complètes","🥜 Noix"]},
 
  {nm:"L-Théanine",tag:"Cerveau & Calme",c:"var(--cerveau)",dispo:2,where:"Amazon ou boutique spécialisée, rarement en pharmacie",forme:"both",gender:"MF",
   objectifs:["cerveau","mental","sommeil","energie"],
-  fn:"Acide aminé unique du thé vert. Induit un état d\'alerte détendue (ondes alpha cérébrales) sans sédation. Synergie exceptionnelle avec la caféine.",
+  fn:"Acide aminé naturellement présent dans le thé vert. Il procure un état de calme et de concentration sans somnolence — l\'opposé du café. En combinaison avec la caféine, c\'est une synergie redoutable pour le focus.",
   plus:["Relaxation sans somnolence","Focus et concentration améliorés","Anxiété réduite","Ondes alpha cérébrales","Contrecarre nervosité de la caféine"],
   moins:["Effets modestes seul à faible dose","Légère interaction antihypertenseurs"],
   dose:[["Dose","100-400mg/j"],["Matin (avec café)","200mg + 100mg caféine"],["Soir (sommeil)","200mg sans caféine"],["Ratio","L-théanine:caféine = 2:1"]],
-  hM:"",
-  hF:"Anxiété, SPM, stress chronique : particulièrement efficace. Sommeil amélioré.",
+  hM:"200mg L-théanine + 100mg caféine = la combinaison idéale pour le focus : meilleur temps de réaction, précision accrue, sans nervosité (Owen 2008). Le ratio 2:1 théanine/caféine est recommandé.",
+  hF:"Anxiété, SPM et stress chronique : particulièrement efficace chez les femmes. Améliore la qualité du sommeil sans somnolence. Peut remplacer le café pour rester concentrée sans nervosité.",
   syn:["Caféine (synergie classique)","Magnésium","Ashwagandha"],
   prec:"Très sûre. Légères propriétés antihypertensives.",
   food:["🍵 Thé vert (25-60mg/tasse)","🍵 Matcha (70mg/g de poudre)"]},
 
  {nm:"NAC (N-Acétyl Cystéine)",tag:"Détox & Antioxydant",c:"var(--detox)",dispo:2,where:"Pharmacie ou Amazon, usage médical courant",forme:"suppl",gender:"MF",
   objectifs:["detox","immun","mental","peau","acne","cycle"],
-  fn:"Précurseur du glutathion (antioxydant maître). Détoxification hépatique, protection respiratoire. Usage médical prouvé.",
+  fn:"Précurseur du glutathion, le principal antioxydant de ton corps. Détoxifie le foie, protège les poumons et réduit le stress oxydatif. Utilisé en médecine depuis des décennies.",
   plus:["Glutathion intracellulaire +30-40%","Foie protégé (alcool, médicaments)","Addictions et TOC (études)","Fertilité masculine améliorée","Peau et pores affinés"],
   moins:["Nausées possibles à jeun","Odeur soufrée","Interaction avec nitroglycérine"],
   dose:[["Dose","600-1800mg/j"],["Timing","Avec repas"],["Cycles","8 semaines, pause 4 semaines"]],
   hM:"Fertilité masculine (stress oxydatif spermatique). Récupération sportive. Protection hépatique.",
-  hF:"SOP : améliore résistance insuline et ovulation. Détoxification post-pilule.",
+  hF:"SOP : améliore la résistance à l\'insuline et restaure l\'ovulation. Détoxification après arrêt de la pilule. Peau : réduit l\'inflammation et l\'hyperpigmentation hormonale.",
   syn:["Vitamine C","Sélénium","Alpha-lipoïque","Zinc"],
   prec:"Éviter avec nitroglycérine. Pause régulière. À distance des antibiotiques.",
   food:["🧄 Ail (allicine → glutathion)","🥦 Crucifères (sulforaphane)","🥚 Oeufs (cystéine)","🥩 Viande (méthionine)"]},
 
  {nm:"Resvératrol",tag:"Anti-âge",c:"var(--anti)",dispo:2,where:"Pharmacie, Amazon, boutique spécialisée",forme:"suppl",gender:"MF",
   objectifs:["anti","coeur","peau","cerveau"],
-  fn:"Polyphénol naturel (peau de raisin rouge). Active les sirtuines (SIRT1) et AMPK. Mimétique de la restriction calorique.",
+  fn:"Polyphénol naturel (peau de raisin rouge) qui active les gènes de la longévité. Souvent surnommé \'molécule anti-âge\'. Sa biodisponibilité est très faible en oral — choisir une forme liposomale.",
   plus:["Activation sirtuines (gènes longévité)","Protection cardiovasculaire","Antioxydant puissant","Neuroprotection","Anti-inflammatoire"],
   moins:["Biodisponibilité orale très faible","Interactions médicamenteuses","Effets humains plus modestes qu\'animaux"],
   dose:[["Dose","150-500mg/j"],["Timing","Avec repas gras"],["Forme","Trans-resvératrol (actif)"],["Associer","Quercétine (absorption ×4)"]],
@@ -515,7 +515,8 @@ const DATA = [
 
  {nm:"Sélénium",tag:"Antioxydant & Thyroïde",c:"var(--immun)",dispo:3,where:"Pharmacie uniquement. Attention : marge toxique étroite, avis médical recommandé",forme:"food",gender:"MF",
   objectifs:["immun","testo","cheveux","anti"],
-  fn:"Oligo-élément essentiel composant des sélénoprotéines. Rôle clé dans la conversion T4→T3 (thyroïde), défense antioxydante et spermatogenèse.",
+  fn:"Minéral essentiel à la thyroïde et aux défenses antioxydantes du corps. Attention : la frontière entre dose utile et dose toxique est très étroite. 2 noix du Brésil par jour couvrent souvent les besoins. Ne jamais se supplémenter sans prise de sang.",
+
   plus:["Thyroïde protégée (conversion T4→T3)","Antioxydant (GPx)","Fertilité masculine","Cheveux et ongles","Immunité anti-virale"],
   moins:["Toxique à haute dose (sélénose)","Marge de dosage étroite","Surdosage facile avec compléments"],
   dose:[["Dose","100-200µg/j"],["MAXIMUM ABSOLU","400µg/j à ne jamais dépasser"],["Timing","Matin avec repas"],["Forme","Séléno-méthionine (mieux absorbée)"]],
@@ -561,17 +562,28 @@ const DATA = [
   prec:"⚠️ Rétinol toxique cumulatif. Grossesse : rétinol contre-indiqué à forte dose. Bêta-carotène = forme sûre sauf fumeurs.",
   food:["🥕 Carotte (830µg bêta-carotène/100g). LA source n°1, accessible et naturelle","🍠 Patate douce (961µg/100g. encore plus concentrée)","🥬 Épinards, brocoli","🥭 Mangue, abricot","🥚 Oeuf (rétinol direct)","⚡ ASTUCE : le bêta-carotène est liposoluble. toujours consommer avec une matière grasse (huile d\'olive, avocat, noix) pour multiplier l\'absorption par 3 à 5×"]},
 
- {nm:"Maca (Lepidium meyenii)",tag:"Libido & Énergie",c:"var(--libido)",dispo:2,where:"Boutique bio, Amazon, parapharmacie",forme:"food",gender:"MF",
+ {nm:"Maca (Lepidium meyenii)",tag:"Libido & Énergie",c:"var(--libido)",dispo:1,where:"Boutique bio, supermarché bio, Amazon, parapharmacie",forme:"food",gender:"MF",
   objectifs:["libido","energie","testo","mental","poids","menopause"],
-  fn:"Plante adaptogène des Andes péruviennes. Agit sur l\'axe hypothalamo-hypophysaire sans modifier directement les hormones. Améliore la libido, la fertilité et l\'énergie.",
-  plus:["Libido améliorée homme ET femme (méta-analyse 2010)","Fertilité masculine : volume et mobilité spermatiques","Énergie et endurance physique","Symptômes ménopause réduits","Humeur et bien-être"],
-  moins:["Effets en 6-12 semaines (pas immédiat)","Goût fort (prendre en gélules)","Qualité très variable selon origine"],
+  fn:"Plante des Andes utilisée depuis des siècles pour booster la libido, la fertilité et l\'énergie. Elle n\'agit pas directement sur les hormones mais améliore la réponse globale du corps. Résultats en 6-12 semaines.",
+  plus:["Libido boostée chez l\'homme ET la femme","Fertilité masculine améliorée (sperme)","Énergie et endurance physique","Symptômes de la ménopause réduits","Humeur et bien-être général"],
+  moins:["Résultats en 6-12 semaines (pas immédiat)","Goût fort — prendre en gélules","Choisir origine Pérou certifiée uniquement"],
   dose:[["Dose H","2000-3000mg/j"],["Dose F","1500-2000mg/j"],["Timing","Matin avec repas"],["Forme","Gélatinisée (mieux tolérée)"],["Durée","6-12 semaines"],["Origine","Pérou certifié uniquement"]],
-  hM:"Gonzales 2001 (RCT, Lima) : volume spermatique +6%, concentration +50%, mobilité améliorée après 4 mois. Libido améliorée dès 8 semaines sans modifier testostérone ni LH/FSH (Gonzales 2002). mécanisme indépendant de l\'axe hormonal, probablement via glucosinolates.",
-  hF:"Ménopause : réduit bouffées de chaleur −84%, améliore humeur et libido sans activité oestrogénique (Meissner 2006). sûre même en cas de cancer hormono-dépendant. Post-pilule : libido, énergie et cycles restaurés en 6-8 semaines. SPM : réduit irritabilité et fatigue en phase lutéale. Libido réduite (stress, post-accouchement) : amélioration dès 4-6 semaines (Brooks 2008, RCT).",
+  hM:"Gonzales 2001 (étude clinique Lima) : +50% de concentration spermatique après 4 mois. Libido améliorée dès 8 semaines sans modifier les hormones directement. Un classique pour la fertilité et la vitalité masculine.",
+  hF:"Bouffées de chaleur réduites de 84% (Meissner 2006) — sans activité oestrogénique (sûre même avec antécédents de cancer). Libido, énergie et cycles restaurés post-pilule en 6-8 semaines. SPM : réduit irritabilité et fatigue.",
   syn:["Ashwagandha (énergie + libido)","Zinc (fertilité)","Oméga-3"],
   prec:"Éviter si cancer hormono-dépendant (précaution). Choisir Maca péruvienne certifiée uniquement.",
   food:["Poudre en smoothies ou porridge","Pas d\'équivalent alimentaire direct en Europe"]},
+ {nm:"Myrtille (Anthocyanines)",tag:"Vision & Antioxydant",c:"var(--vision)",dispo:1,where:"Pharmacie, supermarché bio, Amazon",forme:"both",gender:"MF",
+  objectifs:["vision","anti","peau","cerveau"],
+  fn:"La myrtille est la plante la plus riche en anthocyanines, des pigments bleus puissamment antioxydants. Elle protège la rétine, améliore la vision dans l\'obscurité et réduit la fatigue visuelle liée aux écrans.",
+  plus:["Vision nocturne améliorée","Protection rétine contre le stress oxydatif","Microcirculation oculaire renforcée","Yeux moins fatigués face aux écrans","Antioxydant puissant anti-âge"],
+  moins:["Effets progressifs sur 4-8 semaines","Qualité très variable selon les marques","Coloration légère des selles (inoffensif)"],
+  dose:[["Extrait standardisé","160-320mg/j (25% anthocyanines)"],["Poudre","5-10g/j"],["Timing","Avec repas"],["Durée","3 mois minimum"]],
+  hM:"Yeux fatigués par les écrans : bénéfice universel. Sport de précision (tir, tennis) : amélioration contraste visuel.",
+  hF:"Ménopause : microcirculation oculaire souvent altérée par la baisse d'oestrogènes. Anthocyanines protectrices.",
+  syn:["Lutéine + Zéaxanthine","Vitamine C","Zinc","Oméga-3 DHA"],
+  prec:"Très sûre. Légère interaction anticoagulants à très forte dose.",
+  food:["🫐 Myrtilles fraîches (250-500mg anthocyanines/100g)","🍇 Cassis (encore plus concentré en anthocyanines)","🫐 Mûres, framboises","🍒 Cerises acidulées"]},
 ];
 
 
@@ -625,28 +637,28 @@ const PROTEINES = [
 
 
 const OBJECTIFS = [
-  {id:"anti",    ico:"🔬", nm:"Antioxydants & Longévité", c:"var(--anti)"},
-  {id:"cerveau", ico:"🧠", nm:"Cerveau & Focus",          c:"var(--cerveau)"},
-  {id:"cheveux", ico:"💇", nm:"Cheveux & Ongles",         c:"var(--cheveux)"},
-  {id:"coeur",   ico:"❤️", nm:"Coeur & Circulation",     c:"var(--coeur)"},
-  {id:"digest",  ico:"🌿", nm:"Digestion & Microbiome",   c:"var(--digest)"},
-  {id:"libido",  ico:"🌸", nm:"Fertilité & Libido",       c:"var(--libido)"},
-  {id:"detox",   ico:"🍃", nm:"Foie & Détox",             c:"var(--detox)"},
-  {id:"testo",   ico:"⚗️", nm:"Hormones",                 c:"var(--testo)"},
-  {id:"immun",   ico:"🛡️", nm:"Immunité",                c:"var(--immun)"},
+  {id:"testo",   ico:"⚗️", nm:"Hormones & Testo",         c:"var(--testo)"},
   {id:"muscu",   ico:"🏋️", nm:"Musculation & Perf.",     c:"var(--muscu)"},
-  {id:"articulations", ico:"🦴", nm:"Os & Articulations", c:"var(--os)"},
-  {id:"peau",    ico:"✨", nm:"Peau & Anti-âge",         c:"var(--peau)"},
-  {id:"poids",   ico:"⚖️", nm:"Poids & Métabolisme",     c:"var(--poids)"},
-  {id:"mental",  ico:"🧘", nm:"Santé Mentale & Anxiété",  c:"var(--mental)"},
-  {id:"sommeil", ico:"😴", nm:"Sommeil & Récupération",   c:"var(--sommeil)"},
-  {id:"vision",  ico:"👁️", nm:"Vision & Santé des Yeux", c:"var(--vision)"},
+  {id:"libido",  ico:"🌸", nm:"Fertilité & Libido",       c:"var(--libido)"},
   {id:"energie", ico:"⚡", nm:"Énergie & Vitalité",       c:"var(--energie)"},
+  {id:"mental",  ico:"🧘", nm:"Santé Mentale & Anxiété",  c:"var(--mental)"},
+  {id:"cerveau", ico:"🧠", nm:"Cerveau & Focus",          c:"var(--cerveau)"},
+  {id:"sommeil", ico:"😴", nm:"Sommeil & Récupération",   c:"var(--sommeil)"},
+  {id:"poids",   ico:"⚖️", nm:"Poids & Métabolisme",     c:"var(--poids)"},
+  {id:"immun",   ico:"🛡️", nm:"Immunité",                c:"var(--immun)"},
+  {id:"coeur",   ico:"❤️", nm:"Coeur & Circulation",     c:"var(--coeur)"},
+  {id:"peau",    ico:"✨", nm:"Peau & Anti-âge",         c:"var(--peau)"},
+  {id:"cheveux", ico:"💇", nm:"Cheveux & Ongles",         c:"var(--cheveux)"},
+  {id:"articulations", ico:"🦴", nm:"Os & Articulations", c:"var(--os)"},
+  {id:"digest",  ico:"🌿", nm:"Digestion & Microbiome",   c:"var(--digest)"},
+  {id:"detox",   ico:"🍃", nm:"Foie & Détox",             c:"var(--detox)"},
+  {id:"anti",    ico:"🔬", nm:"Antioxydants & Longévité", c:"var(--anti)"},
+  {id:"vision",  ico:"👁️", nm:"Vision & Santé des Yeux", c:"var(--vision)"},
   {id:"cycle",    ico:"🩸", nm:"Cycle & SPM",               c:"#C2185B", femaleOnly:true},
   {id:"acne",     ico:"🫧", nm:"Acné Hormonale",             c:"#E91E8C", femaleOnly:true},
   {id:"grossesse",ico:"🤰", nm:"Grossesse & Fertilité",     c:"#8E24AA", femaleOnly:true},
   {id:"menopause",ico:"🌡️", nm:"Ménopause",                 c:"#AD1457", femaleOnly:true},
-  {id:"fcheveux", ico:"✂️", nm:"Cheveux & Ongles Femme",    c:"#6A1B9A", femaleOnly:true},
+  {id:"fcheveux", ico:"✂️", nm:"Chute de Cheveux Féminine",  c:"#6A1B9A", femaleOnly:true},
   {id:"anemie",   ico:"💉", nm:"Anémie & Carence en Fer",   c:"#B71C1C"}
 ];
 const PRIO = {
@@ -931,8 +943,8 @@ document.addEventListener("selectstart",e=>{if(e.target.tagName!=="INPUT")e.prev
 
 <div class="header">
   <div class="logo-wrap">
-    <div class="logo-pill" style="width:36px;height:36px;border-radius:8px;overflow:hidden;flex-shrink:0">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" width="36" height="36">
+    <div class="logo-pill" style="width:52px;height:52px;border-radius:12px;overflow:hidden;flex-shrink:0">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" width="52" height="52">
 <defs>
   <linearGradient id="lbg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0A1628"/><stop offset="50%" stop-color="#1A0A30"/><stop offset="100%" stop-color="#0D1525"/></linearGradient>
   <radialGradient id="lgB" cx="30%" cy="30%" r="55%"><stop offset="0%" stop-color="#1565C0" stop-opacity="0.35"/><stop offset="100%" stop-color="#1565C0" stop-opacity="0"/></radialGradient>
@@ -967,7 +979,7 @@ document.addEventListener("selectstart",e=>{if(e.target.tagName!=="INPUT")e.prev
 </div>
 
 <nav class="tabs">
-  <button class="tab on" onclick="switchTab('obj',this)">🎯 Objectifs</button>
+  <button class="tab on" onclick="switchTab('obj',this)">🎯 Ton besoin</button>
   <button class="tab" onclick="switchTab('az',this)">🔤 A–Z</button>
 </nav>
 
@@ -990,7 +1002,7 @@ document.addEventListener("selectstart",e=>{if(e.target.tagName!=="INPUT")e.prev
 
 <div class="footer">
   <div style="display:flex;flex-direction:column;align-items:center;gap:8px;margin-bottom:4px">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" width="56" height="56" style="border-radius:14px">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" width="56" height="56" style="border-radius:14px;overflow:hidden">
 <defs>
   <linearGradient id="fbg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0A1628"/><stop offset="50%" stop-color="#1A0A30"/><stop offset="100%" stop-color="#0D1525"/></linearGradient>
   <radialGradient id="fgB" cx="30%" cy="30%" r="55%"><stop offset="0%" stop-color="#1565C0" stop-opacity="0.35"/><stop offset="100%" stop-color="#1565C0" stop-opacity="0"/></radialGradient>
@@ -1023,7 +1035,7 @@ document.addEventListener("selectstart",e=>{if(e.target.tagName!=="INPUT")e.prev
     © 2026 doseUp · Yanis Bensaadi<br>
     Tous droits réservés · Reproduction interdite
   </div>
-  <div class="footer-credits">📩 contact&#64;doseup&#46;fr</div>
+  <div class="footer-credits">📩 <a href="mailto:contact@doseup.fr" style="color:inherit;text-decoration:none">contact@doseup.fr</a></div>
   <div style="margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.08)">
     <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
       <button onclick="document.getElementById('privacyModal').style.display='block'" 
