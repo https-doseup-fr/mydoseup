@@ -84,7 +84,7 @@ body.F .tab.on{color:#CE93D8;border-bottom-color:#7B1FA2}
 .obj-tile{border-radius:16px;padding:16px 13px 14px;cursor:pointer;transition:transform 0.15s;position:relative;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,0.35);background:var(--c);display:flex;flex-direction:column}
 .obj-tile::before{content:"";position:absolute;top:-25px;right:-25px;width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,0.10)}
 .obj-tile:active{transform:scale(0.96)}
-.obj-ico{font-size:26px;margin-bottom:7px;display:block}
+.obj-ico{width:32px;height:32px;margin-bottom:10px;display:block}.obj-ico svg{width:32px;height:32px;stroke:rgba(255,255,255,0.92)}
 .obj-nm{font-size:14px;font-weight:800;color:#FFF;line-height:1.3;flex:1}
 .obj-count{font-size:11px;color:rgba(255,255,255,0.65);font-weight:600;margin-top:4px}
 .obj-results{padding:0 14px 14px;display:none}
@@ -882,6 +882,17 @@ const DATA = [
   syn:["Lutéine + Zéaxanthine","Vitamine C","Zinc","Oméga-3 DHA"],
   prec:"Très sûre. Légère interaction anticoagulants à très forte dose.",
   food:["🫐 Myrtilles fraîches (250-500mg anthocyanines/100g)","🍇 Cassis (encore plus concentré en anthocyanines)","🫐 Mûres, framboises","🍒 Cerises acidulées"]},
+ {nm:"Tribulus Terrestris",kw:"tribulus testosterone libido fertilité sport énergie androgènes",tag:"Libido & Testo",c:"var(--testo)",dispo:2,where:"Boutique fitness, Amazon, parapharmacie",forme:"suppl",gender:"MF",
+  objectifs:["testo","libido","energie","muscu"],
+  fn:"Plante médicinale utilisée depuis des siècles en médecine ayurvédique et chinoise. Elle stimule naturellement la libido et soutient l'équilibre hormonal. Son action sur la testostérone est indirecte — elle agit sur la LH (hormone lutéinisante) qui signal aux testicules de produire plus de testostérone.",
+  plus:["Libido boostée naturellement","Énergie et vitalité améliorées","Soutien de l'équilibre hormonal","Fertilité masculine soutenue","Humeur et bien-être général"],
+  moins:["Effets variables selon les individus","Résultats en 4-8 semaines minimum","Qualité très variable selon les marques","Déconseillé si cancer hormono-dépendant"],
+  dose:[["Dose","500-1500mg/j (extrait 40% saponines)"],["Timing","Matin avec repas"],["Durée","6-8 semaines puis pause"],["Forme","Extrait standardisé uniquement"]],
+  hM:"Utilisé par les sportifs pour soutenir naturellement la testostérone et la libido. Les études montrent une amélioration de la mobilité et de la qualité des spermatozoïdes. Résultats plus marqués chez les hommes avec un taux de testostérone en bas de fourchette.",
+  hF:"Peut améliorer la libido féminine et réduire certains symptômes du SPM. À éviter pendant la grossesse et l'allaitement. Demander l'avis d'un médecin si traitement hormonal en cours.",
+  syn:["Zinc Bisglycinate","Maca","Ashwagandha","Vitamine D3"],
+  prec:"Déconseillé si cancer hormono-dépendant (prostate, sein). Éviter pendant la grossesse. Interactions possibles avec médicaments antidiabétiques et antihypertenseurs.",
+  food:["Pas d'équivalent alimentaire direct","🌿 Alimentation riche en zinc et vitamine D soutient les mêmes effets"]},
 ];
 
 
@@ -934,33 +945,59 @@ const PROTEINES = [
 ];
 
 
+const SVG_ICONS={
+  testo:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M12 12v8M9 17h6"/></svg>`,
+  muscu:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 8h12M4 11h2v2H4zm14 0h2v2h-2zM6 11v2M18 11v2"/></svg>`,
+  libido:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg>`,
+  energie:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>`,
+  mental:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2a7 7 0 0 1 7 7c0 2.5-1.3 4.7-3.3 6L15 17H9l-.3-2C6.3 13.7 5 11.5 5 9a7 7 0 0 1 7-7z"/><line x1="9" y1="21" x2="15" y2="21"/><line x1="9" y1="19" x2="15" y2="19"/></svg>`,
+  cerveau:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><ellipse cx="9" cy="12" rx="6" ry="8"/><ellipse cx="15" cy="12" rx="6" ry="8"/><line x1="9" y1="4" x2="15" y2="4"/><line x1="9" y1="20" x2="15" y2="20"/></svg>`,
+  sommeil:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>`,
+  poids:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="5" r="3"/><path d="M5 22l1.5-7h11L19 22"/><line x1="12" y1="8" x2="12" y2="11"/><line x1="5" y1="22" x2="19" y2="22"/></svg>`,
+  immun:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`,
+  coeur:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>`,
+  peau:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9" y2="9.5"/><line x1="15" y1="9" x2="15" y2="9.5"/></svg>`,
+  cheveux:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 3c0 5 2 7 2 12"/><path d="M12 3c0 5 2 7 2 12"/><path d="M17 3c0 5-2 7-2 12"/><line x1="6" y1="21" x2="18" y2="21"/></svg>`,
+  articulations:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/></svg>`,
+  digest:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2c-2 0-4 1.5-4 4 0 1.5.5 3 1.5 4C8 12 7 14 7 16c0 3.5 2.5 6 5 6s5-2.5 5-6c0-2-1-4-2.5-6C15.5 9 16 7.5 16 6c0-2.5-2-4-4-4z"/></svg>`,
+  detox:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-4"/><path d="M14 3h7v7M21 3l-9 9"/></svg>`,
+  anti:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>`,
+  vision:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>`,
+  cycle:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 7v5l3 3"/></svg>`,
+  endometriose:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/><line x1="12" y1="9" x2="12" y2="14"/><line x1="9.5" y1="11.5" x2="14.5" y2="11.5"/></svg>`,
+  acne:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/></svg>`,
+  grossesse:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="5.5" r="2.5"/><path d="M12 8c-2.8 0-5 2-5 5 0 5 3 9 5 9s5-4 5-9c0-3-2.2-5-5-5z"/></svg>`,
+  menopause:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/></svg>`,
+  anemie:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>`,
+};
 const OBJECTIFS = [
-  {id:"testo",   ico:"⚗️", nm:"Hormones & Testo",         c:"var(--testo)"},
-  {id:"muscu",   ico:"🏋️", nm:"Musculation & Perf.",     c:"var(--muscu)"},
-  {id:"libido",  ico:"🌸", nm:"Libido & Vie Intime",       c:"var(--libido)"},
-  {id:"energie", ico:"⚡", nm:"Énergie & Vitalité",       c:"var(--energie)"},
-  {id:"mental",  ico:"🧘", nm:"Santé Mentale & Anxiété",  c:"var(--mental)"},
-  {id:"cerveau", ico:"🧠", nm:"Cerveau & Focus",          c:"var(--cerveau)"},
-  {id:"sommeil", ico:"😴", nm:"Sommeil & Récupération",   c:"var(--sommeil)"},
-  {id:"poids",   ico:"⚖️", nm:"Poids & Métabolisme",     c:"var(--poids)"},
-  {id:"immun",   ico:"🛡️", nm:"Immunité",                c:"var(--immun)"},
-  {id:"coeur",   ico:"❤️", nm:"Coeur & Circulation",     c:"var(--coeur)"},
-  {id:"peau",    ico:"✨", nm:"Peau & Anti-âge",         c:"var(--peau)"},
-  {id:"cheveux", ico:"💇", nm:"Cheveux & Ongles",         c:"var(--cheveux)"},
-  {id:"articulations", ico:"🦴", nm:"Os & Articulations", c:"var(--os)"},
-  {id:"digest",  ico:"🌿", nm:"Digestion & Microbiome",   c:"var(--digest)"},
-  {id:"detox",   ico:"🍃", nm:"Foie & Détox",             c:"var(--detox)"},
-  {id:"anti",    ico:"🔬", nm:"Antioxydants & Longévité", c:"var(--anti)"},
-  {id:"vision",  ico:"👁️", nm:"Vision & Santé des Yeux", c:"var(--vision)"},
-  {id:"cycle",    ico:"🩸", nm:"Cycle & SPM",               c:"#C2185B", femaleOnly:true},
-  {id:"endometriose", ico:"🔴", nm:"Endométriose & Douleurs",   c:"#7B1525", femaleOnly:true},
-  {id:"acne",     ico:"🫧", nm:"Acné Hormonale",             c:"#E91E8C", femaleOnly:true},
-  {id:"grossesse",ico:"🤰", nm:"Grossesse & Fertilité",     c:"#8E24AA", femaleOnly:true},
-  {id:"menopause",ico:"🌡️", nm:"Ménopause",                 c:"#AD1457", femaleOnly:true},
+  {id:"testo",   ico:SVG_ICONS.testo, nm:"Hormones & Testo",         c:"var(--testo)"},
+  {id:"muscu",   ico:SVG_ICONS.muscu, nm:"Musculation & Perf.",     c:"var(--muscu)"},
+  {id:"libido",  ico:SVG_ICONS.libido, nm:"Libido & Vie Intime",       c:"var(--libido)"},
+  {id:"energie", ico:SVG_ICONS.energie, nm:"Énergie & Vitalité",       c:"var(--energie)"},
+  {id:"mental",  ico:SVG_ICONS.mental, nm:"Santé Mentale & Anxiété",  c:"var(--mental)"},
+  {id:"cerveau", ico:SVG_ICONS.cerveau, nm:"Cerveau & Focus",          c:"var(--cerveau)"},
+  {id:"sommeil", ico:SVG_ICONS.sommeil, nm:"Sommeil & Récupération",   c:"var(--sommeil)"},
+  {id:"poids",   ico:SVG_ICONS.poids, nm:"Poids & Métabolisme",     c:"var(--poids)"},
+  {id:"immun",   ico:SVG_ICONS.immun, nm:"Immunité",                c:"var(--immun)"},
+  {id:"coeur",   ico:SVG_ICONS.coeur, nm:"Coeur & Circulation",     c:"var(--coeur)"},
+  {id:"peau",    ico:SVG_ICONS.peau, nm:"Peau & Anti-âge",         c:"var(--peau)"},
+  {id:"cheveux", ico:SVG_ICONS.cheveux, nm:"Cheveux & Ongles",         c:"var(--cheveux)"},
+  {id:"articulations", ico:SVG_ICONS.articulations, nm:"Os & Articulations", c:"var(--os)"},
+  {id:"digest",  ico:SVG_ICONS.digest, nm:"Digestion & Microbiome",   c:"var(--digest)"},
+  {id:"detox",   ico:SVG_ICONS.detox, nm:"Foie & Détox",             c:"var(--detox)"},
+  {id:"anti",    ico:SVG_ICONS.anti, nm:"Antioxydants & Longévité", c:"var(--anti)"},
+  {id:"vision",  ico:SVG_ICONS.vision, nm:"Vision & Santé des Yeux", c:"var(--vision)"},
+  {id:"cycle",    ico:SVG_ICONS.cycle, nm:"Cycle & SPM",               c:"#C2185B", femaleOnly:true},
+  {id:"endometriose", ico:SVG_ICONS.endometriose, nm:"Endométriose & Douleurs",   c:"#7B1525", femaleOnly:true},
+  {id:"acne",     ico:SVG_ICONS.acne, nm:"Acné Hormonale",             c:"#E91E8C", femaleOnly:true},
+  {id:"grossesse",ico:SVG_ICONS.grossesse, nm:"Grossesse & Fertilité",     c:"#8E24AA", femaleOnly:true},
+  {id:"menopause",ico:SVG_ICONS.menopause, nm:"Ménopause",                 c:"#AD1457", femaleOnly:true},
   
-  {id:"anemie",   ico:"💉", nm:"Anémie & Carence en Fer",   c:"#B71C1C"}
+  {id:"anemie",   ico:SVG_ICONS.anemie, nm:"Anémie & Carence en Fer",   c:"#B71C1C"}
 ];
 const PRIO = {
+  ["Tribulus Terrestris|testo"]:75,["Tribulus Terrestris|libido"]:80,["Tribulus Terrestris|energie"]:50,["Tribulus Terrestris|muscu"]:40,
   ["Oméga-3 (EPA/DHA)|endometriose"]:100,["Curcumine (Curcuma)|endometriose"]:95,
   ["Magnésium Bisglycinate|endometriose"]:90,["NAC (N-Acétyl Cystéine)|endometriose"]:80,
   ["Vitamine D3 + K2|endometriose"]:70,["Probiotiques|endometriose"]:60,
