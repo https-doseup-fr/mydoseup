@@ -310,7 +310,7 @@ const DATA = [
   food:["☀️ Soleil 15-30 min/j (source principale)","🐟 Saumon, maquereau","🥚 Jaune d\'oeuf","🍄 Champignons exposés au soleil"]},
 
  {nm:"Fer Bisglycinate",tag:"Essentiel",c:"var(--energie)",dispo:2,where:"Pharmacie uniquement. Ne jamais acheter sans bilan sanguin préalable",forme:"both",gender:"F",
-  objectifs:["energie","cheveux","immun","mental","cycle","grossesse","fcheveux"],
+  objectifs:["energie","cheveux","immun","mental","cycle","grossesse","fcheveux","anemie"],
   fn:"Transport de l\'oxygène (hémoglobine) et stockage (ferritine). Carence la plus fréquente au monde : 1 femme sur 3 est concernée.",
   plus:["Corrige l\'anémie ferriprive","Énergie et concentration retrouvées","Chute de cheveux réduite","Immunité renforcée","Performance sportive"],
   moins:["Toxique en excès","Constipation (moindre avec bisglycinate)","Ne jamais supplémenter sans analyse sanguine"],
@@ -469,7 +469,7 @@ const DATA = [
   objectifs:["testo","poids","mental","digest","cycle","acne","grossesse"],
   fn:"Pseudo-vitamine B8. Impliqué dans la signalisation insulinique et la production d\'hormones. Résultats cliniques majeurs sur le SOP.",
   plus:["SOP : ovulation restaurée 70% des cas","Sensibilité insuline améliorée","Anxiété réduite","Fertilité féminine améliorée","Cycles régularisés"],
-  moins:["Peu d\'études chez l\'homme","Effets digestifs légers à haute dose"],
+  moins:["Effets digestifs légers à haute dose","Éviter en cas de trouble bipolaire sans avis médical"],
   dose:[["Dose SOP","2-4g/j (myo-inositol)"],["Ratio optimal","Myo:D-Chiro = 40:1"],["Timing","Matin et soir avec repas"],["Durée","3-6 mois minimum"]],
   hM:"Production de mélatonine décline dès 40 ans (−10-15%/décennie). Rythme circadien souvent plus perturbé chez les hommes (travail posté, écrans tardifs). Testostérone sécrétée pendant le sommeil profond. mélatonine optimise ce pic nocturne.",
   hF:"SOP : ovulation restaurée 70% des cas (Unfer 2012). Réduit testostérone libre → acné hormonale et pilosité améliorées, cycles régularisés. Acné sans SOP : action via régulation androgènes. Fertilité : améliore qualité ovocytaire. Anxiété et humeur stabilisées.",
@@ -646,9 +646,11 @@ const OBJECTIFS = [
   {id:"acne",     ico:"🫧", nm:"Acné Hormonale",             c:"#E91E8C", femaleOnly:true},
   {id:"grossesse",ico:"🤰", nm:"Grossesse & Fertilité",     c:"#8E24AA", femaleOnly:true},
   {id:"menopause",ico:"🌡️", nm:"Ménopause",                 c:"#AD1457", femaleOnly:true},
-  {id:"fcheveux", ico:"✂️", nm:"Cheveux & Ongles Femme",    c:"#6A1B9A", femaleOnly:true}
+  {id:"fcheveux", ico:"✂️", nm:"Cheveux & Ongles Femme",    c:"#6A1B9A", femaleOnly:true},
+  {id:"anemie",   ico:"🩸", nm:"Anémie & Carence en Fer",   c:"#B71C1C", femaleOnly:true}
 ];
 const PRIO = {
+  ["Fer Bisglycinate|anemie"]:100,["Vitamine C (Ascorbate)|anemie"]:85,["Vitamine B12 (Méthylcobalamine)|anemie"]:75,["Curcumine (Curcuma)|anemie"]:-1,
   ["Vitamine C (Ascorbate)|anti"]:100,["CoQ10 (Ubiquinol)|anti"]:95,["Mélatonine|anti"]:88,
   ["Astaxanthine|anti"]:72,["Resvératrol|anti"]:58,["NAC (N-Acétyl Cystéine)|anti"]:60,
   ["Curcumine (Curcuma)|anti"]:55,["Sélénium|anti"]:55,
