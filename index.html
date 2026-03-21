@@ -1272,9 +1272,9 @@ function showObj(id){
   let html=items.map(s=>card(s,null,false)).join("");
   if(id==="muscu") html+=`<div class="prot-sep"><div class="prot-sep-t">Protéines en Poudre</div>${PROTEINES.map(protCard).join("")}</div>`;
   document.getElementById("objList").innerHTML=html;
+  // Toujours scroller en haut — position fixe, pas de calcul DOM aléatoire
+  window.scrollTo({top:0,behavior:"smooth"});
   setTimeout(()=>{
-    const el=document.getElementById("objResults");
-    window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-56,behavior:"smooth"});
   const hdr=document.querySelector('.header');if(hdr)hdr.style.padding='10px 20px 0';
   const lp=document.querySelector('.logo-pill');if(lp){lp.style.width='32px';lp.style.height='32px';}
   const lt=document.querySelector('.logo-txt');if(lt)lt.style.fontSize='18px';
