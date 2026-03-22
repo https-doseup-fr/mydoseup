@@ -1,49 +1,164 @@
-<style>
-    body { background-color: #0A0F1A; color: white; font-family: 'Inter', sans-serif; margin: 0; padding: 0; }
-    
-    /* EFFET IA PREMIUM V2 */
-    .ia-container {
-        position: relative;
-        background: rgba(10, 15, 26, 0.6); /* Fond sombre semi-transparent */
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-        border-radius: 24px;
-        max-width: 550px;
-        margin: 0 auto;
-        padding: 2px; /* L'espace pour le dégradé */
-        background-image: linear-gradient(#0A0F1A, #0A0F1A), 
-                        linear-gradient(135deg, #00f2fe 0%, #ff9a9e 100%);
-        background-origin: border-box;
-        background-clip: content-box, border-box;
-        box-shadow: 0 15px 35px rgba(0,0,0,0.5), 0 0 15px rgba(0, 242, 254, 0.1);
-    }
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>doseUp® — Assistant IA & Guide Nutrition</title>
 
-    .ia-content {
-        padding: 24px;
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HealthTopicContent",
+      "name": "doseUp Assistant IA",
+      "author": { "@type": "Person", "name": "Yanis Bensaadi" },
+      "description": "Assistant intelligent pour l'analyse des besoins en compléments alimentaires et symptômes."
     }
+    </script>
 
-    .ia-input {
-        background: rgba(255, 255, 255, 0.05) !important;
-        border: 1px solid rgba(255, 255, 255, 0.1) !important;
-        color: white !important;
-        border-radius: 12px !important;
-        font-size: 16px;
-        transition: all 0.3s ease;
-    }
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    .ia-input:focus {
-        background: rgba(255, 255, 255, 0.1) !important;
-        border-color: #00f2fe !important;
-        box-shadow: 0 0 10px rgba(0, 242, 254, 0.3);
-    }
+    <style>
+        :root { --neon-cyan: #00f2fe; --neon-pink: #ff9a9e; }
+        body { background-color: #0A0F1A; color: white; font-family: 'Inter', sans-serif; }
 
-    /* Animation du texte "Analyse..." */
-    .scanning-text {
-        font-size: 10px;
-        letter-spacing: 2px;
-        background: linear-gradient(90deg, #00f2fe, #ff9a9e);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        font-weight: 800;
-    }
-</style>
+        /* IA VISUELLE NÉON (PROMESSE N°1) */
+        .ia-card {
+            position: relative;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(20px);
+            border-radius: 28px;
+            padding: 3px; /* Épaisseur de la bordure néon */
+            background-image: linear-gradient(135deg, var(--neon-cyan), var(--neon-pink));
+            box-shadow: 0 0 25px rgba(0, 242, 254, 0.15);
+            max-width: 600px;
+            margin: 20px auto;
+        }
+        .ia-inner {
+            background: #0A1120;
+            border-radius: 25px;
+            padding: 25px;
+        }
+        .ia-input-wrapper {
+            position: relative;
+            margin-top: 15px;
+        }
+        .ia-input {
+            width: 100%;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 18px 50px 18px 20px;
+            color: white;
+            outline: none;
+            transition: 0.3s;
+        }
+        .ia-input:focus { border-color: var(--neon-cyan); box-shadow: 0 0 15px rgba(0,242,254,0.3); }
+        
+        .magic-icon {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--neon-cyan);
+            font-size: 20px;
+        }
+
+        .scanning-line {
+            height: 2px;
+            width: 50px;
+            background: var(--neon-cyan);
+            box-shadow: 0 0 10px var(--neon-cyan);
+            position: absolute;
+            top: 0; left: 20px;
+            animation: scan 3s infinite linear;
+            display: none;
+        }
+
+        @keyframes scan {
+            0% { left: 5%; width: 10%; }
+            50% { left: 45%; width: 30%; }
+            100% { left: 85%; width: 10%; }
+        }
+
+        /* BOUTONS HOMME/FEMME (RESPECT DU DESIGN) */
+        .gender-btn {
+            padding: 12px 25px;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: 0.3s;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <header class="text-center pt-10 px-4">
+        <div class="mb-8">
+            <img src="logo-doseup.png" alt="doseUp®" style="height: 60px; width: auto; margin: 0 auto;">
+        </div>
+
+        <div class="ia-card">
+            <div class="ia-inner text-left">
+                <div class="flex justify-between items-center mb-2">
+                    <h2 class="text-xl font-bold flex items-center gap-2 text-white">
+                        <i class="fa-solid fa-robot text-cyan-400"></i> Assistant doseUp
+                    </h2>
+                    <span class="text-[10px] bg-cyan-500/20 text-cyan-300 px-2 py-1 rounded-full uppercase tracking-tighter">AI Engine v2.0</span>
+                </div>
+                <p class="text-gray-400 text-sm">Décrivez un besoin, une douleur ou un objectif...</p>
+                
+                <div class="ia-input-wrapper">
+                    <div class="scanning-line" id="scanner"></div>
+                    <input type="text" id="doseup-ai" class="ia-input" placeholder="Ex: Fatigue intense le matin, stress examens...">
+                    <i class="fa-solid fa-wand-magic-sparkles magic-icon animate-pulse"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex justify-center gap-4 mt-8">
+            <button class="gender-btn bg-blue-600/20 text-blue-400 hover:bg-blue-600/40">HOMME</button>
+            <button class="gender-btn bg-pink-600/20 text-pink-400 hover:bg-pink-600/40">FEMME</button>
+        </div>
+    </header>
+
+    <footer class="mt-20 border-t border-white/5 pt-10 pb-10 text-center">
+        <p class="text-[10px] text-gray-500 uppercase tracking-widest leading-loose">
+            © 2026 doseUp® • Marque déposée INPI n° 5239885<br>
+            <span class="text-gray-600">Propriété de Yanis Bensaadi — Toute reproduction est interdite</span>
+        </p>
+    </footer>
+
+    <script>
+        const aiInput = document.getElementById('doseup-ai');
+        const scanner = document.getElementById('scanner');
+
+        aiInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                const query = this.value.toLowerCase().trim();
+                scanner.style.display = 'block'; // Animation de scan
+                
+                // SYSTÈME DE MAPPING SÉMANTIQUE (CACHE LA BDD)
+                const library = {
+                    "sommeil": "sommeil", "nuit": "sommeil", "insomnie": "sommeil",
+                    "fatigue": "energie", "energie": "energie", "boost": "energie",
+                    "yeux": "vision-yeux", "vue": "vision-yeux", "ecran": "vision-yeux",
+                    "stress": "anti-stress", "anxiété": "anti-stress", "calme": "anti-stress",
+                    "peau": "acne-hormonale", "acné": "acne-hormonale", "bouton": "acne-hormonale"
+                };
+
+                setTimeout(() => {
+                    let target = "general";
+                    for (let key in library) {
+                        if (query.includes(key)) {
+                            target = library[key];
+                            break;
+                        }
+                    }
+
+                    if (target !== "general") {
+                        window.location.href = "https://doseup.fr/besoins/" + target;
+                    } else {
+                        window.location.href = "https://doseup.fr/?s=" + encodeURIComponent(query);
+                    }
+                }, 800);
