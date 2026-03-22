@@ -1,104 +1,49 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <title>doseUp® — Test Branding</title>
+<style>
+    body { background-color: #0A0F1A; color: white; font-family: 'Inter', sans-serif; margin: 0; padding: 0; }
     
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="apple-touch-icon.png">
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    /* EFFET IA PREMIUM V2 */
+    .ia-container {
+        position: relative;
+        background: rgba(10, 15, 26, 0.6); /* Fond sombre semi-transparent */
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-radius: 24px;
+        max-width: 550px;
+        margin: 0 auto;
+        padding: 2px; /* L'espace pour le dégradé */
+        background-image: linear-gradient(#0A0F1A, #0A0F1A), 
+                        linear-gradient(135deg, #00f2fe 0%, #ff9a9e 100%);
+        background-origin: border-box;
+        background-clip: content-box, border-box;
+        box-shadow: 0 15px 35px rgba(0,0,0,0.5), 0 0 15px rgba(0, 242, 254, 0.1);
+    }
 
-    <style>
-        body { background-color: #0A0F1A; color: white; font-family: sans-serif; margin: 0; padding: 0; }
-        
-        /* DESIGN IA GLASSMORPHISM */
-        .ia-container {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 24px;
-            max-width: 550px;
-            margin: 0 auto;
-            transition: all 0.3s ease;
-        }
-        .ia-container:focus-within {
-            border-color: #22d3ee;
-            box-shadow: 0 0 20px rgba(34, 211, 238, 0.2);
-        }
-        .ia-input {
-            background: rgba(255, 255, 255, 0.08) !important;
-            border: 1px solid rgba(255, 255, 255, 0.1) !important;
-            color: white !important;
-            border-radius: 14px !important;
-        }
-        .ia-input::placeholder { color: #6b7280; }
-    </style>
-</head>
-<body>
+    .ia-content {
+        padding: 24px;
+    }
 
-    <header class="text-center pt-12 pb-10 px-4">
-        <div class="mb-10">
-            <img src="logo-doseup.png" alt="doseUp®" style="height: 65px; width: auto; margin: 0 auto;">
-        </div>
+    .ia-input {
+        background: rgba(255, 255, 255, 0.05) !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        color: white !important;
+        border-radius: 12px !important;
+        font-size: 16px;
+        transition: all 0.3s ease;
+    }
 
-        <div class="ia-container p-6 text-left">
-            <h2 class="text-xl font-bold mb-1 text-white flex items-center gap-2">
-                <i class="fa-solid fa-sparkles text-cyan-400"></i> Assistant IA Personnel
-            </h2>
-            <p class="text-[11px] text-gray-400 mb-5 uppercase tracking-widest">Analyse de vos besoins & symptômes</p>
-            
-            <div class="relative">
-                <input type="text" id="doseup-ai-engine" 
-                       class="ia-input w-full py-4 px-5 focus:outline-none transition-all" 
-                       placeholder="ex : j'ai du mal à dormir...">
-                <div class="absolute right-4 top-1/2 -translate-y-1/2 text-cyan-400">
-                    <i class="fa-solid fa-wand-magic-sparkles animate-pulse"></i>
-                </div>
-            </div>
-        </div>
-    </header>
+    .ia-input:focus {
+        background: rgba(255, 255, 255, 0.1) !important;
+        border-color: #00f2fe !important;
+        box-shadow: 0 0 10px rgba(0, 242, 254, 0.3);
+    }
 
-    <main class="max-w-4xl mx-auto px-6 text-center">
-        <div class="py-20 border border-white/5 rounded-3xl bg-white/[0.02]">
-            <p class="text-gray-500">Le contenu de votre site s'affichera ici.</p>
-            <p class="text-sm text-cyan-500/50 mt-2">Mode Test Branding Actif</p>
-        </div>
-    </main>
-
-    <footer class="mt-20 pb-12 text-center border-t border-white/5 pt-10">
-        <p class="text-[10px] text-gray-500 uppercase tracking-[0.2em] leading-loose">
-            © 2026 doseUp • Marque déposée à l'INPI<br>
-            Propriété de Yanis Bensaadi
-        </p>
-    </footer>
-
-    <script>
-        document.getElementById('doseup-ai-engine').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                const query = this.value.toLowerCase().trim();
-                const mapping = {
-                    "sommeil": "sommeil",
-                    "fatigue": "energie",
-                    "stress": "anti-stress",
-                    "yeux": "vision-yeux",
-                    "peau": "acne-hormonale",
-                    "regles": "cycle-spm"
-                };
-                
-                let found = Object.keys(mapping).find(key => query.includes(key));
-                
-                if (found) {
-                    window.location.href = "https://doseup.fr/besoins/" + mapping[found];
-                } else {
-                    window.location.href = "https://doseup.fr/?s=" + encodeURIComponent(query);
-                }
-            }
-        });
-    </script>
-
-</body>
-</html>
+    /* Animation du texte "Analyse..." */
+    .scanning-text {
+        font-size: 10px;
+        letter-spacing: 2px;
+        background: linear-gradient(90deg, #00f2fe, #ff9a9e);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-weight: 800;
+    }
+</style>
