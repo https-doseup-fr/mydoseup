@@ -62,20 +62,20 @@ body{font-family:"DM Sans",sans-serif;font-size:15px;line-height:1.6;max-width:4
 body.F{background:#0D0818 !important;color:#EDE8F8}
 @media(min-width:768px){body{max-width:100%;background:#040810 !important;display:flex;justify-content:center}.app-wrapper{max-width:430px;width:100%;background:#0A0F1A;box-shadow:0 0 80px rgba(0,0,0,0.8)}body.F .app-wrapper{background:#0D0818}}
 /* HEADER */
-.header{padding:28px 20px 0;position:relative;overflow:hidden}
-body.M .header{background:linear-gradient(170deg,#060D1A 0%,#0C1830 55%,#0A0F1A 100%)}
-body.F .header{background:linear-gradient(170deg,#080318 0%,#130825 55%,#0D0818 100%)}
-.header::before{content:"";position:absolute;top:-40px;right:-40px;width:180px;height:180px;border-radius:50%;pointer-events:none}
-body.M .header::before{background:radial-gradient(circle,rgba(80,160,255,0.10) 0%,transparent 70%)}
-body.F .header::before{background:radial-gradient(circle,rgba(160,80,255,0.10) 0%,transparent 70%)}
-.logo-wrap{display:flex;flex-direction:column;align-items:center;gap:6px;margin-bottom:16px;text-align:center}
-.logo-pill{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden}
-body.M .logo-pill{background:#192035;box-shadow:0 4px 12px rgba(0,0,0,0.40)}
-body.F .logo-pill{background:#192035;box-shadow:0 4px 12px rgba(0,0,0,0.40)}
-.logo-txt{font-size:34px;font-weight:900;letter-spacing:-1px;font-family:"DM Sans",sans-serif;line-height:1;background:linear-gradient(90deg,#90C8FF,#D080FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-body.M .logo-txt span{color:inherit;-webkit-text-fill-color:inherit}
-body.F .logo-txt span{color:inherit;-webkit-text-fill-color:inherit}
-.logo-tag{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.16em;color:rgba(255,255,255,0.40);margin-top:3px;text-align:center}
+<header class="text-center mb-10 pt-6">
+      <img src="logo-doseup.png" alt="doseUp Nutrition" class="h-16 mx-auto mb-8">
+      
+      <div class="ia-container p-6 text-left">
+          <h2 class="text-xl font-extrabold mb-1 text-white">Assistant IA Personnel</h2>
+          <p class="text-xs text-gray-400 mb-5">Dites-moi vos symptômes ou besoins.</p>
+          <div class="relative">
+              <input type="text" id="doseup-ai-engine" class="ia-input w-full py-4 px-5" placeholder="ex : j'ai du mal à dormir">
+              <div class="absolute right-4 top-1/2 -translate-y-1/2 text-cyan-400">
+                  <i class="fas fa-wand-magic-sparkles text-xl animate-pulse"></i>
+              </div>
+          </div>
+      </div>
+  </header>
 /* SWITCH */
 .g-switch{display:flex;background:rgba(255,255,255,0.12);border-radius:16px;padding:5px;gap:5px;margin-bottom:16px;width:100%;box-shadow:0 4px 20px rgba(0,0,0,0.30);border:1px solid rgba(255,255,255,0.20)}
 .g-pill{flex:1;padding:16px 8px;border-radius:12px;border:none;font-size:15px;font-weight:800;font-family:"DM Sans",sans-serif;cursor:pointer;transition:all 0.22s;color:rgba(255,255,255,0.50);background:transparent;text-align:center;letter-spacing:0.01em}
@@ -237,6 +237,28 @@ body.F{background:#0D0818 !important;color:#EDE8F8}
   .app-wrapper{max-width:1100px;}
   .obj-grid{grid-template-columns:repeat(5,1fr);}
 }
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-title" content="doseUp">
+  <style>
+    .ia-container {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 2px solid;
+        border-image: linear-gradient(135deg, #70e1f5 0%, #ffd194 100%) 1;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+        border-radius: 24px;
+        max-width: 600px;
+        margin: 0 auto 2rem auto;
+    }
+    .ia-input {
+        background: rgba(255, 255, 255, 0.08) !important;
+        border: 1px solid rgba(255, 255, 255, 0.2) !important;
+        color: white !important;
+        border-radius: 14px !important;
+    }
+  </style>
 </style>
 
 <script type="application/ld+json">
@@ -1377,5 +1399,25 @@ document.addEventListener("selectstart",e=>{if(e.target.tagName!=="INPUT")e.prev
   <p>Catégories : Libido & Énergie · Vision & Peau · Antioxydant & Thyroïde · Vision · Beauté · Cerveau & Calme · Anti-inflammatoire · Adaptogène · Essentiel N°1 · Beauté & Os · Énergie cellulaire · Peau & Structure · Sommeil · Performance · Métabolisme · Peau · Articulations & Beauté · Libido & Testo · Antioxydant & Vision · Détox & Antioxydant · Essentiel · Anti-âge · Performance N°1 · Essentielle · Antioxydant · Vision & Antioxydant · Hormones & Métabolisme · Microbiome</p>
   <p>Guide compléments alimentaires homme femme dosage synergie créatine magnésium oméga-3 zinc vitamine D3 ashwagandha collagène probiotiques mélatonine fer anémie SPM endométriose SOP acné hormonale ménopause grossesse fertilité musculation prise de masse perte de poids sommeil stress anxiété cerveau focus énergie immunité peau cheveux articulations</p>
 </div>
+  <footer class="mt-20 pb-12 text-center border-t border-white/5 pt-10">
+      <p class="text-[10px] text-gray-500 uppercase tracking-widest leading-loose">
+          © 2026 doseUp • Marque déposée à l'INPI<br>Propriété de Yanis Bensaadi
+      </p>
+  </footer>
+
+  <script>
+    document.getElementById('doseup-ai-engine')?.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            const query = this.value.toLowerCase().trim();
+            const mapping = {
+                "yeux": "vision-yeux", "sommeil": "sommeil", "fatigue": "energie",
+                "stress": "anti-stress", "peau": "acne-hormonale", "regles": "cycle-spm"
+            };
+            let found = Object.keys(mapping).find(k => query.includes(k));
+            if (found) window.location.href = "https://doseup.fr/besoins/" + mapping[found];
+            else window.location.href = "https://doseup.fr/?s=" + encodeURIComponent(query);
+        }
+    });
+  </script>
 </body>
 </html>
