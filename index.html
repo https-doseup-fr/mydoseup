@@ -127,20 +127,20 @@ body.F .tab.on{color:#FFF;background:linear-gradient(90deg,rgba(123,31,162,0.7),
 .obj-count{font-size:11px;color:rgba(255,255,255,0.65);font-weight:600;margin-top:4px}
 .obj-results{padding:0 14px 14px;display:none}
 .obj-results.on{display:block}
-.obj-back{display:flex;align-items:center;gap:8px;padding:10px 0 9px;cursor:pointer;border-bottom:1px solid rgba(255,255,255,0.08);margin-bottom:12px}
-.obj-back-btn{height:32px;padding:0 12px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;border:1.5px solid rgba(255,255,255,0.30);background:rgba(255,255,255,0.12);color:#FFF;white-space:nowrap;gap:4px}
+.obj-back{display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding:12px 0 14px;border-bottom:1px solid rgba(255,255,255,0.08);margin-bottom:12px}
+.obj-back-btn{height:34px;padding:0 14px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;border:1.5px solid rgba(255,255,255,0.35);background:rgba(255,255,255,0.15);color:#FFF;white-space:nowrap;gap:4px;letter-spacing:0.02em}
 .obj-back-title{font-size:16px;font-weight:700;color:#FFF}
 /* SUPPLEMENT CARD */
 .sc{border-radius:18px;margin-bottom:10px;overflow:hidden;border:1px solid rgba(255,255,255,0.18);position:relative;transition:border-color 0.2s}
 .sc::before{content:"";position:absolute;inset:0;background:var(--c);opacity:0.22;pointer-events:none;z-index:0;border-radius:16px}
 .sc-hd,.sc-body{position:relative;z-index:1}
 .sc.open{border-color:var(--c)}
-.sc-hd{padding:14px 15px 14px 15px;display:flex;align-items:flex-start;gap:12px;cursor:pointer;min-height:72px;position:relative}
+.sc-hd{padding:12px 14px;display:flex;align-items:center;gap:10px;cursor:pointer}
 .sc-accent{width:4px;border-radius:4px;background:var(--c);flex-shrink:0;align-self:stretch;min-height:40px}
-.sc-main{flex:1;min-width:0;padding-right:8px}
-.sc-nm{font-size:16px;font-weight:800;color:#FFFFFF;line-height:1.25;margin-bottom:5px;text-shadow:0 1px 6px rgba(0,0,0,0.40)}
-.sc-pills{display:flex;align-items:center;gap:5px;flex-wrap:wrap}
-.sc-tag{font-size:10px;font-weight:700;padding:3px 9px;border-radius:50px;color:#FFF;border:1px solid rgba(255,255,255,0.30);background:rgba(255,255,255,0.10)}
+.sc-main{flex:1;min-width:0;display:flex;flex-direction:column;gap:5px}
+.sc-nm{font-size:14px;font-weight:800;color:#FFFFFF;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-shadow:0 1px 4px rgba(0,0,0,0.40)}
+.sc-pills{display:flex;align-items:center;gap:4px;flex-wrap:nowrap;overflow:hidden}
+.sc-tag{font-size:10px;font-weight:700;padding:2px 8px;border-radius:50px;color:#FFF;border:1px solid rgba(255,255,255,0.30);background:rgba(255,255,255,0.10);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:130px}
 .sc-gt{font-size:10px;font-weight:700;padding:3px 8px;border-radius:50px;background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.65)}
 .sc-gt-excl-m{background:rgba(21,101,192,0.30);color:#90CAF9}
 .sc-gt-excl-f{background:rgba(123,31,162,0.30);color:#CE93D8}
@@ -150,7 +150,7 @@ body.F .tab.on{color:#FFF;background:linear-gradient(90deg,rgba(123,31,162,0.7),
 .dispo-3{background:rgba(198,40,40,0.25);color:#EF9A9A;border:1px solid rgba(239,154,154,0.35)}
 .sc-chv{
   flex-shrink:0;
-  align-self:flex-end;
+  align-self:center;
   display:inline-flex;align-items:center;gap:6px;
   padding:6px 12px;
   border-radius:50px;
@@ -240,10 +240,10 @@ body.F .az-letter{background:#0F0820;color:#CE93D8}
 .obj-tile:hover .obj-cta,.obj-tile:active .obj-cta{background:rgba(255,255,255,0.22);border-color:rgba(255,255,255,0.45)}
 .obj-tile:hover .obj-cta-arrow{transform:translateX(2px)}
 /* Header catégorie compact : icône + titre côte à côte */
-.obj-back{display:flex;align-items:center;gap:8px;padding:10px 0 9px;cursor:pointer;border-bottom:1px solid rgba(255,255,255,0.08);margin-bottom:12px}
-.obj-back-ico{width:34px;height:34px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:rgba(255,255,255,0.15);border-radius:10px;font-size:18px}
-.obj-back-content{display:flex;align-items:center;gap:8px;flex:1}
-.obj-back-title{font-size:17px;font-weight:800;color:#FFF}
+.obj-back{display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding:12px 0 14px;border-bottom:1px solid rgba(255,255,255,0.08);margin-bottom:12px}
+.obj-back-ico{width:36px;height:36px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:rgba(255,255,255,0.15);border-radius:10px;font-size:20px}
+.obj-back-content{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:4px 0}
+.obj-back-title{font-size:18px;font-weight:900;color:#FFF;text-align:center}
 .obj-back-arr{width:26px;height:26px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:13px;border:1px solid rgba(255,255,255,0.20);background:rgba(255,255,255,0.08);color:#FFF;font-weight:900;flex-shrink:0}
 
 /* ─── NAV BANDEAU ─── */
@@ -252,8 +252,8 @@ body.F .az-letter{background:#0F0820;color:#CE93D8}
 .nav-bandeau{position:sticky;top:0;z-index:200;background:linear-gradient(135deg,#1A0A3A 0%,#1565C0 50%,#7B1FA2 100%);box-shadow:0 4px 20px rgba(0,0,0,0.55);border-bottom:1px solid rgba(255,255,255,0.10)}
 .nav-top-bar{display:none}
 
-.nav-hamburger{width:52px;height:52px;min-width:52px;background:rgba(255,255,255,0.10);border:1px solid rgba(255,255,255,0.18);border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer;flex-shrink:0;align-self:center;touch-action:manipulation}
-.nav-hamburger span{display:block;width:20px;height:2.5px;background:#FFF;border-radius:2px;transition:all 0.25s}
+.nav-hamburger{width:52px;height:52px;min-width:52px;min-height:52px;background:rgba(255,255,255,0.10);border:1.5px solid rgba(255,255,255,0.25);border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;cursor:pointer;flex-shrink:0;align-self:stretch;touch-action:manipulation}
+.nav-hamburger span{display:block;width:22px;height:3px;background:#FFF;border-radius:3px;transition:all 0.25s}
 .nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
 .nav-hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
 .nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
@@ -390,7 +390,7 @@ img{pointer-events:none;-webkit-user-drag:none;user-drag:none;}
       <div class="logo-tag">Guide des Compléments</div>
     </div>
   </div>
-  <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px">
+  <div style="display:flex;align-items:stretch;gap:8px;margin-bottom:16px">
     <div class="g-switch" style="flex:1;margin-bottom:0">
       <button class="g-pill" id="gM" onclick="setG('M')">Homme</button>
       <button class="g-pill on" id="gF" onclick="setG('F')">Femme</button>
@@ -434,7 +434,7 @@ img{pointer-events:none;-webkit-user-drag:none;user-drag:none;}
     <div class="obj-results" id="objResults">
       <div class="obj-back" onclick="backToGrid()">
         <div class="obj-back-btn">← Retour</div>
-        <div class="obj-back-title" id="objTitle"></div>
+        <div id="objTitle"></div>
       </div>
       <div id="objList"></div>
     </div>
@@ -2167,7 +2167,7 @@ function showObj(id){
   const dispIco = G==="F" && obj.icoF ? obj.icoF : obj.ico;
   const dispNm  = G==="F" && obj.nmF  ? obj.nmF  : obj.nm;
   document.getElementById("objTitle").innerHTML =
-    `<span class="obj-back-ico">${dispIco}</span><span class="obj-back-title">${dispNm}</span>`;
+    `<div class="obj-back-content"><span class="obj-back-ico">${dispIco}</span><span class="obj-back-title">${dispNm}</span></div>`;
 
   // ⑤ Générer le contenu
   let html = items.map(s=>card(s,null,false)).join("");
