@@ -135,9 +135,9 @@ body.F .tab.on{color:#FFF;background:linear-gradient(90deg,rgba(123,31,162,0.7),
 .sc::before{content:"";position:absolute;inset:0;background:var(--c);opacity:0.22;pointer-events:none;z-index:0;border-radius:16px}
 .sc-hd,.sc-body{position:relative;z-index:1}
 .sc.open{border-color:var(--c)}
-.sc-hd{padding:14px 15px;display:flex;align-items:center;gap:12px;cursor:pointer}
+.sc-hd{padding:14px 15px 14px 15px;display:flex;align-items:flex-start;gap:12px;cursor:pointer;min-height:72px;position:relative}
 .sc-accent{width:4px;border-radius:4px;background:var(--c);flex-shrink:0;align-self:stretch;min-height:40px}
-.sc-main{flex:1;min-width:0}
+.sc-main{flex:1;min-width:0;padding-right:8px}
 .sc-nm{font-size:16px;font-weight:800;color:#FFFFFF;line-height:1.25;margin-bottom:5px;text-shadow:0 1px 6px rgba(0,0,0,0.40)}
 .sc-pills{display:flex;align-items:center;gap:5px;flex-wrap:wrap}
 .sc-tag{font-size:10px;font-weight:700;padding:3px 9px;border-radius:50px;color:#FFF;border:1px solid rgba(255,255,255,0.30);background:rgba(255,255,255,0.10)}
@@ -150,8 +150,9 @@ body.F .tab.on{color:#FFF;background:linear-gradient(90deg,rgba(123,31,162,0.7),
 .dispo-3{background:rgba(198,40,40,0.25);color:#EF9A9A;border:1px solid rgba(239,154,154,0.35)}
 .sc-chv{
   flex-shrink:0;
+  align-self:flex-end;
   display:inline-flex;align-items:center;gap:6px;
-  padding:7px 14px;
+  padding:6px 12px;
   border-radius:50px;
   font-size:11px;font-weight:800;letter-spacing:0.05em;
   color:rgba(255,255,255,0.90);
@@ -364,7 +365,7 @@ img{pointer-events:none;-webkit-user-drag:none;user-drag:none;}
 {"@context":"https://schema.org","@type":"WebSite","name":"MyDoseUp","url":"https://mydoseup.com","description":"Guide des compléments alimentaires — dosages, effets et conseils personnalisés par genre.","author":{"@type":"Person","name":"Yanis Bensaadi"},"publisher":{"@type":"Organization","name":"MyDoseUp","url":"https://mydoseup.com","logo":{"@type":"ImageObject","url":"https://mydoseup.com/og-image.png"}},"potentialAction":{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://mydoseup.com/?q={search_term_string}"},"query-input":"required name=search_term_string"}}
 </script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"ItemList","name":"Guide des Compléments Alimentaires","description":"34 fiches complètes sur les compléments alimentaires avec dosages, effets et synergies","url":"https://mydoseup.com","numberOfItems":52,"itemListElement":[{"@type":"ListItem","position":1,"name":"Ashwagandha (KSM-66)","url":"https://mydoseup.com/#ashwagandha--ksm-66"},{"@type":"ListItem","position":2,"name":"Acide Hyaluronique","url":"https://mydoseup.com/#acide-hyaluronique"},{"@type":"ListItem","position":3,"name":"Oméga-3 (EPA/DHA)","url":"https://mydoseup.com/#oméga-3--epa/dha"},{"@type":"ListItem","position":4,"name":"Bêta-Alanine","url":"https://mydoseup.com/#bêta-alanine"},{"@type":"ListItem","position":5,"name":"Biotine (Vitamine B8)","url":"https://mydoseup.com/#biotine--vitamine-b8"},{"@type":"ListItem","position":6,"name":"Berbérine","url":"https://mydoseup.com/#berbérine"},{"@type":"ListItem","position":7,"name":"Collagène Marin","url":"https://mydoseup.com/#collagène-marin"},{"@type":"ListItem","position":8,"name":"Créatine Monohydrate","url":"https://mydoseup.com/#créatine-monohydrate"},{"@type":"ListItem","position":9,"name":"Curcumine (Curcuma)","url":"https://mydoseup.com/#curcumine--curcuma"},{"@type":"ListItem","position":10,"name":"Vitamine D3 + K2","url":"https://mydoseup.com/#vitamine-d3--k2"},{"@type":"ListItem","position":11,"name":"Fer Bisglycinate","url":"https://mydoseup.com/#fer-bisglycinate"},{"@type":"ListItem","position":12,"name":"Gingembre","url":"https://mydoseup.com/#gingembre"},{"@type":"ListItem","position":13,"name":"L-Carnitine","url":"https://mydoseup.com/#l-carnitine"},{"@type":"ListItem","position":14,"name":"Magnésium Bisglycinate","url":"https://mydoseup.com/#magnésium-bisglycinate"},{"@type":"ListItem","position":15,"name":"MSM (Méthylsulfonylméthane)","url":"https://mydoseup.com/#msm--méthylsulfonylméthane"},{"@type":"ListItem","position":16,"name":"Mélatonine","url":"https://mydoseup.com/#mélatonine"},{"@type":"ListItem","position":17,"name":"Probiotiques","url":"https://mydoseup.com/#probiotiques"},{"@type":"ListItem","position":18,"name":"CoQ10 (Ubiquinol)","url":"https://mydoseup.com/#coq10--ubiquinol"},{"@type":"ListItem","position":19,"name":"Rhodiola Rosea","url":"https://mydoseup.com/#rhodiola-rosea"},{"@type":"ListItem","position":20,"name":"Silicium Organique","url":"https://mydoseup.com/#silicium-organique"}]}
+{"@context":"https://schema.org","@type":"ItemList","name":"Guide des Compléments Alimentaires","description":"54 fiches complètes sur les compléments alimentaires avec dosages, effets et synergies","url":"https://mydoseup.com","numberOfItems":54,"itemListElement":[{"@type":"ListItem","position":1,"name":"Ashwagandha (KSM-66)","url":"https://mydoseup.com/#ashwagandha--ksm-66"},{"@type":"ListItem","position":2,"name":"Acide Hyaluronique","url":"https://mydoseup.com/#acide-hyaluronique"},{"@type":"ListItem","position":3,"name":"Oméga-3 (EPA/DHA)","url":"https://mydoseup.com/#oméga-3--epa/dha"},{"@type":"ListItem","position":4,"name":"Bêta-Alanine","url":"https://mydoseup.com/#bêta-alanine"},{"@type":"ListItem","position":5,"name":"Biotine (Vitamine B8)","url":"https://mydoseup.com/#biotine--vitamine-b8"},{"@type":"ListItem","position":6,"name":"Berbérine","url":"https://mydoseup.com/#berbérine"},{"@type":"ListItem","position":7,"name":"Collagène Marin","url":"https://mydoseup.com/#collagène-marin"},{"@type":"ListItem","position":8,"name":"Créatine Monohydrate","url":"https://mydoseup.com/#créatine-monohydrate"},{"@type":"ListItem","position":9,"name":"Curcumine (Curcuma)","url":"https://mydoseup.com/#curcumine--curcuma"},{"@type":"ListItem","position":10,"name":"Vitamine D3 + K2","url":"https://mydoseup.com/#vitamine-d3--k2"},{"@type":"ListItem","position":11,"name":"Fer Bisglycinate","url":"https://mydoseup.com/#fer-bisglycinate"},{"@type":"ListItem","position":12,"name":"Gingembre","url":"https://mydoseup.com/#gingembre"},{"@type":"ListItem","position":13,"name":"L-Carnitine","url":"https://mydoseup.com/#l-carnitine"},{"@type":"ListItem","position":14,"name":"Magnésium Bisglycinate","url":"https://mydoseup.com/#magnésium-bisglycinate"},{"@type":"ListItem","position":15,"name":"MSM (Méthylsulfonylméthane)","url":"https://mydoseup.com/#msm--méthylsulfonylméthane"},{"@type":"ListItem","position":16,"name":"Mélatonine","url":"https://mydoseup.com/#mélatonine"},{"@type":"ListItem","position":17,"name":"Probiotiques","url":"https://mydoseup.com/#probiotiques"},{"@type":"ListItem","position":18,"name":"CoQ10 (Ubiquinol)","url":"https://mydoseup.com/#coq10--ubiquinol"},{"@type":"ListItem","position":19,"name":"Rhodiola Rosea","url":"https://mydoseup.com/#rhodiola-rosea"},{"@type":"ListItem","position":20,"name":"Silicium Organique","url":"https://mydoseup.com/#silicium-organique"}]}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
@@ -720,12 +721,8 @@ img{pointer-events:none;-webkit-user-drag:none;user-drag:none;}
   <div style="margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.08)">
     <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
       <button onclick="navGo('legal', null)" 
-        style="background:transparent;border:1px solid rgba(255,255,255,0.18);color:rgba(255,255,255,0.60);font-size:11px;font-weight:700;padding:10px 20px;border-radius:10px;cursor:pointer;font-family:'DM Sans',sans-serif;letter-spacing:0.06em">
-        📋 Mentions légales
-      </button>
-      <button onclick="navGo('legal', null)" 
-        style="background:transparent;border:1px solid rgba(255,255,255,0.18);color:rgba(255,255,255,0.60);font-size:11px;font-weight:700;padding:10px 20px;border-radius:10px;cursor:pointer;font-family:'DM Sans',sans-serif;letter-spacing:0.06em">
-        🔒 Confidentialité
+        style="background:transparent;border:1px solid rgba(255,255,255,0.18);color:rgba(255,255,255,0.60);font-size:11px;font-weight:700;padding:10px 24px;border-radius:10px;cursor:pointer;font-family:'DM Sans',sans-serif;letter-spacing:0.06em">
+        📋 Mentions légales & Confidentialité
       </button>
       <button onclick="showNewsletter()"
         style="background:linear-gradient(135deg,rgba(21,101,192,0.30),rgba(123,31,162,0.30));border:1px solid rgba(144,202,249,0.35);color:#90CAF9;font-size:11px;font-weight:800;padding:10px 20px;border-radius:10px;cursor:pointer;font-family:'DM Sans',sans-serif;letter-spacing:0.06em">
@@ -974,7 +971,7 @@ const DATA = [
 
   plus:["Ongles cassants renforcés (prouvé)","Chevelure améliorée si carence","Peau soutenue","Métabolisme glucides et graisses"],
   moins:["Efficace surtout si carence préalable","Fausse certains tests sanguins","Résultats après 3-6 mois"],
-  dose:[["Dose standard","2500-5000µg/j"],["Timing","Matin avec repas"],["Durée","Minimum 3 mois"]],
+  dose:[["Dose standard","2500-5000µg/j (microgrammes par jour)"],["Timing","Matin avec repas"],["Durée","Minimum 3 mois"]],
   hM:"Utile si alimentation déséquilibrée. Rarement déficient autrement.",
   hF:"Grossesse et pilule consomment la biotine. Cheveux fins post-partum = biotine prioritaire.",
   syn:["Zinc","Silicium","MSM","Collagène marin"],
@@ -1035,7 +1032,7 @@ const DATA = [
   fn:"La vitamine du soleil, indispensable mais très souvent en déficit (surtout en France). Elle renforce les os, booste l\'immunité, régule les hormones et améliore l\'humeur.",
   plus:["Immunité : infections respiratoires −50%","Santé osseuse et musculaire","Humeur et dépression saisonnière","Synthèse protéique musculaire","Anti-inflammatoire"],
   moins:["Toxique à très forte dose long terme","Analyse sanguine recommandée","K2 indispensable en association"],
-  dose:[["Maintenance H","2000-4000 UI/j"],["Maintenance F","2000-4000 UI/j (4000 post-ménopause)"],["Correction déficit","5000-10 000 UI (3 mois)"],["K2 (MK-7)","100µg/j"],["Timing","Matin avec repas gras"],["Cible sang","60-80 ng/mL"]],
+  dose:[["Maintenance H","2000-4000 UI/j"],["Maintenance F","2000-4000 UI/j (4000 post-ménopause)"],["Correction déficit","5000-10 000 UI (3 mois)"],["K2 (MK-7)","100µg/j (microgrammes par jour)"],["Timing","Matin avec repas gras"],["Cible sang","60-80 ng/mL"]],
   hM:"+25% de testostérone en 12 mois chez les hommes déficients. 80% des Français manquent de vitamine D en hiver. Elle régule les hormones sexuelles, protège les os et booste l\'immunité.",
   hF:"Réduit les douleurs menstruelles et le Syndrome Prémenstruel (SPM). Rôle clé dans la fertilité et la prévention du diabète gestationnel. Après 50 ans : indispensable pour protéger les os (risque ostéoporose ×3 post-ménopause).",
   syn:["Vitamine K2 (INDISPENSABLE)","Magnésium (activation)","Zinc","Oméga-3"],
@@ -1047,9 +1044,9 @@ const DATA = [
   fn:"Le minéral qui transporte l\'oxygène dans ton sang. La carence en fer est la plus fréquente au monde. 1 femme sur 3 est concernée. Toujours vérifier par une prise de sang avant de se supplémenter.",
   plus:["Fatigue chronique disparaît","Chute de cheveux réduite","Concentration et mémoire améliorées","Essoufflement à l\'effort supprimé","Immunité renforcée"],
   moins:["JAMAIS sans prise de sang préalable","Toxique en excès (hémochromatose)","Constipation possible (moindre avec bisglycinate)"],
-  dose:[["Dose H","10-20mg/j fer élémentaire"],["Dose F","25-50mg/j fer élémentaire"],["Timing","À jeun + Vitamine C"],["Durée","3 mois minimum"],["Cible","Ferritine > 50 µg/L"]],
+  dose:[["Dose H","10-20mg/j fer élémentaire"],["Dose F","25-50mg/j fer élémentaire"],["Timing","À jeun + Vitamine C"],["Durée","3 mois minimum"],["Cible","Ferritine > 50 µg/L (microgrammes par litre)"]],
   hM:"Rare chez l\'homme mais sous-estimé : sportifs d\'endurance (course à pied), végétaliens et donneurs de sang réguliers sont souvent déficients. Toujours confirmer par un dosage de ferritine avant de se supplémenter.",
-  hF:"Règles abondantes = perte de 20-80mg de fer/mois. 35-40% des femmes en âge de procréer sont déficientes. Ferritine < 30 µg/L = chute de cheveux, fatigue, froid aux extrémités, même sans anémie avérée. Grossesse : besoin triplé.",
+  hF:"Règles abondantes = perte de 20-80mg de fer/mois. 35-40% des femmes en âge de procréer sont déficientes. Ferritine < 30 µg/L (microgrammes par litre) = chute de cheveux, fatigue, froid aux extrémités, même sans anémie avérée. Grossesse : besoin triplé.",
   syn:["Vitamine C (×3 absorption)","Vitamine B9 + B12"],
   prec:"JAMAIS sans analyse sanguine. Espacer 2h de : café, thé, calcium, laitages.",
   food:["🥩 Viande rouge (fer héminique, mieux absorbé)","🐚 Palourdes, moules","🌿 Épinards + citron","🫘 Lentilles + poivrons"]},
@@ -1179,9 +1176,9 @@ const DATA = [
   fn:"La seule vitamine que les plantes ne fabriquent pas. Sans elle : fatigue chronique, fourmillements, mémoire qui flanche. Si tu ne manges pas de viande ou de poisson régulièrement, tu en manques probablement.",
   plus:["Prévient anémie mégaloblastique","Santé neurologique maintenue","Énergie si déficit","Cheveux et ongles soutenus","Indispensable végans/végétariens"],
   moins:["Carence longtemps asymptomatique","Absorption réduite après 50 ans","Certains médicaments bloquent l\'absorption"],
-  dose:[["Préventif","250-500µg/j"],["Correction déficit","1000µg/j"],["Forme","Méthylcobalamine (active)"],["Timing","Matin avec B9"]],
+  dose:[["Préventif","250-500µg/j (microgrammes par jour)"],["Correction déficit","1000µg/j (microgrammes par jour)"],["Forme","Méthylcobalamine (active)"],["Timing","Matin avec B9"]],
   hM:"Essentielle pour l\'énergie nerveuse et les performances cognitives. Déficit fréquent chez les sportifs et végétariens : fatigue chronique, baisse de concentration, irritabilité. La méthylcobalamine (forme active) est mieux assimilée que la cyanocobalamine.",
-  hF:"La pilule contraceptive diminue les niveaux de B12. Penser à supplémenter. Grossesse : 2,8µg/j minimum, indispensable pour le développement neurologique du bébé. Véganes : OBLIGATOIRE.",
+  hF:"La pilule contraceptive diminue les niveaux de B12. Penser à supplémenter. Grossesse : 2,8µg/j (microgrammes par jour) minimum, indispensable pour le développement neurologique du bébé. Véganes : OBLIGATOIRE.",
   syn:["Vitamine B9 (folate)","Fer","Vitamine B6"],
   prec:"Non toxique. Metformine, IPP, certains antibiotiques réduisent l\'absorption.",
   food:["🦪 Palourdes (98µg/100g)","🥩 Foie de boeuf","🐟 Sardines, saumon","🥚 Oeufs, laitages","🌱 Végétal : aucune source fiable"]},
@@ -1252,11 +1249,11 @@ const DATA = [
 
   plus:["Thyroïde protégée (conversion T4→T3)","Antioxydant (GPx)","Fertilité masculine","Cheveux et ongles","Immunité anti-virale"],
   moins:["Toxique à haute dose (sélénose)","Marge de dosage étroite","Surdosage facile avec compléments"],
-  dose:[["Dose","100-200µg/j"],["MAXIMUM ABSOLU","400µg/j à ne jamais dépasser"],["Timing","Matin avec repas"],["Forme","Séléno-méthionine (mieux absorbée)"]],
+  dose:[["Dose","100-200µg/j (microgrammes par jour)"],["MAXIMUM ABSOLU","400µg/j (microgrammes par jour) à ne jamais dépasser"],["Timing","Matin avec repas"],["Forme","Séléno-méthionine (mieux absorbée)"]],
   hM:"Spermatogenèse directement dépendante du sélénium : mobilité et morphologie des spermatozoïdes améliorées. Protection thyroïdienne essentielle. 2 noix du Brésil par jour couvrent généralement les besoins. Pas besoin d\'ajouter un complément si l\'alimentation est variée.",
   hF:"Thyroïde (Hashimoto) : anticorps thyroïdiens réduits avec supplémentation.",
   syn:["Vitamine E","Zinc","Iode (thyroïde)"],
-  prec:"NE PAS dépasser 400µg/j. 2 noix du Brésil/j = dose journalière complète. ne pas combiner avec supplément.",
+  prec:"NE PAS dépasser 400µg/j (microgrammes par jour). 2 noix du Brésil/j = dose journalière complète. ne pas combiner avec supplément.",
   food:["🌰 Noix du Brésil (2/j = 200µg. suffisant !)","🐟 Thon, sardines (85µg/100g)","🥚 Oeufs","🥩 Viande"]},
 
  {nm:"Lutéine + Zéaxanthine",kw:"lutéine zéaxanthine yeux vision écran macula",tag:"Vision",c:"var(--vision)",dispo:2,where:"Pharmacie, optométriste ou Amazon, peu connu en grande surface",forme:"both",gender:"MF",
@@ -1288,10 +1285,10 @@ const DATA = [
   fn:"Vitamine liposoluble indispensable à la vision nocturne et à l'immunité des muqueuses. Attention : la forme rétinol est toxique à forte dose et formellement contre-indiquée pendant la grossesse. La forme bêta-carotène végétale est la plus sûre.",
 
   plus:["Vision nocturne (rhodopsine)","Cornée et conjonctive en bonne santé","Peau et muqueuses saines","Immunité muqueuse","Différenciation cellulaire"],
-  moins:["Rétinol (animal) toxique cumulatif à haute dose","Fumeurs : bêta-carotène supplémentaire déconseillé","Grossesse : rétinol > 3000µg/j interdit"],
-  dose:[["Rétinol (animal)","700µg/j (VNR), max 3000µg/j"],["Bêta-carotène (végétal)","2-6mg/j, sans toxicité"],["Timing","Avec repas gras (liposoluble)"],["Conseil","Préférer bêta-carotène si fumeur ou enceinte"]],
+  moins:["Rétinol (animal) toxique cumulatif à haute dose","Fumeurs : bêta-carotène supplémentaire déconseillé","Grossesse : rétinol > 3000µg/j (microgrammes par jour) interdit"],
+  dose:[["Rétinol (animal)","700µg/j (microgrammes par jour) (VNR), max 3000µg/j (microgrammes par jour)"],["Bêta-carotène (végétal)","2-6mg/j, sans toxicité"],["Timing","Avec repas gras (liposoluble)"],["Conseil","Préférer bêta-carotène si fumeur ou enceinte"]],
   hM:"Apports souvent suffisants avec alimentation variée. Vérifier avant supplémentation.",
-  hF:"Grossesse : ÉVITER rétinol > 3000µg/j (tératogène). Utiliser exclusivement bêta-carotène.",
+  hF:"Grossesse : ÉVITER rétinol > 3000µg/j (microgrammes par jour) (tératogène). Utiliser exclusivement bêta-carotène.",
   syn:["Zinc (transport vitamine A)","Vitamine D","Graisses alimentaires"],
   prec:"⚠️ Rétinol toxique cumulatif. Grossesse : rétinol contre-indiqué à forte dose. Bêta-carotène = forme sûre sauf fumeurs.",
   food:["🥕 Carotte (830µg bêta-carotène/100g). LA source n°1, accessible et naturelle","🍠 Patate douce (961µg/100g. encore plus concentrée)","🥬 Épinards, brocoli","🥭 Mangue, abricot","🥚 Oeuf (rétinol direct)","⚡ ASTUCE : le bêta-carotène est liposoluble. toujours consommer avec une matière grasse (huile d\'olive, avocat, noix) pour multiplier l\'absorption par 3 à 5×"]},
@@ -1419,7 +1416,7 @@ const DATA = [
   fn:"La thyroïde est la glande qui contrôle ton métabolisme via les hormones T3 et T4 (T3 est la forme active, T4 est convertie en T3 grâce au sélénium). L'iode est indispensable à leur fabrication. Jamais se supplémenter sans bilan sanguin complet.",
   plus:["Soutien de la production hormonale T3/T4","Protection de la glande thyroïde (sélénium)","Métabolisme et énergie régulés","Cheveux et ongles soutenus"],
   moins:["Interactions avec médicaments thyroïdiens (Lévothyrox, etc.)","Surdosage en iode = aggravation possible","Marge de dosage étroite pour le sélénium"],
-  dose:[["Iode",`150µg/j (ANC adulte)`],["Sélénium","100-200µg/j (séléno-méthionine)"],["MAXIMUM sélénium","400µg/j à ne JAMAIS dépasser"],["Timing","Matin avec repas"],["⚠️","Bilan sanguin (TSH, T3, T4 libres) AVANT toute supplémentation"]],
+  dose:[["Iode",`150µg/j (microgrammes par jour) (ANC adulte)`],["Sélénium","100-200µg/j (microgrammes par jour) (séléno-méthionine)"],["MAXIMUM sélénium","400µg/j (microgrammes par jour) à ne JAMAIS dépasser"],["Timing","Matin avec repas"],["⚠️","Bilan sanguin (TSH, T3, T4 libres) AVANT toute supplémentation"]],
   hM:"Moins fréquent que chez la femme mais sous-diagnostiqué. Fatigue inexpliquée, prise de poids et baisse de libido peuvent signaler une hypothyroïdie.",
   hF:"Les femmes sont 5 à 10 fois plus souvent touchées par les troubles thyroïdiens. Hashimoto (thyroïdite auto-immune) : le sélénium peut réduire les anticorps thyroïdiens. Grossesse : besoins en iode augmentés.",
   syn:["Sélénium (activation T4→T3)","Zinc","Vitamine D3"],
@@ -2112,6 +2109,7 @@ function backToSportGrid(){
 }
 
 function showTimingResults(timing){
+  window.scrollTo(0,0);document.documentElement.scrollTop=0;
   if(!currentSport) return;
   const nms = (SPORT_TAGS_NM[currentSport] && SPORT_TAGS_NM[currentSport][timing]) || [];
   const tr = document.getElementById('timingResults');
@@ -2202,6 +2200,10 @@ function backToGrid(){
   const gsw=document.querySelector('.g-switch');if(gsw)gsw.style.display='';
   const srchw=document.querySelector('.search-wrap');if(srchw)srchw.style.display='';
   const hhb2=document.getElementById('navHamburger');if(hhb2)hhb2.style.display='';
+  // Vider la recherche
+  const si=document.getElementById('si');if(si)si.value='';
+  const sc=document.getElementById('sc');if(sc)sc.style.display='none';
+  document.getElementById('searchPanel').classList.remove('on');
   // Restaurer scroll
   requestAnimationFrame(()=>{ window.scrollTo(0,_savedScrollY); });
 }
@@ -2330,9 +2332,13 @@ function switchTab(id,btn){
   document.getElementById("si").value="";
   document.getElementById("sc").style.display="none";
   if(id==="obj") backToGrid();
-  window.scrollTo({top:0,behavior:"instant"});
-  // S'assurer qu'on est bien sur la page Accueil
+  // Scroll top immédiat AVANT navGo
+  window.scrollTo(0,0);
+  document.documentElement.scrollTop=0;
+  document.body.scrollTop=0;
   navGo('accueil', document.querySelector('.nav-btn'), true);
+  // Double RAF pour garantir après reflow
+  requestAnimationFrame(()=>{ window.scrollTo(0,0); });
 }
 
 function doSearch(val){
