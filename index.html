@@ -35,7 +35,7 @@
 <meta name="Google-Extended" content="noindex, nofollow">
 <meta name="PerplexityBot" content="noindex, nofollow">
 <meta name="Meta-ExternalAgent" content="noindex, nofollow">
-<meta name="description" content="MyDoseUp® par Yanis Bensaadi — La référence francophone des compléments alimentaires. 50+ fiches avec dosages exacts, effets prouvés et synergies. Guide personnalisé Homme & Femme, Parcours Sportifs (Running, Musculation, Hyrox), NMN, Shilajit, Tongkat Ali, DIM, HMB et plus. 100% gratuit, 100% scientifique.">
+<meta name="description" content="Guide compléments alimentaires : dosages exacts, effets prouvés, synergies. 54 fiches scientifiques Homme &amp; Femme. Créatine, Magnésium, Oméga-3, Ashwagandha et plus. 100% gratuit.">
 <meta name="keywords" content="Yanis Bensaadi, compléments alimentaires, créatine, magnésium, oméga-3, vitamine D3, ashwagandha, collagène, zinc, probiotiques, mélatonine, NMN, Shilajit, Tongkat Ali, L-Glutamine, L-Citrulline, électrolytes, spiruline, fenugrec, HMB, DHEA, DIM, Gattilier, Chardon-Marie, Quercétine, guide compléments, dosage compléments, compléments homme femme, nutrition sportive, parcours sportif, Hyrox, Running, Musculation, CrossFit, whey protéine, protéines végétales, thyroïde, bronzage solaire">
 <meta name="author" content="Yanis Bensaadi">
 <meta name="copyright" content="Copyright (c) 2026 Yanis Bensaadi — MyDoseUp® (Mydoseup.com). Marque déposée INPI n° 5239885. All rights reserved.">
@@ -135,12 +135,12 @@ body.F .tab.on{color:#FFF;background:linear-gradient(90deg,rgba(123,31,162,0.7),
 .sc::before{content:"";position:absolute;inset:0;background:var(--c);opacity:0.22;pointer-events:none;z-index:0;border-radius:16px}
 .sc-hd,.sc-body{position:relative;z-index:1}
 .sc.open{border-color:var(--c)}
-.sc-hd{padding:12px 14px;display:flex;align-items:center;gap:10px;cursor:pointer}
+.sc-hd{padding:12px 14px;display:flex;align-items:stretch;gap:10px;cursor:pointer}
 .sc-accent{width:4px;border-radius:4px;background:var(--c);flex-shrink:0;align-self:stretch;min-height:40px}
-.sc-main{flex:1;min-width:0;display:flex;flex-direction:column;gap:5px}
+.sc-main{flex:1;min-width:0;display:flex;flex-direction:column;gap:6px}
 .sc-nm{font-size:14px;font-weight:800;color:#FFFFFF;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-shadow:0 1px 4px rgba(0,0,0,0.40)}
-.sc-pills{display:flex;align-items:center;gap:4px;flex-wrap:nowrap;overflow:hidden}
-.sc-tag{font-size:10px;font-weight:700;padding:2px 8px;border-radius:50px;color:#FFF;border:1px solid rgba(255,255,255,0.30);background:rgba(255,255,255,0.10);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:130px}
+.sc-pills{display:flex;align-items:center;gap:5px;flex-wrap:wrap}
+.sc-tag{font-size:10px;font-weight:700;padding:3px 9px;border-radius:50px;color:#FFF;border:1px solid rgba(255,255,255,0.30);background:rgba(255,255,255,0.10)}
 .sc-gt{font-size:10px;font-weight:700;padding:3px 8px;border-radius:50px;background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.65)}
 .sc-gt-excl-m{background:rgba(21,101,192,0.30);color:#90CAF9}
 .sc-gt-excl-f{background:rgba(123,31,162,0.30);color:#CE93D8}
@@ -150,7 +150,7 @@ body.F .tab.on{color:#FFF;background:linear-gradient(90deg,rgba(123,31,162,0.7),
 .dispo-3{background:rgba(198,40,40,0.25);color:#EF9A9A;border:1px solid rgba(239,154,154,0.35)}
 .sc-chv{
   flex-shrink:0;
-  align-self:center;
+  align-self:flex-end;
   display:inline-flex;align-items:center;gap:6px;
   padding:6px 12px;
   border-radius:50px;
@@ -241,7 +241,7 @@ body.F .az-letter{background:#0F0820;color:#CE93D8}
 .obj-tile:hover .obj-cta-arrow{transform:translateX(2px)}
 /* Header catégorie compact : icône + titre côte à côte */
 .obj-back{display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding:12px 0 14px;border-bottom:1px solid rgba(255,255,255,0.08);margin-bottom:12px}
-.obj-back-ico{width:36px;height:36px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:rgba(255,255,255,0.15);border-radius:10px;font-size:20px}
+.obj-back-ico{width:36px;height:36px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:rgba(255,255,255,0.15);border-radius:10px;font-size:20px}.obj-back-ico svg{width:22px;height:22px;stroke:rgba(255,255,255,0.95)}
 .obj-back-content{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:4px 0}
 .obj-back-title{font-size:18px;font-weight:900;color:#FFF;text-align:center}
 .obj-back-arr{width:26px;height:26px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:13px;border:1px solid rgba(255,255,255,0.20);background:rgba(255,255,255,0.08);color:#FFF;font-weight:900;flex-shrink:0}
@@ -1022,7 +1022,7 @@ const DATA = [
   moins:["Biodisponibilité < 1% seul","Fluidifie sang à haute dose","Interactions médicamenteuses"],
   dose:[["Dose","500-1000mg curcuminoïdes/j"],["Timing","Avec repas gras"],["INDISPENSABLE","+ Poivre noir / Pipérine (absorption ×20)"],["Formes avancées","BCM-95, Meriva, Theracurmin"]],
   hM:"Réduit inflammation post-effort. Protection prostate. Légère amélioration testostérone indirecte.",
-  hF:"Douleurs menstruelles : aussi efficace qu'ibuprofène 400mg/j sur les crampes. Inhibe COX-2 et prostaglandines → anti-inflammatoire direct sur l'endomètre. Endométriose : réduit prolifération cellulaire endométriale. SPM émotionnel : booste sérotonine → humeur stabilisée en phase lutéale. SOP : réduit résistance insuline.",
+  hF:"Douleurs menstruelles : aussi efficace qu'ibuprofène 400mg/j sur les crampes. Inhibe COX-2 et molécules pro-inflammatoires → effet anti-douleur direct sur l'endomètre. Endométriose : réduit prolifération des cellules de l'endomètre (muqueuse utérine). SPM émotionnel : booste sérotonine → humeur stabilisée en phase lutéale. SOP : réduit résistance insuline.",
   syn:["Poivre noir (Pipérine) = OBLIGATOIRE","Graisses alimentaires","Gingembre"],
   prec:"Éviter forte dose si anticoagulants, calculs biliaires, grossesse.",
   food:["🌿 Curcuma frais + poivre noir","🌿 Gingembre (propriétés similaires)","🫐 Fruits rouges (antioxydants)"]},
@@ -1130,7 +1130,7 @@ const DATA = [
   moins:["Coûteux","Ubiquinone = moins bonne biodisponibilité","Effets maximaux avec ubiquinol (forme réduite)"],
   dose:[["Standard","100-200mg/j d\'ubiquinol"],["Thérapeutique","300-600mg/j"],["Timing","Avec repas gras"],["Forme","Ubiquinol (réduit) > Ubiquinone"]],
   hM:"Mobilité des spermatozoïdes +26%, morphologie améliorée. Si tu prends des statines : elles bloquent la CoQ10 à -40% → fatigue musculaire garantie. Supplémenter en ubiquinol est alors indispensable.",
-  hF:"Les ovocytes sont très riches en mitochondries et ont besoin de CoQ10 pour fonctionner correctement. Après 35 ans : production chute → qualité ovocytaire réduite. 400-600mg/j d\'ubiquinol recommandés en préconception et pour les FIV.",
+  hF:"Les ovocytes sont très riches en usines énergétiques des cellules (mitochondries) et ont besoin de CoQ10 pour fonctionner correctement. Après 35 ans : production chute → qualité ovocytaire réduite. 400-600mg/j d\'ubiquinol recommandés en préconception et pour les FIV.",
   syn:["L-Carnitine","Oméga-3","Vitamine E","Magnésium"],
   prec:"Légère fluidification sang. Interaction warfarine possible. Statines → CoQ10 obligatoire.",
   food:["🥩 Coeur de boeuf (11mg/100g, meilleure source)","🐟 Sardines, maquereau (6mg/100g)","🫘 Cacahuètes (2,6mg/100g)","🥦 Brocoli, épinards (traces)","⚠️ Pour effets thérapeutiques (200mg+), alimentation insuffisante"]},
@@ -1456,7 +1456,7 @@ const DATA = [
   hM:"Pas d'indication masculine établie.",
   hF:"Réduit les symptômes du Syndrome Prémenstruel dans 52% des cas (Schellenberg 2001). Régule la prolactine → cycles plus réguliers, moins de douleurs mammaires. À associer avec magnésium pour effet synergique.",
   syn:["Magnésium Bisglycinate","Vitamine B6","Inositol"],
-  prec:"Ne pas associer avec contraceptifs hormonaux, agonistes dopaminergiques. Déconseillé grossesse et allaitement. Informer ton gynécologue.",
+  prec:"Ne pas associer avec contraceptifs hormonaux, médicaments agissant sur la dopamine. Déconseillé grossesse et allaitement. Informer ton gynécologue.",
   food:["Pas d'équivalent alimentaire direct","🌿 Plante méditerranéenne — uniquement sous forme d'extrait standardisé"]},
 
  {nm:"Chardon-Marie (Silymarine)",kw:"chardon marie foie détox silymarine hépatique alcool médicaments",tag:"Foie & Détox",c:"var(--detox)",dispo:1,where:"Pharmacie, parapharmacie, Amazon",forme:"suppl",gender:"MF",
@@ -1465,7 +1465,7 @@ const DATA = [
   plus:["Protection cellules hépatiques prouvée","Régénération du foie stimulée","Antioxydant hépatique puissant","Réduction transaminases (ALAT/ASAT)","Utilisé en milieu hospitalier (Europe)"],
   moins:["Peut interagir avec certains médicaments (métabolisme hépatique)","Effets digestifs légers possibles","Léger effet laxatif à forte dose"],
   dose:[["Dose","140-420mg silymarine/j (standardisé à 70-80%)"],["Timing","Avec les repas"],["Durée","Cycles de 3 mois"]],
-  hM:"Utile après alcool, médicaments hépatotoxiques ou sport intensif. Aide à maintenir des enzymes hépatiques optimales.",
+  hM:"Utile après alcool, médicaments toxiques pour le foie ou sport intensif. Aide à maintenir des enzymes hépatiques optimales.",
   hF:"Détox post-pilule contraceptive. Soutien hépatique pendant les traitements hormonaux. Cyclisme hormonal allégé.",
   syn:["NAC (N-Acétyl Cystéine)","Curcumine (Curcuma)","Artichaut"],
   prec:"Interactions avec médicaments métabolisés par le foie (CYP3A4). Consulter en cas de traitement médicamenteux. Légale en France.",
@@ -1473,7 +1473,7 @@ const DATA = [
 
  {nm:"Fenugrec",kw:"fenugrec testostérone libido glycémie masse musculaire allaitement",tag:"Hormones & Vitalité",c:"var(--testo)",dispo:1,where:"Supermarché bio, pharmacie, Amazon",forme:"both",gender:"MF",
   objectifs:["testo","libido","poids","energie"],
-  fn:"Plante aromatique utilisée en cuisine et en médecine depuis l'Antiquité. Ses saponines (saponines (molécules actives naturelles)) inhibent les enzymes qui convertissent la testostérone en œstrogènes, favorisant ainsi un meilleur équilibre androgénique.",
+  fn:"Plante aromatique utilisée en cuisine et en médecine depuis l'Antiquité. Ses saponines (saponines (molécules actives naturelles)) inhibent les enzymes qui convertissent la testostérone en œstrogènes, favorisant ainsi un meilleur équilibre hormonal masculin.",
   plus:["Testostérone libre augmentée (Wilborn 2010)","Libido améliorée chez l'homme et la femme","Glycémie mieux régulée","Masse musculaire soutenue en association créatine"],
   moins:["Goût très fort (érable, curry)","Odeur corporelle possible","Effets modestes seul sans protocole adapté"],
   dose:[["Dose","500-600mg/j (extrait Testofen standardisé)"],["Timing","Avec repas"],["Durée","6-8 semaines"]],
@@ -1535,9 +1535,9 @@ const DATA = [
   objectifs:["testo","libido","energie","anti","menopause"],
   fn:"Hormone précurseur naturellement produite par les glandes surrénales, qui décline de 80% entre 25 et 75 ans. Elle se convertit en testostérone et oestrogènes selon les besoins du corps. En France, son usage est légal mais encadré.",
   plus:["Précurseur hormonal universel (testostérone + oestrogènes)","Énergie et vitalité améliorées","Libido restaurée (surtout après 50 ans)","Immunité renforcée","Densité osseuse préservée"],
-  moins:["Ordonnance recommandée en France","Effets oestrogéniques ou androgéniques imprévisibles selon l'individu","Acné et pilosité possibles chez la femme","Contre-indiqué si cancer hormono-dépendant"],
+  moins:["Ordonnance recommandée en France","Effets oestrogéniques ou hormonal (androgènes)s imprévisibles selon l'individu","Acné et pilosité possibles chez la femme","Contre-indiqué si cancer hormono-dépendant"],
   dose:[["Dose F","25-50mg/j"],["Dose H","50-100mg/j"],["Timing","Matin"],["Bilan","Hormones sanguines avant et pendant"]],
-  hM:"Déclin andropausique : DHEA peut restaurer énergie et libido. Taux sanguin à mesurer avant (DHEA-S).",
+  hM:"Déclin andropausique : DHEA peut restaurer énergie et libido. Taux sanguin à mesurer avant (DHEA-S, marqueur hormonal sanguin).",
   hF:"Ménopause : sécheresse vaginale, libido, énergie. La voie vaginale (Intrarosa®) est médicalement reconnue.",
   syn:["Zinc Bisglycinate","Vitamine D3 + K2","Magnésium Bisglycinate"],
   prec:"⚠️ <strong style='color:#ff6b6b'>Cancer hormono-dépendant (sein, prostate) : CONTRE-INDIQUÉ sans avis oncologique.</strong> Bilan hormonal complet (DHEA-S, testostérone, oestradiol) recommandé avant usage. Consultation médicale fortement conseillée en France.",
