@@ -48,15 +48,15 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://mydoseup.com/">
 <meta property="og:locale" content="fr_FR">
-<meta property="og:title" content="MyDoseUp® — Guide des Compléments Alimentaires">
-<meta property="og:description" content="Dosages exacts, effets prouvés et synergies pour plus de 40 compléments alimentaires. Guide Homme & Femme par Yanis Bensaadi. Créatine, magnésium, NMN, Shilajit, Tongkat Ali et bien plus.">
+<meta property="og:title" content="MyDoseUp® — Ton guide des compléments alimentaires">
+<meta property="og:description" content="54 fiches compléments alimentaires avec dosages exacts, effets prouvés et synergies. Guide personnalisé Homme & Femme. 100% gratuit.">
 <meta property="og:image" content="https://mydoseup.com/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:site_name" content="MyDoseUp">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="MyDoseUp® — Guide des Compléments Alimentaires">
-<meta name="twitter:description" content="Dosages exacts, effets prouvés et synergies pour 34 compléments alimentaires. Guide Homme & Femme.">
+<meta name="twitter:title" content="MyDoseUp® — Ton guide des compléments alimentaires">
+<meta name="twitter:description" content="54 fiches compléments avec dosages exacts et effets prouvés. Guide Homme & Femme. 100% gratuit.">
 <meta name="twitter:image" content="https://mydoseup.com/og-image.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -99,13 +99,18 @@ body.F .logo-txt span{color:inherit;-webkit-text-fill-color:inherit}
 body.M .g-pill.on{background:#FFF;color:#1565C0;box-shadow:0 3px 12px rgba(0,0,0,0.20);font-size:16px}
 body.F .g-pill.on{background:#FFF;color:#7B1FA2;box-shadow:0 3px 12px rgba(0,0,0,0.20);font-size:16px}
 /* SEARCH */
-.search-wrap{position:relative;padding-bottom:14px}
-.search{width:100%;padding:13px 16px 13px 42px;font-size:14px;font-family:"DM Sans",sans-serif;outline:none;border:1px solid rgba(255,255,255,0.12);border-radius:12px;color:#E2EBF5}
+.search-wrap{position:relative;padding-bottom:14px;display:flex;gap:8px;align-items:center}
+.search-inner{position:relative;flex:0 0 60%}
+.menu-btn{flex:0 0 calc(40% - 8px);height:44px;border-radius:12px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.08);color:#FFF;font-size:14px;font-weight:800;font-family:"DM Sans",sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;letter-spacing:0.04em;transition:all 0.2s}
+.menu-btn:active{background:rgba(255,255,255,0.15)}
+.menu-btn-ico{display:flex;flex-direction:column;gap:4px}
+.menu-btn-ico span{display:block;width:16px;height:2px;background:#FFF;border-radius:2px}
+.search{width:100%;padding:11px 16px 11px 42px;font-size:14px;font-family:"DM Sans",sans-serif;outline:none;border:1px solid rgba(255,255,255,0.12);border-radius:12px;color:#E2EBF5;height:44px}
 body.M .search{background:#1A2540}
 body.F .search{background:#1E1030}
 .search::placeholder{color:#3A5270}
-.s-ico{position:absolute;left:14px;top:50%;transform:translateY(-60%);font-size:16px;pointer-events:none}
-.s-clr{position:absolute;right:14px;top:50%;transform:translateY(-60%);font-size:14px;cursor:pointer;color:#3A5270;display:none}
+.s-ico{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:16px;pointer-events:none;z-index:1}
+.s-clr{position:absolute;right:10px;top:50%;transform:translateY(-50%);font-size:14px;cursor:pointer;color:#3A5270;display:none}
 /* TABS */
 .tabs{position:sticky;top:0;z-index:100;display:flex;border-bottom:1px solid rgba(255,255,255,0.06);padding:0 6px}
 body.M .tabs{background:#111827}
@@ -228,6 +233,29 @@ body.F .az-letter{background:#0F0820;color:#CE93D8}
 .prot-sep{margin-top:20px;padding-top:16px;border-top:1px dashed rgba(255,255,255,0.10)}
 .prot-sep-t{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;color:var(--muscu);margin-bottom:12px}
 
+
+/* ── DRAWER MENU ── */
+.drawer-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.70);z-index:9998;backdrop-filter:blur(4px)}
+.drawer-overlay.open{display:block}
+.drawer-panel{position:fixed;top:0;right:0;bottom:0;width:85%;max-width:340px;background:linear-gradient(160deg,#0D0818 0%,#1A0A3A 100%);z-index:9999;transform:translateX(100%);transition:transform 0.30s cubic-bezier(0.4,0,0.2,1);display:flex;flex-direction:column;padding:0}
+.drawer-panel.open{transform:translateX(0)}
+.drawer-header{display:flex;justify-content:space-between;align-items:center;padding:20px 20px 16px;border-bottom:1px solid rgba(255,255,255,0.08)}
+.drawer-logo{font-size:20px;font-weight:900;background:linear-gradient(90deg,#9C4DCC,#64B5F6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.drawer-close{width:36px;height:36px;border-radius:10px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;font-size:18px;color:#FFF;cursor:pointer;flex-shrink:0}
+.drawer-nav{flex:1;padding:16px 16px 24px;display:flex;flex-direction:column;gap:8px;overflow-y:auto}
+.drawer-item{padding:16px 16px;border-radius:14px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;gap:14px;cursor:pointer;transition:all 0.18s}
+.drawer-item.active{background:rgba(100,181,246,0.12);border-color:rgba(100,181,246,0.30)}
+.drawer-item:active{background:rgba(255,255,255,0.10)}
+.drawer-ico{font-size:22px;width:36px;text-align:center;flex-shrink:0}
+.drawer-text{flex:1}
+.drawer-nm{font-size:15px;font-weight:800;color:#FFF}
+.drawer-sub{font-size:11px;color:rgba(255,255,255,0.40);margin-top:2px}
+.drawer-arr{color:rgba(255,255,255,0.25);font-size:20px}
+.drawer-footer{display:none}
+
+
+.drawer-badge{background:rgba(100,181,246,0.20);color:#90C8FF;font-size:9px;font-weight:800;padding:2px 8px;border-radius:50px;letter-spacing:0.08em;flex-shrink:0}
+
 /* ── INFOBULLES ── */
 .tip{position:relative;cursor:help;border-bottom:1px dashed rgba(255,255,255,0.40);color:inherit}
 .tip::after{content:attr(data-tip);position:absolute;bottom:120%;left:50%;transform:translateX(-50%);background:#1E2A40;color:#E2EBF5;font-size:11px;font-weight:500;padding:8px 12px;border-radius:10px;white-space:normal;width:220px;max-width:90vw;text-align:center;line-height:1.6;z-index:9999;border:1px solid rgba(255,255,255,0.18);box-shadow:0 6px 20px rgba(0,0,0,0.6);pointer-events:none;opacity:0;transition:opacity 0.25s}
@@ -249,7 +277,7 @@ body.F .az-letter{background:#0F0820;color:#CE93D8}
 /* ─── NAV BANDEAU ─── */
 
 /* ── MENU MOBILE HAMBURGER ── */
-.nav-bandeau{position:sticky;top:0;z-index:200;background:linear-gradient(135deg,#1A0A3A 0%,#1565C0 50%,#7B1FA2 100%);box-shadow:0 4px 20px rgba(0,0,0,0.55);border-bottom:1px solid rgba(255,255,255,0.10)}
+.nav-bandeau{display:none !important;position:sticky;top:0;z-index:200;background:linear-gradient(135deg,#1A0A3A 0%,#1565C0 50%,#7B1FA2 100%);box-shadow:0 4px 20px rgba(0,0,0,0.55);border-bottom:1px solid rgba(255,255,255,0.10)}
 .nav-top-bar{display:none}
 
 .nav-hamburger{width:52px;height:52px;min-width:52px;min-height:52px;background:rgba(255,255,255,0.10);border:1.5px solid rgba(255,255,255,0.25);border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;cursor:pointer;flex-shrink:0;align-self:stretch;touch-action:manipulation}
@@ -401,9 +429,15 @@ img{pointer-events:none;-webkit-user-drag:none;user-drag:none;}
     </div>
   </div>
   <div class="search-wrap">
-    <span class="s-ico">🔍</span>
-    <input class="search" id="si" type="text" placeholder="Rechercher un complément..." oninput="doSearch(this.value)" maxlength="100" autocomplete="off" spellcheck="false" aria-label="Rechercher un complément alimentaire">
-    <span class="s-clr" id="sc" onclick="clearS()">✕</span>
+    <div class="search-inner">
+      <span class="s-ico">🔍</span>
+      <input class="search" id="si" type="text" placeholder="Rechercher..." oninput="doSearch(this.value)" maxlength="100" autocomplete="off" spellcheck="false" aria-label="Rechercher un complément alimentaire">
+      <span class="s-clr" id="sc" onclick="clearS()">✕</span>
+    </div>
+    <button class="menu-btn" onclick="openDrawer()" aria-label="Menu">
+      <div class="menu-btn-ico"><span></span><span></span><span></span></div>
+      Menu
+    </button>
   </div>
 </div>
 
@@ -706,6 +740,51 @@ img{pointer-events:none;-webkit-user-drag:none;user-drag:none;}
   </div>
 </div>
 
+
+<!-- ══ DRAWER MENU ══ -->
+<div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
+<div class="drawer-panel" id="drawerPanel">
+  <div class="drawer-header">
+    <div class="drawer-logo">MyDoseUp.com</div>
+    <button class="drawer-close" onclick="closeDrawer()">✕</button>
+  </div>
+  <nav class="drawer-nav" id="drawerNav">
+    <div class="drawer-item active" id="ditem-accueil" onclick="drawerGo('accueil')">
+      <div class="drawer-ico">🏠</div>
+      <div class="drawer-text">
+        <div class="drawer-nm">Accueil</div>
+        <div class="drawer-sub">Tes besoins & compléments</div>
+      </div>
+      <div class="drawer-badge">Actif</div>
+    </div>
+    <div class="drawer-item" id="ditem-parcours" onclick="drawerGo('parcours')">
+      <div class="drawer-ico">🏃</div>
+      <div class="drawer-text">
+        <div class="drawer-nm">Parcours Sportifs</div>
+        <div class="drawer-sub">Running, Musculation, Hyrox…</div>
+      </div>
+      <div class="drawer-arr">›</div>
+    </div>
+    <div class="drawer-item" id="ditem-experts" onclick="drawerGo('experts')">
+      <div class="drawer-ico">👨‍⚕️</div>
+      <div class="drawer-text">
+        <div class="drawer-nm">Nos Experts</div>
+        <div class="drawer-sub">Validation scientifique</div>
+      </div>
+      <div class="drawer-arr">›</div>
+    </div>
+    <div class="drawer-item" id="ditem-concept" onclick="drawerGo('concept')">
+      <div class="drawer-ico">💡</div>
+      <div class="drawer-text">
+        <div class="drawer-nm">Le Concept</div>
+        <div class="drawer-sub">Notre histoire & mission</div>
+      </div>
+      <div class="drawer-arr">›</div>
+    </div>
+
+  </nav>
+
+</div>
 <div class="footer">
   <div style="display:flex;flex-direction:column;align-items:center;gap:8px;margin-bottom:4px">
   <img src="data:image/png;base64,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" width="56" height="56" alt="MyDoseUp® — Guide compléments alimentaires" style="border-radius:14px;overflow:hidden;pointer-events:none;-webkit-user-drag:none">
@@ -2437,6 +2516,43 @@ function updateConceptStats(){
 
 buildGrid();buildAZ();updateSportCounts();updateConceptStats();
 
+// ── DRAWER MENU ──
+function openDrawer(){
+  document.getElementById('drawerOverlay').classList.add('open');
+  document.getElementById('drawerPanel').classList.add('open');
+  document.body.style.overflow='hidden';
+  // Sync switch
+  var dm=document.getElementById('dpillM');
+  var df=document.getElementById('dpillF');
+  if(dm&&df){
+    if(G==='M'){dm.style.background='#FFF';dm.style.color='#1565C0';df.style.background='';df.style.color='';}
+    else{df.style.background='#FFF';df.style.color='#7B1FA2';dm.style.background='';dm.style.color='';}
+  }
+  // Sync active item
+  ['accueil','parcours','experts','concept','legal'].forEach(function(id){
+    var el=document.getElementById('ditem-'+id);
+    if(el){
+      var isActive=document.getElementById('page-'+id) && document.getElementById('page-'+id).classList.contains('on');
+      el.classList.toggle('active',isActive);
+      var badge=el.querySelector('.drawer-badge');
+      var arr=el.querySelector('.drawer-arr');
+      if(badge) badge.style.display=isActive?'':'none';
+      if(arr) arr.style.display=isActive?'none':'';
+    }
+  });
+}
+function closeDrawer(){
+  document.getElementById('drawerOverlay').classList.remove('open');
+  document.getElementById('drawerPanel').classList.remove('open');
+  document.body.style.overflow='';
+}
+function drawerGo(pageId){
+  closeDrawer();
+  navGo(pageId, document.querySelector('.nav-btn[id="nav"+pageId.charAt(0).toUpperCase()+pageId.slice(1)]'));
+}
+
+
+
 // ── Infobulles : gestion tactile mobile
 document.addEventListener('touchstart', function(e){
   const tip = e.target.closest('.tip');
@@ -2507,7 +2623,7 @@ document.body.style.background="#0A0F1A";
     <!-- En-tête -->
     <div style="text-align:center;margin-bottom:22px">
       <img src="https://img.mailinblue.com/10888011/images/content_library/original/69c69872243bc1e24efd8f29.png"
-           alt="MyDoseUp" style="width:110px;height:110px;object-fit:contain;margin-bottom:14px;border-radius:50%" onerror="this.style.display='none'">
+           alt="MyDoseUp" style="width:140px;height:140px;object-fit:contain;margin-bottom:16px;border-radius:50%" onerror="this.style.display='none'">
       <div style="font-size:22px;font-weight:900;color:#FFF;margin-bottom:6px;line-height:1.2">Ne rate aucune dose d'énergie ⚡️</div>
       <div style="font-size:13px;color:rgba(255,255,255,0.55);line-height:1.65">Rejoins la communauté MyDoseUp ! Protocoles, études et fiches<br>directement dans ta boîte mail. 100% gratuit.</div>
     </div>
