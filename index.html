@@ -44,7 +44,7 @@
 <link rel="canonical" href="https://mydoseup.com/">
 <link rel="sitemap" type="application/xml" href="sitemap.xml">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>MyDoseUp® par Yanis Bensaadi — Guide Compléments Alimentaires | 50+ Fiches Scientifiques</title>
+<title>MyDoseUp® — Guide des Compléments Alimentaires | Dosages & Effets</title>
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://mydoseup.com/">
 <meta property="og:locale" content="fr_FR">
@@ -867,16 +867,17 @@ img{pointer-events:none;-webkit-user-drag:none;user-drag:none;}
 
 <script>
 function acceptCookies(){
-  localStorage.setItem('mydoseup_cookies','accepted');
+  try{localStorage.setItem('mydoseup_cookies','accepted');}catch(e){}
   document.getElementById('cookieBanner').style.display='none';
 }
 function refuseCookies(){
-  localStorage.setItem('mydoseup_cookies','refused');
+  try{localStorage.setItem('mydoseup_cookies','refused');}catch(e){}
   document.getElementById('cookieBanner').style.display='none';
 }
 // Show banner if no choice made yet
 (function(){
-  if(!localStorage.getItem('mydoseup_cookies')){
+  var _ck=false;try{_ck=!!localStorage.getItem('mydoseup_cookies');}catch(e){}
+  if(!_ck){
     setTimeout(function(){
       document.getElementById('cookieBanner').style.display='block';
     }, 1000);
@@ -1328,15 +1329,15 @@ const DATA = [
 
  {nm:"Shilajit",kw:"shilajit fulvique acides testosterone énergie adaptogène minéraux",tag:"Adaptogène Minéral",c:"var(--mental)",dispo:2,where:"Amazon, boutiques spécialisées — choisir produit certifié sans métaux lourds",forme:"suppl",gender:"MF",
   objectifs:["testo","energie","cerveau","anti"],
-  fn:"Résine naturelle produite par la décomposition de matière organique dans les montagnes himalayennes. Riche en acides fulviques et humiques, minéraux traces et dibenzo-alpha-pyrones. Utilisé depuis des siècles en médecine ayurvédique.",
-  plus:["Testostérone +20% en 90 jours (étude 2016)","Transport des nutriments dans les cellules via acides fulviques","Énergie et récupération améliorées","Antioxydant puissant","Fertilité masculine soutenue"],
+  fn:"Résine naturelle produite par la décomposition de matière organique dans les montagnes himalayennes. Riche en acides organiques naturels (acides fulviques) et humiques, minéraux traces et composés bioactifs naturels. Utilisé depuis des siècles en médecine ayurvédique.",
+  plus:["Testostérone +20% en 90 jours (étude 2016)","Transport des nutriments dans les cellules via acides organiques naturels (acides fulviques)","Énergie et récupération améliorées","Antioxydant puissant","Fertilité masculine soutenue"],
   moins:["Qualité extrêmement variable — risque de métaux lourds si non certifié","Peu d'études de haute qualité","Goût très fort"],
   dose:[["Dose","300-500mg/j"],["Timing","Matin avec un repas"],["Forme","Extrait purifié certifié (sans métaux lourds)"],["Durée","6-8 semaines minimum"]],
   hM:"Étude 2016 : testostérone totale +20,45% vs placebo après 90 jours chez les hommes de 45-55 ans. Amélioration du DHEA et de la FSH. Fertilité masculine améliorée.",
   hF:"Peu d'études chez la femme. Potentiel antioxydant et énergétique général. Déconseillé pendant la grossesse.",
   syn:["Ashwagandha","Zinc","Vitamine D3","Maca"],
   prec:"Choisir exclusivement du Shilajit purifié certifié (test métaux lourds). La forme brute peut contenir des contaminants. Déconseillé pendant la grossesse et l'allaitement. Interactions possibles avec médicaments antidiabétiques.",
-  food:["Pas d'équivalent alimentaire — produit naturel unique","🌿 Les acides fulviques se trouvent en traces dans les légumes issus de sols riches"]},
+  food:["Pas d'équivalent alimentaire — produit naturel unique","🌿 Les acides organiques naturels (acides fulviques) se trouvent en traces dans les légumes issus de sols riches"]},
 
  {nm:"Tongkat Ali (Eurycoma longifolia)",kw:"tongkat ali testosterone libido malaisie adaptogène érection vitalité",tag:"Libido & Testo",c:"var(--testo)",dispo:2,where:"Amazon, boutiques spécialisées — choisir extrait standardisé",forme:"suppl",gender:"MF",
   objectifs:["testo","libido","energie","mental"],
@@ -1376,7 +1377,7 @@ const DATA = [
 
  {nm:"Spiruline",kw:"spiruline algue protéine fer vitamine B12 végane détox",tag:"Super-aliment",c:"var(--detox)",dispo:1,where:"Pharmacie, supermarché bio, Amazon",forme:"both",gender:"MF",
   objectifs:["energie","immun","peau","detox","cheveux"],
-  fn:"Micro-algue bleu-vert considérée comme l'un des super-aliments les plus concentrés au monde. Riche en protéines complètes, fer, bêta-carotène et phycocyanine (pigment antioxydant). Un complément naturel polyvalent.",
+  fn:"Micro-algue bleu-vert considérée comme l'un des super-aliments les plus concentrés au monde. Riche en protéines complètes, fer, bêta-carotène et pigment bleu antioxydant naturel (phycocyanine) (pigment antioxydant). Un complément naturel polyvalent.",
   plus:["Protéines complètes (60-70% de son poids sec)","Fer végétal bien absorbé","Phycocyanine : antioxydant puissant","Immunité renforcée","Énergie et vitalité améliorées"],
   moins:["Source de B12 en spiruline = pseudo-B12 non active pour l'homme","Qualité très variable selon la provenance","Goût très fort (algue)","Contamination possible si mal produite"],
   dose:[["Dose","3-10g/j"],["Timing","Matin avec eau"],["Forme","Comprimés ou poudre (choisir label qualité)"],["Durée","Continu"]],
@@ -1438,7 +1439,7 @@ const DATA = [
   fn:"Plante médicinale européenne qui régule la prolactine (hormone de la lactation) et rééquilibre les hormones féminines. Utilisée cliniquement pour réduire les symptômes du Syndrome Prémenstruel, l'acné hormonale et les cycles irréguliers.",
   plus:["Syndrome Prémenstruel réduit (douleurs, humeur, tensions)","Cycles irréguliers régularisés","Prolactine normalisée","Acné hormonale améliorée","Douleurs mammaires cycliques réduites"],
   moins:["Résultats progressifs : 3-6 mois minimum","Contre-indiqué avec contraceptifs hormonaux (interaction)","Déconseillé si grossesse en cours"],
-  dose:[["Dose","20-40mg/j (extrait sec standardisé)"],["Timing","Matin à jeun"],["Durée","Minimum 3-6 mois"],["Forme","Extrait standardisé (agnuside 0,5%)"]],
+  dose:[["Dose","20-40mg/j (extrait sec standardisé)"],["Timing","Matin à jeun"],["Durée","Minimum 3-6 mois"],["Forme","Extrait standardisé (principe actif standardisé 0,5%)"]],
   hM:"Pas d'indication masculine établie.",
   hF:"Réduit les symptômes du Syndrome Prémenstruel dans 52% des cas (Schellenberg 2001). Régule la prolactine → cycles plus réguliers, moins de douleurs mammaires. À associer avec magnésium pour effet synergique.",
   syn:["Magnésium Bisglycinate","Vitamine B6","Inositol"],
@@ -1455,11 +1456,11 @@ const DATA = [
   hF:"Détox post-pilule contraceptive. Soutien hépatique pendant les traitements hormonaux. Cyclisme hormonal allégé.",
   syn:["NAC (N-Acétyl Cystéine)","Curcumine (Curcuma)","Artichaut"],
   prec:"Interactions avec médicaments métabolisés par le foie (CYP3A4). Consulter en cas de traitement médicamenteux. Légale en France.",
-  food:["🌿 Chardon-Marie frais (consommable mais non concentré)","🌿 Artichaut (cynarine — effet hépato-protecteur similaire mais moins puissant)"]},
+  food:["🌿 Chardon-Marie frais (consommable mais non concentré)","🌿 Artichaut (principe actif hépato-protecteur — effet hépato-protecteur similaire mais moins puissant)"]},
 
  {nm:"Fenugrec",kw:"fenugrec testostérone libido glycémie masse musculaire allaitement",tag:"Hormones & Vitalité",c:"var(--testo)",dispo:1,where:"Supermarché bio, pharmacie, Amazon",forme:"both",gender:"MF",
   objectifs:["testo","libido","poids","energie"],
-  fn:"Plante aromatique utilisée en cuisine et en médecine depuis l'Antiquité. Ses saponines (furostanol) inhibent les enzymes qui convertissent la testostérone en œstrogènes, favorisant ainsi un meilleur équilibre androgénique.",
+  fn:"Plante aromatique utilisée en cuisine et en médecine depuis l'Antiquité. Ses saponines (saponines (molécules actives naturelles)) inhibent les enzymes qui convertissent la testostérone en œstrogènes, favorisant ainsi un meilleur équilibre androgénique.",
   plus:["Testostérone libre augmentée (Wilborn 2010)","Libido améliorée chez l'homme et la femme","Glycémie mieux régulée","Masse musculaire soutenue en association créatine"],
   moins:["Goût très fort (érable, curry)","Odeur corporelle possible","Effets modestes seul sans protocole adapté"],
   dose:[["Dose","500-600mg/j (extrait Testofen standardisé)"],["Timing","Avec repas"],["Durée","6-8 semaines"]],
@@ -1581,7 +1582,7 @@ const PROTEINES = [
   moins:["Très coûteux (~50-80€/kg)","Goût souvent amer","Bénéfice vs isolat marginal pour la plupart"],
   dose:[["Protéines/dose","90%+"],["Dose","25-30g immédiat post-séance"],["Prix","~50-80€/kg"],["Pour qui","Athlètes élite ou troubles digestifs sévères"]],
   food:"Aucun équivalent alimentaire en termes de vitesse absorption."},
- {nm:"Protéine de Pois (Isolat)",fn:"Protéine végétale extraite du pois jaune, naturellement sans lactose, sans gluten et sans allergènes majeurs. Profil BCAA complet, digestibilité excellente (PDCAAS 0,93). Idéale pour les véganes ou les intolérants au lactose.",tag:"Végane",c:"var(--protein)",dispo:2,
+ {nm:"Protéine de Pois (Isolat)",fn:"Protéine végétale extraite du pois jaune, naturellement sans lactose, sans gluten et sans allergènes majeurs. Profil BCAA complet, digestibilité excellente (score de qualité protéique (PDCAAS) 0,93). Idéale pour les véganes ou les intolérants au lactose.",tag:"Végane",c:"var(--protein)",dispo:2,
   plus:["Végane 100%","Profil BCAA correct","Digestibilité excellente","Sans allergènes majeurs"],
   moins:["Leucine inférieure à la whey","Méthionine plus faible","Goût terreux naturel"],
   dose:[["Protéines/dose","80-85%"],["Dose","30-35g (légèrement plus que whey)"],["Pour qui","Véganes, intolérance lactose"]],
@@ -2148,7 +2149,8 @@ function showObj(id){
   document.getElementById("objList").innerHTML = html;
 
   // ⑥ Header compact
-  const hdr = document.querySelector('.header'); if(hdr) hdr.style.padding='6px 20px 0';
+  const hhb = document.getElementById('navHamburger'); if(hhb) hhb.style.display='none';
+  const hdr = document.querySelector('.header'); if(hdr) hdr.style.padding='8px 20px 6px';
   const lp  = document.querySelector('.logo-pill');
   if(lp){ lp.style.width='32px'; lp.style.height='32px'; lp.style.minWidth='32px'; lp.style.minHeight='32px'; }
   const lt  = document.querySelector('.logo-txt');  if(lt)  lt.style.fontSize='18px';
@@ -2176,6 +2178,7 @@ function backToGrid(){
   const ltag=document.querySelector('.logo-tag');if(ltag){ltag.style.display='';ltag.textContent='Guide des Compléments';}
   const gsw=document.querySelector('.g-switch');if(gsw)gsw.style.display='';
   const srchw=document.querySelector('.search-wrap');if(srchw)srchw.style.display='';
+  const hhb2=document.getElementById('navHamburger');if(hhb2)hhb2.style.display='';
   // Restaurer scroll
   requestAnimationFrame(()=>{ window.scrollTo(0,_savedScrollY); });
 }
