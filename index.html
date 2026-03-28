@@ -35,7 +35,7 @@
 <meta name="Google-Extended" content="noindex, nofollow">
 <meta name="PerplexityBot" content="noindex, nofollow">
 <meta name="Meta-ExternalAgent" content="noindex, nofollow">
-<meta name="description" content="Guide compléments alimentaires : dosages exacts, effets prouvés, synergies. 54 fiches scientifiques Homme &amp; Femme. Créatine, Magnésium, Oméga-3, Ashwagandha et plus. 100% gratuit.">
+<meta name="description" content="Guide compléments alimentaires : 54 fiches avec dosages exacts, effets prouvés et synergies. Personnalisé Homme &amp; Femme. 100% gratuit.">
 <meta name="keywords" content="Yanis Bensaadi, compléments alimentaires, créatine, magnésium, oméga-3, vitamine D3, ashwagandha, collagène, zinc, probiotiques, mélatonine, NMN, Shilajit, Tongkat Ali, L-Glutamine, L-Citrulline, électrolytes, spiruline, fenugrec, HMB, DHEA, DIM, Gattilier, Chardon-Marie, Quercétine, guide compléments, dosage compléments, compléments homme femme, nutrition sportive, parcours sportif, Hyrox, Running, Musculation, CrossFit, whey protéine, protéines végétales, thyroïde, bronzage solaire">
 <meta name="author" content="Yanis Bensaadi">
 <meta name="copyright" content="Copyright (c) 2026 Yanis Bensaadi — MyDoseUp® (Mydoseup.com). Marque déposée INPI n° 5239885. All rights reserved.">
@@ -277,7 +277,7 @@ body.F .az-letter{background:#0F0820;color:#CE93D8}
 /* ─── NAV BANDEAU ─── */
 
 /* ── MENU MOBILE HAMBURGER ── */
-.nav-bandeau{display:none !important;position:sticky;top:0;z-index:200;background:linear-gradient(135deg,#1A0A3A 0%,#1565C0 50%,#7B1FA2 100%);box-shadow:0 4px 20px rgba(0,0,0,0.55);border-bottom:1px solid rgba(255,255,255,0.10)}
+.nav-bandeau{position:sticky;top:0;z-index:200;background:linear-gradient(135deg,#1A0A3A 0%,#1565C0 50%,#7B1FA2 100%);box-shadow:0 4px 20px rgba(0,0,0,0.55);border-bottom:1px solid rgba(255,255,255,0.10)}
 .nav-top-bar{display:none}
 
 .nav-hamburger{width:52px;height:52px;min-width:52px;min-height:52px;background:rgba(255,255,255,0.10);border:1.5px solid rgba(255,255,255,0.25);border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;cursor:pointer;flex-shrink:0;align-self:stretch;touch-action:manipulation}
@@ -387,6 +387,16 @@ body.F{background:#0D0818 !important;color:#EDE8F8}
 ::selection{background:transparent;color:inherit;}
 ::-moz-selection{background:transparent;color:inherit;}
 img{pointer-events:none;-webkit-user-drag:none;user-drag:none;}
+
+@media(min-width:600px){
+  .menu-btn{display:none !important;}
+  .search-inner{flex:1 !important;}
+  .search-wrap{display:block !important;}
+  .nav-bandeau{display:block !important;}
+}
+@media(max-width:599px){
+  .nav-bandeau{display:none !important;}
+}
 </style>
 
 <script type="application/ld+json">
@@ -423,10 +433,7 @@ img{pointer-events:none;-webkit-user-drag:none;user-drag:none;}
       <button class="g-pill" id="gM" onclick="setG('M')">Homme</button>
       <button class="g-pill on" id="gF" onclick="setG('F')">Femme</button>
     </div>
-    <!-- Hamburger fusionné dans la ligne Homme/Femme -->
-    <div class="nav-hamburger" id="navHamburger" onclick="toggleNavMenu()" aria-label="Menu" style="flex-shrink:0">
-      <span></span><span></span><span></span>
-    </div>
+
   </div>
   <div class="search-wrap">
     <div class="search-inner">
@@ -2548,7 +2555,10 @@ function closeDrawer(){
 }
 function drawerGo(pageId){
   closeDrawer();
-  navGo(pageId, document.querySelector('.nav-btn[id="nav"+pageId.charAt(0).toUpperCase()+pageId.slice(1)]'));
+  // Map des IDs de boutons nav
+  var navIds = {accueil:'navAccueil', parcours:'navParcours', experts:'navExperts', concept:'navConcept', legal:'navLegal'};
+  var btn = navIds[pageId] ? document.getElementById(navIds[pageId]) : null;
+  navGo(pageId, btn);
 }
 
 
