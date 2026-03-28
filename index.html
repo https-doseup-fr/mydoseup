@@ -465,7 +465,7 @@ img{pointer-events:none;-webkit-user-drag:none;user-drag:none;}
 
   <!-- Dropdown (mobile) / Row (desktop) -->
   <div class="nav-dropdown" id="navDropdown">
-    <button class="nav-btn active" id="navAccueil" onclick="navGo('accueil',this)">Accueil</button>
+    <button class="nav-btn active" id="navAccueil" onclick="navGo('accueil',this)">Explorer</button>
     <button class="nav-btn" id="navParcours" onclick="navGo('parcours',this)">Parcours Sportifs</button>
     <button class="nav-btn" id="navExperts" onclick="navGo('experts',this)">Nos Experts</button>
     <button class="nav-btn" id="navConcept" onclick="navGo('concept',this)">Le Concept</button>
@@ -776,8 +776,8 @@ img{pointer-events:none;-webkit-user-drag:none;user-drag:none;}
     <div class="drawer-item active" id="ditem-accueil" onclick="drawerGo('accueil')">
       <div class="drawer-ico">🏠</div>
       <div class="drawer-text">
-        <div class="drawer-nm">Accueil</div>
-        <div class="drawer-sub">Tes besoins & compléments</div>
+        <div class="drawer-nm">Explorer</div>
+        <div class="drawer-sub">Compléments & protocoles</div>
       </div>
       <div class="drawer-badge">Actif</div>
     </div>
@@ -820,10 +820,8 @@ img{pointer-events:none;-webkit-user-drag:none;user-drag:none;}
 </div>
   <div class="footer-sub">Guide des Compléments Alimentaires</div>
   <div class="footer-legal">
-    Les informations présentées sont à titre éducatif uniquement.<br>
-    Consultez un professionnel de santé avant tout usage de compléments alimentaires.<br><br>
-    © 2026 MyDoseUp® · Yanis Bensaadi<br>
-    Marque déposée INPI n° 5239885 · Tous droits réservés
+    ⚠️ Informations à titre éducatif uniquement — consultez un professionnel de santé avant tout usage.<br>
+    © 2026 MyDoseUp® · Yanis Bensaadi · INPI n° 5239885 · Tous droits réservés
   </div>
   <div class="footer-credits">📩 contact&#64;mydoseup&#46;com</div>
   <div style="margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.08)">
@@ -2454,8 +2452,19 @@ function doSearch(val){
   const sp=document.getElementById("searchPanel");
   document.getElementById("sc").style.display=val?"block":"none";
   if(val && val.trim()){
-    // Forcer retour sur accueil pour la recherche
-    navGo('accueil', document.querySelector('.nav-btn'));
+    // S'assurer qu'on est sur la page accueil SANS reset (flag true)
+    const currentPage=document.querySelector('.page-view.on');
+    if(!currentPage || currentPage.id !== 'page-accueil'){
+      // Afficher accueil sans backToGrid
+      document.querySelectorAll('.page-view').forEach(p=>p.classList.remove('on'));
+      const pa=document.getElementById('page-accueil');
+      if(pa) pa.classList.add('on');
+      const tb=document.getElementById('tabsBar');
+      if(tb) tb.style.display='';
+    }
+    // Restaurer header si masqué
+    const hdr=document.querySelector('.header');
+    if(hdr) hdr.style.display='';
   }
   if(!val.trim()){sp.classList.remove("on");document.getElementById("panel-obj").classList.add("on");return;}
   document.querySelectorAll(".panel").forEach(p=>p.classList.remove("on"));
