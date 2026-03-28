@@ -128,7 +128,7 @@ body.F .tab.on{color:#FFF;background:linear-gradient(90deg,rgba(123,31,162,0.7),
 .obj-results{padding:0 14px 14px;display:none}
 .obj-results.on{display:block}
 .obj-back{display:flex;align-items:center;gap:8px;padding:10px 0 9px;cursor:pointer;border-bottom:1px solid rgba(255,255,255,0.08);margin-bottom:12px}
-.obj-back-btn{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;border:2px solid rgba(255,255,255,0.25);background:rgba(255,255,255,0.12);color:#FFF;font-weight:900}
+.obj-back-btn{height:32px;padding:0 12px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;border:1.5px solid rgba(255,255,255,0.30);background:rgba(255,255,255,0.12);color:#FFF;white-space:nowrap;gap:4px}
 .obj-back-title{font-size:16px;font-weight:700;color:#FFF}
 /* SUPPLEMENT CARD */
 .sc{border-radius:18px;margin-bottom:10px;overflow:hidden;border:1px solid rgba(255,255,255,0.18);position:relative;transition:border-color 0.2s}
@@ -224,9 +224,9 @@ body.F .az-letter{background:#0F0820;color:#CE93D8}
 .obj-tile:hover .obj-cta-arrow{transform:translateX(2px)}
 /* Header catégorie compact : icône + titre côte à côte */
 .obj-back{display:flex;align-items:center;gap:8px;padding:10px 0 9px;cursor:pointer;border-bottom:1px solid rgba(255,255,255,0.08);margin-bottom:12px}
-.obj-back-ico{width:26px;height:26px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:rgba(255,255,255,0.12);border-radius:8px;font-size:14px}
+.obj-back-ico{width:34px;height:34px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:rgba(255,255,255,0.15);border-radius:10px;font-size:18px}
 .obj-back-content{display:flex;align-items:center;gap:8px;flex:1}
-.obj-back-title{font-size:15px;font-weight:700;color:#FFF}
+.obj-back-title{font-size:17px;font-weight:800;color:#FFF}
 .obj-back-arr{width:26px;height:26px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:13px;border:1px solid rgba(255,255,255,0.20);background:rgba(255,255,255,0.08);color:#FFF;font-weight:900;flex-shrink:0}
 
 /* ─── NAV BANDEAU ─── */
@@ -278,7 +278,7 @@ body.F .az-letter{background:#0F0820;color:#CE93D8}
 .timing-view{display:none;padding:0 14px 20px}
 .timing-view.on{display:block;animation:fadeUp 0.2s ease}
 .timing-back{display:flex;align-items:center;gap:10px;padding:14px 0 12px;cursor:pointer;border-bottom:1px solid rgba(255,255,255,0.08);margin-bottom:16px}
-.timing-back-btn{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;border:2px solid rgba(255,255,255,0.25);background:rgba(255,255,255,0.10);color:#FFF}
+.timing-back-btn{height:36px;padding:0 14px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;border:1.5px solid rgba(255,255,255,0.30);background:rgba(255,255,255,0.10);color:#FFF;white-space:nowrap}
 .timing-sport-title{font-size:18px;font-weight:700;color:#FFF}
 .timing-options{display:flex;flex-direction:column;gap:10px;margin-bottom:20px}
 .timing-btn{border-radius:14px;padding:16px 18px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.06);cursor:pointer;text-align:left;font-family:"DM Sans",sans-serif;transition:all 0.2s;display:flex;align-items:center;gap:14px}
@@ -416,7 +416,7 @@ img{pointer-events:none;-webkit-user-drag:none;user-drag:none;}
     <div class="obj-grid" id="objGrid"></div>
     <div class="obj-results" id="objResults">
       <div class="obj-back" onclick="backToGrid()">
-        <div class="obj-back-btn">←</div>
+        <div class="obj-back-btn">← Retour</div>
         <div class="obj-back-title" id="objTitle"></div>
       </div>
       <div id="objList"></div>
@@ -503,7 +503,7 @@ img{pointer-events:none;-webkit-user-drag:none;user-drag:none;}
   <!-- Vue timing (Avant / Pendant / Après) -->
   <div class="timing-view" id="timingView">
     <div class="timing-back" onclick="backToSportGrid()">
-      <div class="timing-back-btn">←</div>
+      <div class="timing-back-btn">← Retour</div>
       <div class="timing-sport-title" id="timingSportTitle"></div>
     </div>
     <div class="timing-options">
@@ -1892,6 +1892,18 @@ function navGo(pageId, btn){
   // Afficher/cacher les onglets uniquement sur accueil
   const tabsBar = document.getElementById('tabsBar');
   if(tabsBar) tabsBar.style.display = (pageId==='accueil') ? '' : 'none';
+  // Reset complet de la vue accueil : retour à la grille + header visible
+  if(pageId === 'accueil') {
+    backToGrid();
+    // Remettre le 1er onglet (Ton besoin) actif
+    document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));
+    const firstTab = document.querySelector('.tab');
+    if(firstTab) firstTab.classList.add('on');
+    document.querySelectorAll('.panel').forEach(p=>p.classList.remove('on'));
+    const objPanel = document.getElementById('panel-obj');
+    if(objPanel) objPanel.classList.add('on');
+    if(tabsBar) tabsBar.style.display = '';
+  }
   // Scroll top immédiat
   document.documentElement.scrollTop = 0;
   document.body.scrollTop = 0;
@@ -2077,6 +2089,7 @@ function showSport(sportKey, sportName){
 }
 
 function backToSportGrid(){
+  window.scrollTo(0,0); document.documentElement.scrollTop=0; document.body.scrollTop=0;
   document.getElementById('sportGrid').style.display = '';
   document.getElementById('timingView').classList.remove('on');
   document.getElementById('timingResults').classList.remove('on');
@@ -2148,17 +2161,11 @@ function showObj(id){
   if(id==="muscu") html += `<div class="prot-sep"><div class="prot-sep-t">Protéines en Poudre</div>${PROTEINES.map(protCard).join("")}</div>`;
   document.getElementById("objList").innerHTML = html;
 
-  // ⑥ Header compact
+  // ⑥ Header compact — masquer tout
+  const hdr = document.querySelector('.header'); if(hdr) hdr.style.display='none';
   const hhb = document.getElementById('navHamburger'); if(hhb) hhb.style.display='none';
-  const hdr = document.querySelector('.header'); if(hdr) hdr.style.padding='8px 20px 6px';
-  const lp  = document.querySelector('.logo-pill');
-  if(lp){ lp.style.width='32px'; lp.style.height='32px'; lp.style.minWidth='32px'; lp.style.minHeight='32px'; }
-  const lt  = document.querySelector('.logo-txt');  if(lt)  lt.style.fontSize='18px';
-  const lw  = document.querySelector('.logo-wrap');
-  if(lw){ lw.style.flexDirection='row'; lw.style.justifyContent='center'; lw.style.alignItems='center'; lw.style.gap='10px'; lw.style.minHeight='auto'; }
-  const ltag= document.querySelector('.logo-tag');  if(ltag) ltag.style.display='none';
-  const gsw = document.querySelector('.g-switch');   if(gsw)  gsw.style.display='none';
-  const srchw=document.querySelector('.search-wrap');if(srchw)srchw.style.display='none';
+  const gsw = document.querySelector('.g-switch'); if(gsw) gsw.style.display='none';
+  const srchw = document.querySelector('.search-wrap'); if(srchw) srchw.style.display='none';
 
   // ⑦ Scroll final après injection DOM
   requestAnimationFrame(()=>{ window.scrollTo(0,0); });
@@ -2176,6 +2183,7 @@ function backToGrid(){
   const lw=document.querySelector('.logo-wrap');if(lw){lw.style.flexDirection='';lw.style.justifyContent='';lw.style.alignItems='';lw.style.gap='';lw.style.minHeight='';}
   // Remettre le bon texte du logo-tag
   const ltag=document.querySelector('.logo-tag');if(ltag){ltag.style.display='';ltag.textContent='Guide des Compléments';}
+  const hdr2=document.querySelector('.header');if(hdr2)hdr2.style.display='';
   const gsw=document.querySelector('.g-switch');if(gsw)gsw.style.display='';
   const srchw=document.querySelector('.search-wrap');if(srchw)srchw.style.display='';
   const hhb2=document.getElementById('navHamburger');if(hhb2)hhb2.style.display='';
