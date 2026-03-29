@@ -43,7 +43,7 @@
 <meta name="creator" content="Yanis Bensaadi">
 <link rel="canonical" href="https://mydoseup.com/">
 <link rel="sitemap" type="application/xml" href="sitemap.xml">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MyDoseUp® — Guide Compléments Alimentaires | Dosages & Effets</title>
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://mydoseup.com/">
@@ -67,6 +67,9 @@
 <link rel="shortcut icon" href="favicon.ico">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="dns-prefetch" href="https://fonts.gstatic.com">
+<link rel="preload" href="https://fonts.gstatic.com/s/dmsans/v15/rP2Hp2ywxg089UriCZOIHQ.woff2" as="font" type="font/woff2" crossorigin fetchpriority="high">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
@@ -130,7 +133,7 @@ body.F .tab.on{color:#FFF;background:linear-gradient(90deg,rgba(123,31,162,0.7),
 @keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 /* OBJ GRID */
 .obj-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:16px 14px}
-.obj-tile{border-radius:20px;padding:16px 13px 14px;cursor:pointer;transition:transform 0.15s;position:relative;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,0.35);background:var(--c);display:flex;flex-direction:column;will-change:transform}
+.obj-tile{border-radius:20px;padding:16px 13px 14px;cursor:pointer;transition:transform 0.15s;position:relative;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,0.35);background:var(--c);display:flex;flex-direction:column}
 .obj-tile::before{content:"";position:absolute;top:-25px;right:-25px;width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,0.10)}
 .obj-tile:active{transform:scale(0.96)}
 .obj-ico{width:32px;height:32px;margin-bottom:10px;display:block}.obj-ico svg{width:32px;height:32px;stroke:rgba(255,255,255,0.92)}.obj-back-ico-reduced{width:16px;height:16px;display:inline-block}
@@ -412,23 +415,48 @@ img{pointer-events:none;-webkit-user-drag:none;user-drag:none;}
   .nav-bandeau{display:none !important;}
   .menu-btn{display:flex !important;}
 }
+
+/* ── AZ FAMILLES ── */
+.az-fam-section{margin-bottom:8px}
+.az-fam-header{display:flex;align-items:center;gap:10px;padding:14px 14px 8px;cursor:pointer;user-select:none;position:sticky;top:0;z-index:10;background:var(--az-bg,#0A0F1A)}
+body.F .az-fam-header{--az-bg:#0D0818}
+.az-fam-accent{width:3px;height:32px;border-radius:3px;flex-shrink:0}
+.az-fam-title{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:0.13em;color:#fff;flex:1}
+.az-fam-count{font-size:11px;color:rgba(255,255,255,0.35);font-weight:600}
+.az-fam-chevron{font-size:12px;color:rgba(255,255,255,0.35);transition:transform 0.2s;margin-left:auto}
+.az-fam-section.collapsed .az-fam-chevron{transform:rotate(-90deg)}
+.az-fam-items{padding:0 14px 8px}
+.az-fam-section.collapsed .az-fam-items{display:none}
+/* List item — compact clickable row that expands into sc card */
+.az-li{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:12px;cursor:pointer;margin-bottom:4px;border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.03);transition:background 0.15s,border-color 0.15s;position:relative;overflow:hidden}
+.az-li::before{content:'';position:absolute;inset:0;background:var(--c);opacity:0.10;pointer-events:none}
+.az-li:active{background:rgba(255,255,255,0.07)}
+.az-li-dot{width:8px;height:8px;border-radius:50%;background:var(--c);flex-shrink:0}
+.az-li-nm{font-size:13px;font-weight:700;color:#fff;flex:1;line-height:1.3}
+.az-li-fn{font-size:11px;color:rgba(255,255,255,0.45);line-height:1.35;margin-top:2px}
+.az-li-tag{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--c);opacity:0.9;background:rgba(255,255,255,0.07);border-radius:4px;padding:2px 5px;flex-shrink:0}
+.az-li-arrow{font-size:11px;color:rgba(255,255,255,0.22);flex-shrink:0}
+.az-li-wrap{padding:0 0 4px}
+/* When AZ-item is expanded -> show sc card below */
+.az-li-card{display:none;margin-bottom:6px}
+.az-li-card.open{display:block}
+.az-fam-total{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;color:rgba(255,255,255,0.20);padding:10px 14px 4px}
+
+/* ── CWV PERFORMANCE ── */
+/* Reduce layout recalc on off-screen page sections */
+.page-view:not(.on){content-visibility:auto;contain-intrinsic-size:0 600px}
+/* Contain paint/layout on cards to avoid full-page reflow */
+.sc{contain:layout style}
+.obj-tile{contain:layout style}
+/* Stabilize sport grid tiles */
+.sport-tile{contain:layout style}
+/* Prevent CLS from drawer animation */
+.drawer-panel{will-change:transform}
 </style>
 
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebSite","name":"MyDoseUp","url":"https://mydoseup.com","description":"Guide des compléments alimentaires — dosages, effets et conseils personnalisés par genre.","author":{"@type":"Person","name":"Yanis Bensaadi"},"publisher":{"@type":"Organization","name":"MyDoseUp","url":"https://mydoseup.com","logo":{"@type":"ImageObject","url":"https://mydoseup.com/og-image.png"}},"potentialAction":{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://mydoseup.com/?q={search_term_string}"},"query-input":"required name=search_term_string"}}
-</script>
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"ItemList","name":"Guide des Compléments Alimentaires","description":"54 fiches complètes sur les compléments alimentaires avec dosages, effets et synergies","url":"https://mydoseup.com","numberOfItems":54,"itemListElement":[{"@type":"ListItem","position":1,"name":"Ashwagandha (KSM-66)","url":"https://mydoseup.com/#ashwagandha--ksm-66"},{"@type":"ListItem","position":2,"name":"Acide Hyaluronique","url":"https://mydoseup.com/#acide-hyaluronique"},{"@type":"ListItem","position":3,"name":"Oméga-3 (EPA/DHA)","url":"https://mydoseup.com/#oméga-3--epa/dha"},{"@type":"ListItem","position":4,"name":"Bêta-Alanine","url":"https://mydoseup.com/#bêta-alanine"},{"@type":"ListItem","position":5,"name":"Biotine (Vitamine B8)","url":"https://mydoseup.com/#biotine--vitamine-b8"},{"@type":"ListItem","position":6,"name":"Berbérine","url":"https://mydoseup.com/#berbérine"},{"@type":"ListItem","position":7,"name":"Collagène Marin","url":"https://mydoseup.com/#collagène-marin"},{"@type":"ListItem","position":8,"name":"Créatine Monohydrate","url":"https://mydoseup.com/#créatine-monohydrate"},{"@type":"ListItem","position":9,"name":"Curcumine (Curcuma)","url":"https://mydoseup.com/#curcumine--curcuma"},{"@type":"ListItem","position":10,"name":"Vitamine D3 + K2","url":"https://mydoseup.com/#vitamine-d3--k2"},{"@type":"ListItem","position":11,"name":"Fer Bisglycinate","url":"https://mydoseup.com/#fer-bisglycinate"},{"@type":"ListItem","position":12,"name":"Gingembre","url":"https://mydoseup.com/#gingembre"},{"@type":"ListItem","position":13,"name":"L-Carnitine","url":"https://mydoseup.com/#l-carnitine"},{"@type":"ListItem","position":14,"name":"Magnésium Bisglycinate","url":"https://mydoseup.com/#magnésium-bisglycinate"},{"@type":"ListItem","position":15,"name":"MSM (Méthylsulfonylméthane)","url":"https://mydoseup.com/#msm--méthylsulfonylméthane"},{"@type":"ListItem","position":16,"name":"Mélatonine","url":"https://mydoseup.com/#mélatonine"},{"@type":"ListItem","position":17,"name":"Probiotiques","url":"https://mydoseup.com/#probiotiques"},{"@type":"ListItem","position":18,"name":"CoQ10 (Ubiquinol)","url":"https://mydoseup.com/#coq10--ubiquinol"},{"@type":"ListItem","position":19,"name":"Rhodiola Rosea","url":"https://mydoseup.com/#rhodiola-rosea"},{"@type":"ListItem","position":20,"name":"Silicium Organique","url":"https://mydoseup.com/#silicium-organique"}]}
-</script>
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
-{"@type":"Question","name":"Quel est le meilleur complément pour la musculation ?","acceptedAnswer":{"@type":"Answer","text":"La créatine monohydrate est le complément sportif le plus étudié au monde. Elle augmente la force de 8% en 4-6 semaines et la masse musculaire. 5g/j suffisent sans phase de charge."}},
-{"@type":"Question","name":"Quel complément pour le Syndrome Prémenstruel (SPM) et les douleurs menstruelles ?","acceptedAnswer":{"@type":"Answer","text":"Le magnésium bisglycinate (300mg/j) réduit les tensions et l'irritabilité du Syndrome Prémenstruel (SPM) de 34%. Les oméga-3 réduisent les douleurs menstruelles aussi efficacement que l'ibuprofène."}},
-{"@type":"Question","name":"Comment augmenter naturellement la testostérone ?","acceptedAnswer":{"@type":"Answer","text":"Le zinc, la vitamine D3 et le magnésium sont les 3 piliers naturels de la testostérone. L'ashwagandha KSM-66 augmente la testostérone libre de 15% en 90 jours."}},
-{"@type":"Question","name":"Quel complément pour dormir mieux ?","acceptedAnswer":{"@type":"Answer","text":"Le magnésium bisglycinate le soir est la base. La mélatonine (0,5-1mg) aide à l'endormissement. La L-théanine réduit l'anxiété sans somnolence."}},
-{"@type":"Question","name":"Quelle vitamine manque le plus souvent en France ?","acceptedAnswer":{"@type":"Answer","text":"La vitamine D3 : 80% des Français sont déficients en hiver. 2000-4000 UI/j avec K2 est la supplémentation de base recommandée."}}
-]}
-</script>
+
+
+
 </head>
 <body class="F">
 <div class="app-wrapper">
@@ -436,7 +464,7 @@ img{pointer-events:none;-webkit-user-drag:none;user-drag:none;}
 <div class="header">
   <div class="logo-wrap">
     <div class="logo-pill" style="width:64px;height:64px;flex-shrink:0;background:transparent;display:flex;align-items:center;justify-content:center">
-<img src="data:image/png;base64,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" width="64" height="64" alt="MyDoseUp® — Logo du guide des compléments alimentaires par Yanis Bensaadi" style="width:64px;height:64px;object-fit:contain;display:block;pointer-events:none;-webkit-user-drag:none">
+<img src="data:image/png;base64,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" width="64" height="64" alt="MyDoseUp® — Logo du guide des compléments alimentaires par Yanis Bensaadi" style="width:64px;height:64px;object-fit:contain;display:block;pointer-events:none;-webkit-user-drag:none" fetchpriority="high" decoding="sync">
 </div>
     <div>
       <div class="logo-txt">MyDoseUp<span class="logo-com">.com</span></div>
@@ -2416,19 +2444,210 @@ function buildGrid(){
 }
 
 function buildAZ(){
-  const allItems=[
-    ...fdAll().map(s=>({type:"supp",data:s,nm:s.nm})),
-    ...PROTEINES.map(p=>({type:"prot",data:p,nm:p.nm}))
-  ].sort((a,b)=>a.nm.localeCompare(b.nm,"fr"));
-  const total=allItems.length;
-  document.getElementById("azContent").innerHTML=
-    `<div style="padding:12px 14px 4px;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;color:rgba(255,255,255,0.25)">${total} entrées — A à Z</div>`+
-    `<div style="padding:0 14px 14px">`+
-    allItems.map(item=>item.type==="supp"?card(item.data,null,true):protCard(item.data)).join("")+
-    `</div>`;
+  // Mapping supplément → famille avec emoji + couleur CSS var
+  const FAM_MAP = {
+    "Vitamine D3 + K2":                       "Vitamines",
+    "Vitamine C":                              "Vitamines",
+    "Vitamine B12 (Méthylcobalamine)":    "Vitamines",
+    "Biotine (Vitamine B8)":                   "Vitamines",
+    "Vitamine A (Bêta-carotène)":    "Vitamines",
+    "Magnésium Bisglycinate":             "Minéraux",
+    "Zinc Bisglycinate":                       "Minéraux",
+    "Fer Bisglycinate":                        "Minéraux",
+    "Sélénium":                      "Minéraux",
+    "Bore (Boron)":                            "Minéraux",
+    "Silicium Organique":                      "Minéraux",
+    "Hydratation & Électrolytes":         "Minéraux",
+    "Thyroïde (Iode + Sélénium)": "Minéraux",
+    "Berbérine":                          "Minéraux",
+    "Créatine Monohydrate":              "Acides Aminés & Performance",
+    "L-Glutamine":                             "Acides Aminés & Performance",
+    "L-Citrulline":                            "Acides Aminés & Performance",
+    "L-Carnitine":                             "Acides Aminés & Performance",
+    "Bêta-Alanine":                       "Acides Aminés & Performance",
+    "L-Théanine":                         "Acides Aminés & Performance",
+    "Glycine":                                 "Acides Aminés & Performance",
+    "HMB (Hydroxy-Méthyl-Butyrate)":     "Acides Aminés & Performance",
+    "Ashwagandha (KSM-66)":                    "Adaptogènes",
+    "Rhodiola Rosea":                          "Adaptogènes",
+    "Shilajit":                                "Adaptogènes",
+    "Maca (Lepidium meyenii)":                 "Adaptogènes",
+    "Oméga-3 (EPA/DHA)":                 "Oméga & Lipides",
+    "CoQ10 (Ubiquinol)":                       "Oméga & Lipides",
+    "Probiotiques":                            "Probiotiques & Détox",
+    "Spiruline":                               "Probiotiques & Détox",
+    "NAC (N-Acétyl Cystéine)":      "Probiotiques & Détox",
+    "Chardon-Marie (Silymarine)":              "Probiotiques & Détox",
+    "Curcumine (Curcuma)":                     "Antioxydants",
+    "Gingembre":                               "Antioxydants",
+    "Resvératrol":                        "Antioxydants",
+    "Lutéine + Zéaxanthine":        "Antioxydants",
+    "Astaxanthine":                            "Antioxydants",
+    "Myrtille (Anthocyanines)":                "Antioxydants",
+    "Quercétine":                         "Antioxydants",
+    "Tongkat Ali (Eurycoma longifolia)":       "Hormonal & Testo",
+    "Tribulus Terrestris":                     "Hormonal & Testo",
+    "Fenugrec":                                "Hormonal & Testo",
+    "DHEA":                                    "Hormonal & Testo",
+    "Gattilier (Vitex agnus-castus)":          "Hormonal & Testo",
+    "Inositol (Myo-Inositol)":                 "Hormonal & Testo",
+    "DIM (Diindolylméthane)":            "Hormonal & Testo",
+    "Damiana (Turnera diffusa)":               "Hormonal & Testo",
+    "NMN (Nicotinamide Mononucléotide)": "Anti-âge & Longévité",
+    "Collagène Marin":                   "Peau & Beauté",
+    "Acide Hyaluronique":                      "Peau & Beauté",
+    "MSM (Méthylsulfonylméthane)":  "Peau & Beauté",
+    "Bronzage & Préparation Solaire":    "Peau & Beauté",
+    "Mélatonine":                         "Spécial",
+    "Croissance & Immunité Enfant":     "Spécial",
+  };
+
+    // Familles ordonn\u00e9es avec config
+  const FAMILLES = [
+    {id:"vitamines",         label:"Vitamines",                emoji:"☀️", color:"var(--energie)"},
+    {id:"mineraux",          label:"Minéraux",                  emoji:"⚡", color:"var(--immun)"},
+    {id:"aa-perf",           label:"Acides Aminés & Performance",emoji:"💪", color:"var(--muscu)"},
+    {id:"omega",             label:"Oméga & Lipides",           emoji:"🐟", color:"var(--coeur)"},
+    {id:"adaptogenes",       label:"Adaptogènes",               emoji:"🌿", color:"var(--mental)"},
+    {id:"probiotiques",      label:"Probiotiques & Détox",      emoji:"🦠", color:"var(--digest)"},
+    {id:"antioxydants",      label:"Antioxydants",              emoji:"🛡️", color:"var(--anti)"},
+    {id:"hormonal",          label:"Hormonal & Testo",          emoji:"🔥", color:"var(--testo)"},
+    {id:"antiage",           label:"Anti-âge & Longévité",      emoji:"⏳", color:"var(--libido)"},
+    {id:"peau",              label:"Peau & Beauté",             emoji:"✨", color:"var(--peau)"},
+    {id:"proteines",         label:"Protéines",                 emoji:"🥛", color:"var(--protein)"},
+    {id:"special",           label:"Spécial",                   emoji:"⭐", color:"var(--os)"},
+  ];
+
+  // Map famille label → config
+  const FAM_CFG = {};
+  FAMILLES.forEach(f=>FAM_CFG[f.label]=f);
+
+  // Assign each supplement to ONE famille (priority order below)
+  const FAM_PRIORITY = [
+    "Vitamines","Minéraux","Acides Aminés & Performance",
+    "Oméga & Lipides","Adaptogènes","Probiotiques & Détox",
+    "Antioxydants","Hormonal & Testo","Anti-âge & Longévité",
+    "Peau & Beauté","Spécial"
+  ];
+
+  // Build lookup: nm → famille (first match wins = priority order)
+  const NM_FAM = {};
+  FAM_PRIORITY.forEach(fam=>{
+    Object.entries(FAM_MAP).forEach(([nm,f])=>{
+      if(f===fam && !NM_FAM[nm]) NM_FAM[nm]=fam;
+    });
+  });
+
+  // Group DATA supplements
+  const groups = {};
+  FAMILLES.forEach(f=>{groups[f.label]=[];});
+  groups["Protéines"]=[];
+
+  fdAll().forEach(s=>{
+    const fam = NM_FAM[s.nm] || _guessFamily(s);
+    if(!groups[fam]) groups[fam]=[];
+    groups[fam].push({type:"supp",data:s});
+  });
+  PROTEINES.forEach(p=>{
+    groups["Protéines"].push({type:"prot",data:p});
+  });
+
+  // Sort items within each group alphabetically
+  Object.keys(groups).forEach(k=>{
+    groups[k].sort((a,b)=>a.data.nm.localeCompare(b.data.nm,"fr"));
+  });
+
+  const total = fdAll().length + PROTEINES.length;
+
+  let html = `<div class="az-fam-total">${total} compléments — par famille</div>`;
+
+  FAMILLES.forEach(fam=>{
+    const items = groups[fam.label]||[];
+    if(!items.length) return;
+    html += _renderFamSection(fam, items);
+  });
+
+  document.getElementById("azContent").innerHTML = html;
+
+  // Bind collapse toggles
+  document.querySelectorAll(".az-fam-header").forEach(hdr=>{
+    hdr.addEventListener("click", function(){
+      this.closest(".az-fam-section").classList.toggle("collapsed");
+    });
+  });
+
+  // Bind list item clicks → expand sc card inline
+  document.querySelectorAll(".az-li").forEach(li=>{
+    li.addEventListener("click", function(e){
+      e.stopPropagation();
+      const cardEl = this.nextElementSibling;
+      if(!cardEl || !cardEl.classList.contains("az-li-card")) return;
+      const isOpen = cardEl.classList.contains("open");
+      // Close all open cards in same family
+      const section = this.closest(".az-fam-items");
+      if(section){
+        section.querySelectorAll(".az-li-card.open").forEach(c=>c.classList.remove("open"));
+        section.querySelectorAll(".az-li.active-li").forEach(l=>l.classList.remove("active-li"));
+      }
+      if(!isOpen){
+        cardEl.classList.add("open");
+        this.classList.add("active-li");
+        // Scroll into view smoothly
+        setTimeout(()=>cardEl.scrollIntoView({behavior:"smooth",block:"nearest"}),50);
+      }
+    });
+  });
 }
 
-// [showObj removed - using version above]
+function _guessFamily(s){
+  const tag = (s.tag||"").toLowerCase();
+  const kw  = (s.kw||"").toLowerCase();
+  if(/adaptog/.test(tag)||/adaptog/.test(kw)) return "Adaptogènes";
+  if(/oméga|omega|lipide|coeur/.test(kw)) return "Oméga & Lipides";
+  if(/probio|microbiote|intestin/.test(kw)) return "Probiotiques & Détox";
+  if(/antioxydant|vision|myrtille/.test(tag)) return "Antioxydants";
+  if(/testo|libido|hormonal|bore/.test(tag)) return "Hormonal & Testo";
+  if(/anti.?âge|longévité|nmn/.test(tag)) return "Anti-âge & Longévité";
+  if(/peau|cheveux|collagène|beauté/.test(tag)) return "Peau & Beauté";
+  if(/vitamine/.test(tag)||/vitamine/.test(kw)) return "Vitamines";
+  if(/minéral|magnés|zinc|fer|sélén|bore|silicium|électrolyte|iode/.test(kw)) return "Minéraux";
+  if(/acide aminé|créatine|citrulline|glutamine|carnitine|bêta|théanine|glycine|hmb/.test(kw)) return "Acides Aminés & Performance";
+  return "Spécial";
+}
+
+function _renderFamSection(fam, items){
+  const cardItems = items.map(item=>{
+    const d = item.data;
+    const nm = d.nm;
+    const fn = (d.fn||"").slice(0,90).replace(/'/g,"'");
+    const fnShort = fn.length < (d.fn||"").length ? fn+"…" : fn;
+    const cardHtml = item.type==="supp" ? card(d,null,true) : protCard(d);
+    return `<div class="az-li-wrap">
+      <div class="az-li" style="--c:${d.c}">
+        <div class="az-li-dot"></div>
+        <div style="flex:1;min-width:0">
+          <div class="az-li-nm">${nm}</div>
+          <div class="az-li-fn">${fnShort}</div>
+        </div>
+        <span class="az-li-tag">${(d.tag||"").replace(/[⭐]/g,"").trim()}</span>
+        <span class="az-li-arrow">›</span>
+      </div>
+      <div class="az-li-card">${cardHtml}</div>
+    </div>`;
+  }).join("");
+
+  return `<div class="az-fam-section" id="azfam-${fam.id}">
+    <div class="az-fam-header">
+      <div class="az-fam-accent" style="background:${fam.color}"></div>
+      <div class="az-fam-title">${fam.emoji} ${fam.label}</div>
+      <div class="az-fam-count">${items.length}</div>
+      <span class="az-fam-chevron">▾</span>
+    </div>
+    <div class="az-fam-items">${cardItems}</div>
+  </div>`;
+}
+
+
 
 function switchTab(id,btn){
   document.querySelectorAll(".tab").forEach(b=>b.classList.remove("on"));
@@ -2553,7 +2772,16 @@ function updateConceptStats(){
   if(el2) el2.textContent = totalCat;
 }
 
-buildGrid();buildAZ();updateSportCounts();updateConceptStats();
+buildGrid();
+// Defer non-critical renders to after first paint (improves LCP + INP)
+(function(){
+  var idle = window.requestIdleCallback || function(cb){setTimeout(cb,1)};
+  idle(function(){
+    buildAZ();
+    updateSportCounts();
+    updateConceptStats();
+  });
+})();
 
 // ── DRAWER MENU ──
 function openDrawer(){
@@ -2664,7 +2892,7 @@ document.body.style.background="#0A0F1A";
 
     <!-- En-tête -->
     <div style="text-align:center;margin-bottom:22px">
-      <img src="https://img.mailinblue.com/10888011/images/content_library/original/69c69872243bc1e24efd8f29.png"
+      <img src="https://img.mailinblue.com/10888011/images/content_library/original/69c69872243bc1e24efd8f29.png" loading="lazy" decoding="async"
            alt="MyDoseUp" style="width:140px;height:140px;object-fit:contain;margin-bottom:16px;border-radius:50%" onerror="this.style.display='none'">
       <div style="font-size:22px;font-weight:900;color:#FFF;margin-bottom:6px;line-height:1.2">Ne rate aucune dose d'énergie ⚡️</div>
       <div style="font-size:13px;color:rgba(255,255,255,0.55);line-height:1.65">Rejoins la communauté MyDoseUp ! Protocoles, études et fiches<br>directement dans ta boîte mail. 100% gratuit.</div>
@@ -2728,6 +2956,23 @@ document.body.style.background="#0A0F1A";
   </div>
 </div>
 
+
+<!-- Schema.org structured data (deferred from head for LCP) -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","name":"MyDoseUp","url":"https://mydoseup.com","description":"Guide des compléments alimentaires — dosages, effets et conseils personnalisés par genre.","author":{"@type":"Person","name":"Yanis Bensaadi"},"publisher":{"@type":"Organization","name":"MyDoseUp","url":"https://mydoseup.com","logo":{"@type":"ImageObject","url":"https://mydoseup.com/og-image.png"}},"potentialAction":{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://mydoseup.com/?q={search_term_string}"},"query-input":"required name=search_term_string"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"ItemList","name":"Guide des Compléments Alimentaires","description":"54 fiches complètes sur les compléments alimentaires avec dosages, effets et synergies","url":"https://mydoseup.com","numberOfItems":54,"itemListElement":[{"@type":"ListItem","position":1,"name":"Ashwagandha (KSM-66)","url":"https://mydoseup.com/#ashwagandha--ksm-66"},{"@type":"ListItem","position":2,"name":"Acide Hyaluronique","url":"https://mydoseup.com/#acide-hyaluronique"},{"@type":"ListItem","position":3,"name":"Oméga-3 (EPA/DHA)","url":"https://mydoseup.com/#oméga-3--epa/dha"},{"@type":"ListItem","position":4,"name":"Bêta-Alanine","url":"https://mydoseup.com/#bêta-alanine"},{"@type":"ListItem","position":5,"name":"Biotine (Vitamine B8)","url":"https://mydoseup.com/#biotine--vitamine-b8"},{"@type":"ListItem","position":6,"name":"Berbérine","url":"https://mydoseup.com/#berbérine"},{"@type":"ListItem","position":7,"name":"Collagène Marin","url":"https://mydoseup.com/#collagène-marin"},{"@type":"ListItem","position":8,"name":"Créatine Monohydrate","url":"https://mydoseup.com/#créatine-monohydrate"},{"@type":"ListItem","position":9,"name":"Curcumine (Curcuma)","url":"https://mydoseup.com/#curcumine--curcuma"},{"@type":"ListItem","position":10,"name":"Vitamine D3 + K2","url":"https://mydoseup.com/#vitamine-d3--k2"},{"@type":"ListItem","position":11,"name":"Fer Bisglycinate","url":"https://mydoseup.com/#fer-bisglycinate"},{"@type":"ListItem","position":12,"name":"Gingembre","url":"https://mydoseup.com/#gingembre"},{"@type":"ListItem","position":13,"name":"L-Carnitine","url":"https://mydoseup.com/#l-carnitine"},{"@type":"ListItem","position":14,"name":"Magnésium Bisglycinate","url":"https://mydoseup.com/#magnésium-bisglycinate"},{"@type":"ListItem","position":15,"name":"MSM (Méthylsulfonylméthane)","url":"https://mydoseup.com/#msm--méthylsulfonylméthane"},{"@type":"ListItem","position":16,"name":"Mélatonine","url":"https://mydoseup.com/#mélatonine"},{"@type":"ListItem","position":17,"name":"Probiotiques","url":"https://mydoseup.com/#probiotiques"},{"@type":"ListItem","position":18,"name":"CoQ10 (Ubiquinol)","url":"https://mydoseup.com/#coq10--ubiquinol"},{"@type":"ListItem","position":19,"name":"Rhodiola Rosea","url":"https://mydoseup.com/#rhodiola-rosea"},{"@type":"ListItem","position":20,"name":"Silicium Organique","url":"https://mydoseup.com/#silicium-organique"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Quel est le meilleur complément pour la musculation ?","acceptedAnswer":{"@type":"Answer","text":"La créatine monohydrate est le complément sportif le plus étudié au monde. Elle augmente la force de 8% en 4-6 semaines et la masse musculaire. 5g/j suffisent sans phase de charge."}},
+{"@type":"Question","name":"Quel complément pour le Syndrome Prémenstruel (SPM) et les douleurs menstruelles ?","acceptedAnswer":{"@type":"Answer","text":"Le magnésium bisglycinate (300mg/j) réduit les tensions et l'irritabilité du Syndrome Prémenstruel (SPM) de 34%. Les oméga-3 réduisent les douleurs menstruelles aussi efficacement que l'ibuprofène."}},
+{"@type":"Question","name":"Comment augmenter naturellement la testostérone ?","acceptedAnswer":{"@type":"Answer","text":"Le zinc, la vitamine D3 et le magnésium sont les 3 piliers naturels de la testostérone. L'ashwagandha KSM-66 augmente la testostérone libre de 15% en 90 jours."}},
+{"@type":"Question","name":"Quel complément pour dormir mieux ?","acceptedAnswer":{"@type":"Answer","text":"Le magnésium bisglycinate le soir est la base. La mélatonine (0,5-1mg) aide à l'endormissement. La L-théanine réduit l'anxiété sans somnolence."}},
+{"@type":"Question","name":"Quelle vitamine manque le plus souvent en France ?","acceptedAnswer":{"@type":"Answer","text":"La vitamine D3 : 80% des Français sont déficients en hiver. 2000-4000 UI/j avec K2 est la supplémentation de base recommandée."}}
+]}
+</script>
 <script>
 /* NEWSLETTER MYDOSEUP — Script robuste v3
    Formulaire HTML natif (POST Brevo) — iframe remplacée car X-Frame-Options:SAMEORIGIN côté Brevo */
