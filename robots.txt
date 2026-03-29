@@ -1,113 +1,73 @@
-# =====================================================
 # robots.txt — MyDoseUp® (mydoseup.com)
-# © 2026 Yanis Bensaadi — Tous droits réservés
-# Marque déposée INPI n°5239885
-# =====================================================
+# Marque déposée INPI n°5239885 — © 2026 Yanis Bensaadi
 
-# ---- AUTORISER LES MOTEURS DE RECHERCHE LÉGITIMES ----
-User-agent: Googlebot
+# ── Crawlers généraux ──
+User-agent: *
 Allow: /
+Disallow: /private/
+Sitemap: https://mydoseup.com/sitemap.xml
 
-User-agent: Bingbot
-Allow: /
-
-User-agent: Slurp
-Allow: /
-
-User-agent: DuckDuckBot
-Allow: /
-
-User-agent: Baiduspider
-Allow: /
-
-# ---- BLOQUER LES CRAWLERS D'IA / ENTRAÎNEMENT DE MODÈLES ----
-
-# OpenAI / ChatGPT
+# ── Bots IA — interdiction d'entraînement ──
 User-agent: GPTBot
 Disallow: /
 
 User-agent: ChatGPT-User
 Disallow: /
 
-User-agent: OAI-SearchBot
+User-agent: CCBot
 Disallow: /
 
-# Anthropic / Claude
 User-agent: anthropic-ai
-Disallow: /
-
-User-agent: ClaudeBot
 Disallow: /
 
 User-agent: Claude-Web
 Disallow: /
 
-# Google (entraînement IA Bard/Gemini - différent de l'indexation)
 User-agent: Google-Extended
 Disallow: /
 
-# Common Crawl (base de données pour entraîner les LLM)
-User-agent: CCBot
-Disallow: /
-
-# Meta / Facebook AI
-User-agent: Meta-ExternalAgent
-Disallow: /
-
-User-agent: FacebookBot
-Disallow: /
-
-# Perplexity AI
 User-agent: PerplexityBot
 Disallow: /
 
-# Cohere
-User-agent: cohere-ai
+User-agent: Meta-ExternalAgent
 Disallow: /
 
-# Bytedance / Tiktok
-User-agent: Bytespider
+User-agent: Meta-ExternalFetcher
 Disallow: /
 
-# Amazon (Alexa)
 User-agent: Amazonbot
 Disallow: /
 
-# Apple
-User-agent: Applebot-Extended
+User-agent: Bytespider
 Disallow: /
 
-# Omgili / Diffbot
+User-agent: Diffbot
+Disallow: /
+
 User-agent: omgili
 Disallow: /
 
 User-agent: omgilibot
 Disallow: /
 
-User-agent: Diffbot
+User-agent: YouBot
 Disallow: /
 
-# Scrapers génériques connus
-User-agent: SemrushBot
-Disallow: /
-
-User-agent: AhrefsBot
-Disallow: /
-
-User-agent: MJ12bot
-Disallow: /
-
-User-agent: DotBot
-Disallow: /
-
-# ---- RÈGLES GÉNÉRALES ----
-User-agent: *
+# ── Moteurs de recherche — accès complet ──
+User-agent: Googlebot
 Allow: /
-Disallow: /.git/
-Disallow: /.env
-Disallow: /config/
-Disallow: /admin/
-Disallow: /private/
 
-# ---- SITEMAP ----
-Sitemap: https://mydoseup.com/sitemap.xml
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
