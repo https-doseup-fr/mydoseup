@@ -454,6 +454,321 @@ body.F .az-fam-header{--az-bg:#0D0818}
 /* ── CWV PERFORMANCE ── */
 /* Reduce layout recalc on off-screen page sections */
 .page-view:not(.on){content-visibility:auto;contain-intrinsic-size:0 600px}
+/* ═══ QUIZ STACK PERSO — GREEN LAB ═══ */
+#quiz-overlay{
+  display:none;position:fixed;inset:0;z-index:99998;
+  background:rgba(0,0,0,0.92);backdrop-filter:blur(6px);
+  overflow-y:auto;-webkit-overflow-scrolling:touch;
+}
+#quiz-overlay.on{display:block}
+.qz-panel{
+  min-height:100vh;display:flex;flex-direction:column;
+  max-width:430px;margin:0 auto;
+  padding:0 0 80px;position:relative;
+}
+/* HEADER */
+.qz-top{
+  background:linear-gradient(170deg,#020905 0%,#051a0e 60%,#050708 100%);
+  padding:20px 16px 18px;position:relative;overflow:hidden;
+  border-bottom:1px solid rgba(0,255,136,0.12);
+  display:flex;flex-direction:column;gap:0;
+}
+.qz-top::before{
+  content:'';position:absolute;top:-80px;right:-80px;
+  width:240px;height:240px;border-radius:50%;
+  background:radial-gradient(circle,rgba(0,255,136,0.07),transparent 70%);
+  pointer-events:none;
+}
+.qz-top-bar{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:14px;
+}
+.qz-logo-row{display:flex;align-items:center;gap:8px}
+.qz-logo-hex{
+  width:32px;height:32px;border-radius:8px;
+  border:1.5px solid rgba(0,255,136,0.5);
+  box-shadow:0 0 10px rgba(0,255,136,0.2);
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(0,255,136,0.05);flex-shrink:0;
+}
+.qz-logo-name{
+  font-size:15px;font-weight:900;letter-spacing:-0.3px;
+  background:linear-gradient(90deg,#9C4DCC,#7B68EE,#64B5F6);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.qz-close-btn{
+  width:34px;height:34px;border-radius:10px;border:none;
+  background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);
+  color:rgba(255,255,255,0.7);font-size:18px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:all .2s;flex-shrink:0;font-family:"DM Sans",sans-serif;
+}
+.qz-close-btn:hover{background:rgba(255,80,80,0.15);border-color:rgba(255,80,80,0.4);color:#ff6b6b}
+.qz-eyebrow{
+  display:flex;align-items:center;gap:6px;
+  font-size:10px;font-weight:800;color:#00ff88;
+  letter-spacing:0.18em;text-transform:uppercase;margin-bottom:8px;
+}
+.qz-eyebrow::before{
+  content:'';width:5px;height:5px;border-radius:50%;
+  background:#00ff88;box-shadow:0 0 8px #00ff88;
+  animation:qz-pulse 2s ease-in-out infinite;flex-shrink:0;
+}
+.qz-hero-title{
+  font-size:clamp(1.3rem,5vw,1.7rem);font-weight:900;
+  line-height:1.2;letter-spacing:-0.5px;color:#FFF;margin-bottom:6px;
+}
+.qz-hero-title span{
+  background:linear-gradient(135deg,#00ff88,#00e5cc);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.qz-hero-sub{font-size:12px;color:rgba(255,255,255,0.4);font-weight:400}
+
+/* PROGRESS */
+.qz-progress{
+  background:#050708;padding:12px 16px 0;
+  border-bottom:1px solid rgba(255,255,255,0.05);
+}
+.qz-prog-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.qz-prog-lbl{font-size:11px;font-weight:800;color:#00ff88;letter-spacing:0.08em;text-transform:uppercase}
+.qz-prog-pct{font-size:11px;color:rgba(255,255,255,0.25)}
+.qz-bar{height:2px;background:rgba(255,255,255,0.07);overflow:hidden}
+.qz-fill{
+  height:100%;width:0%;
+  background:linear-gradient(90deg,#00ff88,#00e5cc);
+  box-shadow:0 0 8px rgba(0,255,136,0.5);
+  transition:width .45s cubic-bezier(.4,0,.2,1);
+}
+.qz-steps{
+  display:flex;align-items:center;justify-content:center;
+  gap:6px;padding:10px 0 12px;
+}
+.qz-step-dot{
+  width:7px;height:7px;border-radius:50%;
+  background:rgba(255,255,255,0.10);transition:all .3s;
+}
+.qz-step-dot.done{background:#00cc6a;box-shadow:0 0 5px rgba(0,204,106,0.5)}
+.qz-step-dot.active{background:#00ff88;width:20px;border-radius:4px;box-shadow:0 0 8px rgba(0,255,136,0.6)}
+
+/* CARD */
+.qz-card{
+  background:#050708;flex:1;
+  padding:18px 16px 20px;
+  border-top:1px solid rgba(255,255,255,0.04);
+  animation:qz-up .3s ease both;
+}
+.qz-q-chip{
+  display:inline-flex;align-items:center;gap:5px;
+  background:rgba(0,255,136,0.07);border:1px solid rgba(0,255,136,0.2);
+  border-radius:99px;padding:3px 10px;
+  font-size:10px;font-weight:800;color:#00ff88;
+  letter-spacing:0.12em;text-transform:uppercase;margin-bottom:10px;
+}
+.qz-q-text{
+  font-size:clamp(0.95rem,3vw,1.1rem);font-weight:800;
+  line-height:1.35;color:#FFF;margin-bottom:16px;
+}
+.qz-multi-note{
+  font-size:11px;color:rgba(255,255,255,0.3);margin-bottom:12px;
+  padding-left:14px;border-left:2px solid rgba(0,255,136,0.3);
+}
+
+/* OPTIONS */
+.qz-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.qz-grid.c1{grid-template-columns:1fr}
+.qz-grid.c3{grid-template-columns:repeat(3,1fr)}
+.qz-opt{
+  background:#0d1117;border:1.5px solid rgba(255,255,255,0.08);
+  border-radius:12px;padding:13px 12px;cursor:pointer;
+  text-align:left;display:flex;flex-direction:column;gap:4px;
+  transition:border-color .2s,background .2s,transform .15s,box-shadow .2s;
+  font-family:"DM Sans",sans-serif;position:relative;
+}
+.qz-opt:hover{border-color:rgba(0,255,136,0.35);transform:translateY(-1px)}
+.qz-opt.sel{
+  border-color:#00ff88;
+  background:rgba(0,255,136,0.06);
+  box-shadow:0 0 0 1px rgba(0,255,136,0.2),0 0 20px rgba(0,255,136,0.08);
+}
+.qz-opt-ck{
+  position:absolute;top:9px;right:9px;
+  width:15px;height:15px;border-radius:4px;
+  border:1.5px solid rgba(255,255,255,0.2);
+  display:flex;align-items:center;justify-content:center;
+  transition:all .2s;
+}
+.qz-opt.sel .qz-opt-ck{background:#00ff88;border-color:#00ff88;box-shadow:0 0 8px rgba(0,255,136,0.5)}
+.qz-opt-ck svg{display:none}
+.qz-opt.sel .qz-opt-ck svg{display:block}
+.qz-opt-title{font-size:13px;font-weight:800;color:#FFF;line-height:1.25;padding-right:18px}
+.qz-opt.sel .qz-opt-title{color:#FFF}
+.qz-opt-desc{font-size:10px;color:rgba(255,255,255,0.35);line-height:1.4;font-weight:400}
+.qz-opt.sel .qz-opt-desc{color:rgba(255,255,255,0.55)}
+
+/* NAV */
+.qz-nav{display:flex;justify-content:space-between;align-items:center;margin-top:20px;gap:8px}
+.qz-btn-back{
+  background:transparent;border:1px solid rgba(255,255,255,0.12);
+  color:rgba(255,255,255,0.45);font-size:12px;font-weight:800;
+  padding:11px 16px;border-radius:99px;cursor:pointer;
+  font-family:"DM Sans",sans-serif;transition:all .2s;white-space:nowrap;
+}
+.qz-btn-back:hover{border-color:rgba(255,255,255,0.3);color:#FFF}
+.qz-btn-next{
+  background:linear-gradient(135deg,#00ff88,#00cc6a);
+  color:#050708;font-size:13px;font-weight:900;
+  padding:12px 22px;border-radius:99px;border:none;cursor:pointer;flex:1;
+  font-family:"DM Sans",sans-serif;box-shadow:0 4px 16px rgba(0,255,136,0.3);
+  transition:all .2s;letter-spacing:0.01em;
+}
+.qz-btn-next:hover{box-shadow:0 0 0 1px #00ff88,0 0 20px rgba(0,255,136,0.4);transform:translateY(-1px)}
+.qz-btn-next:disabled{opacity:.25;cursor:not-allowed;transform:none;box-shadow:none}
+
+/* LOADING */
+.qz-loading{
+  padding:40px 20px;text-align:center;
+  display:flex;flex-direction:column;align-items:center;gap:18px;
+}
+.qz-spin{
+  width:52px;height:52px;border-radius:50%;
+  border:2px solid rgba(0,255,136,0.15);
+  border-top:2px solid #00ff88;
+  animation:qz-spin 1s linear infinite;
+  box-shadow:0 0 20px rgba(0,255,136,0.1);
+}
+.qz-load-title{font-size:14px;font-weight:800;color:#FFF}
+.qz-load-msg{font-size:12px;color:rgba(255,255,255,0.4);min-height:34px;line-height:1.6}
+.qz-load-bar-w{width:100%;height:2px;background:rgba(255,255,255,0.07);border-radius:99px;overflow:hidden}
+.qz-load-bar{
+  height:100%;background:linear-gradient(90deg,#00ff88,#00e5cc);
+  border-radius:99px;width:0%;
+  box-shadow:0 0 8px rgba(0,255,136,0.6);
+  transition:width 2.1s cubic-bezier(.4,0,.2,1);
+}
+
+/* RESULT */
+.qz-result-hd{
+  padding:16px 16px 14px;
+  background:linear-gradient(170deg,#020905 0%,#051a0e 60%,#050708 100%);
+  border-bottom:1px solid rgba(0,255,136,0.10);
+}
+.qz-result-tag{
+  display:inline-flex;align-items:center;gap:5px;
+  background:rgba(0,255,136,0.08);border:1px solid rgba(0,255,136,0.2);
+  border-radius:99px;padding:3px 10px;
+  font-size:10px;font-weight:800;color:#00ff88;
+  letter-spacing:0.12em;text-transform:uppercase;margin-bottom:8px;
+}
+.qz-result-tag::before{
+  content:'';width:5px;height:5px;border-radius:50%;
+  background:#00ff88;animation:qz-pulse 2s ease-in-out infinite;
+}
+.qz-result-title{font-size:1.05rem;font-weight:900;color:#FFF;margin-bottom:4px}
+.qz-result-meta{font-size:11px;color:rgba(255,255,255,0.35);display:flex;gap:10px;flex-wrap:wrap}
+
+/* STACK */
+.qz-stack{padding:14px}
+.qz-stack-lbl{
+  font-size:10px;font-weight:800;color:rgba(255,255,255,0.2);
+  letter-spacing:0.16em;text-transform:uppercase;
+  margin-bottom:10px;padding-bottom:10px;
+  border-bottom:1px solid rgba(255,255,255,0.05);
+}
+.qz-supp{
+  background:#0d1117;border:1px solid rgba(255,255,255,0.07);
+  border-radius:12px;padding:13px 12px;
+  display:flex;align-items:flex-start;gap:10px;margin-bottom:8px;
+  transition:border-color .2s,transform .15s;
+  animation:qz-up .35s ease both;
+}
+.qz-supp:hover{border-color:rgba(0,255,136,0.2);transform:translateY(-1px)}
+.qz-supp-num{
+  width:26px;height:26px;border-radius:7px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:11px;font-weight:900;
+}
+.qn-e{background:rgba(0,255,136,0.12);color:#00ff88;border:1px solid rgba(0,255,136,0.25)}
+.qn-b{background:rgba(0,229,204,0.10);color:#00e5cc;border:1px solid rgba(0,229,204,0.2)}
+.qn-x{background:rgba(255,255,255,0.05);color:rgba(255,255,255,0.3);border:1px solid rgba(255,255,255,0.08)}
+.qz-supp-body{flex:1;min-width:0}
+.qz-supp-name{font-size:13px;font-weight:800;color:#FFF;margin-bottom:2px}
+.qz-supp-name a{
+  color:#00ff88;text-decoration:none;
+  border-bottom:1px solid transparent;transition:all .2s;
+}
+.qz-supp-name a:hover{color:#FFF;border-bottom-color:#00ff88}
+.qz-supp-why{font-size:11px;color:rgba(255,255,255,0.4);line-height:1.55;margin-bottom:4px}
+.qz-supp-dose{font-size:11px;font-weight:700;color:#00cc6a}
+.qz-syn-row{display:flex;flex-wrap:wrap;gap:4px;margin-top:5px}
+.qz-syn-chip{
+  font-size:10px;font-weight:600;padding:2px 7px;
+  border-radius:99px;border:1px solid rgba(0,229,204,0.2);
+  background:rgba(0,229,204,0.07);color:#00e5cc;
+}
+.qz-badge{
+  flex-shrink:0;font-size:9px;font-weight:800;
+  padding:3px 7px;border-radius:99px;letter-spacing:0.07em;text-transform:uppercase;
+  margin-top:1px;
+}
+.qb-e{background:rgba(0,255,136,0.10);color:#00ff88;border:1px solid rgba(0,255,136,0.2)}
+.qb-b{background:rgba(0,229,204,0.08);color:#00e5cc;border:1px solid rgba(0,229,204,0.15)}
+.qb-x{background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.3);border:1px solid rgba(255,255,255,0.08)}
+
+/* ACTIONS */
+.qz-actions{padding:4px 14px 10px;display:flex;flex-direction:column;gap:7px}
+.qz-btn-share{
+  width:100%;padding:13px;border-radius:12px;
+  background:linear-gradient(135deg,#00ff88,#00cc6a);
+  color:#050708;font-size:13px;font-weight:900;border:none;
+  font-family:"DM Sans",sans-serif;cursor:pointer;
+  box-shadow:0 4px 20px rgba(0,255,136,0.3);
+  transition:all .2s;display:flex;align-items:center;justify-content:center;gap:7px;
+}
+.qz-btn-share:hover{box-shadow:0 0 0 1px #00ff88,0 0 20px rgba(0,255,136,0.4);transform:translateY(-1px)}
+.qz-btn-restart{
+  width:100%;padding:11px;border-radius:12px;
+  background:transparent;border:1px solid rgba(255,255,255,0.10);
+  color:rgba(255,255,255,0.4);font-size:12px;font-weight:700;
+  font-family:"DM Sans",sans-serif;cursor:pointer;transition:all .2s;
+}
+.qz-btn-restart:hover{background:rgba(255,255,255,0.05);color:#FFF}
+.qz-disclaimer{
+  margin:0 14px;padding:10px 12px;
+  background:rgba(255,80,80,0.04);
+  border-left:2px solid rgba(255,80,80,0.25);
+  border-radius:0 8px 8px 0;
+  font-size:10px;color:rgba(255,255,255,0.3);line-height:1.7;
+}
+.qz-disclaimer strong{color:rgba(255,120,120,0.7)}
+
+/* FAB - trigger du quiz depuis les fiches */
+.qz-fab-trigger{
+  width:100%;margin-top:10px;padding:11px;
+  background:rgba(0,255,136,0.08);border:1px solid rgba(0,255,136,0.2);
+  border-radius:10px;color:#00ff88;font-size:11px;font-weight:800;
+  font-family:"DM Sans",sans-serif;cursor:pointer;transition:all .2s;
+  display:flex;align-items:center;justify-content:center;gap:6px;
+  letter-spacing:0.04em;
+}
+.qz-fab-trigger:hover{background:rgba(0,255,136,0.13);box-shadow:0 0 0 1px rgba(0,255,136,0.3)}
+
+/* TOAST */
+.qz-toast{
+  position:fixed;bottom:80px;left:50%;
+  transform:translateX(-50%) translateY(8px);
+  background:#00ff88;color:#050708;
+  font-weight:900;font-size:12px;padding:9px 18px;border-radius:99px;
+  opacity:0;transition:all .3s;z-index:99999;
+  pointer-events:none;white-space:nowrap;
+  box-shadow:0 4px 16px rgba(0,255,136,0.4);
+}
+.qz-toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* ANIMATIONS */
+@keyframes qz-up{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes qz-pulse{0%,100%{opacity:1}50%{opacity:.25}}
+@keyframes qz-spin{to{transform:rotate(360deg)}}
+
 /* Contain paint/layout on cards to avoid full-page reflow */
 .sc{contain:layout style}
 .obj-tile{contain:layout style}
@@ -503,6 +818,7 @@ body.F .az-fam-header{--az-bg:#0D0818}
   <!-- Dropdown (mobile) / Row (desktop) -->
   <div class="nav-dropdown" id="navDropdown">
     <button class="nav-btn active" id="navAccueil" onclick="navGo('accueil',this)">Explorer</button>
+    <button class="nav-btn" id="navQuiz" onclick="openQuiz()">Mon Stack</button>
     <button class="nav-btn" id="navParcours" onclick="navGo('parcours',this)">Parcours Sportifs</button>
     <button class="nav-btn" id="navExperts" onclick="navGo('experts',this)">Nos Experts</button>
     <button class="nav-btn" id="navConcept" onclick="navGo('concept',this)">Le Concept</button>
@@ -856,6 +1172,14 @@ body.F .az-fam-header{--az-bg:#0D0818}
     <div style="font-size:11px;color:rgba(255,255,255,0.40);font-weight:600;letter-spacing:0.06em">Ton guide des compléments</div>
   </div>
   <nav class="drawer-nav" id="drawerNav">
+    <div class="drawer-item" id="ditem-quiz" onclick="closeDrawer();openQuiz()">
+      <div class="drawer-ico" style="font-size:20px">+</div>
+      <div class="drawer-text">
+        <div class="drawer-nm">Mon Stack Perso</div>
+        <div class="drawer-sub">Quiz intelligent — 54 produits</div>
+      </div>
+      <div class="drawer-badge" style="background:rgba(0,255,136,0.15);color:#00ff88">NEW</div>
+    </div>
     <div class="drawer-item active" id="ditem-accueil" onclick="drawerGo('accueil')">
       <div class="drawer-ico">🏠</div>
       <div class="drawer-text">
@@ -3102,6 +3426,619 @@ if(!_nlBlocked){
     }catch(e){}
   }, {passive:true});
 }
+</script>
+<!-- ═══ QUIZ STACK PERSO OVERLAY ═══ -->
+<div id="quiz-overlay" role="dialog" aria-modal="true" aria-label="Quiz Mon Stack Perso">
+  <div class="qz-panel">
+    <!-- TOP BAR -->
+    <div class="qz-top">
+      <div class="qz-top-bar">
+        <div class="qz-logo-row">
+          <div class="qz-logo-hex">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M8 2L13 5V11L8 14L3 11V5L8 2Z" stroke="#00ff88" stroke-width="1.2" fill="none"/>
+              <circle cx="8" cy="8" r="2" fill="#00ff88"/>
+            </svg>
+          </div>
+          <span class="qz-logo-name">MyDoseUp</span>
+        </div>
+        <button class="qz-close-btn" onclick="closeQuiz()" aria-label="Fermer">&#x2715;</button>
+      </div>
+      <div class="qz-eyebrow">Mon Stack Personnalise</div>
+      <h2 class="qz-hero-title">Trouve tes <span>compléments</span><br>sur mesure</h2>
+      <p class="qz-hero-sub">5 questions · Parmi 54 produits · Résultat instantané</p>
+    </div>
+    <!-- PROGRESS -->
+    <div class="qz-progress">
+      <div class="qz-prog-meta">
+        <span class="qz-prog-lbl" id="qz-lbl">Étape 1 / 5</span>
+        <span class="qz-prog-pct" id="qz-pct">0%</span>
+      </div>
+      <div class="qz-bar"><div class="qz-fill" id="qz-fill"></div></div>
+      <div class="qz-steps" id="qz-steps"></div>
+    </div>
+    <!-- CARD -->
+    <div class="qz-card" id="qz-card"></div>
+  </div>
+</div>
+<!-- TOAST -->
+<div class="qz-toast" id="qz-toast"></div>
+
+<script>
+/* ================================================================
+   MYDOSEUP — MON STACK PERSO v5
+   Quiz integre au site — Vert Neon — Sans emoji — 54 produits
+   Moteur de score + Synergies + Regles strictes par objectif
+   ================================================================ */
+
+// ═══ URLS FICHES SITE ═══
+var QZ_URLS = {
+  "Créatine Monohydrate":           "https://mydoseup.com/#creatine-monohydrate",
+  "Whey Concentrée (WPC)":          "https://mydoseup.com/#whey-concentree-wpc",
+  "Whey Isolat (WPI)":              "https://mydoseup.com/#whey-isolat-wpi",
+  "Whey Hydrolysée (WPH)":          "https://mydoseup.com/#whey-hydrolysee-wph",
+  "Protéine de Pois (Isolat)":      "https://mydoseup.com/#proteine-de-pois-isolat",
+  "Caséine Micellaire":             "https://mydoseup.com/#caseine-micellaire",
+  "Gainer (Mass Gainer)":           "https://mydoseup.com/#gainer-mass-gainer",
+  "Bêta-Alanine":                   "https://mydoseup.com/#beta-alanine",
+  "L-Citrulline":                   "https://mydoseup.com/#l-citrulline",
+  "L-Glutamine":                    "https://mydoseup.com/#l-glutamine",
+  "HMB (Hydroxy-Méthyl-Butyrate)":  "https://mydoseup.com/#hmb-hydroxy-methyl-butyrate",
+  "Hydratation & Électrolytes":      "https://mydoseup.com/#hydratation-electrolytes",
+  "L-Théanine":                     "https://mydoseup.com/#l-theanine",
+  "L-Carnitine":                    "https://mydoseup.com/#l-carnitine",
+  "Berbérine":                      "https://mydoseup.com/#berberine",
+  "Magnésium Bisglycinate":         "https://mydoseup.com/#magnesium-bisglycinate",
+  "Zinc Bisglycinate":              "https://mydoseup.com/#zinc-bisglycinate",
+  "Vitamine D3 + K2":               "https://mydoseup.com/#vitamine-d3-k2",
+  "Oméga-3 (EPA/DHA)":             "https://mydoseup.com/#omega-3-epa-dha",
+  "Vitamine C":                     "https://mydoseup.com/#vitamine-c",
+  "Vitamine B12 (Méthylcobalamine)":"https://mydoseup.com/#vitamine-b12-methylcobalamine",
+  "Ashwagandha (KSM-66)":           "https://mydoseup.com/#ashwagandha-ksm-66",
+  "Rhodiola Rosea":                 "https://mydoseup.com/#rhodiola-rosea",
+  "Mélatonine":                     "https://mydoseup.com/#melatonine",
+  "Glycine":                        "https://mydoseup.com/#glycine",
+  "Collagène Marin":                "https://mydoseup.com/#collagene-marin",
+  "Acide Hyaluronique":             "https://mydoseup.com/#acide-hyaluronique",
+  "Probiotiques":                   "https://mydoseup.com/#probiotiques",
+  "Spiruline":                      "https://mydoseup.com/#spiruline",
+  "CoQ10 (Ubiquinol)":              "https://mydoseup.com/#coq10-ubiquinol",
+  "Resvératrol":                    "https://mydoseup.com/#resveratrol",
+  "NMN (Nicotinamide Mononucléotide)":"https://mydoseup.com/#nmn-nicotinamide-mononucleotide",
+  "Biotine (Vitamine B8)":          "https://mydoseup.com/#biotine-vitamine-b8",
+  "Silicium Organique":             "https://mydoseup.com/#silicium-organique",
+  "MSM (Méthylsulfonylméthane)":    "https://mydoseup.com/#msm-methylsulfonylmethane",
+  "Curcumine (Curcuma)":            "https://mydoseup.com/#curcumine-curcuma",
+  "Gingembre":                      "https://mydoseup.com/#gingembre",
+  "Quercétine":                     "https://mydoseup.com/#quercetine",
+  "NAC (N-Acétyl Cystéine)":        "https://mydoseup.com/#nac-n-acetyl-cysteine",
+  "Chardon-Marie (Silymarine)":     "https://mydoseup.com/#chardon-marie-silymarine",
+  "Maca (Lepidium meyenii)":        "https://mydoseup.com/#maca-lepidium-meyenii",
+  "Tongkat Ali (Eurycoma longifolia)":"https://mydoseup.com/#tongkat-ali-eurycoma-longifolia",
+  "Tribulus Terrestris":            "https://mydoseup.com/#tribulus-terrestris",
+  "Shilajit":                       "https://mydoseup.com/#shilajit",
+  "Fenugrec":                       "https://mydoseup.com/#fenugrec",
+  "Damiana (Turnera diffusa)":      "https://mydoseup.com/#damiana-turnera-diffusa",
+  "Inositol (Myo-Inositol)":        "https://mydoseup.com/#inositol-myo-inositol",
+  "Gattilier (Vitex agnus-castus)": "https://mydoseup.com/#gattilier-vitex-agnus-castus",
+  "DIM (Diindolylméthane)":         "https://mydoseup.com/#dim-diindolylmethane",
+  "Fer Bisglycinate":               "https://mydoseup.com/#fer-bisglycinate",
+  "Acide Folique (B9)":             "https://mydoseup.com/#vitamine-b9",
+  "Astaxanthine":                   "https://mydoseup.com/#astaxanthine",
+  "Lutéine + Zéaxanthine":          "https://mydoseup.com/#luteine-zeaxanthine",
+  "Myrtille (Anthocyanines)":       "https://mydoseup.com/#myrtille-anthocyanines",
+  "Sélénium":                       "https://mydoseup.com/#selenium",
+  "Bore (Boron)":                   "https://mydoseup.com/#bore-boron",
+  "DHEA":                           "https://mydoseup.com/#dhea",
+  "Vitamine A (Bêta-carotène)":     "https://mydoseup.com/#vitamine-a-beta-carotene"
+};
+
+// ═══ BASE DE DONNÉES 54 PRODUITS ═══
+// tag: e=Essentiel b=Actif x=Bonus
+// obj: objectifs principaux
+// gender: MF / M / F
+// vegan: produit vegan (true/false)
+// animal: contient produit animal
+// collagen: contient collagène
+// type: categorie pour eviter doublons (proteine/stimulant/adaptogene/libido...)
+// syn: synergies connues
+
+var QZ_DB = [
+  // ─── MUSCLE ───
+  {name:"Créatine Monohydrate",       why:"La référence mondiale : force +8%, récupération accélérée, bénéfices cognitifs prouvés.",              dose:"3 à 5g/jour (sans charge nécessaire)",   tag:"e", obj:["masse"],             gender:"MF", vegan:true, animal:false, collagen:false, type:"creatine",    syn:["beta_ala","citrulline","hmb"]},
+  {name:"Whey Concentrée (WPC)",      why:"Protéine complète, absorption rapide post-effort. Supérieure pour la synthèse musculaire.",             dose:"25 à 30g après la séance",               tag:"e", obj:["masse"],             gender:"MF", vegan:false, animal:true,  collagen:false, type:"proteine",    syn:["creatine"]},
+  {name:"Whey Isolat (WPI)",          why:"Whey ultra-filtrée, faible en lactose. Idéale pour les intolérants et les séchages.",                  dose:"25g après la séance",                    tag:"e", obj:["masse"],             gender:"MF", vegan:false, animal:true,  collagen:false, type:"proteine",    syn:["creatine"]},
+  {name:"Protéine de Pois (Isolat)",  why:"Alternative 100% végétale à la whey. Profil d'acides aminés complet et digestibilité élevée.",         dose:"25 à 30g après la séance",               tag:"e", obj:["masse"],             gender:"MF", vegan:true,  animal:false, collagen:false, type:"proteine",    syn:["creatine","spiruline"]},
+  {name:"Bêta-Alanine",               why:"Retarde la brûlure musculaire et augmente l'endurance sur efforts intenses (HIIT, CrossFit, sprint).",  dose:"3,2 à 6,4g/jour (avant séance)",         tag:"b", obj:["masse","perf"],     gender:"MF", vegan:true,  animal:false, collagen:false, type:"beta_ala",    syn:["creatine","citrulline"]},
+  {name:"L-Citrulline",               why:"Booste le flux sanguin, améliore la pompe musculaire et réduit les courbatures post-effort.",           dose:"6 à 8g avant la séance",                 tag:"b", obj:["masse","perf"],     gender:"MF", vegan:true,  animal:false, collagen:false, type:"citrulline",  syn:["creatine","beta_ala"]},
+  {name:"HMB (Hydroxy-Méthyl-Butyrate)", why:"Anti-catabolisme puissant. Préserve le muscle en déficit calorique et accélère la récupération.", dose:"3g/jour en 3 prises",                    tag:"b", obj:["masse","fatloss"],  gender:"MF", vegan:true,  animal:false, collagen:false, type:"hmb",         syn:["creatine","whey"]},
+  {name:"L-Glutamine",                why:"Répare l'intestin, soutient l'immunité et réduit les courbatures après un effort intense.",             dose:"5 à 10g/jour",                           tag:"b", obj:["masse","perf"],     gender:"MF", vegan:true,  animal:false, collagen:false, type:"glutamine",   syn:["probio"]},
+  {name:"Gainer (Mass Gainer)",       why:"Apport calorique dense pour les hardgainers. Glucides rapides + protéines post-effort.",                dose:"1 à 2 portions/jour selon besoin",        tag:"x", obj:["masse"],             gender:"MF", vegan:false, animal:true,  collagen:false, type:"gainer",      syn:["creatine"]},
+  {name:"Caséine Micellaire",         why:"Protéine à absorption lente, idéale avant le coucher pour la récupération nocturne.",                   dose:"30g avant de dormir",                    tag:"x", obj:["masse"],             gender:"MF", vegan:false, animal:true,  collagen:false, type:"proteine_slow",syn:[]},
+  {name:"Hydratation & Électrolytes", why:"Compense les pertes en sodium, potassium, magnésium lors des efforts. Prévient les crampes.",           dose:"Selon intensité et sudation",             tag:"b", obj:["perf","masse"],     gender:"MF", vegan:true,  animal:false, collagen:false, type:"electro",     syn:["magnesium"]},
+  // ─── ENERGIE / FOCUS ───
+  {name:"L-Théanine",                 why:"Calme le mental, améliore la concentration et potentialise la caféine sans nervosité ni crash.",        dose:"100 à 200mg/jour",                       tag:"e", obj:["energie","stress"], gender:"MF", vegan:true,  animal:false, collagen:false, type:"theanine",    syn:["cafeine","magnesium"]},
+  // Caféine vient de DATA existant - on mappe la caféine via un pseudo-entry
+  {name:"Magnésium Bisglycinate",     why:"Anti-stress N°1. Réduit l'anxiété, améliore le sommeil profond et la récupération neuromusculaire.",    dose:"300 à 400mg/soir",                       tag:"e", obj:["stress","energie","sante"], gender:"MF", vegan:true, animal:false, collagen:false, type:"magnesium",  syn:["zinc","ashwa","theanine"]},
+  {name:"Rhodiola Rosea",             why:"Adaptogène anti-fatigue mentale. Améliore la résistance au stress et les performances cognitives.",     dose:"200 à 400mg/jour",                       tag:"b", obj:["stress","energie","perf"], gender:"MF", vegan:true, animal:false, collagen:false, type:"adaptogene2", syn:["ashwa","cafeine"]},
+  // ─── PERTE DE GRAS ───
+  {name:"L-Carnitine",                why:"Transporte les acides gras vers les mitochondries pour les convertir en énergie. Efficace avant le cardio.", dose:"1,5 à 3g avant l'effort",          tag:"e", obj:["fatloss"],           gender:"MF", vegan:true,  animal:false, collagen:false, type:"carnitine",   syn:["cafeine","omega3"]},
+  {name:"Berbérine",                  why:"Régule la glycémie et l'insuline naturellement. Effet comparable à la metformine sur le métabolisme.",   dose:"500mg x3/jour avant les repas",          tag:"b", obj:["fatloss","sante"],  gender:"MF", vegan:true,  animal:false, collagen:false, type:"metabolisme", syn:["vitd","omega3"]},
+  // ─── SANTE / LONGEVITE ───
+  {name:"Vitamine D3 + K2",           why:"Le duo incontournable : immunité, os solides, hormones équilibrées. 80% des Français sont carencés.",    dose:"2 000 à 5 000 UI D3/jour",               tag:"e", obj:["sante","longevite","libido"], gender:"MF", vegan:true, animal:false, collagen:false, type:"vitd",      syn:["omega3","zinc","magnesium"]},
+  {name:"Oméga-3 (EPA/DHA)",          why:"Anti-inflammatoire naturel puissant. Protège le cœur, le cerveau et réduit les courbatures.",            dose:"2 à 3g EPA+DHA/jour avec un repas gras", tag:"e", obj:["sante","longevite","stress"], gender:"MF", vegan:false, animal:true, collagen:false, type:"omega3",     syn:["vitd","vitc","astaxanthine"]},
+  {name:"Vitamine C",                 why:"Immunité renforcée, collagène synthétisé, récupération accélérée. Multiplie l'absorption du fer x3.",    dose:"500 à 1000mg/jour",                      tag:"e", obj:["sante","longevite"],gender:"MF", vegan:true,  animal:false, collagen:false, type:"vitc",        syn:["collagene","fer","zinc"]},
+  {name:"Vitamine B12 (Méthylcobalamine)", why:"Énergie, système nerveux, formation des globules rouges. Essentielle pour les vegans.",           dose:"1000mcg/jour (méthylcobalamine)",         tag:"e", obj:["energie","sante"], gender:"MF", vegan:true,  animal:false, collagen:false, type:"vitb12",      syn:["fer","folique"]},
+  {name:"Zinc Bisglycinate",          why:"Testostérone, immunité, peau et libido. Forme bisglycinate = meilleure absorption, moins d'effets GI.", dose:"15 à 25mg/jour",                         tag:"e", obj:["sante","libido","masse"], gender:"MF", vegan:true, animal:false, collagen:false, type:"zinc",       syn:["magnesium","vitd","ashwa"]},
+  {name:"Probiotiques",               why:"Rééquilibre le microbiote, renforce l'immunité et améliore la digestion et l'absorption des nutriments.", dose:"5 à 50 milliards UFC/jour",             tag:"b", obj:["sante"],             gender:"MF", vegan:true,  animal:false, collagen:false, type:"probio",      syn:["vitd","glutamine"]},
+  {name:"Spiruline",                  why:"Super-aliment vegan : protéines complètes, fer biodisponible, B12 végétale et antioxydants.",            dose:"3 à 5g/jour",                            tag:"b", obj:["sante","energie"], gender:"MF", vegan:true,  animal:false, collagen:false, type:"spiruline",   syn:["vitc","omega3"]},
+  {name:"Curcumine (Curcuma)",        why:"Anti-inflammatoire naturel puissant. Soulage les articulations et protège les cellules du vieillissement.", dose:"500 à 1000mg avec pipérine",          tag:"b", obj:["sante","longevite"],gender:"MF", vegan:true,  animal:false, collagen:false, type:"antiinflamm", syn:["omega3","gingembre","quercetin"]},
+  {name:"Gingembre",                  why:"Anti-nausée, digestif et anti-inflammatoire. Complémentaire du curcuma pour un effet synergique.",        dose:"1 à 3g/jour",                            tag:"x", obj:["sante"],             gender:"MF", vegan:true,  animal:false, collagen:false, type:"plante_sante",syn:["curcuma","omega3"]},
+  {name:"Quercétine",                 why:"Antioxydant polyvalent : immunité, anti-inflammatoire et soutien de la longévité.",                      dose:"500 à 1000mg/jour",                      tag:"x", obj:["sante","longevite"],gender:"MF", vegan:true,  animal:false, collagen:false, type:"antioxydant", syn:["vitc","resveratrol","zinc"]},
+  {name:"NAC (N-Acétyl Cystéine)",    why:"Précurseur du glutathion (maître antioxydant). Détox, foie et défenses immunitaires.",                   dose:"600 à 1200mg/jour",                      tag:"x", obj:["sante","longevite"],gender:"MF", vegan:true,  animal:false, collagen:false, type:"detox",       syn:["vitc","selenium","zinc"]},
+  {name:"Chardon-Marie (Silymarine)", why:"Protège et régénère le foie. Idéal après une cure de médicaments, alcool ou pour une détox.",            dose:"200 à 400mg de silymarine/jour",          tag:"x", obj:["sante"],             gender:"MF", vegan:true,  animal:false, collagen:false, type:"foie",        syn:["nac","vitc"]},
+  {name:"Sélénium",                   why:"Antioxydant essentiel, crucial pour la thyroïde et l'immunité. Dose précise à respecter impérativement.", dose:"55 à 200mcg/jour (ne pas dépasser)",    tag:"x", obj:["sante","longevite"],gender:"MF", vegan:true,  animal:false, collagen:false, type:"selenium",    syn:["vitc","zinc","nac"]},
+  // ─── STRESS / SOMMEIL ───
+  {name:"Ashwagandha (KSM-66)",       why:"Adaptogène cliniquement prouvé : -27% de cortisol, meilleur sommeil, libido et force améliorées.",       dose:"600mg/jour (extrait KSM-66 ou Sensoril)", tag:"b", obj:["stress","libido","masse"], gender:"MF", vegan:true, animal:false, collagen:false, type:"adaptogene",  syn:["magnesium","zinc","rhodiola"]},
+  {name:"Mélatonine",                 why:"Régule l'endormissement naturellement. Idéal pour les décalages horaires et les troubles de l'endormissement.", dose:"0,5 à 1mg avant le coucher",      tag:"b", obj:["stress"],             gender:"MF", vegan:true,  animal:false, collagen:false, type:"melatonine",  syn:["magnesium","theanine","ashwa"]},
+  {name:"Glycine",                    why:"Améliore la qualité du sommeil profond, réduit la fatigue diurne et soutient les articulations.",         dose:"3 à 5g avant le coucher",                tag:"b", obj:["stress","longevite"],gender:"MF", vegan:true,  animal:false, collagen:false, type:"glycine",     syn:["magnesium","collagene"]},
+  // ─── LIBIDO / HORMONES ───
+  {name:"Maca (Lepidium meyenii)",    why:"Plante andine qui stimule naturellement la libido, la fertilité et l'énergie hormonale. Homme et femme.", dose:"1,5 à 3g/jour",                         tag:"b", obj:["libido"],             gender:"MF", vegan:true,  animal:false, collagen:false, type:"libido_plante",syn:["zinc","ashwa","tongkat"]},
+  {name:"Tongkat Ali (Eurycoma longifolia)", why:"Extrait malaisien cliniquement testé. Soutient la testostérone libre, la libido et la vitalité masculine.", dose:"200 à 400mg/jour (extrait standardisé)", tag:"b", obj:["libido"], gender:"M", vegan:true, animal:false, collagen:false, type:"libido_h",   syn:["zinc","maca","shilajit"]},
+  {name:"Tribulus Terrestris",        why:"Soutient la libido et l'équilibre hormonal. Efficacité optimale pour les profils avancés.",               dose:"750 à 1500mg/jour",                      tag:"x", obj:["libido"],             gender:"M",  vegan:true,  animal:false, collagen:false, type:"libido_h2",   syn:["zinc","maca"]},
+  {name:"Shilajit",                   why:"Résine minérale himalayenne riche en acides fulviques. Énergie cellulaire, vitalité et testosterone.",    dose:"250 à 500mg/jour (produit certifié)",    tag:"x", obj:["libido","energie"], gender:"M",  vegan:true,  animal:false, collagen:false, type:"shilajit",    syn:["tongkat","zinc","coq10"]},
+  {name:"Fenugrec",                   why:"Soutient la testostérone, régule la glycémie et améliore la vitalité. Effet lent mais durable.",          dose:"500 à 600mg/jour",                       tag:"x", obj:["libido","fatloss"],  gender:"MF", vegan:true,  animal:false, collagen:false, type:"fenugrec",    syn:["zinc","maca"]},
+  {name:"Damiana (Turnera diffusa)",  why:"Plante aphrodisiaque naturelle. Stimule la libido féminine et apaise l'anxiété légère.",                  dose:"200 à 400mg/jour",                       tag:"x", obj:["libido"],             gender:"F",  vegan:true,  animal:false, collagen:false, type:"libido_f2",   syn:["maca","ashwa"]},
+  {name:"Inositol (Myo-Inositol)",    why:"Régule les hormones féminines, améliore l'insulino-résistance et les cycles. Clé du SOPK.",              dose:"2 à 4g/jour",                            tag:"b", obj:["libido","sante"],    gender:"F",  vegan:true,  animal:false, collagen:false, type:"hormones_f",  syn:["folique","vitd","berberin"]},
+  {name:"Gattilier (Vitex agnus-castus)", why:"Rééquilibre les hormones féminines, réduit le SPM et régule les cycles menstruels.",               dose:"20 à 40mg d'extrait/jour",                tag:"b", obj:["sante","libido"],    gender:"F",  vegan:true,  animal:false, collagen:false, type:"hormones_f2", syn:["magnesium","vitb6"]},
+  {name:"DIM (Diindolylméthane)",     why:"Détoxifie les oestrogènes, réduit l'acné hormonale et le SPM. Issu du brocoli.",                         dose:"100 à 200mg/jour",                       tag:"x", obj:["sante"],             gender:"F",  vegan:true,  animal:false, collagen:false, type:"hormones_f3", syn:["gattilier","vitd"]},
+  // ─── SPECIFIQUE FEMME ───
+  {name:"Fer Bisglycinate",           why:"Prévient l'anémie et la fatigue chronique. Forme bisglycinate : sans troubles digestifs.",               dose:"14 à 18mg/jour à jeun + Vitamine C",     tag:"e", obj:["sante","energie"],   gender:"F",  vegan:true,  animal:false, collagen:false, type:"fer",         syn:["vitc","vitb12","folique"]},
+  {name:"Acide Folique (B9)",         why:"Essentielle pour la femme : énergie, équilibre nerveux, fertilité et santé cellulaire.",                 dose:"400 à 800mcg/jour",                      tag:"e", obj:["sante"],             gender:"F",  vegan:true,  animal:false, collagen:false, type:"folique",     syn:["vitb12","fer"]},
+  // ─── LONGEVITE ───
+  {name:"CoQ10 (Ubiquinol)",          why:"Carburant des mitochondries. Énergie cellulaire, protection cardiaque et ralentissement du vieillissement.", dose:"100 à 200mg/jour (forme ubiquinol)", tag:"b", obj:["longevite","energie"], gender:"MF", vegan:true, animal:false, collagen:false, type:"coq10",       syn:["resveratrol","omega3","nmn"]},
+  {name:"Resvératrol",                why:"Active les gènes de longévité (sirtuines), protège les cellules et les vaisseaux sanguins.",              dose:"150 à 500mg/jour",                       tag:"b", obj:["longevite"],          gender:"MF", vegan:true,  animal:false, collagen:false, type:"resveratrol", syn:["coq10","quercetin","omega3"]},
+  {name:"NMN (Nicotinamide Mononucléotide)", why:"Précurseur du NAD+. Relance l'énergie cellulaire et ralentit le vieillissement moléculaire.", dose:"250 à 500mg/jour (avis médical conseillé)", tag:"x", obj:["longevite"],        gender:"MF", vegan:true,  animal:false, collagen:false, type:"nmn",         syn:["coq10","resveratrol"]},
+  {name:"Astaxanthine",               why:"L'antioxydant le plus puissant de la nature (6000x la vitamine C). Peau, yeux et performance.",           dose:"4 à 12mg/jour",                          tag:"x", obj:["beaute","longevite","perf"], gender:"MF", vegan:true, animal:false, collagen:false, type:"astaxanthine", syn:["omega3","vitc","luteine"]},
+  // ─── BEAUTE ───
+  {name:"Collagène Marin",            why:"Hydrate la peau, renforce tendons et articulations. Indispensable avec la Vitamine C pour l'efficacité.", dose:"10g/jour à jeun avec Vitamine C",        tag:"b", obj:["beaute","sante","longevite"], gender:"MF", vegan:false, animal:true, collagen:true,  type:"collagene",   syn:["vitc","zinc","msm"]},
+  {name:"Acide Hyaluronique",         why:"Hydrate la peau de l'intérieur et lubrifie les articulations. Complément beauté de référence.",           dose:"100 à 200mg/jour",                       tag:"b", obj:["beaute","longevite"],gender:"MF", vegan:true,  animal:false, collagen:false, type:"hyaluro",     syn:["collagene","vitc","zinc"]},
+  {name:"Biotine (Vitamine B8)",      why:"Vitamine des cheveux et des ongles. Stimule la kératine et améliore leur résistance.",                    dose:"5 000 à 10 000mcg/jour",                 tag:"b", obj:["beaute"],             gender:"MF", vegan:true,  animal:false, collagen:false, type:"biotine",     syn:["zinc","collagene","silicium"]},
+  {name:"Silicium Organique",         why:"Renforce os, cheveux, ongles et peau. Favorise la synthèse naturelle de collagène.",                     dose:"1 à 3 ampoules/jour",                    tag:"x", obj:["beaute","sante"],    gender:"MF", vegan:true,  animal:false, collagen:false, type:"silicium",    syn:["collagene","biotine","msm"]},
+  {name:"MSM (Méthylsulfonylméthane)", why:"Réduit les douleurs articulaires, améliore la flexibilité et la qualité de la peau.",                 dose:"1 à 3g/jour",                            tag:"x", obj:["sante","beaute"],    gender:"MF", vegan:true,  animal:false, collagen:false, type:"msm",         syn:["collagene","vitc"]},
+  {name:"Lutéine + Zéaxanthine",      why:"Protège la rétine des écrans et de la lumière bleue. Indispensable pour la santé des yeux.",            dose:"10 à 20mg lutéine/jour",                  tag:"x", obj:["sante"],             gender:"MF", vegan:true,  animal:false, collagen:false, type:"vision",      syn:["omega3","vitc","astaxanthine"]},
+  {name:"Myrtille (Anthocyanines)",   why:"Améliore la vision, protège la rétine et apporte des antioxydants puissants et naturels.",               dose:"100 à 300mg/jour",                       tag:"x", obj:["sante"],             gender:"MF", vegan:true,  animal:false, collagen:false, type:"vision2",     syn:["luteine","vitc"]},
+  {name:"Vitamine A (Bêta-carotène)", why:"Vision, peau saine et immunité. La forme bêta-carotène est sûre (convertie selon les besoins).",         dose:"2 500 à 5 000 UI/jour",                  tag:"x", obj:["beaute","sante"],    gender:"MF", vegan:true,  animal:false, collagen:false, type:"vita",        syn:["vitd","zinc","vitc"]},
+  {name:"Bore (Boron)",               why:"Minéral rare qui optimise la vitamine D, soutient la testostérone et la santé osseuse.",                 dose:"3 à 6mg/jour",                           tag:"x", obj:["sante","libido"],    gender:"MF", vegan:true,  animal:false, collagen:false, type:"bore",        syn:["vitd","zinc","magnesium"]},
+  {name:"DHEA",                       why:"Précurseur hormonal naturel. Anti-âge, énergie et libido. Consultation médicale obligatoire.",            dose:"25 à 50mg/jour (avis médical obligatoire)", tag:"x", obj:["libido","longevite"], gender:"MF", vegan:true, animal:false, collagen:false, type:"dhea",       syn:["vitd","zinc"]}
+];
+
+// Ajout Cafeine comme entry pseudo (pas dans DATA site mais dans notre quiz)
+QZ_DB.push({
+  name:"Caféine + L-Théanine (combo)", why:"Le duo focus par excellence : énergie et concentration sans nervosité ni crash. L-Théanine lisse le pic de caféine.", dose:"100 à 200mg caféine + 200mg L-Théanine", tag:"e", obj:["energie","fatloss","perf"], gender:"MF", vegan:true, animal:false, collagen:false, type:"stimulant", syn:["theanine","rhodiola","magnesium"]
+});
+// Tyrosine pour focus
+QZ_DB.push({
+  name:"L-Tyrosine", why:"Acide aminé précurseur de la dopamine et de la noradrénaline. Améliore le focus sous stress et la motivation mentale.", dose:"500 à 2000mg/jour (avant effort mental)", tag:"b", obj:["energie","perf"], gender:"MF", vegan:true, animal:false, collagen:false, type:"focus2", syn:["cafeine","theanine","magnesium"]
+});
+QZ_URLS["Caféine + L-Théanine (combo)"] = "https://mydoseup.com/#l-theanine";
+QZ_URLS["L-Tyrosine"] = "https://mydoseup.com/#l-theanine";
+
+// ═══ SYNERGIES ═══
+var QZ_SYN = {
+  "Créatine Monohydrate+Bêta-Alanine":        "Force + Endurance (duo pre-workout classique)",
+  "Créatine Monohydrate+L-Citrulline":         "Puissance + Pompe vasculaire",
+  "Caféine + L-Théanine (combo)+L-Tyrosine":  "Combo focus cognitif complet",
+  "Magnésium Bisglycinate+Ashwagandha (KSM-66)":"Anti-stress profond",
+  "Magnésium Bisglycinate+Zinc Bisglycinate":  "ZMA : testostérone + sommeil",
+  "Vitamine D3 + K2+Oméga-3 (EPA/DHA)":       "Immunité + anti-inflammation optimisés",
+  "Vitamine C+Collagène Marin":                "Collagène x3 plus efficace",
+  "Vitamine C+Fer Bisglycinate":               "Absorption du fer x3",
+  "CoQ10 (Ubiquinol)+Resvératrol":             "Longévité cellulaire",
+  "Oméga-3 (EPA/DHA)+CoQ10 (Ubiquinol)":      "Protection cardiaque renforcée",
+  "Ashwagandha (KSM-66)+Rhodiola Rosea":       "Stack anti-fatigue adaptogène complet",
+  "L-Carnitine+Caféine + L-Théanine (combo)": "Fat burning décuplé",
+  "Maca (Lepidium meyenii)+Zinc Bisglycinate": "Libido naturelle optimisée",
+  "Fer Bisglycinate+Vitamine B12 (Méthylcobalamine)": "Lutte anti-anémie complète",
+  "Bêta-Alanine+L-Citrulline":                "Duo endurance + pompe"
+};
+
+// ═══ QUESTIONS ═══
+var QZ_QS = [
+  {
+    id:"objectif", label:"Ton objectif", type:"single",
+    text:"Quel est ton objectif principal ?",
+    opts:[
+      {v:"masse",    t:"Muscle",           d:"Masse, force et hypertrophie"},
+      {v:"fatloss",  t:"Perte de gras",    d:"Brûler les graisses, affiner"},
+      {v:"perf",     t:"Energie & Focus",  d:"Performance physique et cognitive"},
+      {v:"sante",    t:"Sante & Vitalite", d:"Immunité, bien-être, équilibre"},
+      {v:"stress",   t:"Sommeil & Stress", d:"Récupérer, dormir, déstresser"},
+      {v:"libido",   t:"Libido & Hormones",d:"Vitalité hormonale et drive"},
+      {v:"longevite",t:"Longevite",        d:"Anti-âge, protection cellulaire"},
+      {v:"beaute",   t:"Beaute",           d:"Peau, cheveux, ongles, éclat"}
+    ]
+  },
+  {
+    id:"genre", label:"Profil", type:"single", cols:2,
+    text:"Ton profil biologique ?",
+    opts:[
+      {v:"H", t:"Homme", d:"Profil masculin"},
+      {v:"F", t:"Femme",  d:"Profil féminin"}
+    ]
+  },
+  {
+    id:"niveau", label:"Experience", type:"single", cols:3,
+    text:"Ton niveau avec les compléments ?",
+    opts:[
+      {v:"deb",   t:"Debutant",      d:"Je commence tout juste"},
+      {v:"inter", t:"Intermediaire", d:"Déjà quelques produits"},
+      {v:"av",    t:"Avance",        d:"J'optimise mon stack"}
+    ]
+  },
+  {
+    id:"budget", label:"Budget mensuel", type:"single",
+    text:"Quel est ton budget mensuel ?",
+    opts:[
+      {v:"faible",  t:"Moins de 30 EUR",    d:"2 à 3 essentiels ciblés"},
+      {v:"moyen",   t:"30 a 70 EUR",         d:"4 à 5 produits bien choisis"},
+      {v:"eleve",   t:"70 a 120 EUR",        d:"6 à 7 produits optimisés"},
+      {v:"premium", t:"120 EUR et plus",     d:"Stack premium sans limite"}
+    ]
+  },
+  {
+    id:"contraintes", label:"Contraintes", type:"multi",
+    text:"Des contraintes a prendre en compte ?",
+    opts:[
+      {v:"vegan",  t:"Vegan / vegetalien",  d:"Ni gélatine, ni collagène, ni lait"},
+      {v:"mini",   t:"Minimum de prises",   d:"Simplifier au maximum"},
+      {v:"sport",  t:"Sport intensif",      d:"Plus de 4h de sport par semaine"},
+      {v:"stress", t:"Stress & sommeil",    d:"Fatigue, anxiété, mauvais sommeil"},
+      {v:"aucune", t:"Aucune contrainte",   d:"Pas de restriction spécifique"}
+    ]
+  }
+];
+
+// ═══ MOTEUR DE SCORE ═══
+function qzBuildStack(a){
+  var obj    = a.objectif;
+  var genre  = a.genre;
+  var niv    = a.niveau;
+  var bud    = a.budget;
+  var c      = Array.isArray(a.contraintes) ? a.contraintes : [];
+  var isVegan  = c.includes("vegan");
+  var isMini   = c.includes("mini");
+  var isSport  = c.includes("sport");
+  var isStress = c.includes("stress");
+  var isFemme  = genre === "F";
+  var isAv     = niv === "av";
+  var isFaible = bud === "faible";
+  var maxItems = {faible:3, moyen:5, eleve:7, premium:10}[bud]||5;
+  if(isMini) maxItems = Math.min(maxItems, 4);
+
+  var scored = [];
+  QZ_DB.forEach(function(s){
+    var score = 0;
+    // Exclusions securite
+    if(isVegan && (s.animal || s.collagen)) return;
+    if(isFemme && s.gender === "M") return;
+    if(!isFemme && s.gender === "F") return;
+    if(niv === "deb" && (s.name === "DHEA" || s.name === "NMN (Nicotinamide Mononucléotide)")) return;
+
+    // Score objectif direct
+    if(s.obj.includes(obj)){
+      if(s.tag === "e") score += 100;
+      else if(s.tag === "b") score += 65;
+      else score += 30;
+    }
+
+    // Contraintes additionnelles
+    if(isStress && s.obj.includes("stress")) score += 40;
+    if(isSport && (s.obj.includes("perf") || s.obj.includes("masse"))) score += 20;
+
+    // Specificite Femme : Fer + Folique toujours, sauf budget faible
+    if(isFemme && (s.name === "Fer Bisglycinate" || s.name === "Acide Folique (B9)")){
+      score += isFaible ? 12 : 85;
+    }
+    if(isFemme && (s.type === "hormones_f" || s.type === "hormones_f2")) score += 25;
+
+    // Base sante universelle — priorite differee si budget faible
+    if(s.name === "Vitamine D3 + K2" || s.name === "Oméga-3 (EPA/DHA)" || s.name === "Magnésium Bisglycinate"){
+      score += isFaible ? 12 : 45;
+    }
+    // Vegan bonus
+    if(isVegan && s.name === "Protéine de Pois (Isolat)" && s.obj.includes("masse")) score += 50;
+    if(isVegan && (s.name === "Spiruline" || s.name === "Vitamine B12 (Méthylcobalamine)")) score += 30;
+
+    // Debutants : eviter les bonus complexes
+    if(niv === "deb" && s.tag === "x") score -= 35;
+    if(isAv && s.tag === "x" && s.obj.includes(obj)) score += 15;
+
+    if(score <= 0) return;
+    scored.push({s:s, score:score});
+  });
+
+  scored.sort(function(a,b){ return b.score - a.score; });
+
+  // Anti-doublon par type de benefice
+  var usedTypes = {};
+  var final = [];
+  // Pour budget faible : garantir que le n1 objectif est en premier
+  if(isFaible){
+    var bestObj = scored.find(function(x){ return x.s.obj.includes(obj) && x.s.tag === "e"; });
+    if(bestObj && (!usedTypes[bestObj.s.type])){
+      usedTypes[bestObj.s.type] = true;
+      final.push(bestObj);
+    }
+  }
+  for(var i=0; i<scored.length && final.length < maxItems; i++){
+    var item = scored[i];
+    if(usedTypes[item.s.type] && bud !== "premium") continue;
+    if(final.some(function(f){ return f.s.name === item.s.name; })) continue;
+    usedTypes[item.s.type] = true;
+    final.push(item);
+  }
+
+  // Detection synergies
+  var fNames = final.map(function(f){ return f.s.name; });
+  var detSyn = {};
+  fNames.forEach(function(n1){
+    fNames.forEach(function(n2){
+      if(n1 === n2) return;
+      var k1 = n1+"+"+n2, k2 = n2+"+"+n1;
+      var syn = QZ_SYN[k1] || QZ_SYN[k2];
+      if(syn){ detSyn[n1] = detSyn[n1]||[]; if(!detSyn[n1].includes(syn)) detSyn[n1].push(syn); }
+    });
+  });
+
+  return final.map(function(item){
+    return Object.assign({}, item.s, {
+      score: item.score,
+      detSyn: detSyn[item.s.name] || [],
+      url: QZ_URLS[item.s.name] || "https://mydoseup.com"
+    });
+  });
+}
+
+// ═══ STATE ═══
+var qzState = {step:0, answers:{}};
+var QZ_TOTAL = QZ_QS.length;
+
+function qzUpdateProgress(){
+  var pct = Math.round((qzState.step / QZ_TOTAL)*100);
+  var el = document.getElementById("qz-fill");
+  var lb = document.getElementById("qz-lbl");
+  var pc = document.getElementById("qz-pct");
+  if(el) el.style.width = pct + "%";
+  if(lb) lb.textContent = "Etape " + (qzState.step+1) + " / " + QZ_TOTAL;
+  if(pc) pc.textContent = pct + "%";
+  var steps = document.getElementById("qz-steps");
+  if(steps){
+    steps.innerHTML = "";
+    for(var i=0;i<QZ_TOTAL;i++){
+      var d = document.createElement("div");
+      d.className = "qz-step-dot" + (i<qzState.step?" done":i===qzState.step?" active":"");
+      steps.appendChild(d);
+    }
+  }
+}
+
+function qzRender(){
+  qzUpdateProgress();
+  var q = QZ_QS[qzState.step];
+  var isMulti = q.type === "multi";
+  var cv = qzState.answers[q.id];
+  var ca = Array.isArray(cv) ? cv : (cv ? [cv] : []);
+  var hasAns = ca.length > 0;
+  var cols = q.cols || (q.opts.length <= 2 ? 2 : q.opts.length >= 6 ? 2 : q.opts.length === 3 ? 3 : 2);
+  var cc = cols === 1 ? "c1" : cols === 3 ? "c3" : "";
+
+  var ckSVG = '<svg width="9" height="7" viewBox="0 0 9 7" fill="none"><path d="M1 3.5L3.5 6L8 1" stroke="#050708" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+
+  var optsHTML = q.opts.map(function(o){
+    var sel = ca.includes(o.v) ? "sel" : "";
+    return '<button class="qz-opt '+sel+'" data-v="'+o.v+'">'
+      +'<div class="qz-opt-ck">'+ckSVG+'</div>'
+      +'<div class="qz-opt-title">'+o.t+'</div>'
+      +(o.d ? '<div class="qz-opt-desc">'+o.d+'</div>' : '')
+      +'</button>';
+  }).join("");
+
+  var card = document.getElementById("qz-card");
+  card.innerHTML =
+    '<div class="qz-q-chip">'+q.label+'</div>'
+    +'<div class="qz-q-text">'+q.text+'</div>'
+    +(isMulti ? '<div class="qz-multi-note">Tu peux choisir plusieurs réponses</div>' : '')
+    +'<div class="qz-grid '+cc+'" id="qz-opts">'+optsHTML+'</div>'
+    +'<div class="qz-nav">'
+    +(qzState.step > 0 ? '<button class="qz-btn-back" id="qz-back">← Precedent</button>' : '<span></span>')
+    +'<button class="qz-btn-next" id="qz-next"'+(hasAns?'':' disabled')+'>'
+    +(qzState.step === QZ_TOTAL-1 ? 'Voir ma selection' : 'Suivant →')
+    +'</button></div>';
+
+  document.querySelectorAll("#qz-opts .qz-opt").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      var val = btn.dataset.v;
+      if(isMulti){
+        var arr = Array.isArray(qzState.answers[q.id]) ? qzState.answers[q.id].slice() : [];
+        if(val === "aucune"){ arr = ["aucune"]; }
+        else{ arr = arr.filter(function(v){return v!=="aucune";}); if(arr.includes(val)) arr=arr.filter(function(v){return v!==val;}); else arr.push(val); }
+        qzState.answers[q.id] = arr;
+      } else { qzState.answers[q.id] = val; }
+      qzRender();
+    });
+  });
+  var nb = document.getElementById("qz-next");
+  if(nb) nb.addEventListener("click", function(){
+    if(qzState.step < QZ_TOTAL-1){ qzState.step++; qzRender(); document.getElementById("quiz-overlay").scrollTop=0; }
+    else qzShowLoading();
+  });
+  var bb = document.getElementById("qz-back");
+  if(bb) bb.addEventListener("click", function(){
+    qzState.step--; qzRender(); document.getElementById("quiz-overlay").scrollTop=0;
+  });
+}
+
+var qzLoadMsgs = [
+  "Analyse de ton profil...",
+  "Scan des 54 produits...",
+  "Calcul des synergies...",
+  "Verification des exclusions...",
+  "Ton stack est pret !"
+];
+
+function qzShowLoading(){
+  qzUpdateProgress();
+  document.getElementById("qz-fill").style.width="100%";
+  document.getElementById("qz-lbl").textContent="Analyse...";
+  var card = document.getElementById("qz-card");
+  card.innerHTML =
+    '<div class="qz-loading">'
+    +'<div class="qz-spin"></div>'
+    +'<div class="qz-load-title">Ton stack est en cours de creation</div>'
+    +'<div class="qz-load-msg" id="qz-load-msg">'+qzLoadMsgs[0]+'</div>'
+    +'<div class="qz-load-bar-w"><div class="qz-load-bar" id="qz-load-bar"></div></div>'
+    +'</div>';
+  setTimeout(function(){ var b=document.getElementById("qz-load-bar"); if(b) b.style.width="100%"; },60);
+  var mi=0;
+  var iv=setInterval(function(){
+    mi++; var el=document.getElementById("qz-load-msg");
+    if(el && mi<qzLoadMsgs.length) el.textContent=qzLoadMsgs[mi];
+  },390);
+  setTimeout(function(){ clearInterval(iv); qzRenderResult(); },2100);
+}
+
+function qzRenderResult(){
+  var stack = qzBuildStack(qzState.answers);
+  var isFemme = qzState.answers.genre === "F";
+  var objMap = {masse:"Muscle",fatloss:"Perte de Gras",perf:"Energie & Focus",sante:"Sante & Vitalite",stress:"Sommeil & Stress",libido:"Libido & Hormones",longevite:"Longevite",beaute:"Beaute"};
+  var budMap = {faible:"Essentiel",moyen:"Equilibre",eleve:"Complet",premium:"Premium"};
+  var objLabel = objMap[qzState.answers.objectif]||"";
+  var budLabel = budMap[qzState.answers.budget]||"";
+  var tagLbl = {e:"Essentiel",b:"Actif",x:"Bonus"};
+  var tagCls = {e:"qb-e",b:"qb-b",x:"qb-x"};
+  var numCls = {e:"qn-e",b:"qn-b",x:"qn-x"};
+
+  document.getElementById("qz-fill").style.width="100%";
+  document.getElementById("qz-lbl").textContent="Ta selection";
+  document.getElementById("qz-pct").textContent="100%";
+  var steps=document.getElementById("qz-steps");
+  if(steps){steps.innerHTML="";for(var i=0;i<QZ_TOTAL;i++){var d=document.createElement("div");d.className="qz-step-dot done";steps.appendChild(d);}}
+
+  var suppHTML = stack.map(function(s,i){
+    var nc = numCls[s.tag]||"qn-x";
+    var tc = tagCls[s.tag]||"qb-x";
+    var tl = tagLbl[s.tag]||s.tag;
+    var nameHTML = s.url
+      ? '<a href="'+s.url+'" target="_blank" rel="noopener noreferrer">'+s.name+'</a>'
+      : s.name;
+    var synHTML = s.detSyn.length
+      ? '<div class="qz-syn-row">'+s.detSyn.map(function(sy){return '<span class="qz-syn-chip">Synergie : '+sy+'</span>';}).join("")+'</div>'
+      : "";
+    return '<div class="qz-supp" style="animation-delay:'+(i*0.08)+'s">'
+      +'<div class="qz-supp-num '+nc+'">'+(i+1)+'</div>'
+      +'<div class="qz-supp-body">'
+        +'<div class="qz-supp-name">'+nameHTML+'</div>'
+        +'<div class="qz-supp-why">'+s.why+'</div>'
+        +'<div class="qz-supp-dose">'+s.dose+'</div>'
+        +synHTML
+      +'</div>'
+      +'<span class="qz-badge '+tc+'">'+tl+'</span>'
+      +'</div>';
+  }).join("");
+
+  var card = document.getElementById("qz-card");
+  card.innerHTML =
+    '<div class="qz-result-hd">'
+      +'<div class="qz-result-tag">Ta selection d\'essentiels</div>'
+      +'<div class="qz-result-title">Stack '+objLabel+' &mdash; '+(isFemme?"Femme":"Homme")+' &mdash; '+budLabel+'</div>'
+      +'<div class="qz-result-meta">'
+        +'<span>'+stack.length+' produits selectionnes</span>'
+        +'<span>Parmi 54 sur le site</span>'
+      +'</div>'
+    +'</div>'
+    +'<div class="qz-stack">'
+      +'<div class="qz-stack-lbl">Produits recommandes — par ordre de priorite</div>'
+      +suppHTML
+    +'</div>'
+    +'<div class="qz-actions">'
+      +'<button class="qz-btn-share" id="qz-share-btn">Copier mon stack</button>'
+      +'<button class="qz-btn-restart" id="qz-restart-btn">Recommencer l\'analyse</button>'
+    +'</div>'
+    +'<div class="qz-disclaimer">'
+      +'<strong>Information importante :</strong> Ce quiz est fourni a titre educatif uniquement. '
+      +'Il ne remplace pas un avis medical. Consultez un professionnel de sante avant tout programme de supplementation.'
+    +'</div>';
+
+  document.getElementById("qz-share-btn").addEventListener("click", function(){
+    var text = "Mon Stack MyDoseUp — "+objLabel+" ("+(!isFemme?"Homme":"Femme")+", "+budLabel+")\n\n"
+      +stack.map(function(s,i){ return (i+1)+". "+s.name+" — "+s.dose; }).join("\n")
+      +"\n\nGenere sur MyDoseUp.com";
+    if(navigator.clipboard && window.isSecureContext){
+      navigator.clipboard.writeText(text).then(function(){ qzToast("Stack copie !"); });
+    } else {
+      var ta=document.createElement("textarea");
+      ta.value=text; ta.style.cssText="position:fixed;top:0;left:0;opacity:0;font-size:16px;pointer-events:none";
+      document.body.appendChild(ta); ta.focus(); ta.select();
+      try{ document.execCommand("copy"); qzToast("Stack copie !"); } catch(e){ qzToast("Utilise le bouton sur le site"); }
+      document.body.removeChild(ta);
+    }
+  });
+  document.getElementById("qz-restart-btn").addEventListener("click", function(){
+    qzState={step:0,answers:{}};
+    document.getElementById("qz-fill").style.width="0%";
+    qzRender();
+    document.getElementById("quiz-overlay").scrollTop=0;
+  });
+}
+
+function qzToast(msg){
+  var t=document.getElementById("qz-toast");
+  t.textContent=msg; t.classList.add("show");
+  setTimeout(function(){ t.classList.remove("show"); },2800);
+}
+
+// ═══ OPEN / CLOSE ═══
+function openQuiz(){
+  document.getElementById("quiz-overlay").classList.add("on");
+  document.body.style.overflow="hidden";
+  if(!qzState._rendered){ qzState._rendered=true; qzRender(); }
+  document.getElementById("quiz-overlay").scrollTop=0;
+}
+function closeQuiz(){
+  document.getElementById("quiz-overlay").classList.remove("on");
+  document.body.style.overflow="";
+}
+// ESC key
+document.addEventListener("keydown",function(e){ if(e.key==="Escape") closeQuiz(); });
+
+// ═══ BOUTON SUR CHAQUE FICHE PRODUIT ═══
+// Injecte dans les cartes après rendu
+var _origSuppCard = window.suppCard;
+// On patche la fonction renderList/buildAZ apres qu'elle soit definie
+// pour ajouter le bouton quiz dans chaque fiche
+(function patchCards(){
+  var _timer = setInterval(function(){
+    if(typeof suppCard === "function" && suppCard.toString().indexOf("qz-fab-trigger") === -1){
+      var _orig = suppCard;
+      window.suppCard = function(s, ltr){
+        var html = _orig(s, ltr);
+        var btn = '<button class="qz-fab-trigger" onclick="event.stopPropagation();openQuiz()">Trouver mon stack personnalise</button>';
+        return html.replace('</div>\n  </div>`', '</div>\n  '+btn+'\n  </div>`') || html.replace("</div>\n  </div>`", "</div>\n  "+btn+"\n  </div>`") || html;
+      };
+      clearInterval(_timer);
+    }
+    if(typeof protCard === "function" && protCard.toString().indexOf("qz-fab-trigger") === -1){
+      var _origP = protCard;
+      window.protCard = function(p){
+        var html = _origP(p);
+        var btn = '<button class="qz-fab-trigger" onclick="event.stopPropagation();openQuiz()">Trouver mon stack personnalise</button>';
+        return html.replace('</div>\n  </div>`', '</div>\n  '+btn+'\n  </div>`') || html;
+      };
+    }
+  }, 300);
+  setTimeout(function(){ clearInterval(_timer); }, 5000);
+})();
 </script>
 </body>
 </html>
