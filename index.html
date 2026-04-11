@@ -3416,7 +3416,7 @@ function _renderFamSection(fam, items){
     const fnShort = fn.length < (d.fn||"").length ? fn+"…" : fn;
     const cardHtml = item.type==="supp" ? card(d,null,true) : protCard(d);
     return `<div class="az-li-wrap">
-      <div class="az-li" style="--c:${d.c}">
+      <div class="az-li" style="--c:${d.c}" data-nm="${nm}">
         <div class="az-li-dot"></div>
         <div style="flex:1;min-width:0">
           <div class="az-li-nm">${nm}</div>
@@ -3631,22 +3631,166 @@ document.addEventListener('touchstart', function(e){
 
 document.documentElement.style.background="#0A0F1A";
 document.body.style.background="#0A0F1A";
-/* ======= PROTECTION & SÉCURITÉ MYDOSEUP — © 2026 YANIS BENSAADI ======= */
-(function(){
-  document.addEventListener("contextmenu",e=>{e.preventDefault();return false;});
-  document.addEventListener("copy",e=>{e.preventDefault();e.stopPropagation();});
-  document.addEventListener("cut",e=>{e.preventDefault();e.stopPropagation();});
-  document.addEventListener("selectstart",e=>{if(e.target.tagName!=="INPUT"&&e.target.tagName!=="TEXTAREA")e.preventDefault();});
-  document.addEventListener("dragstart",e=>e.preventDefault());
-  document.addEventListener("keydown",e=>{
-    const k=e.key.toLowerCase();
-    if((e.ctrlKey||e.metaKey)&&["u","s","a","c","p","i","j","k"].includes(k))e.preventDefault();
-    if(e.key==="F12")e.preventDefault();
-    if(e.shiftKey&&e.ctrlKey&&["i","j","c"].includes(k))e.preventDefault();
+
+// ═══ OUVRIR UNE FICHE DEPUIS LE QUIZ ═══
+function openFiche(nm){
+  // 1. Fermer le quiz
+  var overlay = document.getElementById('quiz-overlay');
+  if(overlay){ overlay.classList.remove('on'); }
+  document.body.style.overflow = '';
+
+  // 2. Aller sur l'onglet A-Z
+  var tabAZ = document.querySelector('.tab:not(.on)');
+  document.querySelectorAll('.tab').forEach(function(t){
+    if(t.textContent.trim().indexOf('A') === 0) tabAZ = t;
   });
-  window.addEventListener("beforeprint",()=>{document.body.innerHTML="<p style='color:#fff;text-align:center;padding:50px'>© 2026 Yanis Mario Bensaadi — MyDoseUp® — Impression non autorisée</p>";});
-  try{if(window.top!==window.self){document.body.innerHTML="";window.top.location=window.self.location;}}catch(e){}
-})();
+  // Activer le panel A-Z directement
+  document.querySelectorAll('.tab').forEach(function(b){ b.classList.remove('on'); });
+  document.querySelectorAll('.panel').forEach(function(p){ p.classList.remove('on'); });
+  var panelAZ = document.getElementById('panel-az');
+  if(panelAZ){ panelAZ.classList.add('on'); }
+  // Marquer le tab A-Z comme actif
+  document.querySelectorAll('.tab').forEach(function(t){
+    if(t.textContent.trim().replace(/[^A-Za-zÀ-ÿ]/g,'').toLowerCase().indexOf('az') >= 0 ||
+       t.textContent.indexOf('A') >= 0 && t.textContent.indexOf('Z') >= 0){
+      t.classList.add('on');
+    }
+  });
+  hideFilterBar();
+
+  // 3. S'assurer que buildAZ a tourné
+  function doOpen(){
+    // Trouver le li correspondant au nm
+    var allLi = document.querySelectorAll('.az-li[data-nm]');
+    var target = null;
+    allLi.forEach(function(li){
+      if(li.getAttribute('data-nm') === nm) target = li;
+    });
+
+    if(!target){
+      // Fallback : chercher par texte
+      document.querySelectorAll('.az-li-nm').forEach(function(el){
+        if(el.textContent.trim() === nm) target = el.closest('.az-li');
+      });
+    }
+
+    if(!target) return;
+
+    // 4. Ouvrir la section famille si collapsée
+    var famSection = target.closest('.az-fam-section');
+    if(famSection){ famSection.classList.remove('collapsed'); }
+
+    // 5. Fermer toutes les autres cards ouvertes
+    document.querySelectorAll('.az-li-card.open').forEach(function(card){
+      card.classList.remove('open');
+    });
+    document.querySelectorAll('.az-li.active-li').forEach(function(li){
+      li.classList.remove('active-li');
+    });
+
+    // 6. Ouvrir cette card
+    var cardEl = target.nextElementSibling;
+    if(cardEl && cardEl.classList.contains('az-li-card')){
+      cardEl.classList.add('open');
+      target.classList.add('active-li');
+    }
+
+    // 7. Scroll vers la fiche
+    setTimeout(function(){
+      target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 100);
+  }
+
+  // Attendre que le DOM soit prêt (buildAZ peut être async)
+  var azContent = document.getElementById('azContent');
+  if(azContent && azContent.children.length > 0){
+    doOpen();
+  } else {
+    // buildAZ pas encore tourné — la lancer et attendre
+    if(typeof buildAZ === 'function') buildAZ();
+    setTimeout(doOpen, 300);
+  }
+}
+window.openFiche = openFiche;
+
+
+
+// ═══ DEEP LINK : ouvrir une fiche via le hash URL ═══
+function openFicheFromHash(){
+  var hash = window.location.hash;
+  if(!hash || hash.length < 2) return;
+  var slug = hash.slice(1);
+
+  function nmToSlug(nm){
+    return nm.toLowerCase()
+      .replace(/[àáâãäå]/g,'a').replace(/[éèêë]/g,'e')
+      .replace(/[îï]/g,'i').replace(/[ôö]/g,'o')
+      .replace(/[ùûü]/g,'u').replace(/[ç]/g,'c')
+      .replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
+  }
+
+  // Trouver la fiche par son slug
+  var allLi = document.querySelectorAll('.az-li[data-nm]');
+  var target = null;
+  allLi.forEach(function(li){
+    if(nmToSlug(li.getAttribute('data-nm')) === slug) target = li;
+  });
+  if(!target) return;
+
+  // Activer l'onglet A-Z via switchTab (la fonction officielle)
+  var tabAZ = null;
+  document.querySelectorAll('.tab').forEach(function(t){
+    if(t.textContent.trim().indexOf('Z') >= 0 && t.textContent.trim().indexOf('A') >= 0){
+      tabAZ = t;
+    }
+  });
+  if(tabAZ && typeof switchTab === 'function'){
+    switchTab('az', tabAZ);
+  } else {
+    // Fallback manuel
+    document.querySelectorAll('.tab').forEach(function(b){ b.classList.remove('on'); });
+    document.querySelectorAll('.panel').forEach(function(p){ p.classList.remove('on'); });
+    var panelAZ = document.getElementById('panel-az');
+    if(panelAZ) panelAZ.classList.add('on');
+    if(tabAZ) tabAZ.classList.add('on');
+  }
+
+  // Ouvrir la section famille
+  var famSection = target.closest('.az-fam-section');
+  if(famSection) famSection.classList.remove('collapsed');
+
+  // Fermer les autres, ouvrir celle-ci
+  document.querySelectorAll('.az-li-card.open').forEach(function(el){ el.classList.remove('open'); });
+  document.querySelectorAll('.az-li.active-li').forEach(function(el){ el.classList.remove('active-li'); });
+  var cardEl = target.nextElementSibling;
+  if(cardEl && cardEl.classList.contains('az-li-card')){
+    cardEl.classList.add('open');
+    target.classList.add('active-li');
+  }
+
+  // Scroll vers la fiche
+  setTimeout(function(){
+    target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }, 400);
+
+  // Nettoyer le hash
+  if(history.replaceState) history.replaceState(null, '', window.location.pathname);
+}
+
+// Lancer au chargement si hash présent
+window.addEventListener('load', function(){
+  if(!window.location.hash) return;
+  var tries = 0;
+  var iv = setInterval(function(){
+    var azContent = document.getElementById('azContent');
+    if(azContent && azContent.querySelectorAll('.az-li[data-nm]').length > 0){
+      clearInterval(iv);
+      openFicheFromHash();
+    }
+    if(++tries > 30) clearInterval(iv); // timeout 3s
+  }, 100);
+});
+
 </script>
 
 <!-- SEO Content -->
@@ -3945,7 +4089,9 @@ var QZ_URLS = {
   "Sélénium":                       "https://mydoseup.com/#selenium",
   "Bore (Boron)":                   "https://mydoseup.com/#bore-boron",
   "DHEA":                           "https://mydoseup.com/#dhea",
-  "Vitamine A (Bêta-carotène)":     "https://mydoseup.com/#vitamine-a-beta-carotene"
+  "Vitamine A (Bêta-carotène)":     "https://mydoseup.com/#vitamine-a-beta-carotene",
+  "BCAA (Acides Aminés Ramifiés)":  "https://mydoseup.com/#bcaa-acides-amines-ramifies",
+  "EAA (Acides Aminés Essentiels)": "https://mydoseup.com/#eaa-acides-amines-essentiels"
 };
 
 // ═══ BASE DE DONNÉES 54 PRODUITS ═══
@@ -4349,8 +4495,9 @@ function qzRenderResult(){
     var nc=numCls[s.tag]||"qn-x";
     var tc=tagCls[s.tag]||"qb-x";
     var tl=tagLbl[s.tag]||s.tag;
-    var nameHTML = s.url
-      ? '<a href="'+s.url+'" target="_blank" rel="noopener noreferrer" title="Voir la fiche '+s.name+'">'+s.name+' ↗</a>'
+    var url = QZ_URLS[s.name] || null;
+    var nameHTML = url
+      ? '<a href="'+url+'" target="_blank" rel="noopener noreferrer" title="Voir la fiche '+s.name+' (nouvel onglet)">'+s.name+' ↗</a>'
       : s.name;
     return '<div class="qz-supp" style="animation-delay:'+(i*0.06)+'s">'
       +'<div class="qz-supp-num '+nc+'">'+(i+1)+'</div>'
