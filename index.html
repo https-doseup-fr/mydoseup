@@ -95,7 +95,7 @@ body.F{background:#0C1A38 !important;color:#EDE8F8}
 .header{padding:28px 20px 0;position:relative;overflow:hidden}
 body.M .header{background:linear-gradient(170deg,#0D1B3E 0%,#162a5e 55%,#0D1B3E 100%)}
 body.F .header{background:linear-gradient(170deg,#0C1A38 0%,#0e2040 55%,#0C1A38 100())}
-.header::before{content:"";position:absolute;top:-40px;right:-20px;width:140px;height:140px;border-radius:50%;pointer-events:none;overflow:hidden}
+.header::before{content:"";position:absolute;top:-30px;right:0;width:120px;height:120px;border-radius:50%;pointer-events:none;background:radial-gradient(circle,rgba(140,80,255,0.10),transparent 70%)}
 body.M .header::before{background:radial-gradient(circle,rgba(80,160,255,0.10) 0%,transparent 70%)}
 body.F .header::before{background:radial-gradient(circle,rgba(160,80,255,0.10) 0%,transparent 70%)}
 .logo-wrap{display:flex;flex-direction:column;align-items:center;gap:6px;margin-bottom:16px;text-align:center;min-height:100px}
@@ -255,26 +255,26 @@ body.F .az-letter{background:#0F0820;color:#CE93D8}
 
 
 /* ── DRAWER MENU ── */
-.drawer-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.70);z-index:9998;backdrop-filter:blur(4px)}
-.drawer-overlay.open{display:block}
 
-.drawer-panel.open{transform:translateX(0)}
-.drawer-header{display:flex;justify-content:space-between;align-items:center;padding:20px 20px 16px;border-bottom:1px solid rgba(255,255,255,0.08)}
-.drawer-logo{font-size:20px;font-weight:900;background:linear-gradient(90deg,#9C4DCC,#64B5F6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.drawer-close{width:36px;height:36px;border-radius:10px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;font-size:18px;color:#FFF;cursor:pointer;flex-shrink:0}
-.drawer-nav{flex:1;padding:16px 16px 24px;display:flex;flex-direction:column;gap:8px;overflow-y:auto}
-.drawer-item{padding:16px 16px;border-radius:14px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;gap:14px;cursor:pointer;transition:all 0.18s}
+
+
+
+
+
+
+
+
 .drawer-item.active{background:rgba(100,181,246,0.12);border-color:rgba(100,181,246,0.30)}
 .drawer-item:active{background:rgba(255,255,255,0.10)}
-.drawer-ico{font-size:22px;width:36px;text-align:center;flex-shrink:0}
-.drawer-text{flex:1}
-
-.drawer-sub{font-size:11px;color:rgba(255,255,255,0.65);margin-top:2px}
-.drawer-arr{color:rgba(255,255,255,0.60);font-size:20px}
-.drawer-footer{display:none}
 
 
-.drawer-badge{background:rgba(100,181,246,0.20);color:#90C8FF;font-size:9px;font-weight:800;padding:2px 8px;border-radius:50px;letter-spacing:0.08em;flex-shrink:0}
+
+
+
+
+
+
+
 
 
 
@@ -320,7 +320,7 @@ body.F .az-letter{background:#0F0820;color:#CE93D8}
 /* Desktop : menu horizontal */
 @media(min-width:600px){
   .nav-hamburger{display:none !important;}
-  .nav-dropdown{display:flex !important;flex-direction:row;padding:0 6px;gap:2px}
+  
   .nav-btn{flex:1;padding:10px 4px;font-size:11px;text-align:center;border-radius:8px;border-bottom:2px solid transparent;margin:4px 2px}
   .nav-btn.active{background:rgba(255,255,255,0.15);border-bottom-color:#FFF;border-radius:8px}
   .menu-btn{display:none !important;}
@@ -423,7 +423,7 @@ img{pointer-events:none;-webkit-user-drag:none;user-drag:none;}
 
 @media(max-width:599px){
   /* Mobile : drawer menu, pas de nav-bandeau */
-  .nav-bandeau{display:none !important;}
+  
   .menu-btn{display:flex !important;}
 }
 
@@ -439,13 +439,13 @@ body.F .az-fam-header{--az-bg:#0C1A38}
 .az-fam-items{padding:0 14px 8px}
 .az-fam-section.collapsed .az-fam-items{display:none}
 /* List item — compact clickable row that expands into sc card */
-.az-li{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:12px;cursor:pointer;margin-bottom:4px;border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.03);transition:background 0.15s,border-color 0.15s;position:relative;overflow:hidden}
+.az-li{display:flex;align-items:flex-start;gap:10px;padding:9px 12px;border-radius:12px;cursor:pointer;margin-bottom:4px;border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.03);transition:background 0.15s,border-color 0.15s;position:relative;overflow:hidden}
 .az-li::before{content:'';position:absolute;inset:0;background:var(--c);opacity:0.10;pointer-events:none}
 .az-li:active{background:rgba(255,255,255,0.07)}
 .az-li-dot{width:8px;height:8px;border-radius:50%;background:var(--c);flex-shrink:0}
-.az-li-nm{font-size:13px;font-weight:700;color:#fff;flex:1;line-height:1.3}
+.az-li-nm{font-size:13px;font-weight:700;color:#fff;line-height:1.3;word-break:break-word}
 .az-li-fn{font-size:11px;color:rgba(255,255,255,0.76);line-height:1.35;margin-top:2px}
-.az-li-tag{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--c);opacity:0.9;background:rgba(255,255,255,0.07);border-radius:4px;padding:2px 5px;flex-shrink:0}
+.az-li-tag{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--c);opacity:0.85;background:rgba(255,255,255,0.07);border-radius:4px;padding:3px 6px;flex-shrink:0;max-width:90px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;align-self:flex-start;margin-top:2px}
 .az-li-arrow{font-size:11px;color:rgba(255,255,255,0.22);flex-shrink:0}
 .az-li-wrap{padding:0 0 4px}
 /* When AZ-item is expanded -> show sc card below */
@@ -867,7 +867,7 @@ body.F .az-fam-header{--az-bg:#0C1A38}
 /* Stabilize sport grid tiles */
 .sport-tile{contain:layout style}
 /* Prevent CLS from drawer animation */
-.drawer-panel{will-change:transform}
+
 /* ═══ DRAWER ITEMS COLORÉS v2 ═══ */
 #ditem-accueil:hover{background:rgba(21,101,192,0.28) !important}
 #ditem-quiz:hover{background:rgba(46,204,113,0.20) !important}
@@ -875,10 +875,10 @@ body.F .az-fam-header{--az-bg:#0C1A38}
 #ditem-experts:hover{background:rgba(93,53,177,0.24) !important}
 #ditem-concept:hover{background:rgba(255,143,0,0.18) !important}
 
-.drawer-sub{font-size:12px !important;color:rgba(255,255,255,0.70) !important;margin-top:2px}
-.drawer-arr{font-size:22px !important;color:rgba(255,255,255,0.60) !important}
-.drawer-ico{width:36px;height:36px;display:flex;align-items:center;justify-content:center;flex-shrink:0;border-radius:10px;background:rgba(255,255,255,0.06)}
-.drawer-panel{background:linear-gradient(160deg,#141828 0%,#1a1035 100%) !important}
+
+
+
+
 
 
 /* ═══ ECLAIRCISSEMENT GLOBAL ═══ */
@@ -1012,12 +1012,12 @@ body.F .tabs{background:#120A25 !important}
 .qz-fab-trigger:hover{background:rgba(96,184,255,0.14) !important}
 
 /* Drawer mobile : meilleur contraste */
-.drawer-item{background:rgba(255,255,255,0.09);border:1px solid rgba(255,255,255,0.16)}
+
 .drawer-item:hover,.drawer-item:active{background:rgba(255,255,255,0.16)}
 .drawer-item.active{background:rgba(96,184,255,0.10);border-color:rgba(96,184,255,0.25)}
 
-.drawer-sub{color:rgba(255,255,255,0.72) !important;font-size:12px !important}
-.drawer-arr{color:rgba(255,255,255,0.70) !important;font-size:22px !important}
+
+
 
 /* Header compact desktop */
 @media(min-width:768px){
@@ -1105,147 +1105,45 @@ body.F .g-pill.on{box-shadow:0 0 18px rgba(123,31,162,0.45),0 0 6px rgba(123,31,
 
 
 /* ════ HOME MOBILE uniquement ════ */
-#site-home{
-  position:fixed;inset:0;z-index:99999;overflow-y:auto;
-  background:linear-gradient(160deg,#0D1B3E 0%,#112244 50%,#0F1A3A 100%);
-  display:flex;flex-direction:column;align-items:center;
-  padding:0 20px 32px;font-family:"DM Sans",sans-serif;box-sizing:border-box;
-}
-#site-home.gone{display:none}
-.hm-topbar{
-  position:sticky;top:0;z-index:10;width:100%;max-width:540px;align-self:center;
-  background:linear-gradient(180deg,#0D1B3E 85%,transparent 100%);
-  display:flex;align-items:center;justify-content:space-between;
-  padding:14px 0 8px;box-sizing:border-box;
-}
-.hm-topbar-logo{font-size:15px;font-weight:900;
-  background:linear-gradient(90deg,#C084FC,#818CF8,#60A5FA);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.hm-topbar-btn{display:flex;align-items:center;gap:7px;padding:8px 14px;
-  border-radius:10px;border:1px solid rgba(255,255,255,0.25);
-  background:rgba(255,255,255,0.10);cursor:pointer;
-  font-family:"DM Sans",sans-serif;font-size:12px;font-weight:700;color:#FFF;}
+
+
+
+
+
 .hm-topbar-btn:hover{background:rgba(255,255,255,0.18)}
-.hm-inner{width:100%;max-width:540px;display:flex;flex-direction:column;align-items:center;}
-.hm-logo-wrap{text-align:center;margin-bottom:16px;}
-.hm-brand-txt{font-size:22px;font-weight:900;letter-spacing:-0.5px;
-  background:linear-gradient(90deg,#C084FC,#818CF8,#60A5FA);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.hm-brand-com{font-size:13px;opacity:0.55;
-  background:linear-gradient(90deg,#93C5FD,#BAE6FD);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.hm-tagline{font-size:10px;color:rgba(255,255,255,0.38);letter-spacing:0.06em;margin-top:3px;}
+
+
+
+
+
 .hm-h1{font-size:clamp(22px,5vw,32px);font-weight:900;color:#FFF;line-height:1.18;
   text-align:center;letter-spacing:-0.5px;margin:0 0 10px;max-width:460px;}
 .hm-h1 em{font-style:normal;background:linear-gradient(90deg,#A78BFA,#60A5FA);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.hm-pitch{font-size:14px;color:rgba(255,255,255,0.88);line-height:1.65;
-  text-align:center;max-width:400px;margin:0 auto 7px;}
-.hm-trust{font-size:11px;color:rgba(255,255,255,0.65);text-align:center;margin-bottom:22px;}
-.hm-trust strong{color:#FFF;font-weight:700;}
-.hm-section-lbl{font-size:10px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;
-  color:rgba(255,255,255,0.55);width:100%;margin-bottom:9px;}
-.hm-obj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;width:100%;margin-bottom:18px;}
-.hm-obj-btn{padding:13px 6px 11px;border-radius:13px;
-  border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.07);
-  cursor:pointer;font-family:"DM Sans",sans-serif;
-  display:flex;flex-direction:column;align-items:center;gap:6px;transition:background .14s;}
+
+
+
+
+
+
 .hm-obj-btn:hover{background:rgba(255,255,255,0.12);}
 .hm-obj-btn:active{transform:scale(0.96);}
-.hm-obj-ico{font-size:20px;line-height:1;}
-.hm-obj-lbl{font-size:11px;font-weight:800;color:#FFF;line-height:1.2;text-align:center;}
-.hm-stack-btn{width:100%;padding:13px 16px;border-radius:13px;
-  border:1px solid rgba(167,139,250,0.30);background:rgba(124,58,237,0.14);
-  cursor:pointer;font-family:"DM Sans",sans-serif;
-  display:flex;align-items:center;gap:13px;margin-bottom:10px;transition:background .14s;}
+
+
+
 .hm-stack-btn:hover{background:rgba(124,58,237,0.22);}
-.hm-stack-ico{width:38px;height:38px;border-radius:10px;flex-shrink:0;
-  background:linear-gradient(145deg,#7C3AED,#8B5CF6);
-  display:flex;align-items:center;justify-content:center;}
-.hm-how{width:100%;border:1px solid rgba(255,255,255,0.08);border-radius:13px;
-  background:rgba(255,255,255,0.03);padding:15px;}
-.hm-how-title{font-size:10px;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;
-  color:rgba(255,255,255,0.55);margin-bottom:11px;}
-.hm-how-step{display:flex;align-items:flex-start;gap:11px;margin-bottom:8px;}
+
+
+
+
 .hm-how-step:last-child{margin-bottom:0;}
-.hm-how-num{width:21px;height:21px;border-radius:50%;border:1px solid rgba(255,255,255,0.35);
-  flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;
-  font-size:11px;font-weight:800;color:#FFF;}
-.hm-how-txt{font-size:12px;color:rgba(255,255,255,0.85);line-height:1.5;}
+
+
 .hm-how-txt strong{color:#FFF;font-weight:800;}
 
 /* PC : home complètement cachée — on utilise la nav native */
 
 
-/* ════ DRAWER — mobile seulement ════ */
-.drawer-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.55);
-  z-index:999999998;backdrop-filter:blur(6px);}
-.drawer-overlay.open{display:block;}
-.drawer-panel{position:fixed;top:0;right:0;bottom:0;width:82%;max-width:310px;
-  background:#1C1535;z-index:999999999;transform:translateX(100%);
-  transition:transform 0.28s cubic-bezier(0.4,0,0.2,1);
-  display:flex;flex-direction:column;
-  box-shadow:-20px 0 60px rgba(0,0,0,0.65);
-  border-left:1px solid rgba(255,255,255,0.08);}
-.drawer-panel.open{transform:translateX(0);}
-.drawer-header{display:flex;justify-content:space-between;align-items:center;
-  padding:20px 16px 14px;border-bottom:1px solid rgba(255,255,255,0.08);}
-.drawer-logo{font-size:15px;font-weight:900;
-  background:linear-gradient(90deg,#C084FC,#818CF8,#60A5FA);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.drawer-close{width:30px;height:30px;border-radius:8px;background:rgba(255,255,255,0.08);
-  border:none;display:flex;align-items:center;justify-content:center;
-  cursor:pointer;color:rgba(255,255,255,0.70);transition:background .15s;}
-.drawer-close:hover{background:rgba(255,255,255,0.15);color:#FFF;}
-.drawer-nav{flex:1;padding:6px 10px;display:flex;flex-direction:column;overflow-y:auto;}
-.drawer-sep{font-size:9px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;
-  color:rgba(255,255,255,0.40);padding:12px 4px 5px;}
-.drawer-sep:first-child{padding-top:4px;}
-.drawer-item{padding:10px 11px;border-radius:11px;background:transparent;
-  border:1px solid transparent;display:flex;align-items:center;gap:11px;
-  cursor:pointer;transition:background .14s;text-align:left;margin-bottom:2px;
-  font-family:"DM Sans",sans-serif;}
-.drawer-item:hover{background:rgba(255,255,255,0.08);}
-.drawer-item.is-active{background:rgba(99,102,241,0.22);border-color:rgba(99,102,241,0.32);}
-.drawer-ico{width:36px;height:36px;border-radius:10px;
-  display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.drawer-text{flex:1;min-width:0;}
-.drawer-nm{font-size:13px;font-weight:700;color:#F1F5F9;line-height:1.2;}
-.drawer-sub{font-size:10px;color:rgba(255,255,255,0.48);margin-top:1px;
-  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.drawer-arr{color:rgba(255,255,255,0.28);font-size:15px;flex-shrink:0;}
-.drawer-footer{padding:10px 12px 28px;border-top:1px solid rgba(255,255,255,0.08);}
-.drawer-badge{display:none;}
-
-/* ════ MODALE GENRE ════ */
-#genderModal{display:none;position:fixed;inset:0;z-index:9999999999;
-  background:rgba(5,8,20,0.82);backdrop-filter:blur(10px);
-  align-items:center;justify-content:center;padding:20px;box-sizing:border-box;}
-#genderModal.open{display:flex;}
-.gm-box{background:linear-gradient(155deg,#0F1E45,#121A3A);
-  border:1px solid rgba(255,255,255,0.14);border-radius:22px;
-  padding:28px 22px 22px;width:100%;max-width:320px;
-  box-shadow:0 24px 80px rgba(0,0,0,0.70);text-align:center;}
-.gm-title{font-size:19px;font-weight:900;color:#FFF;margin-bottom:5px;}
-.gm-sub{font-size:13px;color:rgba(255,255,255,0.62);margin-bottom:22px;line-height:1.6;}
-.gm-buttons{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-bottom:12px;}
-.gm-btn{padding:18px 10px 14px;border-radius:14px;border:none;cursor:pointer;
-  font-family:"DM Sans",sans-serif;display:flex;flex-direction:column;
-  align-items:center;gap:9px;transition:transform .14s;}
-.gm-btn:active{transform:scale(0.96);}
-.gm-btn-ico{font-size:30px;}
-.gm-btn-lbl{font-size:14px;font-weight:900;color:#FFF;}
-.gm-btn-sub{font-size:11px;color:rgba(255,255,255,0.65);}
-.gm-btn-m{background:linear-gradient(145deg,#1565C0,#1E88E5);box-shadow:0 6px 20px rgba(21,101,192,0.45);}
-.gm-btn-f{background:linear-gradient(145deg,#7B1FA2,#AB47BC);box-shadow:0 6px 20px rgba(123,31,162,0.45);}
-.gm-footer-row{display:grid;grid-template-columns:1fr 1fr;gap:9px;}
-.gm-cancel{padding:9px;border-radius:10px;border:1px solid rgba(255,255,255,0.20);
-  background:rgba(255,255,255,0.07);font-size:13px;font-weight:600;
-  color:rgba(255,255,255,0.75);cursor:pointer;font-family:"DM Sans",sans-serif;}
-.gm-menu-btn{padding:9px;border-radius:10px;border:1px solid rgba(99,102,241,0.40);
-  background:rgba(99,102,241,0.18);font-size:13px;font-weight:700;color:#FFF;
-  cursor:pointer;font-family:"DM Sans",sans-serif;
-  display:flex;align-items:center;justify-content:center;gap:6px;}
 
 @media(min-width:600px){}
 
@@ -1267,6 +1165,69 @@ body.F .g-pill.on{box-shadow:0 0 18px rgba(123,31,162,0.45),0 0 6px rgba(123,31,
 .page-card-txt{word-break:break-word}@media(min-width:600px){}
 
 html{overflow-x:hidden}
+
+
+
+
+/* ══ DRAWER MENU (restauré) ══ */
+.drawer-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.70);z-index:9998;backdrop-filter:blur(4px)}
+.drawer-overlay.open{display:block}
+.drawer-panel{position:fixed;top:0;right:0;bottom:0;width:85%;max-width:340px;background:linear-gradient(160deg,#0D0818 0%,#1A0A3A 100%);z-index:9999;transform:translateX(100%);transition:transform 0.30s cubic-bezier(0.4,0,0.2,1);display:flex;flex-direction:column;padding:0}
+.drawer-panel.open{transform:translateX(0)}
+.drawer-panel{will-change:transform}
+.drawer-panel{background:linear-gradient(160deg,#141828 0%,#1a1035 100%) !important}
+.drawer-header{display:flex;justify-content:space-between;align-items:center;padding:20px 20px 16px;border-bottom:1px solid rgba(255,255,255,0.08)}
+.drawer-logo{font-size:20px;font-weight:900;background:linear-gradient(90deg,#9C4DCC,#64B5F6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.drawer-close{width:36px;height:36px;border-radius:10px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;font-size:18px;color:#FFF;cursor:pointer;flex-shrink:0}
+.drawer-nav{flex:1;padding:16px 16px 24px;display:flex;flex-direction:column;gap:8px;overflow-y:auto}
+.drawer-item{padding:16px 16px;border-radius:14px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;gap:14px;cursor:pointer;transition:all 0.18s}
+.drawer-item.active{background:rgba(100,181,246,0.12);border-color:rgba(100,181,246,0.30)}
+.drawer-item:active{background:rgba(255,255,255,0.10)}
+.drawer-item{background:rgba(255,255,255,0.09);border:1px solid rgba(255,255,255,0.16)}
+.drawer-item:active{background:rgba(255,255,255,0.16)}
+.drawer-item.active{background:rgba(96,184,255,0.10);border-color:rgba(96,184,255,0.25)}
+.drawer-ico{font-size:22px;width:36px;text-align:center;flex-shrink:0}
+.drawer-ico{width:36px;height:36px;display:flex;align-items:center;justify-content:center;flex-shrink:0;border-radius:10px;background:rgba(255,255,255,0.06)}
+.drawer-text{flex:1}
+.drawer-nm{font-size:15px;font-weight:800;color:#FFF}
+.drawer-nm{font-size:15px !important;font-weight:800 !important;color:#FFF !important}
+.drawer-nm{color:#FFF !important;font-size:14px !important}
+.drawer-sub{font-size:11px;color:rgba(255,255,255,0.65);margin-top:2px}
+.drawer-sub{font-size:12px !important;color:rgba(255,255,255,0.70) !important;margin-top:2px}
+.drawer-sub{color:rgba(255,255,255,0.72) !important;font-size:12px !important}
+.drawer-arr{color:rgba(255,255,255,0.60);font-size:20px}
+.drawer-arr{font-size:22px !important;color:rgba(255,255,255,0.60) !important}
+.drawer-arr{color:rgba(255,255,255,0.70) !important;font-size:22px !important}
+.drawer-footer{display:none}
+.drawer-badge{background:rgba(100,181,246,0.20);color:#90C8FF;font-size:9px;font-weight:800;padding:2px 8px;border-radius:50px;letter-spacing:0.08em;flex-shrink:0}
+
+/* ════ MQ PC ORIGINALE — restaurée ════ */
+@media(min-width:600px){
+  .nav-hamburger{display:none !important;}
+  .nav-dropdown{display:flex !important;flex-direction:row;padding:0 6px;gap:2px}
+  .nav-btn{flex:1;padding:10px 4px;font-size:11px;text-align:center;border-radius:8px;border-bottom:2px solid transparent;margin:4px 2px}
+  .nav-btn.active{background:rgba(255,255,255,0.15);border-bottom-color:#FFF;border-radius:8px}
+  .menu-btn{display:none !important;}
+  .search-inner{flex:1 !important;}
+  .search-wrap{display:flex !important;padding-bottom:4px !important;}
+  .nav-bandeau{display:block !important;}
+  .g-switch{margin-top:2px !important;margin-bottom:8px !important;}
+  .header{padding-bottom:4px !important;}
+}
+
+/* Drawer fond foncé + séparateurs */
+.drawer-panel{background:linear-gradient(165deg,#1C1535 0%,#161028 100%) !important;}
+.drawer-sep{font-size:9px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.40);padding:14px 4px 6px;}
+.drawer-sep:first-child{padding-top:4px;}
+.drawer-item{padding:11px 12px !important;border-radius:14px !important;background:transparent !important;border:1px solid transparent !important;display:flex;align-items:center;gap:12px !important;cursor:pointer;margin-bottom:3px;transition:background .15s;}
+.drawer-item:hover{background:rgba(255,255,255,0.05) !important;}
+.drawer-item.active{background:rgba(99,102,241,0.18) !important;border-color:rgba(99,102,241,0.32) !important;}
+.drawer-ico{width:42px !important;height:42px !important;border-radius:11px !important;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.drawer-text{flex:1;min-width:0;}
+.drawer-nm{font-size:14px !important;font-weight:700 !important;color:#F1F5F9 !important;line-height:1.25;}
+.drawer-sub{font-size:11px !important;color:rgba(255,255,255,0.50) !important;margin-top:2px;}
+.drawer-arr{color:rgba(255,255,255,0.30) !important;font-size:18px;flex-shrink:0;}
+.drawer-badge{display:none !important;}
 </style>
 
 
@@ -1274,159 +1235,6 @@ html{overflow-x:hidden}
 
 </head>
 <body class="F" itemscope itemtype="https://schema.org/WebPage">
-<!-- HOME MOBILE -->
-<div id="site-home">
-  <div class="hm-topbar">
-    <div class="hm-topbar-logo">MyDoseUp</div>
-    <button class="hm-topbar-btn" onclick="openDrawer()">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="2.5" stroke-linecap="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
-      Menu
-    </button>
-  </div>
-  <div class="hm-inner">
-    <div class="hm-logo-wrap">
-      <img src="data:image/png;base64,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" width="60" height="60" alt="MyDoseUp" style="object-fit:contain;filter:drop-shadow(0 4px 16px rgba(140,80,255,0.4))">
-      <div class="hm-brand-txt">MyDoseUp<span class="hm-brand-com">.com</span></div>
-      <div class="hm-tagline">Guide des Compl&eacute;ments Alimentaires</div>
-    </div>
-    <h1 class="hm-h1">Vos compl&eacute;ments alimentaires,<br><em>enfin clairs.</em></h1>
-    <p class="hm-pitch">Un r&eacute;pertoire ind&eacute;pendant qui centralise les donn&eacute;es scientifiques sur les compl&eacute;ments alimentaires.</p>
-    <p class="hm-trust"><strong>Donn&eacute;es issues d&rsquo;&eacute;tudes cliniques publiques.</strong> Sans publicit&eacute;, sans vente de produits.</p>
-    <div class="hm-section-lbl">Parcourir par objectif</div>
-    <div class="hm-obj-grid">
-      <button class="hm-obj-btn" onclick="homeGoObj('sommeil')"><span class="hm-obj-ico">&#128564;</span><span class="hm-obj-lbl">Sommeil</span></button>
-      <button class="hm-obj-btn" onclick="homeGoObj('energie')"><span class="hm-obj-ico">&#9889;</span><span class="hm-obj-lbl">&Eacute;nergie</span></button>
-      <button class="hm-obj-btn" onclick="homeGoObj('muscu')"><span class="hm-obj-ico">&#128170;</span><span class="hm-obj-lbl">Musculation</span></button>
-      <button class="hm-obj-btn" onclick="homeGoObj('cerveau')"><span class="hm-obj-ico">&#129504;</span><span class="hm-obj-lbl">Cerveau</span></button>
-      <button class="hm-obj-btn" onclick="homeGoObj('immun')"><span class="hm-obj-ico">&#128737;&#65039;</span><span class="hm-obj-lbl">Immunit&eacute;</span></button>
-      <button class="hm-obj-btn" onclick="homeGoObj('poids')"><span class="hm-obj-ico">&#9878;&#65039;</span><span class="hm-obj-lbl">Poids</span></button>
-      <button class="hm-obj-btn" onclick="homeGoObj('peau')"><span class="hm-obj-ico">&#10024;</span><span class="hm-obj-lbl">Peau &amp; Beaut&eacute;</span></button>
-      <button class="hm-obj-btn" onclick="homeGoObj('digest')"><span class="hm-obj-ico">&#127807;</span><span class="hm-obj-lbl">Digestion</span></button>
-      <button class="hm-obj-btn" onclick="homeGoObj('libido')"><span class="hm-obj-ico">&#10084;&#65039;</span><span class="hm-obj-lbl">Libido</span></button>
-    </div>
-    <div class="hm-section-lbl">Outil personnalis&eacute;</div>
-    <button class="hm-stack-btn" onclick="homeGoQuiz()">
-      <div class="hm-stack-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.95)" stroke-width="2" stroke-linecap="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-      <div style="flex:1;text-align:left"><div style="font-size:14px;font-weight:800;color:#FFF">Mon Stack Personnalis&eacute;</div><div style="font-size:11px;color:rgba(255,255,255,0.65);margin-top:2px">Quiz 5 questions &middot; R&eacute;sultat sur mesure</div></div>
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
-    </button>
-    <div class="hm-how">
-      <div class="hm-how-title">Comment &ccedil;a marche&nbsp;?</div>
-      <div class="hm-how-step"><div class="hm-how-num">1</div><div class="hm-how-txt"><strong>Recherchez</strong> un besoin ou un compl&eacute;ment dans la barre de recherche.</div></div>
-      <div class="hm-how-step"><div class="hm-how-num">2</div><div class="hm-how-txt"><strong>Analysez</strong> les effets prouv&eacute;s, dosages et pr&eacute;cautions.</div></div>
-      <div class="hm-how-step"><div class="hm-how-num">3</div><div class="hm-how-txt"><strong>Cr&eacute;ez</strong> votre stack adapt&eacute; &agrave; vos objectifs.</div></div>
-    </div>
-  </div>
-</div>
-
-<!-- MODALE GENRE -->
-<div id="genderModal">
-  <div class="gm-box">
-    <div class="gm-title">Pour qui&nbsp;?</div>
-    <div class="gm-sub">Les conseils varient selon le profil.<br>Choisissez pour des recommandations adapt&eacute;es.</div>
-    <div class="gm-buttons">
-      <button class="gm-btn gm-btn-m" onclick="genderThenObj('M')"><span class="gm-btn-ico">&#9794;</span><span class="gm-btn-lbl">Homme</span><span class="gm-btn-sub">Testo &middot; Muscu</span></button>
-      <button class="gm-btn gm-btn-f" onclick="genderThenObj('F')"><span class="gm-btn-ico">&#9792;</span><span class="gm-btn-lbl">Femme</span><span class="gm-btn-sub">Cycle &middot; Peau</span></button>
-    </div>
-    <div class="gm-footer-row">
-      <button class="gm-cancel" onclick="closeGenderModal()">Annuler</button>
-      <button class="gm-menu-btn" onclick="closeGenderModal();openDrawer()"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="2.5" stroke-linecap="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg> Menu</button>
-    </div>
-  </div>
-</div>
-
-<!-- DRAWER MOBILE -->
-<div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
-<div class="drawer-panel" id="drawerPanel">
-  <div class="drawer-header">
-    <div class="drawer-logo">MyDoseUp</div>
-    <button class="drawer-close" onclick="closeDrawer()"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 1l10 10M11 1L1 11" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
-  </div>
-  <nav class="drawer-nav">
-    <div class="drawer-sep">Accueil</div>
-    <div class="drawer-item is-active" id="ditem-home" onclick="closeDrawer();showHome()">
-      <div class="drawer-ico" style="background:rgba(99,102,241,0.45);border:1px solid rgba(99,102,241,0.55)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.95)" stroke-width="2.2" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
-      <div class="drawer-text"><div class="drawer-nm">Accueil</div><div class="drawer-sub">Page principale</div></div>
-      <div class="drawer-arr">&rsaquo;</div>
-    </div>
-    <div class="drawer-sep">Explorer</div>
-    <div class="drawer-item" id="ditem-guide" onclick="drawerNav('accueil','navAccueil')">
-      <div class="drawer-ico" style="background:rgba(59,130,246,0.45);border:1px solid rgba(59,130,246,0.55)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.95)" stroke-width="2.2" stroke-linecap="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
-      <div class="drawer-text"><div class="drawer-nm">Guide des compl&eacute;ments</div><div class="drawer-sub">Par objectif &middot; Par famille &middot; Recherche</div></div>
-      <div class="drawer-arr">&rsaquo;</div>
-    </div>
-    <div class="drawer-item" id="ditem-quiz" onclick="closeDrawer();openQuiz()">
-      <div class="drawer-ico" style="background:rgba(16,185,129,0.45);border:1px solid rgba(16,185,129,0.55)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.95)" stroke-width="2.2" stroke-linecap="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-      <div class="drawer-text"><div class="drawer-nm">Mon Stack Personnalis&eacute;</div><div class="drawer-sub">Quiz &middot; R&eacute;sultat sur mesure</div></div>
-      <div class="drawer-arr">&rsaquo;</div>
-    </div>
-    <div class="drawer-item" id="ditem-sport" onclick="drawerNav('parcours','navParcours')">
-      <div class="drawer-ico" style="background:rgba(239,68,68,0.45);border:1px solid rgba(239,68,68,0.55)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.95)" stroke-width="2.2" stroke-linecap="round"><circle cx="13" cy="4" r="2"/><path d="M7 22l3-6 2 2 3-4"/></svg></div>
-      <div class="drawer-text"><div class="drawer-nm">Sport &amp; Performance</div><div class="drawer-sub">Running &middot; Muscu &middot; Hyrox</div></div>
-      <div class="drawer-arr">&rsaquo;</div>
-    </div>
-    <div class="drawer-sep">&Agrave; propos</div>
-    <div class="drawer-item" id="ditem-sources" onclick="drawerNav('experts','navExperts')">
-      <div class="drawer-ico" style="background:rgba(139,92,246,0.45);border:1px solid rgba(139,92,246,0.55)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.95)" stroke-width="2.2" stroke-linecap="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
-      <div class="drawer-text"><div class="drawer-nm">Sources &amp; Validation</div><div class="drawer-sub">PubMed &middot; Cochrane &middot; EFSA</div></div>
-      <div class="drawer-arr">&rsaquo;</div>
-    </div>
-    <div class="drawer-item" id="ditem-histoire" onclick="drawerNav('concept','navConcept')">
-      <div class="drawer-ico" style="background:rgba(245,158,11,0.45);border:1px solid rgba(245,158,11,0.55)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.95)" stroke-width="2.2" stroke-linecap="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
-      <div class="drawer-text"><div class="drawer-nm">Notre Histoire</div><div class="drawer-sub">La mission &amp; le projet</div></div>
-      <div class="drawer-arr">&rsaquo;</div>
-    </div>
-  </nav>
-  <div class="drawer-footer">
-    <button onclick="closeDrawer();showNewsletter();" style="width:100%;padding:12px;border-radius:11px;border:none;background:linear-gradient(135deg,#4F46E5,#2563EB);color:#FFF;font-size:13px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;display:flex;align-items:center;justify-content:center;gap:8px">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-      Newsletter gratuite
-    </button>
-    <p style="text-align:center;font-size:9px;color:rgba(255,255,255,0.28);margin-top:8px;font-family:'DM Sans',sans-serif">&copy; 2026 MyDoseUp&reg; &middot; INPI n&deg;5239885</p>
-  </div>
-</div>
-<script>
-var _obj=null;
-// Mobile : home → objectif via modale genre
-function homeGoObj(id){_obj=id;document.getElementById('genderModal').classList.add('open');}
-function homeGoQuiz(){document.getElementById('site-home').classList.add('gone');setTimeout(function(){if(typeof openQuiz==='function')openQuiz();},50);}
-function genderThenObj(g){
-  document.getElementById('genderModal').classList.remove('open');
-  var o=_obj;_obj=null;if(!o)return;
-  if(typeof setG==='function')setG(g);
-  document.getElementById('site-home').classList.add('gone');
-  setTimeout(function(){if(typeof showObj==='function')showObj(o);},120);
-}
-function closeGenderModal(){document.getElementById('genderModal').classList.remove('open');_obj=null;}
-
-// showHome : mobile→home fixed, PC→navGo accueil
-function showHome(){
-  document.getElementById('site-home').classList.remove('gone');
-  _setActive('ditem-home');
-  // Reset nav buttons
-  document.querySelectorAll('.nav-btn').forEach(function(b){b.classList.remove('active');});
-}
-
-// Drawer navigation (mobile)
-function drawerNav(page,navId){
-  closeDrawer();
-  document.getElementById('site-home').classList.add('gone');
-  navGo(page,document.getElementById(navId));
-  _setActive('ditem-'+(page==='accueil'?'guide':page==='parcours'?'sport':page==='experts'?'sources':'histoire'));
-}
-function _setActive(id){
-  document.querySelectorAll('.drawer-item').forEach(function(e){e.classList.remove('is-active');});
-  var el=document.getElementById(id);if(el)el.classList.add('is-active');
-}
-
-// Logo cliquable → showHome
-document.addEventListener('DOMContentLoaded',function(){
-  var lw=document.querySelector('.logo-wrap');
-  if(lw){lw.style.cursor='pointer';lw.onclick=function(){showHome();};}
-  // Nav PC : ajouter Accueil comme premier bouton géré par showHome
-});
-</script>
-
 <div class="app-wrapper">
 
 <div class="header">
@@ -1461,8 +1269,7 @@ document.addEventListener('DOMContentLoaded',function(){
 
   <!-- Dropdown (mobile) / Row (desktop) -->
   <div class="nav-dropdown" id="navDropdown">
-    <button class="nav-btn" id="navHome" onclick="showHome()">&#127968; Accueil</button>
-    <button class="nav-btn" id="navAccueil" onclick="navGo('accueil',this)">Explorer</button>
+    <button class="nav-btn active" id="navAccueil" onclick="navGo('accueil',this)">Accueil</button>
     <button class="nav-btn" id="navQuiz" onclick="openQuiz()" aria-label="Ouvrir le quiz Mon Stack Perso">Mon Stack</button>
     <button class="nav-btn" id="navParcours" onclick="navGo('parcours',this)">Parcours Sportifs</button>
     <button class="nav-btn" id="navExperts" onclick="navGo('experts',this)">Nos Experts</button>
@@ -1834,6 +1641,85 @@ document.addEventListener('DOMContentLoaded',function(){
 
 
 <!-- ══ DRAWER MENU ══ -->
+<!-- ══ DRAWER MENU ══ -->
+<div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
+<div class="drawer-panel" id="drawerPanel">
+  <div class="drawer-header">
+    <div class="drawer-logo">MyDoseUp.com</div>
+    <button class="drawer-close" onclick="closeDrawer()">&#x2715;</button>
+  </div>
+
+  <nav class="drawer-nav" id="drawerNav">
+
+    <div class="drawer-sep">Explorer</div>
+
+    <div class="drawer-item active" id="ditem-accueil" onclick="drawerGo('accueil')">
+      <div class="drawer-ico" style="background:linear-gradient(145deg,#2563EB,#3B82F6);box-shadow:0 2px 0 rgba(255,255,255,0.20) inset,0 4px 14px rgba(59,130,246,0.55)">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      </div>
+      <div class="drawer-text">
+        <div class="drawer-nm">Guide des compl&eacute;ments</div>
+        <div class="drawer-sub">Par objectif &middot; Par famille &middot; Recherche</div>
+      </div>
+      <div class="drawer-arr">&rsaquo;</div>
+    </div>
+
+    <div class="drawer-item" id="ditem-quiz" onclick="closeDrawer();openQuiz()">
+      <div class="drawer-ico" style="background:linear-gradient(145deg,#10B981,#059669);box-shadow:0 2px 0 rgba(255,255,255,0.20) inset,0 4px 14px rgba(16,185,129,0.55)">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <div class="drawer-text">
+        <div class="drawer-nm">Mon Stack Personnalis&eacute;</div>
+        <div class="drawer-sub">Quiz &middot; R&eacute;sultat sur mesure</div>
+      </div>
+      <div class="drawer-arr">&rsaquo;</div>
+    </div>
+
+    <div class="drawer-item" id="ditem-parcours" onclick="drawerGo('parcours')">
+      <div class="drawer-ico" style="background:linear-gradient(145deg,#EF4444,#DC2626);box-shadow:0 2px 0 rgba(255,255,255,0.20) inset,0 4px 14px rgba(239,68,68,0.55)">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13" cy="4" r="2"/><path d="M7 22l3-6 2 2 3-4"/><path d="M17 22l-3-6"/></svg>
+      </div>
+      <div class="drawer-text">
+        <div class="drawer-nm">Sport &amp; Performance</div>
+        <div class="drawer-sub">Running &middot; Muscu &middot; Hyrox</div>
+      </div>
+      <div class="drawer-arr">&rsaquo;</div>
+    </div>
+
+    <div class="drawer-sep">&Agrave; propos</div>
+
+    <div class="drawer-item" id="ditem-experts" onclick="drawerGo('experts')">
+      <div class="drawer-ico" style="background:linear-gradient(145deg,#8B5CF6,#7C3AED);box-shadow:0 2px 0 rgba(255,255,255,0.20) inset,0 4px 14px rgba(139,92,246,0.55)">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+      </div>
+      <div class="drawer-text">
+        <div class="drawer-nm">Sources &amp; Validation</div>
+        <div class="drawer-sub">PubMed &middot; Cochrane &middot; EFSA</div>
+      </div>
+      <div class="drawer-arr">&rsaquo;</div>
+    </div>
+
+    <div class="drawer-item" id="ditem-concept" onclick="drawerGo('concept')">
+      <div class="drawer-ico" style="background:linear-gradient(145deg,#F59E0B,#D97706);box-shadow:0 2px 0 rgba(255,255,255,0.20) inset,0 4px 14px rgba(245,158,11,0.55)">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      </div>
+      <div class="drawer-text">
+        <div class="drawer-nm">Notre Histoire</div>
+        <div class="drawer-sub">La mission &amp; le projet</div>
+      </div>
+      <div class="drawer-arr">&rsaquo;</div>
+    </div>
+
+  </nav>
+
+  <div style="padding:12px 16px 24px">
+    <button onclick="closeDrawer();showNewsletter();" style="width:100%;padding:14px;border-radius:12px;border:none;background:linear-gradient(135deg,#1565C0,#7B1FA2);color:#FFF;font-size:14px;font-weight:800;cursor:pointer;font-family:'DM Sans',sans-serif;letter-spacing:0.03em;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 4px 16px rgba(21,101,192,0.35)">
+      S'inscrire à la Newsletter
+    </button>
+  </div>
+
+</div>
+
 <div class="footer">
   <div style="display:flex;flex-direction:column;align-items:center;gap:8px;margin-bottom:4px">
   <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAYAAACohjseAAAYEElEQVR4nM2ae5gdVZnu32+tqtrXvt/SuZGEq0QiCqJyxBAdB0VBPNIZHWFQ4RAVBRlFEeOEFhEZn+c4gpcDSLgpjh0R8eCFiycEMiCSICYkQO4kpK+7933X3lVrre87f+zuJo4IUWCc9Tzrqaqnq2vvX7/v936rqhr4bzKGhob0KhHvYM5dJeKtWiXqYM6ll/e1Xv5YJaIuB0BEDACf3rYt8fr+w48QwWHWYg5b+Eqj4oB9tbix7ZL+1O7p3x0S0cuJ3Itd/28KeOAXXF2QNwQ+PmIdn5ltVf0+gAiAAcBT5zdioFrinQbqploNNw4upFEAWLVK1OAg8Qt9xt8McBruujE5NJXhy5MpdVZKAbky9lrGD+oR1ob1aD8SgHLkkxd0w+E48vCBTDfeVM6xiyNZ+eXP/fQbWLPcDQyJXrP8T9X8GwAKDQnUciK3Oi/npFK4pjWJ1okS/7Zh1MqPr8UDt7wLbyUP73cxjjMOXQDIMJcd4fHY8q8aoRdRAhe2z8apE/v5ofxodNY1x6f3vhDkfymgiNAaNOFumnRXdnSqy6ohXBThn8/tpGtuKcjrgwA3OKDHWf6dOPV4ZDHhCD4DhznBO1OtOKYRYmOxbL8eG2pPd+obGg23P7erfsp3T2rZskpEDdIL2/XVpqO1Uyl5W95945ciclvNTVw3IcsAYHVBPnZrWTbeXpGzXuwyV++SI785LqXvxCJXDcs3L3y8cerKEal9YY/dt+L3uTkiQgcm7EHF8sseIrQW0MuI7C2TckVXBz5XrCNfq6jTPz6LHrmpLGfA4dB6C05aQRQODD0ZvPfdi99Pwn/PrBZZBy2ax+p1ecgCTzqLSnUSmXQnPtNuE7NHn40+3Lkwcacqt95KoL8bWCwzzvwvsKjQWmnC3TwpX+nuxJdLIRcLVXXap/po/ep8fJIwdZ/b7d8JALcW5Ix0kr/qJdRiISAygBOAFRA7wFqgGgKNBtgwTKIbicnn7DW5sip1Haq+PL69du5tb86uHhDRa4jcqw64VsRbRmRX5+yq7i59eSnkSrms3ndBP629ZVLeIhotH2mnewHgBwX7ubYW/Q3DQD2EcQKJGcoyYAQSO8AJyDgow4BxgGE4BPDzk/FHDYIvCduWkS25Q+87e1YIAAe1Gni5cN/PyWUdXfryUh3VfFGdeUE/rb25KMepxPNwPyzKF7ra9TfCELZWg7UCbRiecdCGoWMHzzB0ZKEjB4ocEDMQOVAsgKe9cypFs9rv9vqSc9NngkiWPgD9qgHOwE3I5zq6cGW5hlqxgDMvmkP3Xl+QY2Og++zsFFxBLulow9crVRjDICtNCMOA4SbIgdsp9Whqq8My2JB6K/so5PdzxBKcBwAnnwx+VQCv27DBX0ZkbxiJL2zvxjeqNTRKBfzDp+fQPd/JyxLL6P9fbbgXAH5UlEs72/GvlQpMZKENQx0IEssfQcFO7wvETh1bhpMUPE20qBbicav8t7z1xm09g0SvPOB1G8Rfcfzx5oYx+4nWXv9b1RBxsWQ/eOE8+sX3cnI0rJ031ol7iEh+WJTLWttwVakMOwVHhgErkBnF3EytzYAZBqydOnca2gJWaGEc8xa0aO3a2l8DvMI1uEpErTiezHWj9rz2Xv3dRgNmctJ+8KI5/l3XTMhRjjC/54E7fz1IxN/P2cva2nBluQITM5SRGQtK7CCGmyDT005DWtD0/syWQSYGLKPXRLZsBXCUWPCKAoo0m+v3x+xHsm36hnoD5XzBnf3Z+f6d35yQIyF2YW8n7lu+fLm7KS+XdnfpK8vlpi3jKeViBmIHFg/aClQ8pZKZsqm1oClLwgrETivomgo6Rwl2UMYCcYSeVwzwuuvEx+XA7OH6XO3TDUESqJRw88VzvR9fV5buAJh9TI9333Ii9/2crGzvwFWVEmzkoI3MhAUsg3UGXr2BPcYhcjRlvwMtyn8M6w6waRxzI7ZQjgGOLb0igLJK1IoVZGiQ+PzrU8/VrZxdr7G0tuGj39pnzlzRSrmju/HQMiJ7zZgMtnbhilIRNnZQM8o5sAUQtEPXyvxvxXL8AQRgw5AZODdVf9OKTc3YArGBGAexTkYZXk8cA5btxMsGlAHRNEi8/kP7P/zrs7YfRoPEn+z1/r1QlnOURkt7h3f7t/ab9y0jsleNyr+c0Yt/aanAVKcCxTIQWzh40OyBi3l30Rfn6ov9lPdNUUjFBjwNFzvAGNA0lJ1a1Rjb3MYWVA/NPhYcZaoAG7fnZQHKUvFoDbmHBkYu6PNm/6BT9f7fOz68bS4UcNFs77bR0fhjOgE/kfRu+9aIu7k3jcF5gOvV0E4Aj4DYwXoZeJHl4XzJvnvlHO+aS56xK5Pt6m2lIqxx0GaqvswBqk2FixgHOMcwDB2VuF6v8wgLLW7kGjVMDG/7qwHXLhWP1pF9YGD0og7q+Xa+VIgSUeKoucm++370T5vnQQGfnZ+4aWwkPi+RRkuyVZ3jR7AAVJdmIgESgA3a4ddq/PCeSXXilYf69396kyz1Uvry0iTsVD9sJuoBUNOhYqfT1MJJAipu2F9HkZ6LVh3YuP7bp1cePwoR9RcDrl0q3rJ1ZNe+f/QzXdT9b2FcMf1vTPjBrDhO1FNHLWxdcO/tn3hq9hTkjbWSO79hge4EFADp9ZX4GphMw6+UcPMvn1bv+O5ievbcTZW+RJZvdQzVsH+0UiEznZwHBMo0qINCVENUrTZ+Bs/7kKkB1KgMARBc/sBfBjgD9z/HLun2ur9Zjyq273UJlWrz0TE/4flddZOoJY86JDvv3qF/3j0LivCpWd4N4xX3yXkpGACSUpAFGY7GCvjipbPooxecDDMwNKTbk+mbg7SaX2/AuuetSTOKMeAOPG5Ogwy8uBxd0WgEb9ct/qw4V9ittz1wx8CQaAye7A4WkKbhfnPGyBd7dM+/1hoV03NMoFJtHjUmGEKCwz/U6mWPaphUmFw8N9V3z60Xb+8VEXXlXO97hxO2ANAA9Im++tVVc+jrG0TSy4ncnGM/cHWmU72rUoAxDK/hACsAA+L4jxWbDhdr2SCLRDhqbx6fiIZ1JjgnrjC4PPb1Z75zzuSWLVs0QAf1bJHWLhW9bB3Z35w+cmmP1/u1alwyvYsDnWrz0cg56BTQ+UYffhvQ+5qkx37VpJBaclj/nHtOo+GkiLw1oXE0MxwAbtV4y3hDDj+eKLxkt3yss119tlGACRl6eR9kcYZRiQFhwDLDPd8aZCpojGRUEI67n4zuKd7mZ1PXOFIwufFfzr753B8dccnPWrYOLjbAQdzwTit33+mjK3v9nivCuGz6jk7oVLtGXGR4WaD7bQGCboXC1piG18egFoVKZJ3f3erx7NrDx5+V6QVwGDM7KAXVVHLPppq78c6c/lLBIKhEkLqFWpKFjNRBw3UAAjHTqxcLxA7iLKykEYR5viO3LfdVr7fzl/C9/niysCe99RfvyrYlRkthtrHj2lOjlwKcUe6+04a/3Bv0faUSlkzvUYHOdPoUlxy8LKH37YEE3Qr5zTH2/6ZBiUM0Uos0skd45PeLy/b7GgCYwQA3VxdKCaYSvGoh+xuQ7SGwtQpsKQP5CJQgwDpIbEBuGtDAIIMgHI9+PPLk/s+nFs5fB99bYPKVvL/nkYFZ2594bPyQ2bTjmrMqIBLgRZ7JTMPdc+rwym5v1lfKYdH0HBrodJuPuMBQKaBnqY+gW2HyiYhGNzZw+L9kkZyjpy8xDWEBMMD+gX88ZsRKwWU9BEdmWR2ZVfLeXiZAyUM5yNXbpixqp5ZjFhYZBGHO/Gjbg1sv6nn9ax9CwlsQ52tFb/djH+3eeveGysI3e3M6t1V2TMH9WQWnbXnve0Yv6/S6rqzWS7bviKTKdPhkKg5emtD7dh/JHo38UxH23l0HZZQkDydK9msk52uk53qU6AYH2eZNNTNYKRAzoNTzn8sAcnXm5yLQjiqwN1SyvQLsqYJEIKapoOEMgvqEvenZux+9KHviCetVxl9i8rWi3r3hY/N+++MHxk94t26pjpQ2Xn++BV4EcBruV+8Z+WK33/21Sq1k+g5N6pYen+ISw0sCs94RINGjUNgWY/fPQ5AmwIOYWMgRwAmA0iSJuUlCtxk79uzsY9rHacxwU3AGwA+fC92j//sZXL3f6PZSAxY+dBwBIoAWwFmGZWUkg6A2blY/ce0PL5h/1ocfVi3+600uLCT2PHZu7/q71lUXv9Hn8jOFrWsGzZRzZoZ6Ibifnbrvwg6v+2ulWsl0Lwh0ut2jKM9QvqD3ZB+JLoXCMwa77goBKBGBOCegBEGnCH6KxE9rdiWPdq1rrPCTdDoz9jXzBapcNj8honPnZbzr1z/Hp4ahK7kYHmpwGQ2o5p0BDCvjkggqw/G3n7jqpo/P//CHHqRsE87b/dh5rU/esb645A2JbHmkvHUN7H+G+yPAoYFmzf3oHbve16E7v1WuFU33Ib7OdPgUFRnwGX1vD5Dq0ihuN9h5Vw3sACcMawUmEogvSM4m1MtsdZT1xicnvrr81p6fCwO1gnl4yjHm/90av/vSM7a9Fwp47PTgkcpzxXc1IpebqMAbn3TOMcSyEhsgqI7EV2/6YOLCueefsw7ZxBtNrlYKdj22ouPROx6qHXJSkBneUZqHeTEw+IJPsxUArIKogTXg1SdtntcZtK1u1OvcOSegbFsCjQILPEH/yQmkOzUKOw22/yyEMyQOAmsE1jKcY0QFRn5bbJPUGuwfHrnrtOv6vwwA31s+vOLxNfY0AC4KndqzudyZTrT95PNn7joFANad3f3b4rP1d9jIjBVD7eVybGOGqTxX/+Lmf0xcOud7jXVoSbzF5GpFvfPR8zNP/PTB2qLjAj8/XspWEK9Zs/zPvkJTALB4AEQgySbbr/Y505log23pCnRUdSAtmLM0gUyXRnG3wbaf12BigQOTtQLnmtM4oSh2TtuMP17K/+Gp53adDQA3/+Poyq5s5//ZuylM2ZipsN+puCAubkQBNdJ3nfvOzacBwJMXtGyKhvPvdI14uGxVML4vLhb3VX49+9rwV2hNnGTGqmV/56Pnt/z+1gfr848N/PruUqrDj9atG7R/Dg4A1NDAkF6+htzqv9t5TEISy6u26Dr6kp6NWEzM6HtTgGyXRmG3wVN3VmHqEEcCYxnWMYxjGCcwlh2xr8phLTdSHT/9Cw+/tXLTGSPfyVDHFdWwbMd2RZx/ztLksEGjTCqtNNerYeDZ9juWv+X3ZwDAts/O2mxHc++w5Wif9YI+bmnZwKnUu2wuLAU7Hzu/7+FbH5I5JyVo9NlSz9FobLx+xYvCAYDqGR8gAEghcR5xSme7fOd7CvWSQ3aeRmu/j/Kow1N31xDXIY4YxjCcEzFN5WAsi7NEkRE1WZk4/ck9e8dueffYXWnV/slSmDfWWiVWaN0tRWz8ZQUmtogbojwBR42GTqL9J+85dsOAAHj2S3Oexv49f+8q1b2cTGlXrOS9revP633k3x/ML1rqt+T3FYB8tG5w0OEFQuVPAJetI3vdcRt853BqyHW0tAQqjhgOgo5DfIgB9jwcolZ0YC1krcAyw7LMKBgzixNPj1RGPzQp4Z43LnzDxpTOnp6vTZpG6LywwqR8oS1r69j+SANQglotBluoQESq9ZC6El1DFy/b/k8AMHLVUU/r3c+cgnz+Uf/pxz5x2NprHygsOs6n0rOlagsaO97U+Sft4M8NDwBsR8thNsZCz7esPaWi0MLPElKtHor7LSZ2G1AAGMtgYRIGGExOAGbhQGe8fJS/O4I30puYt5lU0FUI89YRPMMCC0EsEOUJORHUGxaxYxiB1IxTGa35dZ3dLmZ1yymLHw7u2XLi90/79sadf1j4vffF/Z169KhTAlUZLgYtaGwdGjSgg4ObASSnDgcSWiecISIdRYzMLJ8UIJPPxhRFDBUIWATMAgYgDHFgcgwVcVUY+m2tQeq9TgRhVLEs5BmwGBYYERgAETOMCCLHMMyoGEdKabyud5YiEd4wNmxqrvOGE468X6/7H7ffnt59YtJQtYHc3rAtOqyx8dcr7F8CNwMYG+ryhaA0iW3WFHRAsDFQLVg4TME5gQjEChMEsBAwA05EBKq14WK2ArEQ7UQkxlQAicBAKGZGLILYCarWQimNJb298Elj/fB+2VWpeIGWUl2NVnhrWytj1DbY1IND0tHGNStesJEfFGDkDPkQGAEcC2LDEEdiIyBuiDgWghM4ZogATgQiAivSfHcnAiPsnICcgGJhOAFiaSpmRBCLSMSOjBCqxkEpjWP7ZkmgPHpkdD/vrFR0QC4M3R8uanTdvy5dP9rnlmoJ2Vq0dc21B11zLwjImiuN2KJhQSyE2ArqdUdsIKJAMTMUk1gWYgGxCJwwOaBpWQEMhAwLsZDEInAMGAgiFlhhRCKIWRA6BpHC6/pmIaV9Wj+8n58pVVSgXL3sfn+xtD/xsFc6Ml1PjxRa6og2r+//q+FmAGNT32tdHUFdawdB7BjlooGJAT/piXVCICaWJowTac4pQNcEhGGBEyEzBRijCTVVh1SzDFEKx/b1IusFeHh0mJ8ulVWCJK7xE59vtD/6QMos8rQ/PEl1r4GUNX9uCXawQwFAzt+1K5J4vNwQFVkW0YTxsUjCavMMww5CgHEMJyJmqk3MBIjIzLHl5s9jZsSuOQ0Lao4BIizp7UGLl6DfjY7wlkJRJZWYkP/w+Urw0P3JuN+3wVgpDP0GMBFv3Hj9SzbylwQcGhB97frlEzHso/VYSyE0HKQ8lCsWv3twDE9tLiLTnsBrlvQg0xqgbhxZQROOGREzxcw0rVQszf2YheIp+NAxBMCSWb3oSKTwu/ER3pQvqCSJrbrffz5qeeCelFroMU8WAst1ANHWrWteljVnANdM7URU/YkRpr25KiXSPsQDFSsx1Q2jFhmUShHqsYMVwXQaTimGeHoKNy0pglhYpuEsBMf09aAjSGHj+KhsmixQoMlVZdOlYfqhX+j6fM1cKMQZhOVyWN+x4+Ab+UsNAoChgSF9y0iu9dDySY/4yBxx/JFtjiJRY+NVeJ6CdUx2ymKkSAwzNWtQ4BhipxLViFAzPZs1GLKDYcHr+nvRlUrj8bExeXyyAK0gdbfp0nLqvrvS7ghtKFdOJqthsYjGCSeEZs2aNS/6D3Z/yVAAcP+uReoX//HJQo0KX7Wi6Yk9BU5lA6QyAaqRhSMCawUHIObno79pyWnFgJgFEUMMC2q2Cffavl50JzP4w8QEPz5ZgK8EoTz5pXLqvruS5gifvYliMlkNU6kwOuHZVxZuBvD6jcfbi980lLrxiLcNhTL+42ojEWzYk7O9vVlkWxKoRgYN56ZsOV1/zb4ZizRfXMrzsGVrwQQ6ZlYP+tJpbM6N84ZcjnwF1HjLykrinp+m3QLN3kghjkthsYjGvHmI1+CVhQMOeCazdOkqb16QTQyP5LMLZfnPCJ1v7mm18XHzu71SJaJ9uQoi4wAiEQixAK65OBDDTLFA6taSFUFHKonXdHcj7ft4fHyMn8iXyFOCGj95WTH41Z0pu8iDGc43dKKeTBbqAwNH28HBl9cOXhIQAJ2z9KZEiD3eSD7Zu8idcrumrjelkw1z7JxO1eL7KldpIFeuSyUyFE0pallgQaIUIRP41N+SQX8mi3Ic43djY3ZXNfI9si50T12W8356Ryu9NhB/X8E5XdO68oql5cEAYhVWqZ1LsqlKR9XfOz7RdiSddbWSnn9gYsxt9+2izhZkPJ+cYxVbltgxQUhIEXyloZVCOY5lZ7EszxQrXp01FIp7yrz1ilrq/geDxgLS6XyZuVzr2TreWId1B3VP94oBAsDAwIDG+NGpfJhIPGseVEeFnxpI0tzPWKQPVwrIBIz2pM8tgc8JTwEgiRyj2Ihpoh55hYhRd4CSsGzV+NAEfnOj7xcmlelmCQoF58TMemZnfR3Wvewm/lcBTkPWdx2diEw2uz99h82U3tbfw8tOBbeeasRfIvA6iQKANEQABsOKAXMjVsptZ5TWlmXT3Xn8x86WYCEFTMboarlWs+GCBQvsSz1HedUBm2OVWrp0T5CYWJCup0xixD1oOW5PzeIT5/hu7iEa6TlEQSegwMJ1i8pEjMK+ontqX8PfUcm6Q7SiTqFUsRqGlQbQGe3YcW2MV9mS/3m8xNulVeq440Z0p2kJ6ipIMwW+tftVOZh09Xpe2BlFFImv057jHpXgFtK60/Osctar17WWKAhcBMBs3NjvXu7C+a8Z/x8AfQto/VkVMQAAAABJRU5ErkJggg==" width="56" height="56" alt="MyDoseUp® — Guide compléments alimentaires" style="border-radius:14px;overflow:hidden;pointer-events:none;-webkit-user-drag:none">
@@ -1844,17 +1730,16 @@ document.addEventListener('DOMContentLoaded',function(){
     © 2026 MyDoseUp® · Yanis Mario Bensaadi · INPI n° 5239885 · Tous droits réservés
   </div>
   <div class="footer-credits">📩 contact&#64;mydoseup&#46;com</div>
-  <div style="margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.08)">
-    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+  <div style="margin-top:24px;padding-top:18px;border-top:1px solid rgba(255,255,255,0.08)">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:480px;margin:0 auto 12px">
       <button onclick="navGo('legal', null)" 
-        style="background:transparent;border:1px solid rgba(255,255,255,0.18);color:rgba(255,255,255,0.60);font-size:11px;font-weight:700;padding:10px 24px;border-radius:10px;cursor:pointer;font-family:'DM Sans',sans-serif;letter-spacing:0.06em">
-        📋 Mentions légales & Confidentialité
+        style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.72);font-size:11px;font-weight:700;padding:11px 14px;border-radius:10px;cursor:pointer;font-family:'DM Sans',sans-serif;letter-spacing:0.04em;display:flex;align-items:center;justify-content:center;gap:6px;transition:background .15s,border-color .15s">
+        📋 Mentions légales
       </button>
       <button onclick="showNewsletter()" id="footer-nl-btn"
-        style="background:linear-gradient(135deg,rgba(21,101,192,0.30),rgba(123,31,162,0.30));border:1px solid rgba(144,202,249,0.35);color:#90CAF9;font-size:11px;font-weight:800;padding:10px 20px;border-radius:10px;cursor:pointer;font-family:'DM Sans',sans-serif;letter-spacing:0.06em">
-        📧 S'inscrire à la Newsletter
+        style="background:linear-gradient(135deg,rgba(79,70,229,0.35),rgba(37,99,235,0.35));border:1px solid rgba(144,202,249,0.40);color:#FFF;font-size:11px;font-weight:800;padding:11px 14px;border-radius:10px;cursor:pointer;font-family:'DM Sans',sans-serif;letter-spacing:0.04em;display:flex;align-items:center;justify-content:center;gap:6px;box-shadow:0 4px 14px rgba(79,70,229,0.25);transition:transform .15s">
+        📧 Newsletter
       </button>
-
     </div>
   </div>
   <button class="src-btn" onclick="document.getElementById('srcPanel').classList.toggle('open');this.textContent=document.getElementById('srcPanel').classList.contains('open')?'📖 Sources ▲':'📖 Sources ▼'">📖 Sources ▼</button>
@@ -2430,7 +2315,7 @@ const DATA = [
   plus:["Vision nocturne améliorée","Protection rétine contre le stress oxydatif","Microcirculation oculaire renforcée","Yeux moins fatigués face aux écrans","Antioxydant puissant anti-âge"],
   moins:["Effets progressifs sur 4-8 semaines","Qualité très variable selon les marques","Coloration légère des selles (inoffensif)"],
   dose:[["Extrait standardisé","160-320mg/j (25% anthocyanines)"],["Poudre","5-10g/j"],["Timing","Avec repas"],["Durée","3 mois minimum"]],
-  hM:"Yeux fatigués par les écrans : bénéfice universel. Sport de précision (tir, tennis) : amélioration du contraste visuel. Cerveau : les anthocyanines traversent la barrière hémato-encéphalique et améliorent la mémoire de travail et la concentration — études positives chez les adultes actifs.",
+  hM:"Yeux fatigués par les écrans : bénéfice universel. Sport de précision (tir, tennis) : amélioration du contraste visuel. Cerveau : les anthocyanines traversent la barrière hémato-encéphalique et améliorent la mémoire de travail et la concentration, études positives chez les adultes actifs.",
   hF:"Ménopause : microcirculation oculaire souvent altérée par la baisse d'oestrogènes. Anthocyanines protectrices.",
   syn:["Lutéine + Zéaxanthine","Vitamine C","Zinc","Oméga-3 DHA"],
   prec:"Très sûre. Légère interaction anticoagulants à très forte dose.",
@@ -2462,12 +2347,12 @@ const DATA = [
 
  {nm:"Shilajit",kw:"shilajit fulvique acides testosterone énergie adaptogène minéraux",tag:"Adaptogène Minéral",c:"var(--mental)",dispo:2,where:"Amazon, boutiques spécialisées (choisir produit certifié sans métaux lourds)",forme:"suppl",gender:"MF",
   objectifs:["testo","energie","cerveau","anti"],
-  fn:"Résine naturelle produite par la décomposition de matière organique dans les montagnes himalayennes. Riche en acides organiques naturels (acides fulviques) et humiques, minéraux traces et composés bioactifs naturels. Utilisé depuis des siècles en médecine ayurvédique. Note : les études cliniques humaines restent peu nombreuses — résultats prometteurs à confirmer.",
+  fn:"Résine naturelle produite par la décomposition de matière organique dans les montagnes himalayennes. Riche en acides organiques naturels (acides fulviques) et humiques, minéraux traces et composés bioactifs naturels. Utilisé depuis des siècles en médecine ayurvédique. À noter : les études cliniques chez l'humain restent peu nombreuses, les résultats sont prometteurs mais doivent être confirmés.",
   plus:["Testostérone +20% en 90 jours (étude 2016)","Transport des nutriments dans les cellules via acides organiques naturels (acides fulviques)","Énergie et récupération améliorées","Antioxydant puissant","Fertilité masculine soutenue"],
   moins:["Qualité extrêmement variable. Risque de métaux lourds si non certifié.","Peu d'études de haute qualité","Goût très fort"],
   dose:[["Dose","300-500mg/j"],["Timing","Matin avec un repas"],["Forme","Extrait purifié certifié (sans métaux lourds)"],["Durée","6-8 semaines minimum"]],
   hM:"Étude 2016 : testostérone totale +20,45% vs placebo après 90 jours chez les hommes de 45-55 ans. Amélioration du DHEA et de la FSH. Fertilité masculine améliorée.",
-  hF:"Peu d'études chez la femme. Potentiel antioxydant et énergétique général. Déconseillé pendant la grossesse.",
+  hF:"Les études cliniques sur la femme sont rares. Les bénéfices possibles concernent l'énergie générale, la récupération et la protection antioxydante. À éviter pendant la grossesse, l'allaitement et en cas de surcharge en fer (le shilajit en contient naturellement).",
   syn:["Ashwagandha","Zinc","Vitamine D3","Maca"],
   prec:"Choisir exclusivement du Shilajit purifié certifié (test métaux lourds). La forme brute peut contenir des contaminants. Déconseillé pendant la grossesse et l'allaitement. Interactions possibles avec médicaments antidiabétiques.",
   food:["Pas d'équivalent alimentaire, produit naturel unique","🌿 Les acides organiques naturels (acides fulviques) se trouvent en traces dans les légumes issus de sols riches"]},
@@ -2687,7 +2572,7 @@ const DATA = [
 
  {nm:"Damiana (Turnera diffusa)",kw:"damiana libido aphrodisiaque anxiété bien-être sexuel féminin",tag:"Libido Naturelle",c:"var(--libido)",dispo:2,where:"Herboristerie, Amazon, boutique spécialisée",forme:"suppl",gender:"MF",
   objectifs:["libido","mental","energie"],
-  fn:"Plante mésoaméricaine traditionnellement utilisée comme aphrodisiaque naturel. Elle agit sur le système nerveux central pour réduire l'anxiété liée à la sexualité et améliore la sensibilité. Les études restent préliminaires mais l'usage traditionnel est bien documenté. Important : les preuves chez l'humain sont très limitées — usage traditionnel, sans étude clinique robuste à ce jour.",
+  fn:"Plante mésoaméricaine traditionnellement utilisée comme aphrodisiaque naturel. Elle agit sur le système nerveux central pour réduire l'anxiété liée à la sexualité et améliore la sensibilité. Les études restent préliminaires mais l'usage traditionnel est bien documenté. Important : les preuves chez l'humain sont très limitées, usage traditionnel, sans étude clinique robuste à ce jour.",
   plus:["Libido féminine améliorée (études sur ArginMax)","Anxiété sexuelle réduite","Légère action relaxante","Bien-être général"],
   moins:["Études de qualité limitée","Effets modestes seul","Peut interagir avec médicaments antidiabétiques"],
   dose:[["Dose","200-400mg/j (extrait sec)"],["Timing","1-2h avant l'activité sexuelle ou quotidien"]],
@@ -3797,36 +3682,6 @@ buildGrid();
   });
 })();
 
-// ── DRAWER MENU ──
-function openDrawer(){
-  document.getElementById('drawerOverlay').classList.add('open');
-  document.getElementById('drawerPanel').classList.add('open');
-  document.body.style.overflow='hidden';
-  // Sync switch
-  var dm=document.getElementById('dpillM');
-  var df=document.getElementById('dpillF');
-  if(dm&&df){
-    if(G==='M'){dm.style.background='#FFF';dm.style.color='#1565C0';df.style.background='';df.style.color='';}
-    else{df.style.background='#FFF';df.style.color='#7B1FA2';dm.style.background='';dm.style.color='';}
-  }
-  // Sync active item
-  ['accueil','parcours','experts','concept','legal'].forEach(function(id){
-    var el=document.getElementById('ditem-'+id);
-    if(el){
-      var isActive=document.getElementById('page-'+id) && document.getElementById('page-'+id).classList.contains('on');
-      el.classList.toggle('active',isActive);
-      var badge=el.querySelector('.drawer-badge');
-      var arr=el.querySelector('.drawer-arr');
-      if(badge) badge.style.display=isActive?'':'none';
-      if(arr) arr.style.display=isActive?'none':'';
-    }
-  });
-}
-function closeDrawer(){
-  document.getElementById('drawerOverlay').classList.remove('open');
-  document.getElementById('drawerPanel').classList.remove('open');
-  document.body.style.overflow='';
-}
 function drawerGo(pageId){
   closeDrawer();
   // Map des IDs de boutons nav
@@ -4862,6 +4717,48 @@ if('serviceWorker' in navigator){
     }
   }catch(e){}
 })();
+
+
+</script>
+
+<script>
+/* DRAWER FUNCTIONS RESTORED */
+function openDrawer(){
+  document.getElementById('drawerOverlay').classList.add('open');
+  document.getElementById('drawerPanel').classList.add('open');
+  document.body.style.overflow='hidden';
+  // Sync switch
+  var dm=document.getElementById('dpillM');
+  var df=document.getElementById('dpillF');
+  if(dm&&df){
+    if(G==='M'){dm.style.background='#FFF';dm.style.color='#1565C0';df.style.background='';df.style.color='';}
+    else{df.style.background='#FFF';df.style.color='#7B1FA2';dm.style.background='';dm.style.color='';}
+  }
+  // Sync active item
+  ['accueil','parcours','experts','concept','legal'].forEach(function(id){
+    var el=document.getElementById('ditem-'+id);
+    if(el){
+      var isActive=document.getElementById('page-'+id) && document.getElementById('page-'+id).classList.contains('on');
+      el.classList.toggle('active',isActive);
+      var badge=el.querySelector('.drawer-badge');
+      var arr=el.querySelector('.drawer-arr');
+      if(badge) badge.style.display=isActive?'':'none';
+      if(arr) arr.style.display=isActive?'none':'';
+    }
+  });
+}
+function closeDrawer(){
+  document.getElementById('drawerOverlay').classList.remove('open');
+  document.getElementById('drawerPanel').classList.remove('open');
+  document.body.style.overflow='';
+}
+function drawerGo(pageId){
+  closeDrawer();
+  // Map des IDs de boutons nav
+  var navIds = {accueil:'navAccueil', parcours:'navParcours', experts:'navExperts', concept:'navConcept', legal:'navLegal'};
+  var btn = navIds[pageId] ? document.getElementById(navIds[pageId]) : null;
+  navGo(pageId, btn);
+}
 </script>
 </body>
 </html>
