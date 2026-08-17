@@ -109,8 +109,8 @@ body.F .logo-txt span{color:inherit;-webkit-text-fill-color:inherit}
 /* SWITCH */
 .g-switch{display:flex;background:rgba(255,255,255,0.06);border-radius:14px;padding:4px;gap:0;margin-bottom:0;width:100%;box-shadow:0 2px 12px rgba(0,0,0,0.30);border:1px solid rgba(255,255,255,0.12);position:relative;overflow:hidden}
 .g-switch::before{content:"";position:absolute;top:4px;bottom:4px;width:calc(50% - 4px);border-radius:10px;transition:transform 0.3s cubic-bezier(0.4,0,0.2,1),background 0.3s;z-index:0}
-body.M .g-switch::before{background:linear-gradient(135deg,#1565C0,#1976D2);box-shadow:0 2px 12px rgba(21,101,192,0.50);transform:translateX(4px)}
-body.F .g-switch::before{background:linear-gradient(135deg,#7B1FA2,#9C27B0);box-shadow:0 2px 12px rgba(123,31,162,0.50);transform:translateX(calc(100% + 4px))}
+body.M .g-switch::before{background:#7FA8D9;box-shadow:0 2px 8px rgba(0,0,0,0.30);transform:translateX(4px)}
+body.F .g-switch::before{background:#C9A0DC;box-shadow:0 2px 8px rgba(0,0,0,0.30);transform:translateX(calc(100% + 4px))}
 .g-pill{flex:1;padding:12px 8px;border-radius:10px;border:none;font-size:14px;font-weight:800;font-family:"DM Sans",sans-serif;cursor:pointer;transition:color 0.3s;color:rgba(255,255,255,0.76);background:transparent;text-align:center;letter-spacing:0.01em;position:relative;z-index:1;display:flex;align-items:center;justify-content:center;gap:6px}
 .g-pill.on{color:#FFF}
 .pill-icon{font-size:15px;transition:transform 0.3s}
@@ -152,11 +152,11 @@ body.F .tab.on{color:#FFF;background:linear-gradient(90deg,rgba(123,31,162,0.7),
 .obj-results{padding:0 14px 14px;display:none}
 .obj-results.on{display:block}
 .obj-back{display:flex;flex-direction:row;align-items:center;gap:10px;padding:10px 0 12px;border-bottom:1px solid rgba(255,255,255,0.08);margin-bottom:12px}
-.obj-back-btn{height:34px;padding:0 14px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;border:2px solid rgba(255,255,255,0.75);background:rgba(255,255,255,0.15);color:#FFF;white-space:nowrap;gap:4px;letter-spacing:0.02em;box-shadow:0 0 10px rgba(255,255,255,0.15)}
+.obj-back-btn{height:34px;padding:0 14px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;border:1px solid rgba(255,255,255,0.30);background:rgba(255,255,255,0.08);color:#FFF;white-space:nowrap;gap:4px;letter-spacing:0.02em}
 .obj-back-title{font-size:16px;font-weight:700;color:#FFF}
 /* SUPPLEMENT CARD */
 .sc{border-radius:18px;margin-bottom:10px;overflow:hidden;border:1px solid rgba(255,255,255,0.18);position:relative;transition:border-color 0.2s}
-.sc::before{content:"";position:absolute;inset:0;background:var(--c);opacity:0.22;pointer-events:none;z-index:0;border-radius:16px}
+.sc::before{content:"";position:absolute;inset:0;background:var(--c);opacity:0.06;pointer-events:none;z-index:0;border-radius:16px}
 .sc-hd,.sc-body{position:relative;z-index:1}
 .sc.open{border-color:var(--c)}
 .sc-hd{padding:12px 14px;display:flex;align-items:stretch;gap:10px;cursor:pointer}
@@ -168,7 +168,8 @@ body.F .tab.on{color:#FFF;background:linear-gradient(90deg,rgba(123,31,162,0.7),
 .sc-gt{font-size:10px;font-weight:700;padding:3px 8px;border-radius:50px;background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.65)}
 .sc-gt-excl-m{background:rgba(21,101,192,0.30);color:#90CAF9}
 .sc-gt-excl-f{background:rgba(123,31,162,0.30);color:#CE93D8}
-.sc-dispo{font-size:10px;font-weight:800;padding:3px 9px;border-radius:50px}
+.sc-dispo{font-size:10px;font-weight:800;padding:3px 9px;border-radius:50px;display:inline-flex;align-items:center;gap:5px}
+.sc-dispo::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor;flex-shrink:0}
 .dispo-1{background:rgba(46,125,50,0.30);color:#81C784;border:1px solid rgba(129,199,132,0.35)}
 .dispo-2{background:rgba(200,100,0,0.25);color:#FFB74D;border:1px solid rgba(255,183,77,0.35)}
 .dispo-3{background:rgba(198,40,40,0.25);color:#EF9A9A;border:1px solid rgba(239,154,154,0.35)}
@@ -198,8 +199,8 @@ body.F .tab.on{color:#FFF;background:linear-gradient(90deg,rgba(123,31,162,0.7),
 .sb-lbl{font-size:13px;font-weight:900;text-transform:uppercase;letter-spacing:0.10em;margin-bottom:10px;color:#FFFFFF}
 .sb-txt{font-size:14px;color:#E8F2FF;line-height:1.8;font-weight:500}
 .two-col{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:2px}
-.col-plus{background:rgba(46,125,50,0.35);border:1px solid rgba(100,200,120,0.40);border-radius:10px;padding:9px}
-.col-minus{background:rgba(160,60,0,0.32);border:1px solid rgba(255,140,60,0.38);border-radius:10px;padding:9px}
+.col-plus{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.10);border-left:3px solid #81C784;border-radius:10px;padding:9px}
+.col-minus{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.10);border-left:3px solid #FFB199;border-radius:10px;padding:9px}
 .col-title{font-size:10px;font-weight:800;text-transform:uppercase;margin-bottom:6px}
 .col-plus .col-title{color:#A5D6A7}
 .col-minus .col-title{color:#FFCC99}
@@ -211,20 +212,20 @@ body.F .tab.on{color:#FFF;background:linear-gradient(90deg,rgba(123,31,162,0.7),
 .d-k{color:#A0BCDA;font-weight:500;padding-right:8px;flex-shrink:0}
 .d-v{font-weight:700;color:#FFF;text-align:right}
 .hf-block{border-radius:10px;padding:10px 12px;margin-bottom:6px}
-.hf-m{background:rgba(21,101,192,0.32);border:1px solid rgba(144,202,249,0.35)}
-.hf-f{background:rgba(123,31,162,0.32);border:1px solid rgba(206,147,216,0.35)}
+.hf-m{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.10);border-left:3px solid #90CAF9}
+.hf-f{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.10);border-left:3px solid #CE93D8}
 .hf-lbl{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px}
 .hf-m .hf-lbl{color:#90CAF9}
 .hf-f .hf-lbl{color:#CE93D8}
 .hf-txt{font-size:12px;color:#D4E4F8;line-height:1.65}
 .syn-list{display:flex;flex-wrap:wrap;gap:5px;margin-top:2px}
 .syn-chip{font-size:11px;font-weight:600;padding:4px 10px;border-radius:50px;background:rgba(255,255,255,0.14);color:#FFFFFF;border:1px solid rgba(255,255,255,0.28)}
-.prec-bar{border-radius:10px;padding:10px 12px;background:rgba(180,30,30,0.28);border-left:3px solid #EF5350}
-.prec-txt{font-size:12px;color:#FFD0D0;line-height:1.65}
+.prec-bar{border-radius:10px;padding:10px 12px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.10);border-left:3px solid #EF5350}
+.prec-txt{font-size:12px;color:rgba(255,255,255,0.85);line-height:1.65}
 .forme-row{display:flex;align-items:flex-start;gap:10px;border-radius:10px;padding:10px 12px;margin-top:2px}
-.forme-suppl{background:rgba(21,101,192,0.30);border:1px solid rgba(100,180,255,0.35)}
-.forme-food{background:rgba(46,147,108,0.30);border:1px solid rgba(100,200,130,0.35)}
-.forme-both{background:rgba(150,80,0,0.30);border:1px solid rgba(255,170,50,0.35)}
+.forme-suppl{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.10);border-left:3px solid #64B5F6}
+.forme-food{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.10);border-left:3px solid #81C784}
+.forme-both{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.10);border-left:3px solid #FFB74D}
 .forme-ico{font-size:20px;flex-shrink:0;margin-top:1px}
 .forme-title{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:2px}
 .forme-suppl .forme-title{color:#90CAF9}
@@ -232,9 +233,9 @@ body.F .tab.on{color:#FFF;background:linear-gradient(90deg,rgba(123,31,162,0.7),
 .forme-both .forme-title{color:#FFD54F}
 .forme-desc{font-size:11px;line-height:1.5;color:rgba(255,255,255,0.90)}
 .dispo-row{display:flex;align-items:flex-start;gap:10px;border-radius:10px;padding:10px 12px;margin-top:2px}
-.dispo-1-block{background:rgba(40,110,50,0.30);border:1px solid rgba(120,190,120,0.40)}
-.dispo-2-block{background:rgba(160,80,0,0.30);border:1px solid rgba(240,160,60,0.40)}
-.dispo-3-block{background:rgba(180,30,30,0.30);border:1px solid rgba(230,130,130,0.40)}
+.dispo-1-block{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.10);border-left:3px solid #81C784}
+.dispo-2-block{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.10);border-left:3px solid #FFB74D}
+.dispo-3-block{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.10);border-left:3px solid #EF9A9A}
 .dispo-ico{font-size:18px;flex-shrink:0;margin-top:1px}
 .dispo-title{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:2px}
 .dispo-1-block .dispo-title{color:#81C784}
@@ -383,14 +384,6 @@ body.F .footer-logo span{color:inherit;-webkit-text-fill-color:inherit}
 .src-panel.open{display:block}
 .src-nm{color:rgba(255,255,255,0.65);font-weight:700;margin:12px 0 4px;font-size:12px}
 ::-webkit-scrollbar{width:0;height:0}
-
-
-:root{--peau:#E07A5F;--cheveux:#9C27B0;--energie:#2A9D8F;--testo:#1565C0;--muscu:#2D936C;--sommeil:#1976D2;--poids:#E76F51;--immun:#00897B;--cerveau:#5E35B1;--os:#43A047;--coeur:#E53935;--digest:#00ACC1;--libido:#8E24AA;--detox:#43A047;--mental:#7B1FA2;--protein:#F57C00;--anti:#FF8F00;--vision:#0288D1}
-*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;-webkit-font-smoothing:antialiased}
-html{scroll-behavior:auto;background:#0D1B3E}
-body{font-family:"DM Sans",sans-serif;font-size:15px;line-height:1.6;max-width:430px;margin:0 auto;overflow-x:hidden;min-height:100vh;background:#0D1B3E !important;color:#E2EBF5}
-body.F{background:#0C1A38 !important;color:#EDE8F8}
-
 
 /* ═══ RESPONSIVE ═══ */
 @media(min-width:600px){
@@ -805,8 +798,8 @@ body.F .az-fam-header{--az-bg:#0C1A38}
 .qz-opt.sel .qz-opt-ck{background:#2ECC71!important;border-color:#2ECC71!important;box-shadow:none!important}
 .qz-opt-title{font-size:13px!important;color:#F0F6FF!important}
 .qz-opt-desc{font-size:10px!important;color:rgba(255,255,255,0.65)!important}
-.qz-btn-next{background:linear-gradient(135deg,#1565C0,#0D47A1)!important;color:#FFF!important;font-size:13px!important;box-shadow:0 4px 14px rgba(21,101,192,0.35)!important;border-radius:10px!important}
-.qz-btn-next:hover{box-shadow:0 6px 20px rgba(21,101,192,0.5)!important;transform:translateY(-1px)!important}
+.qz-btn-next{background:#3D5A78!important;color:#FFF!important;font-size:13px!important;box-shadow:0 2px 8px rgba(0,0,0,0.30)!important;border-radius:10px!important}
+.qz-btn-next:hover{box-shadow:0 3px 10px rgba(0,0,0,0.35)!important;transform:translateY(-1px)!important}
 .qz-btn-back{color:rgba(255,255,255,0.70)!important;border-color:rgba(255,255,255,0.18)!important;border-radius:10px!important}
 /* Loading */
 .qz-spin{border-color:rgba(46,204,113,0.15)!important;border-top-color:#2ECC71!important;box-shadow:none!important}
@@ -839,7 +832,7 @@ body.F .az-fam-header{--az-bg:#0C1A38}
 .qz-actions{padding:4px 14px 10px!important}
 .qz-btn-restart{
   width:100%!important;padding:13px!important;border-radius:10px!important;
-  background:linear-gradient(135deg,#1565C0,#0D47A1)!important;
+  background:#3D5A78!important;
   border:none!important;color:#FFF!important;
   font-size:14px!important;font-weight:800!important;
   box-shadow:0 4px 16px rgba(21,101,192,0.35)!important;
@@ -949,7 +942,7 @@ body.F .tabs{background:#120A25 !important}
 .qz-hero-title span{color:#60B8FF !important;background:none !important;-webkit-text-fill-color:#60B8FF !important;}
 .qz-logo-hex{border-color:rgba(96,184,255,0.4) !important;box-shadow:0 0 8px rgba(96,184,255,0.15) !important;background:rgba(96,184,255,0.05) !important}
 .qz-prog-lbl{color:#2ECC71 !important}
-.qz-fill{background:linear-gradient(90deg,#1565C0,#7B1FA2) !important;box-shadow:none !important}
+.qz-fill{background:#3D5A78 !important;box-shadow:none !important}
 .qz-step-dot.done{background:#1565C0 !important;box-shadow:none !important}
 .qz-step-dot.active{background:#2ECC71 !important;box-shadow:0 0 6px rgba(46,204,113,0.5) !important}
 .qz-card{background:#161e30 !important;border-color:rgba(255,255,255,0.12) !important}
@@ -964,8 +957,8 @@ body.F .tabs{background:#120A25 !important}
 .qz-opt.sel .qz-opt-title{color:#FFF !important}
 .qz-opt-desc{color:rgba(255,255,255,0.68) !important}
 .qz-opt.sel .qz-opt-desc{color:rgba(255,255,255,0.70) !important}
-.qz-btn-next{background:linear-gradient(135deg,#1565C0,#7B1FA2) !important;box-shadow:0 4px 16px rgba(21,101,192,0.35) !important}
-.qz-btn-next:hover{box-shadow:0 6px 22px rgba(21,101,192,0.5) !important;transform:translateY(-1px)}
+.qz-btn-next{background:#3D5A78 !important;box-shadow:0 2px 8px rgba(0,0,0,0.30) !important}
+.qz-btn-next:hover{box-shadow:0 3px 10px rgba(0,0,0,0.35) !important;transform:translateY(-1px)}
 .qz-spin{border-top-color:#60B8FF !important;border-color:rgba(96,184,255,0.15) !important}
 .qz-result-hd{background:linear-gradient(170deg,#0D1B3E 0%,#0C1830 55%,#0D1B3E 100%) !important;border-bottom:1px solid rgba(96,184,255,0.10) !important}
 .qz-result-tag{background:rgba(46,204,113,0.08) !important;border-color:rgba(46,204,113,0.2) !important;color:#2ECC71 !important}
@@ -980,8 +973,8 @@ body.F .tabs{background:#120A25 !important}
 .qz-syn-chip{border-color:rgba(206,147,216,0.25) !important;background:rgba(123,31,162,0.10) !important;color:#CE93D8 !important}
 .qb-e{background:rgba(46,204,113,0.10) !important;color:#2ECC71 !important;border-color:rgba(46,204,113,0.25) !important}
 .qb-b{background:rgba(123,31,162,0.12) !important;color:#CE93D8 !important;border-color:rgba(206,147,216,0.15) !important}
-.qz-btn-share{background:linear-gradient(135deg,#1565C0,#7B1FA2) !important;box-shadow:0 4px 20px rgba(21,101,192,0.35) !important}
-.qz-btn-share:hover{box-shadow:0 6px 26px rgba(21,101,192,0.5) !important;transform:translateY(-1px)}
+.qz-btn-share{background:#3D5A78 !important;box-shadow:0 2px 8px rgba(0,0,0,0.30) !important}
+.qz-btn-share:hover{box-shadow:0 3px 10px rgba(0,0,0,0.35) !important;transform:translateY(-1px)}
 .qz-toast{background:#FFF !important;color:#0D1B3E !important;box-shadow:0 4px 16px rgba(0,0,0,0.3) !important}
 
 /* Bouton fermer : plus visible */
@@ -1055,9 +1048,9 @@ body.F .tabs{background:#120A25 !important}
 
 
 /* ═══ GLOW CTA MOBILE ═══ */
-/* Switch genre H/F actif */
-body.M .g-pill.on{box-shadow:0 0 18px rgba(21,101,192,0.45),0 0 6px rgba(21,101,192,0.3) !important}
-body.F .g-pill.on{box-shadow:0 0 18px rgba(123,31,162,0.45),0 0 6px rgba(123,31,162,0.3) !important}
+/* Switch genre H/F actif — glow retiré pour un rendu sobre */
+body.M .g-pill.on{box-shadow:none !important}
+body.F .g-pill.on{box-shadow:none !important}
 /* Bouton Suivant quiz */
 .qz-btn-next{box-shadow:0 4px 20px rgba(21,101,192,0.45) !important}
 .qz-btn-next:hover{box-shadow:0 6px 28px rgba(21,101,192,0.6) !important}
@@ -1069,8 +1062,8 @@ body.F .g-pill.on{box-shadow:0 0 18px rgba(123,31,162,0.45),0 0 6px rgba(123,31,
 }
 /* Bouton Recommencer quiz */
 .qz-btn-restart{box-shadow:0 4px 16px rgba(21,101,192,0.35) !important}
-/* Bouton Newsletter CTA */
-#footer-nl-btn{box-shadow:0 4px 20px rgba(21,101,192,0.35) !important}
+/* Bouton Newsletter CTA — glow retiré */
+#footer-nl-btn{box-shadow:none !important}
 /* Tab actif */
 .tab.on{box-shadow:0 0 14px rgba(100,180,255,0.20) !important}
 /* Filter chip actif */
@@ -1089,16 +1082,16 @@ body.F .g-pill.on{box-shadow:0 0 18px rgba(123,31,162,0.45),0 0 6px rgba(123,31,
   display:block;width:100%;
   margin-top:10px;padding:13px 16px;
   border-radius:10px;border:none;cursor:pointer;
-  background:linear-gradient(135deg,#1565C0,#7B1FA2);
+  background:#3D5A78;
   color:#FFF;font-size:13px;font-weight:800;
   font-family:"DM Sans",sans-serif;letter-spacing:0.04em;
   text-align:center;transition:all .22s;
-  box-shadow:0 4px 16px rgba(21,101,192,0.35);
+  box-shadow:0 2px 8px rgba(0,0,0,0.30);
 }
 .btn-stack-fiche:hover{
-  box-shadow:0 6px 22px rgba(21,101,192,0.55);
+  box-shadow:0 3px 10px rgba(0,0,0,0.35);
   transform:translateY(-1px);
-  background:linear-gradient(135deg,#1976D2,#8E24AA);
+  background:#456686;
 }
 .btn-stack-fiche:active{transform:translateY(0)}
 
@@ -1480,36 +1473,36 @@ html{overflow-x:hidden}
     <div class="page-sub">L'histoire de MyDoseUp® et la vision de Yanis Bensaadi.</div>
   </div>
   <div class="page-card">
-    <div class="page-card-title">🎯 Notre mission</div>
+    <div class="page-card-title">Notre mission</div>
     <div class="page-card-txt">MyDoseUp® est né d'un constat simple : l'univers des compléments alimentaires est saturé de marketing, de promesses vides et d'informations contradictoires. <br><br>Notre mission : offrir un guide <strong style="color:#FFF">100% indépendant</strong>, basé sur la science, personnalisé par genre, et accessible gratuitement à tous.</div>
   </div>
   <div class="page-card">
-    <div class="page-card-title">👤 Yanis Bensaadi, Fondateur</div>
+    <div class="page-card-title">Yanis Bensaadi, Fondateur</div>
     <div class="page-card-txt">Passionné de nutrition, de performance et de longévité depuis plusieurs années, Yanis Bensaadi a créé MyDoseUp® pour centraliser des années de recherche personnelle et la rendre accessible à tous.<br><br>Après avoir testé de nombreux compléments sur lui-même, croisé les données scientifiques disponibles sur PubMed et Examine.com, et constaté le manque criard d'un guide sérieux en français, il a décidé de construire la référence francophone.<br><br><strong style="color:#FFF">MyDoseUp® est la réponse à toutes les questions qu'il se posait lui-même.</strong></div>
   </div>
-  <div class="page-card" style="background:linear-gradient(135deg,rgba(21,101,192,0.15),rgba(123,31,162,0.15));border-color:rgba(144,202,249,0.25)">
-    <div class="page-card-title">📊 MyDoseUp en chiffres</div>
+  <div class="page-card" style="background:rgba(255,255,255,0.04);border-color:rgba(255,255,255,0.09)">
+    <div class="page-card-title">MyDoseUp en chiffres</div>
     <div class="page-card-txt" id="conceptStats" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:8px">
-      <div style="text-align:center;padding:12px;background:rgba(255,255,255,0.06);border-radius:12px">
-        <div id="statCompl" style="font-size:32px;font-weight:900;background:linear-gradient(90deg,#90C8FF,#D080FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent">—</div>
+      <div style="text-align:center;padding:12px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:12px">
+        <div id="statCompl" style="font-size:32px;font-weight:900;color:#FFFFFF">—</div>
         <div style="font-size:11px;color:rgba(255,255,255,0.55);margin-top:4px">Compléments référencés</div>
       </div>
-      <div style="text-align:center;padding:12px;background:rgba(255,255,255,0.06);border-radius:12px">
-        <div id="statCat" style="font-size:32px;font-weight:900;background:linear-gradient(90deg,#90C8FF,#D080FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent">—</div>
+      <div style="text-align:center;padding:12px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:12px">
+        <div id="statCat" style="font-size:32px;font-weight:900;color:#FFFFFF">—</div>
         <div style="font-size:11px;color:rgba(255,255,255,0.55);margin-top:4px">Catégories de besoins</div>
       </div>
-      <div style="text-align:center;padding:12px;background:rgba(255,255,255,0.06);border-radius:12px">
-        <div style="font-size:32px;font-weight:900;background:linear-gradient(90deg,#90C8FF,#D080FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent">100%</div>
+      <div style="text-align:center;padding:12px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:12px">
+        <div style="font-size:32px;font-weight:900;color:#FFFFFF">100%</div>
         <div style="font-size:11px;color:rgba(255,255,255,0.55);margin-top:4px">Gratuit & Indépendant</div>
       </div>
-      <div style="text-align:center;padding:12px;background:rgba(255,255,255,0.06);border-radius:12px">
-        <div style="font-size:32px;font-weight:900;background:linear-gradient(90deg,#90C8FF,#D080FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent">PubMed</div>
+      <div style="text-align:center;padding:12px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:12px">
+        <div style="font-size:32px;font-weight:900;color:#FFFFFF">PubMed</div>
         <div style="font-size:11px;color:rgba(255,255,255,0.55);margin-top:4px">Base scientifique</div>
       </div>
     </div>
   </div>
   <div class="page-card">
-    <div class="page-card-title">⚡ Notre philosophie</div>
+    <div class="page-card-title">Notre philosophie</div>
     <div class="page-card-txt">• <strong style="color:#FFF">Science d'abord</strong> : chaque information est sourcée sur PubMed<br>• <strong style="color:#FFF">Indépendance totale</strong> : aucun partenariat commercial, aucune publicité<br>• <strong style="color:#FFF">Personnalisation</strong> : homme et femme ont des besoins différents<br>• <strong style="color:#FFF">Clarté</strong> : vulgarisation sans sacrifier la rigueur<br>• <strong style="color:#FFF">Gratuité</strong> : l'accès à l'information ne devrait pas avoir de prix</div>
   </div>
   <div class="page-card">
@@ -1527,22 +1520,22 @@ html{overflow-x:hidden}
   </div>
   <!-- Sécurité & RGPD trust signals -->
   <div class="page-card" style="margin-bottom:10px">
-    <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.68);margin-bottom:12px">🔒 Sécurité &amp; Confidentialité</div>
+    <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.68);margin-bottom:12px">Sécurité &amp; Confidentialité</div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
       <div style="background:rgba(255,255,255,0.04);border-radius:10px;padding:10px 12px;border:1px solid rgba(255,255,255,0.08)">
-        <div style="font-size:11px;font-weight:700;color:#2D936C;margin-bottom:3px">🛡️ HTTPS + HSTS</div>
+        <div style="font-size:11px;font-weight:700;color:#2D936C;margin-bottom:3px">HTTPS + HSTS</div>
         <div style="font-size:10px;color:rgba(255,255,255,0.72)">Chiffrement SSL actif en permanence</div>
       </div>
       <div style="background:rgba(255,255,255,0.04);border-radius:10px;padding:10px 12px;border:1px solid rgba(255,255,255,0.08)">
-        <div style="font-size:11px;font-weight:700;color:#2D936C;margin-bottom:3px">🔐 DNSSEC + DMARC</div>
+        <div style="font-size:11px;font-weight:700;color:#2D936C;margin-bottom:3px">DNSSEC + DMARC</div>
         <div style="font-size:10px;color:rgba(255,255,255,0.72)">Protection DNS et anti-spoofing email</div>
       </div>
       <div style="background:rgba(255,255,255,0.04);border-radius:10px;padding:10px 12px;border:1px solid rgba(255,255,255,0.08)">
-        <div style="font-size:11px;font-weight:700;color:#5B9BD5;margin-bottom:3px">🇪🇺 RGPD</div>
+        <div style="font-size:11px;font-weight:700;color:#5B9BD5;margin-bottom:3px">RGPD</div>
         <div style="font-size:10px;color:rgba(255,255,255,0.72)">Aucune vente de données personnelles</div>
       </div>
       <div style="background:rgba(255,255,255,0.04);border-radius:10px;padding:10px 12px;border:1px solid rgba(255,255,255,0.08)">
-        <div style="font-size:11px;font-weight:700;color:#5B9BD5;margin-bottom:3px">🚫 0 Pub</div>
+        <div style="font-size:11px;font-weight:700;color:#5B9BD5;margin-bottom:3px">0 Pub</div>
         <div style="font-size:10px;color:rgba(255,255,255,0.72)">Aucun tracking publicitaire tiers</div>
       </div>
     </div>
@@ -1653,7 +1646,7 @@ html{overflow-x:hidden}
     <div class="drawer-sep">Explorer</div>
 
     <div class="drawer-item active" id="ditem-accueil" onclick="drawerGo('accueil')">
-      <div class="drawer-ico" style="background:linear-gradient(145deg,#2563EB,#3B82F6);box-shadow:0 2px 0 rgba(255,255,255,0.20) inset,0 4px 14px rgba(59,130,246,0.55)">
+      <div class="drawer-ico" style="background:linear-gradient(145deg,#2563EB,#3B82F6);box-shadow:0 1px 0 rgba(255,255,255,0.12) inset,0 2px 6px rgba(0,0,0,0.35)">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
       </div>
       <div class="drawer-text">
@@ -1664,7 +1657,7 @@ html{overflow-x:hidden}
     </div>
 
     <div class="drawer-item" id="ditem-quiz" onclick="closeDrawer();openQuiz()">
-      <div class="drawer-ico" style="background:linear-gradient(145deg,#10B981,#059669);box-shadow:0 2px 0 rgba(255,255,255,0.20) inset,0 4px 14px rgba(16,185,129,0.55)">
+      <div class="drawer-ico" style="background:linear-gradient(145deg,#10B981,#059669);box-shadow:0 1px 0 rgba(255,255,255,0.12) inset,0 2px 6px rgba(0,0,0,0.35)">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
       </div>
       <div class="drawer-text">
@@ -1675,7 +1668,7 @@ html{overflow-x:hidden}
     </div>
 
     <div class="drawer-item" id="ditem-parcours" onclick="drawerGo('parcours')">
-      <div class="drawer-ico" style="background:linear-gradient(145deg,#EF4444,#DC2626);box-shadow:0 2px 0 rgba(255,255,255,0.20) inset,0 4px 14px rgba(239,68,68,0.55)">
+      <div class="drawer-ico" style="background:linear-gradient(145deg,#EF4444,#DC2626);box-shadow:0 1px 0 rgba(255,255,255,0.12) inset,0 2px 6px rgba(0,0,0,0.35)">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13" cy="4" r="2"/><path d="M7 22l3-6 2 2 3-4"/><path d="M17 22l-3-6"/></svg>
       </div>
       <div class="drawer-text">
@@ -1688,7 +1681,7 @@ html{overflow-x:hidden}
     <div class="drawer-sep">&Agrave; propos</div>
 
     <div class="drawer-item" id="ditem-experts" onclick="drawerGo('experts')">
-      <div class="drawer-ico" style="background:linear-gradient(145deg,#8B5CF6,#7C3AED);box-shadow:0 2px 0 rgba(255,255,255,0.20) inset,0 4px 14px rgba(139,92,246,0.55)">
+      <div class="drawer-ico" style="background:linear-gradient(145deg,#8B5CF6,#7C3AED);box-shadow:0 1px 0 rgba(255,255,255,0.12) inset,0 2px 6px rgba(0,0,0,0.35)">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
       </div>
       <div class="drawer-text">
@@ -1699,7 +1692,7 @@ html{overflow-x:hidden}
     </div>
 
     <div class="drawer-item" id="ditem-concept" onclick="drawerGo('concept')">
-      <div class="drawer-ico" style="background:linear-gradient(145deg,#F59E0B,#D97706);box-shadow:0 2px 0 rgba(255,255,255,0.20) inset,0 4px 14px rgba(245,158,11,0.55)">
+      <div class="drawer-ico" style="background:linear-gradient(145deg,#F59E0B,#D97706);box-shadow:0 1px 0 rgba(255,255,255,0.12) inset,0 2px 6px rgba(0,0,0,0.35)">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
       </div>
       <div class="drawer-text">
@@ -1712,7 +1705,7 @@ html{overflow-x:hidden}
   </nav>
 
   <div style="padding:12px 16px 24px">
-    <button onclick="closeDrawer();showNewsletter();" style="width:100%;padding:14px;border-radius:12px;border:none;background:linear-gradient(135deg,#1565C0,#7B1FA2);color:#FFF;font-size:14px;font-weight:800;cursor:pointer;font-family:'DM Sans',sans-serif;letter-spacing:0.03em;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 4px 16px rgba(21,101,192,0.35)">
+    <button onclick="closeDrawer();showNewsletter();" style="width:100%;padding:14px;border-radius:12px;border:none;background:#3D5A78;color:#FFF;font-size:14px;font-weight:800;cursor:pointer;font-family:'DM Sans',sans-serif;letter-spacing:0.03em;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 2px 8px rgba(0,0,0,0.30)">
       S'inscrire à la Newsletter
     </button>
   </div>
@@ -1733,11 +1726,11 @@ html{overflow-x:hidden}
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:480px;margin:0 auto 12px">
       <button onclick="navGo('legal', null)" 
         style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.72);font-size:11px;font-weight:700;padding:11px 14px;border-radius:10px;cursor:pointer;font-family:'DM Sans',sans-serif;letter-spacing:0.04em;display:flex;align-items:center;justify-content:center;gap:6px;transition:background .15s,border-color .15s">
-        📋 Mentions légales
+        Mentions légales
       </button>
       <button onclick="showNewsletter()" id="footer-nl-btn"
-        style="background:linear-gradient(135deg,rgba(79,70,229,0.35),rgba(37,99,235,0.35));border:1px solid rgba(144,202,249,0.40);color:#FFF;font-size:11px;font-weight:800;padding:11px 14px;border-radius:10px;cursor:pointer;font-family:'DM Sans',sans-serif;letter-spacing:0.04em;display:flex;align-items:center;justify-content:center;gap:6px;box-shadow:0 4px 14px rgba(79,70,229,0.25);transition:transform .15s">
-        📧 Newsletter
+        style="background:#3D5A78;border:1px solid rgba(255,255,255,0.15);color:#FFF;font-size:11px;font-weight:800;padding:11px 14px;border-radius:10px;cursor:pointer;font-family:'DM Sans',sans-serif;letter-spacing:0.04em;display:flex;align-items:center;justify-content:center;gap:6px;transition:transform .15s">
+        Newsletter
       </button>
     </div>
   </div>
@@ -1876,8 +1869,8 @@ html{overflow-x:hidden}
       🍪 Ce site utilise des cookies techniques nécessaires à son fonctionnement et un service de newsletter (Brevo/Sendinblue). Aucun cookie publicitaire ni de traçage tiers n'est utilisé. GitHub Pages peut collecter des logs anonymes conformément à sa <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" style="color:#60B8FF;text-decoration:none">politique de confidentialité</a>.
     </div>
     <div style="display:flex;gap:10px;flex-wrap:wrap">
-      <button onclick="acceptCookies()" style="flex:1;padding:10px 16px;background:linear-gradient(90deg,#1565C0,#7B1FA2);color:#FFF;border:none;border-radius:10px;font-size:12px;font-weight:800;cursor:pointer;font-family:'DM Sans',sans-serif;min-width:120px">
-        ✅ Accepter
+      <button onclick="acceptCookies()" style="flex:1;padding:10px 16px;background:#3D5A78;color:#FFF;border:none;border-radius:10px;font-size:12px;font-weight:800;cursor:pointer;font-family:'DM Sans',sans-serif;min-width:120px">
+        Accepter
       </button>
       <button onclick="refuseCookies()" style="flex:1;padding:10px 16px;background:rgba(255,255,255,0.08);color:#9AB0C8;border:1px solid rgba(255,255,255,0.15);border-radius:10px;font-size:12px;font-weight:800;cursor:pointer;font-family:'DM Sans',sans-serif;min-width:120px">
         ❌ Refuser
@@ -2026,7 +2019,7 @@ const DATA = [
   fn:"Le complément sportif le plus étudié au monde. Elle recharge tes réserves d\'énergie musculaire (ATP) pour des efforts plus intenses, une meilleure récupération et même des bénéfices cognitifs.",
   plus:["Force +8% en 4-6 semaines","Récupération musculaire plus rapide","Masse musculaire augmentée","Mémoire et concentration améliorées","Fatigue mentale réduite"],
   moins:["Rétention d\'eau légère au début (normal)","Boire beaucoup d\'eau obligatoire","Pas de bénéfice sans effort physique régulier"],
-  dose:[["Dose H","5g/j"],["Dose F","3-5g/j"],["Timing post-séance","Avec Whey"],["Sans sport","Avec le petit-déjeuner"],["Phase de charge","Optionnelle : 20g/j × 5 jours pour saturation rapide, puis 5g/j maintenance. Pas nécessaire : 5g/j dès le départ sature en 3-4 semaines avec le même résultat."],["Forme","Monohydrate uniquement. Les autres formes (Kre-Alkalyn, HCl) ne présentent pas de bénéfice supérieur prouvé."]],
+  dose:[["Dose H","5g/j"],["Dose F","3-5g/j"],["Timing post-séance","Avec Whey"],["Sans sport","Avec le petit-déjeuner"],["Phase de charge","Deux approches possibles pour atteindre la saturation musculaire en créatine, avec le même résultat final. Option rapide : 20g/j répartis sur la journée pendant 5 jours, puis on redescend à 5g/j en entretien. Les muscles sont saturés en une semaine. Option progressive : 5g/j dès le premier jour, sans phase de charge. La saturation prend simplement plus de temps, 3 à 4 semaines environ. Aucune des deux n'est plus efficace à long terme, c'est uniquement une question de rapidité des premiers effets ressentis."],["Forme","Monohydrate uniquement. Les autres formes (Kre-Alkalyn, HCl) ne présentent pas de bénéfice supérieur prouvé."]],
   hM:"+8% de force sur 4-6 semaines. +10% de masse musculaire sur 12 semaines. Le complément sportif le plus prouvé scientifiquement. Aussi efficace pour le cerveau : mémoire et temps de réaction améliorés.",
   hF:"Bénéfice égal à celui des hommes pour la force et la masse musculaire maigre. Améliore l\'humeur et réduit les symptômes dépressifs. Réduit la fatigue en phase lutéale (pré-menstruelle).",
   syn:["Whey protéine","Bêta-alanine","Glucides (favorisent absorption)"],
@@ -2776,13 +2769,13 @@ function card(s, letter, azMode){
   // ── GENDER BADGE — only in A-Z mode ──
   let gt = "";
   if(azMode){
-    if(s.gender==="M") gt='<span class="sc-gt sc-gt-excl-m">👨 Homme</span>';
-    else if(s.gender==="F") gt='<span class="sc-gt sc-gt-excl-f">👩 Femme</span>';
+    if(s.gender==="M") gt='<span class="sc-gt sc-gt-excl-m">Homme</span>';
+    else if(s.gender==="F") gt='<span class="sc-gt sc-gt-excl-f">Femme</span>';
     // Universal: no badge in AZ — cleaner
   }
 
   const dc = s.dispo===3?"dispo-3":s.dispo===2?"dispo-2":"dispo-1";
-  const dt = s.dispo===3?"🔴 Complexe":s.dispo===2?"🟡 Spécialisé":"🟢 Partout";
+  const dt = s.dispo===3?"Complexe":s.dispo===2?"Spécialisé":"Partout";
   const ltr = (letter&&letter!="null")?`<span style="font-size:10px;color:rgba(255,255,255,0.22);margin-right:2px">${letter} </span>`:"";
 
   const plus = (s.plus||[]).map(p=>`<div class="col-item"><span class="col-dot">·</span>${p}</div>`).join("");
@@ -2803,13 +2796,13 @@ function card(s, letter, azMode){
     // A-Z: show both
     const hm = s.hM?`<div class="hf-block hf-m"><div class="hf-lbl">👨 Spécifique Homme</div><div class="hf-txt">${s.hM}</div></div>`:"";
     const hf = s.hF?`<div class="hf-block hf-f"><div class="hf-lbl">👩 Spécifique Femme</div><div class="hf-txt">${s.hF}</div></div>`:"";
-    if(hm||hf) genderBlock=`<div class="sb"><div class="sb-lbl">👤 Spécificités</div>${hm}${hf}</div>`;
+    if(hm||hf) genderBlock=`<div class="sb"><div class="sb-lbl">Spécificités</div>${hm}${hf}</div>`;
   } else if(G==="M"){
     // Homme mode: only show male block
-    if(s.hM) genderBlock=`<div class="sb"><div class="sb-lbl">💪 Pour vous</div><div class="hf-block hf-m" style="margin:0"><div class="hf-txt">${s.hM}</div></div></div>`;
+    if(s.hM) genderBlock=`<div class="sb"><div class="sb-lbl">Pour vous</div><div class="hf-block hf-m" style="margin:0"><div class="hf-txt">${s.hM}</div></div></div>`;
   } else if(G==="F"){
     // Femme mode: only show female block
-    if(s.hF) genderBlock=`<div class="sb"><div class="sb-lbl">💜 Pour vous</div><div class="hf-block hf-f" style="margin:0"><div class="hf-txt">${s.hF}</div></div></div>`;
+    if(s.hF) genderBlock=`<div class="sb"><div class="sb-lbl">Pour vous</div><div class="hf-block hf-f" style="margin:0"><div class="hf-txt">${s.hF}</div></div></div>`;
   }
 
   // Section alimentation/complément claire
@@ -2856,21 +2849,21 @@ function card(s, letter, azMode){
       </div><span class="sc-chv">Dosages & Effets</span>
     </div>
     <div class="sc-body">
-      <div class="sb" style="background:rgba(255,255,255,0.05);border-radius:10px;margin:8px;border:1px solid rgba(255,255,255,0.10)"><div class="sb-lbl">💡 RÔLE</div><div class="sb-txt" style="font-size:15px;font-weight:600;color:#FFF;line-height:1.75">${s.fn}</div></div>
-      <div class="sb"><div class="sb-lbl">⚡ Effets</div>
+      <div class="sb" style="background:rgba(255,255,255,0.05);border-radius:10px;margin:8px;border:1px solid rgba(255,255,255,0.10)"><div class="sb-lbl">Rôle</div><div class="sb-txt" style="font-size:15px;font-weight:600;color:#FFF;line-height:1.75">${s.fn}</div></div>
+      <div class="sb"><div class="sb-lbl">Effets</div>
         <div class="two-col">
           <div class="col-plus"><div class="col-title">✅ Pour</div>${plus}</div>
           <div class="col-minus"><div class="col-title">⚠️ À noter</div>${moins}</div>
         </div>
       </div>
-      <div class="sb"><div class="sb-lbl">📊 Dosage</div><div class="dose-t">${dose}</div></div>
+      <div class="sb"><div class="sb-lbl">Dosage</div><div class="dose-t">${dose}</div></div>
       ${genderBlock}
-      <div class="sb"><div class="sb-lbl">🔗 À prendre avec</div><div class="syn-list">${syn}</div></div>
-      <div class="sb"><div class="sb-lbl">🚨 Précautions</div><div class="prec-bar"><div class="prec-txt">${s.prec}</div></div></div>
-      <div class="sb"><div class="sb-lbl">💊 Alimentation & Complément</div>
+      <div class="sb"><div class="sb-lbl">À prendre avec</div><div class="syn-list">${syn}</div></div>
+      <div class="sb"><div class="sb-lbl">Précautions</div><div class="prec-bar"><div class="prec-txt">${s.prec}</div></div></div>
+      <div class="sb"><div class="sb-lbl">Alimentation & Complément</div>
         ${formeHTML}
       </div>
-      <div class="sb"><div class="sb-lbl">📍 Disponibilité</div>
+      <div class="sb"><div class="sb-lbl">Disponibilité</div>
         <div class="dispo-row ${dbc}"><div class="dispo-ico">${dbi}</div>
           <div><div class="dispo-title">${dbt}</div><div class="dispo-txt">${s.where||""}</div></div>
         </div>
@@ -2886,7 +2879,7 @@ function protCard(p){
   const plus=(p.plus||[]).map(x=>`<div class="col-item"><span class="col-dot">·</span>${x}</div>`).join("");
   const moins=(p.moins||[]).map(x=>`<div class="col-item"><span class="col-dot">·</span>${x}</div>`).join("");
   const dose=(p.dose||[]).map(d=>`<div class="d-row"><span class="d-k">${d[0]}</span><span class="d-v">${d[1]}</span></div>`).join("");
-  const roleBlock = p.fn ? `<div class="sb" style="background:rgba(255,255,255,0.05);border-radius:10px;margin:8px;border:1px solid rgba(255,255,255,0.10)"><div class="sb-lbl">💡 RÔLE</div><div class="sb-txt" style="font-size:14px;font-weight:600;color:#FFF;line-height:1.75">${p.fn}</div></div>` : "";
+  const roleBlock = p.fn ? `<div class="sb" style="background:rgba(255,255,255,0.05);border-radius:10px;margin:8px;border:1px solid rgba(255,255,255,0.10)"><div class="sb-lbl">Rôle</div><div class="sb-txt" style="font-size:14px;font-weight:600;color:#FFF;line-height:1.75">${p.fn}</div></div>` : "";
   return `<div class="sc" style="--c:${p.c}" onclick="this.classList.toggle('open');event.stopPropagation()">
     <div class="sc-hd"><div class="sc-accent"></div>
       <div class="sc-main"><div class="sc-nm">${p.nm}</div><div class="sc-pills"><span class="sc-tag">${p.tag}</span><span style="font-size:10px;font-weight:800;color:rgba(255,255,255,0.60);padding:3px 6px;border-radius:50px;background:rgba(255,255,255,0.08)">${p.dispo===1?"€":p.dispo===2?"€€":p.dispo===3?"€€€":"—"}</span></div></div>
@@ -2894,14 +2887,14 @@ function protCard(p){
     </div>
     <div class="sc-body">
       ${roleBlock}
-      <div class="sb"><div class="sb-lbl">⚡ Effets</div>
+      <div class="sb"><div class="sb-lbl">Effets</div>
         <div class="two-col">
           <div class="col-plus"><div class="col-title">✅ Pour</div>${plus}</div>
           <div class="col-minus"><div class="col-title">⚠️ À noter</div>${moins}</div>
         </div>
       </div>
-      <div class="sb"><div class="sb-lbl">📊 Infos</div><div class="dose-t">${dose}</div></div>
-      <div class="sb"><div class="sb-lbl">🥗 Alternative alimentaire</div>
+      <div class="sb"><div class="sb-lbl">Infos</div><div class="dose-t">${dose}</div></div>
+      <div class="sb"><div class="sb-lbl">Alternative alimentaire</div>
         <div class="prec-bar" style="border-left-color:#81C784;background:rgba(40,100,50,0.18)">
           <div class="prec-txt" style="color:#A5D6A7">${p.food||"—"}</div>
         </div>
@@ -3972,7 +3965,7 @@ window.addEventListener('load', function(){
         <!-- Bouton -->
         <button type="submit"
                 id="nl-submit-btn"
-                style="width:100%;padding:15px;border-radius:50px;border:none;background:linear-gradient(135deg,#1565C0,#7B1FA2);color:#FFF;font-size:15px;font-weight:800;cursor:pointer;font-family:'DM Sans',sans-serif;letter-spacing:0.04em;transition:opacity 0.2s;margin-top:4px"
+                style="width:100%;padding:15px;border-radius:50px;border:none;background:#3D5A78;color:#FFF;font-size:15px;font-weight:800;cursor:pointer;font-family:'DM Sans',sans-serif;letter-spacing:0.04em;transition:opacity 0.2s;margin-top:4px"
                 onmouseover="this.style.opacity='0.88'"
                 onmouseout="this.style.opacity='1'">
           S'INSCRIRE
