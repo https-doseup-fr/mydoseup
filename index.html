@@ -412,9 +412,8 @@ img{pointer-events:none;-webkit-user-drag:none;user-drag:none;}
 
 /* ── AZ FAMILLES ── */
 .az-fam-section{margin-bottom:8px}
-.az-fam-header{display:flex;align-items:center;gap:10px;padding:14px 14px 8px;cursor:pointer;user-select:none;position:sticky;top:0;z-index:10;background:var(--az-bg,#152C64)}
-body.F .az-fam-header{--az-bg:#142C5E}
-.az-fam-accent{width:3px;height:32px;border-radius:3px;flex-shrink:0}
+.az-fam-header{display:flex;align-items:center;gap:10px;padding:14px 14px 8px;cursor:pointer;user-select:none;position:sticky;top:0;z-index:10;background:#142C5E}
+.az-fam-accent{width:5px;height:32px;border-radius:3px;flex-shrink:0}
 .az-fam-title{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:0.13em;color:#fff;flex:1}
 .az-fam-count{font-size:11px;color:rgba(255,255,255,0.68);font-weight:600}
 .az-fam-chevron{font-size:12px;color:rgba(255,255,255,0.68);transition:transform 0.2s;margin-left:auto}
@@ -1711,7 +1710,7 @@ html{overflow-x:hidden}
     Informations à titre éducatif uniquement. Consultez un professionnel de santé avant tout usage.<br>
     © 2026 MyDoseUp® · Yanis Bensaadi · INPI n° 5239885 · Tous droits réservés
   </div>
-  <div class="footer-credits">📩 contact&#64;mydoseup&#46;com</div>
+  <div class="footer-credits">contact&#64;mydoseup&#46;com</div>
   <div style="margin-top:24px;padding-top:18px;border-top:1px solid rgba(255,255,255,0.08)">
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:480px;margin:0 auto 12px">
       <button onclick="navGo('legal', null)" 
@@ -1856,14 +1855,14 @@ html{overflow-x:hidden}
 <div id="cookieBanner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:99999;padding:16px 20px;background:#1F2C47;border-top:1px solid rgba(255,255,255,0.10);box-shadow:0 -4px 24px rgba(0,0,0,0.50)">
   <div style="max-width:430px;margin:0 auto">
     <div style="font-size:13px;color:#C8D8EC;line-height:1.7;margin-bottom:12px">
-      🍪 Ce site utilise des cookies techniques nécessaires à son fonctionnement et un service de newsletter (Brevo/Sendinblue). Aucun cookie publicitaire ni de traçage tiers n'est utilisé. GitHub Pages peut collecter des logs anonymes conformément à sa <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" style="color:#60B8FF;text-decoration:none">politique de confidentialité</a>.
+      Ce site utilise des cookies techniques nécessaires à son fonctionnement et un service de newsletter (Brevo/Sendinblue). Aucun cookie publicitaire ni de traçage tiers n'est utilisé. GitHub Pages peut collecter des logs anonymes conformément à sa <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" style="color:#60B8FF;text-decoration:none">politique de confidentialité</a>.
     </div>
     <div style="display:flex;gap:10px;flex-wrap:wrap">
       <button onclick="acceptCookies()" style="flex:1;padding:10px 16px;background:#3D5A78;color:#FFF;border:none;border-radius:10px;font-size:12px;font-weight:800;cursor:pointer;font-family:'DM Sans',sans-serif;min-width:120px">
         Accepter
       </button>
       <button onclick="refuseCookies()" style="flex:1;padding:10px 16px;background:rgba(255,255,255,0.08);color:#9AB0C8;border:1px solid rgba(255,255,255,0.15);border-radius:10px;font-size:12px;font-weight:800;cursor:pointer;font-family:'DM Sans',sans-serif;min-width:120px">
-        ❌ Refuser
+        Refuser
       </button>
       <button onclick="document.getElementById('privacyModal').style.display='block'" style="padding:10px 16px;background:transparent;color:rgba(255,255,255,0.72);border:1px solid rgba(255,255,255,0.10);border-radius:10px;font-size:11px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif">
         En savoir plus
@@ -3375,6 +3374,15 @@ function setG(g){
   const tabsBar = document.getElementById('tabsBar');
   if(tabsBar) tabsBar.style.display = '';
 
+  // ⑥bis Revenir toujours sur l'onglet "Ton besoin" (pas "Par famille")
+  document.querySelectorAll(".tab").forEach(b=>b.classList.remove("on"));
+  const objTabBtn = document.querySelector('.tab[onclick*="obj"]');
+  if(objTabBtn) objTabBtn.classList.add("on");
+  document.querySelectorAll(".panel").forEach(p=>p.classList.remove("on"));
+  const objPanel = document.getElementById("panel-obj");
+  if(objPanel) objPanel.classList.add("on");
+  showFilterBar();
+
   // ⑦ Rebuild grid et AZ
   clearS(); backToGrid();
   buildGrid(); buildAZ();
@@ -3530,10 +3538,11 @@ function _renderFamSection(fam, items){
 
   return `<div class="az-fam-section collapsed" id="azfam-${fam.id}">
     <div class="az-fam-header">
-      <div class="az-fam-accent" style="background:${fam.color}"></div>
-      <div class="az-fam-title">${fam.emoji} ${fam.label}</div>
-      <div class="az-fam-count">${items.length}</div>
-      <span class="az-fam-chevron">▾</span>
+      <div style="position:absolute;inset:0;background:${fam.color};opacity:0.16;pointer-events:none"></div>
+      <div class="az-fam-accent" style="background:${fam.color};position:relative"></div>
+      <div class="az-fam-title" style="position:relative">${fam.emoji} ${fam.label}</div>
+      <div class="az-fam-count" style="position:relative">${items.length}</div>
+      <span class="az-fam-chevron" style="position:relative">▾</span>
     </div>
     <div class="az-fam-items">${cardItems}</div>
   </div>`;
@@ -3912,7 +3921,7 @@ window.addEventListener('load', function(){
     <div style="text-align:center;margin-bottom:22px">
       <img src="https://img.mailinblue.com/10888011/images/content_library/original/69c69872243bc1e24efd8f29.png" fetchpriority="high" decoding="async"
            alt="MyDoseUp" style="width:140px;height:140px;object-fit:contain;margin-bottom:16px;border-radius:50%" onerror="this.style.display='none'">
-      <div style="font-size:22px;font-weight:900;color:#FFF;margin-bottom:6px;line-height:1.2">Ne rate aucune dose d'énergie ⚡️</div>
+      <div style="font-size:22px;font-weight:900;color:#FFF;margin-bottom:6px;line-height:1.2">Ne rate aucune dose d'énergie</div>
       <div style="font-size:13px;color:rgba(255,255,255,0.55);line-height:1.65">Rejoins la communauté MyDoseUp ! Protocoles, études et fiches<br>directement dans ta boîte mail. 100% gratuit.</div>
     </div>
 
