@@ -4019,10 +4019,8 @@ var _nlTimer = null;
 var _nlShown = false;
 
 function showNewsletter(){
-  if(_nlShown) return;
   if(!_nlPopup) _nlPopup = document.getElementById('mydoseup-nl-popup');
   if(!_nlPopup) return;
-  _nlShown = true;
   _nlPopup.style.display = 'flex';
 }
 
@@ -4075,7 +4073,7 @@ try{ _nlBlocked = !!(localStorage.getItem('mydoseup_nl_closed') || localStorage.
 
 if(!_nlBlocked){
   // Triple fallback timer 10s
-  function _startNlTimer(){ if(!_nlShown && !_nlTimer) _nlTimer = setTimeout(showNewsletter, 30000); }
+  function _startNlTimer(){ if(!_nlShown && !_nlTimer) _nlTimer = setTimeout(function(){ _nlShown = true; showNewsletter(); }, 30000); }
   if(document.readyState === 'complete' || document.readyState === 'interactive'){ _startNlTimer(); }
   document.addEventListener('DOMContentLoaded', _startNlTimer);
   window.addEventListener('load', _startNlTimer);
@@ -4087,7 +4085,7 @@ if(!_nlBlocked){
       if(pct > 65){
         window.removeEventListener('scroll', _nlScroll);
         if(_nlTimer){ clearTimeout(_nlTimer); _nlTimer = null; }
-        showNewsletter();
+        if(!_nlShown){ _nlShown = true; showNewsletter(); }
       }
     }catch(e){}
   }, {passive:true});
