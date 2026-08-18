@@ -3429,12 +3429,11 @@ function buildGrid(){
 }
 
 function buildAZ(){
-  // Groupement par famille (Protéines ajoutée en 12e, table définie globalement plus haut)
-  const FAMILLES_AZ = [...FAMILLES, {id:"proteines",label:"Protéines",emoji:"🥛",color:"var(--protein-fam)"}];
+  // Groupement par famille (Protéines déjà incluse dans FAMILLES, table définie globalement plus haut)
 
   // Group DATA supplements
   const groups = {};
-  FAMILLES_AZ.forEach(f=>{groups[f.label]=[];});
+  FAMILLES.forEach(f=>{groups[f.label]=[];});
 
   fdAll().forEach(s=>{
     const fam = NM_FAM[s.nm] || _guessFamily(s);
@@ -3454,7 +3453,7 @@ function buildAZ(){
 
   let html = `<div class="az-fam-total">${total} compléments — par famille</div>`;
 
-  FAMILLES_AZ.forEach(fam=>{
+  FAMILLES.forEach(fam=>{
     const items = groups[fam.label]||[];
     if(!items.length) return;
     html += _renderFamSection(fam, items);
@@ -3529,7 +3528,7 @@ function _renderFamSection(fam, items){
     </div>`;
   }).join("");
 
-  return `<div class="az-fam-section" id="azfam-${fam.id}">
+  return `<div class="az-fam-section collapsed" id="azfam-${fam.id}">
     <div class="az-fam-header">
       <div class="az-fam-accent" style="background:${fam.color}"></div>
       <div class="az-fam-title">${fam.emoji} ${fam.label}</div>
