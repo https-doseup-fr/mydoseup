@@ -84,7 +84,7 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
 <style>
-:root{--peau:#E07A5F;--cheveux:#9C27B0;--energie:#2A9D8F;--testo:#1565C0;--muscu:#2D936C;--sommeil:#1976D2;--poids:#E76F51;--immun:#00897B;--cerveau:#5E35B1;--os:#43A047;--coeur:#E53935;--digest:#00ACC1;--libido:#8E24AA;--detox:#43A047;--mental:#7B1FA2;--protein:#F57C00;--anti:#FF8F00;--vision:#0288D1}
+:root{--peau:#E07A5F;--cheveux:#9C27B0;--energie:#2A9D8F;--testo:#1565C0;--muscu:#2D936C;--sommeil:#1976D2;--poids:#E76F51;--immun:#00897B;--cerveau:#5E35B1;--os:#43A047;--coeur:#E53935;--digest:#00ACC1;--libido:#8E24AA;--detox:#43A047;--mental:#7B1FA2;--protein:#F57C00;--anti:#FF8F00;--vision:#0288D1;--antiage-fam:#C2185B;--protein-fam:#8D6E63;--special-fam:#607D8B}
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;-webkit-font-smoothing:antialiased}
 html{scroll-behavior:auto;background:#0D1B3E}
 body{font-family:"DM Sans",sans-serif;font-size:15px;line-height:1.6;max-width:430px;margin:0 auto;overflow-x:hidden;min-height:100vh;background:#0D1B3E !important;color:#E2EBF5}
@@ -156,13 +156,14 @@ body.F .tab.on{color:#FFF;background:linear-gradient(90deg,rgba(123,31,162,0.7),
 .obj-back-title{font-size:16px;font-weight:700;color:#FFF}
 /* SUPPLEMENT CARD */
 .sc{border-radius:8px;margin-bottom:10px;overflow:hidden;border:1px solid rgba(255,255,255,0.18);position:relative;transition:border-color 0.2s}
-.sc::before{content:"";position:absolute;inset:0;background:var(--c);opacity:0.06;pointer-events:none;z-index:0;border-radius:8px}
+.sc::before{content:"";position:absolute;inset:0;background:var(--c);opacity:0.22;pointer-events:none;z-index:0;border-radius:8px}
 .sc-hd,.sc-body{position:relative;z-index:1}
 .sc.open{border-color:var(--c)}
 .sc-hd{padding:12px 14px;display:flex;align-items:stretch;gap:10px;cursor:pointer}
 .sc-accent{width:4px;border-radius:4px;background:var(--c);flex-shrink:0;align-self:stretch;min-height:40px}
 .sc-main{flex:1;min-width:0;display:flex;flex-direction:column;gap:6px}
 .sc-nm{font-size:14px;font-weight:800;color:#FFFFFF;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-shadow:0 1px 4px rgba(0,0,0,0.40)}
+.sc-fam{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:rgba(255,255,255,0.75);margin-top:3px}
 .sc-tag{font-size:10px;font-weight:700;padding:3px 9px;border-radius:5px;color:#FFF;border:1px solid rgba(255,255,255,0.30);background:rgba(255,255,255,0.10)}
 .sc-gt{font-size:10px;font-weight:700;padding:3px 8px;border-radius:5px;background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.65)}
 .sc-gt-excl-m{background:rgba(21,101,192,0.30);color:#90CAF9}
@@ -189,59 +190,49 @@ body.F .tab.on{color:#FFF;background:linear-gradient(90deg,rgba(123,31,162,0.7),
 .sc-chv:hover,.sc-chv:active{background:rgba(255,255,255,0.14);border-color:var(--c);color:#FFF;}
 .sc.open .sc-chv{background:rgba(239,83,80,0.18);border-color:#EF5350;color:#EF9A9A;}
 .sc.open .sc-chv::after{transform:rotate(180deg);}
-.sc-body{display:none;border-top:1px solid rgba(255,255,255,0.10);background:rgba(255,255,255,0.05)}
+.sc-body{display:none;border-top:1px solid rgba(0,0,0,0.10);background:#F4EFE6}
 .sc.open .sc-body{display:block}
 .sb{padding:13px 14px;border-bottom:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.02)}
 .sb:last-child{border-bottom:none}
-.sb-lbl{font-size:13px;font-weight:900;text-transform:uppercase;letter-spacing:0.10em;margin-bottom:10px;color:#FFFFFF}
-.sb-txt{font-size:13px;color:#E8F2FF;line-height:1.8;font-weight:500}
+.sb-lbl{font-size:13px;font-weight:900;text-transform:uppercase;letter-spacing:0.10em;margin-bottom:10px;color:#1F2933}
+.sb-txt{font-size:13px;color:#2D3846;line-height:1.8;font-weight:500}
 .two-col{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:2px}
-.col-plus{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.10);border-left:3px solid #81C784;border-radius:6px;padding:9px}
-.col-minus{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.10);border-left:3px solid #FFB199;border-radius:6px;padding:9px}
+.col-plus{background:rgba(0,0,0,0.03);border:1px solid rgba(0,0,0,0.10);border-left:3px solid #2E7D32;border-radius:6px;padding:9px}
+.col-minus{background:rgba(0,0,0,0.03);border:1px solid rgba(0,0,0,0.10);border-left:3px solid #D2691E;border-radius:6px;padding:9px}
 .col-title{font-size:10px;font-weight:800;text-transform:uppercase;margin-bottom:6px}
-.col-plus .col-title{color:#A5D6A7}
-.col-minus .col-title{color:#FFCC99}
-.col-item{font-size:13px;line-height:1.5;padding:2px 0;display:flex;gap:4px;color:#FFFFFF}
+.col-plus .col-title{color:#2E7D32}
+.col-minus .col-title{color:#C4650A}
+.col-item{font-size:13px;line-height:1.5;padding:2px 0;display:flex;gap:4px;color:#2D3846}
 .col-dot{opacity:0.4;flex-shrink:0}
-.dose-t{border-radius:6px;overflow:hidden;border:1px solid rgba(255,255,255,0.16);margin-top:2px;background:rgba(255,255,255,0.03)}
-.d-row{display:flex;justify-content:space-between;align-items:center;padding:8px 12px;border-bottom:1px solid rgba(255,255,255,0.06);font-size:13px}
+.dose-t{border-radius:6px;overflow:hidden;border:1px solid rgba(0,0,0,0.14);margin-top:2px;background:rgba(0,0,0,0.02)}
+.d-row{display:flex;justify-content:space-between;align-items:center;padding:8px 12px;border-bottom:1px solid rgba(0,0,0,0.08);font-size:13px}
 .d-row:last-child{border-bottom:none}
-.d-k{color:#B8CFE8;font-weight:700;padding-right:8px;flex-shrink:0}
-.d-v{font-weight:700;color:#FFF;text-align:right}
+.d-k{color:#5B6B80;font-weight:700;padding-right:8px;flex-shrink:0}
+.d-v{font-weight:700;color:#1F2933;text-align:right}
 .hf-block{border-radius:6px;padding:10px 12px;margin-bottom:6px}
-.hf-m{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.10);border-left:3px solid #90CAF9}
-.hf-f{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.10);border-left:3px solid #CE93D8}
+.hf-m{background:rgba(0,0,0,0.03);border:1px solid rgba(0,0,0,0.10);border-left:3px solid #1565C0}
+.hf-f{background:rgba(0,0,0,0.03);border:1px solid rgba(0,0,0,0.10);border-left:3px solid #8E24AA}
 .hf-lbl{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px}
-.hf-m .hf-lbl{color:#90CAF9}
-.hf-f .hf-lbl{color:#CE93D8}
-.hf-txt{font-size:13px;color:#D4E4F8;line-height:1.65}
+.hf-m .hf-lbl{color:#1565C0}
+.hf-f .hf-lbl{color:#8E24AA}
+.hf-txt{font-size:13px;color:#2D3846;line-height:1.65}
 .syn-list{display:flex;flex-wrap:wrap;gap:5px;margin-top:2px}
-.syn-chip{font-size:13px;font-weight:600;padding:4px 10px;border-radius:5px;background:rgba(255,255,255,0.14);color:#FFFFFF;border:1px solid rgba(255,255,255,0.28)}
-.prec-bar{border-radius:6px;padding:10px 12px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.10);border-left:3px solid #EF5350}
-.prec-txt{font-size:13px;color:rgba(255,255,255,0.85);line-height:1.65}
-.forme-row{display:flex;align-items:flex-start;gap:10px;border-radius:6px;padding:10px 12px;margin-top:2px}
-.forme-suppl{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.10);border-left:3px solid #64B5F6}
-.forme-food{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.10);border-left:3px solid #81C784}
-.forme-both{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.10);border-left:3px solid #FFB74D}
-.forme-ico{font-size:20px;flex-shrink:0;margin-top:1px}
-.forme-title{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:2px}
-.forme-suppl .forme-title{color:#90CAF9}
-.forme-food .forme-title{color:#81C784}
-.forme-both .forme-title{color:#FFD54F}
-.forme-desc{font-size:11px;line-height:1.5;color:rgba(255,255,255,0.90)}
+.syn-chip{font-size:13px;font-weight:600;padding:4px 10px;border-radius:5px;background:rgba(0,0,0,0.04);color:#2D3846;border:1px solid rgba(0,0,0,0.16)}
+.prec-bar{border-radius:6px;padding:10px 12px;background:rgba(0,0,0,0.03);border:1px solid rgba(0,0,0,0.10);border-left:3px solid #C62828}
+.prec-txt{font-size:13px;color:#2D3846;line-height:1.65}
 .dispo-row{display:flex;align-items:flex-start;gap:10px;border-radius:6px;padding:10px 12px;margin-top:2px}
-.dispo-1-block{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.10);border-left:3px solid #81C784}
-.dispo-2-block{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.10);border-left:3px solid #FFB74D}
-.dispo-3-block{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.10);border-left:3px solid #EF9A9A}
+.dispo-1-block{background:rgba(0,0,0,0.03);border:1px solid rgba(0,0,0,0.10);border-left:3px solid #2E7D32}
+.dispo-2-block{background:rgba(0,0,0,0.03);border:1px solid rgba(0,0,0,0.10);border-left:3px solid #C77700}
+.dispo-3-block{background:rgba(0,0,0,0.03);border:1px solid rgba(0,0,0,0.10);border-left:3px solid #C62828}
 .dispo-ico{width:8px;height:8px;border-radius:50%;background:currentColor;flex-shrink:0;margin-top:6px}
 .dispo-1-block .dispo-ico{color:#81C784}
 .dispo-2-block .dispo-ico{color:#FFB74D}
 .dispo-3-block .dispo-ico{color:#EF9A9A}
 .dispo-title{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:2px}
-.dispo-1-block .dispo-title{color:#81C784}
-.dispo-2-block .dispo-title{color:#FFB74D}
-.dispo-3-block .dispo-title{color:#EF9A9A}
-.dispo-txt{font-size:11px;color:rgba(255,255,255,0.90);line-height:1.5}
+.dispo-1-block .dispo-title{color:#2E7D32}
+.dispo-2-block .dispo-title{color:#C77700}
+.dispo-3-block .dispo-title{color:#C62828}
+.dispo-txt{font-size:11px;color:#2D3846;line-height:1.5}
 .az-letter{padding:8px 16px 4px;font-size:22px;font-weight:900;position:sticky;top:48px;z-index:10;border-bottom:1px solid rgba(255,255,255,0.06);font-family:"DM Sans",sans-serif}
 body.M .az-letter{background:#0F1620;color:#60B8FF}
 body.F .az-letter{background:#0F0820;color:#CE93D8}
@@ -886,10 +877,9 @@ body.F{background:#0E0A1E !important}
 body.M .header{background:linear-gradient(170deg,#0A1428 0%,#102040 55%,#0C1220 100%) !important}
 body.F .header{background:linear-gradient(170deg,#0C0520 0%,#18093A 55%,#0E0A1E 100%) !important}
 /* Cards suppléments légèrement plus claires */
-.sc{border:1px solid rgba(255,255,255,0.22) !important}
-.sc::before{opacity:0.28 !important}
+.sc{border:1.5px solid rgba(255,255,255,0.38) !important}
 /* Texte descriptions plus lisible */
-.sb-txt{color:#ECF2FF !important}
+
 .sc-nm{color:#FFFFFF !important}
 /* Fond des sections */
 .obj-grid{background:transparent}
@@ -2761,6 +2751,100 @@ const PRIO = {
 function fd(){return DATA.filter(s=>s.gender==="MF"||(s.gender===G))}
 function fdAll(){return DATA}
 
+// ── FAMILLES (table partagée : couleur des cartes + onglet Par famille) ──
+const FAM_MAP = {
+  "Vitamine D3 + K2":                       "Vitamines & Minéraux",
+  "Vitamine C":                              "Vitamines & Minéraux",
+  "Vitamine B12 (Méthylcobalamine)":    "Vitamines & Minéraux",
+  "Biotine (Vitamine B8)":                   "Vitamines & Minéraux",
+  "Vitamine A (Bêta-carotène)":    "Vitamines & Minéraux",
+  "Magnésium Bisglycinate":             "Vitamines & Minéraux",
+  "Zinc Bisglycinate":                       "Vitamines & Minéraux",
+  "Fer Bisglycinate":                        "Vitamines & Minéraux",
+  "Sélénium":                      "Vitamines & Minéraux",
+  "Bore (Boron)":                            "Vitamines & Minéraux",
+  "Silicium Organique":                      "Vitamines & Minéraux",
+  "Hydratation & Électrolytes":         "Vitamines & Minéraux",
+  "Thyroïde (Iode + Sélénium)": "Vitamines & Minéraux",
+  "Berbérine":                          "Vitamines & Minéraux",
+  "Créatine Monohydrate":              "Acides Aminés",
+  "L-Glutamine":                             "Acides Aminés",
+  "L-Citrulline":                            "Acides Aminés",
+  "L-Carnitine":                             "Acides Aminés",
+  "Bêta-Alanine":                       "Acides Aminés",
+  "L-Théanine":                         "Acides Aminés",
+  "Glycine":                                 "Acides Aminés",
+  "HMB (Hydroxy-Méthyl-Butyrate)":     "Acides Aminés",
+  "Ashwagandha (KSM-66)":                    "Adaptogènes",
+  "Rhodiola Rosea":                          "Adaptogènes",
+  "Shilajit":                                "Adaptogènes",
+  "Maca (Lepidium meyenii)":                 "Adaptogènes",
+  "Oméga-3 (EPA/DHA)":                 "Oméga & Lipides",
+  "CoQ10 (Ubiquinol)":                       "Oméga & Lipides",
+  "Probiotiques":                            "Probiotiques & Détox",
+  "Spiruline":                               "Probiotiques & Détox",
+  "NAC (N-Acétyl Cystéine)":      "Probiotiques & Détox",
+  "Chardon-Marie (Silymarine)":              "Probiotiques & Détox",
+  "Curcumine (Curcuma)":                     "Antioxydants",
+  "Gingembre":                               "Antioxydants",
+  "Resvératrol":                        "Antioxydants",
+  "Lutéine + Zéaxanthine":        "Antioxydants",
+  "Astaxanthine":                            "Antioxydants",
+  "Myrtille (Anthocyanines)":                "Antioxydants",
+  "Quercétine":                         "Antioxydants",
+  "Tongkat Ali (Eurycoma longifolia)":       "Hormonal & Testo",
+  "Tribulus Terrestris":                     "Hormonal & Testo",
+  "Fenugrec":                                "Hormonal & Testo",
+  "DHEA":                                    "Hormonal & Testo",
+  "Gattilier (Vitex agnus-castus)":          "Hormonal & Testo",
+  "Inositol (Myo-Inositol)":                 "Hormonal & Testo",
+  "DIM (Diindolylméthane)":            "Hormonal & Testo",
+  "Damiana (Turnera diffusa)":               "Hormonal & Testo",
+  "NMN (Nicotinamide Mononucléotide)": "Anti-âge & Longévité",
+  "Collagène Marin":                   "Peau & Beauté",
+  "Acide Hyaluronique":                      "Peau & Beauté",
+  "MSM (Méthylsulfonylméthane)":  "Peau & Beauté",
+  "Bronzage & Préparation Solaire":    "Peau & Beauté",
+  "Mélatonine":                         "Spécial",
+  "Croissance & Immunité Enfant":     "Spécial",
+};
+
+const FAMILLES = [
+  {id:"vitmin",            label:"Vitamines & Minéraux",       emoji:"☀️", color:"var(--energie)"},
+  {id:"aa-perf",           label:"Acides Aminés",emoji:"💪", color:"var(--muscu)"},
+  {id:"omega",             label:"Oméga & Lipides",           emoji:"🐟", color:"var(--coeur)"},
+  {id:"adaptogenes",       label:"Adaptogènes",               emoji:"🌿", color:"var(--mental)"},
+  {id:"probiotiques",      label:"Probiotiques & Détox",      emoji:"🦠", color:"var(--digest)"},
+  {id:"antioxydants",      label:"Antioxydants",              emoji:"🛡️", color:"var(--anti)"},
+  {id:"hormonal",          label:"Hormonal & Testo",          emoji:"🔥", color:"var(--testo)"},
+  {id:"antiage",           label:"Anti-âge & Longévité",      emoji:"⏳", color:"var(--antiage-fam)"},
+  {id:"peau",              label:"Peau & Beauté",             emoji:"✨", color:"var(--peau)"},
+  {id:"proteines",         label:"Protéines",                 emoji:"🥛", color:"var(--protein-fam)"},
+  {id:"special",           label:"Spécial",                   emoji:"⭐", color:"var(--special-fam)"},
+];
+
+const FAM_CFG = {};
+FAMILLES.forEach(f=>FAM_CFG[f.label]=f);
+
+const FAM_PRIORITY = [
+  "Vitamines & Minéraux","Acides Aminés",
+  "Oméga & Lipides","Adaptogènes","Probiotiques & Détox",
+  "Antioxydants","Hormonal & Testo","Anti-âge & Longévité",
+  "Peau & Beauté","Spécial"
+];
+
+const NM_FAM = {  "BCAA (Acides Aminés Ramifiés)":   "Acides Aminés",
+  "EAA (Acides Aminés Essentiels)":   "Acides Aminés",
+};
+FAM_PRIORITY.forEach(fam=>{
+  Object.entries(FAM_MAP).forEach(([nm,f])=>{
+    if(f===fam && !NM_FAM[nm]) NM_FAM[nm]=fam;
+  });
+});
+function famColorFor(nm){
+  const fam = NM_FAM[nm];
+  return (fam && FAM_CFG[fam]) ? FAM_CFG[fam].color : null;
+}
 
 
 function card(s, letter, azMode){
@@ -2812,27 +2896,27 @@ function card(s, letter, azMode){
     return !fl.includes("pas d\'équivalent") && !fl.includes("aucun équivalent") && !fl.includes("lui-même");
   });
   const hasRealFood = realFood.length > 0;
-  const realFoodList = realFood.map(f=>`<div style="font-size:12px;color:rgba(255,255,255,0.85);padding:4px 0;line-height:1.5;border-bottom:1px solid rgba(255,255,255,0.06)">${f}</div>`).join("");
+  const realFoodList = realFood.map(f=>`<div style="font-size:12px;color:#2D3846;padding:4px 0;line-height:1.5;border-bottom:1px solid rgba(0,0,0,0.08)">${f}</div>`).join("");
 
   let formeHTML = "";
   if(s.forme==="suppl"){
-    formeHTML = `<div style="background:rgba(21,101,192,0.22);border:1px solid rgba(100,180,255,0.30);border-radius:10px;padding:11px 13px${hasRealFood?";margin-bottom:8px":""}">
-      <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:#90CAF9;margin-bottom:4px">Complément nécessaire</div>
-      <div style="font-size:12px;color:rgba(255,255,255,0.70);line-height:1.5">Les doses alimentaires sont insuffisantes pour un effet thérapeutique.</div>
-    </div>` + (hasRealFood ? `<div style="background:rgba(46,125,50,0.18);border:1px solid rgba(100,180,120,0.28);border-radius:10px;padding:11px 13px">
-      <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:#81C784;margin-bottom:6px">Sources alimentaires (appoint)</div>
+    formeHTML = `<div style="background:rgba(21,101,192,0.08);border:1px solid rgba(21,101,192,0.25);border-radius:10px;padding:11px 13px${hasRealFood?";margin-bottom:8px":""}">
+      <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:#1565C0;margin-bottom:4px">Complément nécessaire</div>
+      <div style="font-size:12px;color:#2D3846;line-height:1.5">Les doses alimentaires sont insuffisantes pour un effet thérapeutique.</div>
+    </div>` + (hasRealFood ? `<div style="background:rgba(46,125,50,0.08);border:1px solid rgba(46,125,50,0.25);border-radius:10px;padding:11px 13px">
+      <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:#2E7D32;margin-bottom:6px">Sources alimentaires (appoint)</div>
       ${realFoodList}
     </div>` : "");
   } else if(s.forme==="food"){
-    formeHTML = `<div style="background:rgba(46,125,50,0.22);border:1px solid rgba(100,200,120,0.35);border-radius:10px;padding:11px 13px">
-      <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:#81C784;margin-bottom:6px">L'alimentation suffit</div>
-      <div style="font-size:12px;color:rgba(255,255,255,0.70);line-height:1.5${hasRealFood?";margin-bottom:8px":""}">Privilégier les aliments, les concentrations naturelles couvrent les besoins.</div>
+    formeHTML = `<div style="background:rgba(46,125,50,0.08);border:1px solid rgba(46,125,50,0.25);border-radius:10px;padding:11px 13px">
+      <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:#2E7D32;margin-bottom:6px">L'alimentation suffit</div>
+      <div style="font-size:12px;color:#2D3846;line-height:1.5${hasRealFood?";margin-bottom:8px":""}">Privilégier les aliments, les concentrations naturelles couvrent les besoins.</div>
       ${hasRealFood ? realFoodList : ""}
     </div>`;
   } else {
-    formeHTML = `<div style="background:rgba(150,100,0,0.22);border:1px solid rgba(255,180,60,0.30);border-radius:10px;padding:11px 13px">
-      <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:#FFD54F;margin-bottom:6px">Complément ou Alimentation</div>
-      <div style="font-size:12px;color:rgba(255,255,255,0.70);line-height:1.5${hasRealFood?";margin-bottom:8px":""}">Alimentation en prévention, complément pour un effet ciblé.</div>
+    formeHTML = `<div style="background:rgba(199,119,0,0.08);border:1px solid rgba(199,119,0,0.30);border-radius:10px;padding:11px 13px">
+      <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:#C77700;margin-bottom:6px">Complément ou Alimentation</div>
+      <div style="font-size:12px;color:#2D3846;line-height:1.5${hasRealFood?";margin-bottom:8px":""}">Alimentation en prévention, complément pour un effet ciblé.</div>
       ${hasRealFood ? realFoodList : ""}
     </div>`;
   }
@@ -2841,14 +2925,15 @@ function card(s, letter, azMode){
   const dbi = "";
   const dbt = s.dispo===3?"Complexe / Avis médical":s.dispo===2?"Boutique spécialisée":"Facile à trouver";
 
-  return `<div class="sc" style="--c:${s.c}" onclick="this.classList.toggle('open')">
+  return `<div class="sc" style="--c:${famColorFor(s.nm) || s.c}" onclick="this.classList.toggle('open')">
     <div class="sc-hd"><div class="sc-accent"></div>
       <div class="sc-main">
         <div class="sc-nm">${ltr}${s.nm}</div>
+        <div class="sc-fam">${NM_FAM[s.nm] || ""}</div>
       </div><span class="sc-chv">Dosages & Effets</span>
     </div>
     <div class="sc-body">
-      <div class="sb" style="background:rgba(255,255,255,0.05);border-radius:6px;margin:8px;border:1px solid rgba(255,255,255,0.10)"><div class="sb-lbl">Rôle</div><div class="sb-txt" style="font-size:13px;font-weight:600;color:#FFF;line-height:1.75">${s.fn}</div></div>
+      <div class="sb" style="background:rgba(0,0,0,0.03);border-radius:6px;margin:8px;border:1px solid rgba(0,0,0,0.10)"><div class="sb-lbl">Rôle</div><div class="sb-txt" style="font-size:13px;font-weight:600;color:#1F2933;line-height:1.75">${s.fn}</div></div>
       <div class="sb"><div class="sb-lbl">Effets</div>
         <div class="two-col">
           <div class="col-plus"><div class="col-title">Pour</div>${plus}</div>
@@ -2878,10 +2963,10 @@ function protCard(p){
   const plus=(p.plus||[]).map(x=>`<div class="col-item"><span class="col-dot">·</span>${x}</div>`).join("");
   const moins=(p.moins||[]).map(x=>`<div class="col-item"><span class="col-dot">·</span>${x}</div>`).join("");
   const dose=(p.dose||[]).map(d=>`<div class="d-row"><span class="d-k">${d[0]}</span><span class="d-v">${d[1]}</span></div>`).join("");
-  const roleBlock = p.fn ? `<div class="sb" style="background:rgba(255,255,255,0.05);border-radius:6px;margin:8px;border:1px solid rgba(255,255,255,0.10)"><div class="sb-lbl">Rôle</div><div class="sb-txt" style="font-size:13px;font-weight:600;color:#FFF;line-height:1.75">${p.fn}</div></div>` : "";
-  return `<div class="sc" style="--c:${p.c}" onclick="this.classList.toggle('open');event.stopPropagation()">
+  const roleBlock = p.fn ? `<div class="sb" style="background:rgba(0,0,0,0.03);border-radius:6px;margin:8px;border:1px solid rgba(0,0,0,0.10)"><div class="sb-lbl">Rôle</div><div class="sb-txt" style="font-size:13px;font-weight:600;color:#1F2933;line-height:1.75">${p.fn}</div></div>` : "";
+  return `<div class="sc" style="--c:${FAM_CFG["Protéines"].color}" onclick="this.classList.toggle('open');event.stopPropagation()">
     <div class="sc-hd"><div class="sc-accent"></div>
-      <div class="sc-main"><div class="sc-nm">${p.nm}</div></div>
+      <div class="sc-main"><div class="sc-nm">${p.nm}</div><div class="sc-fam">Protéines</div></div>
       <span class="sc-chv">Dosages & Effets</span>
     </div>
     <div class="sc-body">
@@ -2894,8 +2979,8 @@ function protCard(p){
       </div>
       <div class="sb"><div class="sb-lbl">Infos</div><div class="dose-t">${dose}</div></div>
       <div class="sb"><div class="sb-lbl">Alternative alimentaire</div>
-        <div class="prec-bar" style="border-left-color:#81C784;background:rgba(255,255,255,0.05)">
-          <div class="prec-txt" style="color:#A5D6A7">${p.food||"—"}</div>
+        <div class="prec-bar" style="border-left-color:#2E7D32;background:rgba(0,0,0,0.03)">
+          <div class="prec-txt" style="color:#2D3846">${p.food||"—"}</div>
         </div>
       </div>
       <div style="padding:10px 14px 14px">
@@ -3344,106 +3429,12 @@ function buildGrid(){
 }
 
 function buildAZ(){
-  // Mapping supplément → famille avec emoji + couleur CSS var
-  const FAM_MAP = {
-    "Vitamine D3 + K2":                       "Vitamines",
-    "Vitamine C":                              "Vitamines",
-    "Vitamine B12 (Méthylcobalamine)":    "Vitamines",
-    "Biotine (Vitamine B8)":                   "Vitamines",
-    "Vitamine A (Bêta-carotène)":    "Vitamines",
-    "Magnésium Bisglycinate":             "Minéraux",
-    "Zinc Bisglycinate":                       "Minéraux",
-    "Fer Bisglycinate":                        "Minéraux",
-    "Sélénium":                      "Minéraux",
-    "Bore (Boron)":                            "Minéraux",
-    "Silicium Organique":                      "Minéraux",
-    "Hydratation & Électrolytes":         "Minéraux",
-    "Thyroïde (Iode + Sélénium)": "Minéraux",
-    "Berbérine":                          "Minéraux",
-    "Créatine Monohydrate":              "Acides Aminés & Performance",
-    "L-Glutamine":                             "Acides Aminés & Performance",
-    "L-Citrulline":                            "Acides Aminés & Performance",
-    "L-Carnitine":                             "Acides Aminés & Performance",
-    "Bêta-Alanine":                       "Acides Aminés & Performance",
-    "L-Théanine":                         "Acides Aminés & Performance",
-    "Glycine":                                 "Acides Aminés & Performance",
-    "HMB (Hydroxy-Méthyl-Butyrate)":     "Acides Aminés & Performance",
-    "Ashwagandha (KSM-66)":                    "Adaptogènes",
-    "Rhodiola Rosea":                          "Adaptogènes",
-    "Shilajit":                                "Adaptogènes",
-    "Maca (Lepidium meyenii)":                 "Adaptogènes",
-    "Oméga-3 (EPA/DHA)":                 "Oméga & Lipides",
-    "CoQ10 (Ubiquinol)":                       "Oméga & Lipides",
-    "Probiotiques":                            "Probiotiques & Détox",
-    "Spiruline":                               "Probiotiques & Détox",
-    "NAC (N-Acétyl Cystéine)":      "Probiotiques & Détox",
-    "Chardon-Marie (Silymarine)":              "Probiotiques & Détox",
-    "Curcumine (Curcuma)":                     "Antioxydants",
-    "Gingembre":                               "Antioxydants",
-    "Resvératrol":                        "Antioxydants",
-    "Lutéine + Zéaxanthine":        "Antioxydants",
-    "Astaxanthine":                            "Antioxydants",
-    "Myrtille (Anthocyanines)":                "Antioxydants",
-    "Quercétine":                         "Antioxydants",
-    "Tongkat Ali (Eurycoma longifolia)":       "Hormonal & Testo",
-    "Tribulus Terrestris":                     "Hormonal & Testo",
-    "Fenugrec":                                "Hormonal & Testo",
-    "DHEA":                                    "Hormonal & Testo",
-    "Gattilier (Vitex agnus-castus)":          "Hormonal & Testo",
-    "Inositol (Myo-Inositol)":                 "Hormonal & Testo",
-    "DIM (Diindolylméthane)":            "Hormonal & Testo",
-    "Damiana (Turnera diffusa)":               "Hormonal & Testo",
-    "NMN (Nicotinamide Mononucléotide)": "Anti-âge & Longévité",
-    "Collagène Marin":                   "Peau & Beauté",
-    "Acide Hyaluronique":                      "Peau & Beauté",
-    "MSM (Méthylsulfonylméthane)":  "Peau & Beauté",
-    "Bronzage & Préparation Solaire":    "Peau & Beauté",
-    "Mélatonine":                         "Spécial",
-    "Croissance & Immunité Enfant":     "Spécial",
-  };
-
-    // Familles ordonn\u00e9es avec config
-  const FAMILLES = [
-    {id:"vitamines",         label:"Vitamines",                emoji:"☀️", color:"var(--energie)"},
-    {id:"mineraux",          label:"Minéraux",                  emoji:"⚡", color:"var(--immun)"},
-    {id:"aa-perf",           label:"Acides Aminés & Performance",emoji:"💪", color:"var(--muscu)"},
-    {id:"omega",             label:"Oméga & Lipides",           emoji:"🐟", color:"var(--coeur)"},
-    {id:"adaptogenes",       label:"Adaptogènes",               emoji:"🌿", color:"var(--mental)"},
-    {id:"probiotiques",      label:"Probiotiques & Détox",      emoji:"🦠", color:"var(--digest)"},
-    {id:"antioxydants",      label:"Antioxydants",              emoji:"🛡️", color:"var(--anti)"},
-    {id:"hormonal",          label:"Hormonal & Testo",          emoji:"🔥", color:"var(--testo)"},
-    {id:"antiage",           label:"Anti-âge & Longévité",      emoji:"⏳", color:"var(--libido)"},
-    {id:"peau",              label:"Peau & Beauté",             emoji:"✨", color:"var(--peau)"},
-    {id:"proteines",         label:"Protéines",                 emoji:"🥛", color:"var(--protein)"},
-    {id:"special",           label:"Spécial",                   emoji:"⭐", color:"var(--os)"},
-  ];
-
-  // Map famille label → config
-  const FAM_CFG = {};
-  FAMILLES.forEach(f=>FAM_CFG[f.label]=f);
-
-  // Assign each supplement to ONE famille (priority order below)
-  const FAM_PRIORITY = [
-    "Vitamines","Minéraux","Acides Aminés & Performance",
-    "Oméga & Lipides","Adaptogènes","Probiotiques & Détox",
-    "Antioxydants","Hormonal & Testo","Anti-âge & Longévité",
-    "Peau & Beauté","Spécial"
-  ];
-
-  // Build lookup: nm → famille (first match wins = priority order)
-  const NM_FAM = {  "BCAA (Acides Aminés Ramifiés)":   "Acides Aminés & Performance",
-  "EAA (Acides Aminés Essentiels)":   "Acides Aminés & Performance",
-};
-  FAM_PRIORITY.forEach(fam=>{
-    Object.entries(FAM_MAP).forEach(([nm,f])=>{
-      if(f===fam && !NM_FAM[nm]) NM_FAM[nm]=fam;
-    });
-  });
+  // Groupement par famille (Protéines ajoutée en 12e, table définie globalement plus haut)
+  const FAMILLES_AZ = [...FAMILLES, {id:"proteines",label:"Protéines",emoji:"🥛",color:"var(--protein-fam)"}];
 
   // Group DATA supplements
   const groups = {};
-  FAMILLES.forEach(f=>{groups[f.label]=[];});
-  groups["Protéines"]=[];
+  FAMILLES_AZ.forEach(f=>{groups[f.label]=[];});
 
   fdAll().forEach(s=>{
     const fam = NM_FAM[s.nm] || _guessFamily(s);
@@ -3463,7 +3454,7 @@ function buildAZ(){
 
   let html = `<div class="az-fam-total">${total} compléments — par famille</div>`;
 
-  FAMILLES.forEach(fam=>{
+  FAMILLES_AZ.forEach(fam=>{
     const items = groups[fam.label]||[];
     if(!items.length) return;
     html += _renderFamSection(fam, items);
@@ -3511,9 +3502,9 @@ function _guessFamily(s){
   if(/testo|libido|hormonal|bore/.test(tag)) return "Hormonal & Testo";
   if(/anti.?âge|longévité|nmn/.test(tag)) return "Anti-âge & Longévité";
   if(/peau|cheveux|collagène|beauté/.test(tag)) return "Peau & Beauté";
-  if(/vitamine/.test(tag)||/vitamine/.test(kw)) return "Vitamines";
-  if(/minéral|magnés|zinc|fer|sélén|bore|silicium|électrolyte|iode/.test(kw)) return "Minéraux";
-  if(/acide aminé|créatine|citrulline|glutamine|carnitine|bêta|théanine|glycine|hmb/.test(kw)) return "Acides Aminés & Performance";
+  if(/vitamine/.test(tag)||/vitamine/.test(kw)) return "Vitamines & Minéraux";
+  if(/minéral|magnés|zinc|fer|sélén|bore|silicium|électrolyte|iode/.test(kw)) return "Vitamines & Minéraux";
+  if(/acide aminé|créatine|citrulline|glutamine|carnitine|bêta|théanine|glycine|hmb/.test(kw)) return "Acides Aminés";
   return "Spécial";
 }
 
@@ -3525,7 +3516,7 @@ function _renderFamSection(fam, items){
     const fnShort = fn.length < (d.fn||"").length ? fn+"…" : fn;
     const cardHtml = item.type==="supp" ? card(d,null,true) : protCard(d);
     return `<div class="az-li-wrap">
-      <div class="az-li" style="--c:${d.c}" data-nm="${nm}">
+      <div class="az-li" style="--c:${fam.color}" data-nm="${nm}">
         <div class="az-li-dot"></div>
         <div style="flex:1;min-width:0">
           <div class="az-li-nm">${nm}</div>
