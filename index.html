@@ -294,7 +294,7 @@ body.F .az-letter{background:#1D1E20;color:#DEC49C}
 /* ─── NAV BANDEAU ─── */
 
 /* ── MENU MOBILE HAMBURGER ── */
-.nav-bandeau{position:sticky;top:0;z-index:200;background:#26282A;box-shadow:0 4px 20px rgba(0,0,0,0.35);border-bottom:1px solid rgba(255,255,255,0.10);margin-top:6px}
+.nav-bandeau{position:sticky;top:0;z-index:200;background:#26282A;box-shadow:0 4px 20px rgba(0,0,0,0.35);border-bottom:1px solid rgba(255,255,255,0.10);margin-top:4px}
 @media(max-width:599px){.nav-bandeau{display:none}}
 .nav-top-bar{display:none}
 
@@ -1025,7 +1025,7 @@ body.F .g-pill.on{box-shadow:none !important}
 .qz-btn-next{box-shadow:0 4px 20px rgba(188,149,105,0.45) !important}
 .qz-btn-next:hover{box-shadow:0 6px 28px rgba(188,149,105,0.6) !important}
 /* Nav boutons actifs */
-.nav-btn.active{box-shadow:0 2px 12px rgba(214,185,138,0.25) !important}
+.nav-btn.active{box-shadow:none !important}
 /* Bouton "Trouver mon stack" fiche */
 .sc-body button[onclick*="openQuiz"]{
   box-shadow:none!important;
@@ -1106,19 +1106,6 @@ body.F .g-pill.on{box-shadow:none !important}
 
 @media(min-width:600px){}
 
-@media(min-width:600px){
-  .nav-bandeau{max-width:680px;margin:0 auto;}
-  .footer{max-width:680px;margin:0 auto;}
-}
-@media(min-width:900px){
-  .nav-bandeau{max-width:800px;margin:0 auto;}
-  .footer{max-width:800px;margin:0 auto;}
-}
-@media(min-width:1200px){
-  .nav-bandeau{max-width:960px;margin:0 auto;}
-  .footer{max-width:960px;margin:0 auto;}
-}
-
 /* Page concept : overflow propre */
 .page-view{overflow-x:hidden}
 .page-card-txt{word-break:break-word}@media(min-width:600px){}
@@ -1161,7 +1148,7 @@ html{overflow-x:hidden}
 @media(min-width:600px){
   .nav-hamburger{display:none !important;}
   .nav-dropdown{display:flex !important;flex-direction:row;padding:0 6px;gap:2px}
-  .nav-btn{flex:1;padding:10px 4px;font-size:11px;text-align:center;border-radius:8px;border-bottom:2px solid transparent;margin:4px 2px}
+  .nav-btn{flex:1;padding:6px 4px;font-size:10px;text-align:center;border-radius:6px;border-bottom:2px solid transparent;margin:3px 2px}
   .nav-btn.active{background:transparent;border:1.5px solid #D6B98A;border-bottom-color:#D6B98A;border-radius:8px}
   .menu-btn{display:none !important;}
   .search-inner{flex:1 !important;}
