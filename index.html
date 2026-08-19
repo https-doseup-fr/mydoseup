@@ -151,6 +151,10 @@ body.F .tab.on{color:#D6B98A;background:rgba(214,185,138,0.10);border-color:#D6B
 .obj-results{padding:0 14px 14px;display:none}
 .obj-results.on{display:block}
 .obj-back{display:flex;flex-direction:row;align-items:center;gap:10px;padding:10px 0 12px;border-bottom:1px solid rgba(255,255,255,0.08);margin-bottom:12px;cursor:pointer}
+.obj-tip{background:#26282A;border:1px solid rgba(188,149,105,0.45);border-radius:12px;padding:14px 16px;margin-bottom:14px}
+.obj-tip-hd{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:0.10em;color:#D6B98A;margin-bottom:9px}
+.obj-tip-line{font-size:12.5px;color:rgba(255,255,255,0.78);line-height:1.6;margin-bottom:7px}
+.obj-tip-line:last-child{margin-bottom:0;color:#EDE0C8;font-weight:700}
 .obj-back-btn{height:34px;padding:0 14px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.85);white-space:nowrap;gap:4px;letter-spacing:0.02em;cursor:pointer}
 .obj-back-title{font-size:16px;font-weight:700;color:#FFF}
 /* SUPPLEMENT CARD */
@@ -2649,30 +2653,53 @@ const SVG_ICONS={
   anemie:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>`,
 };
 const OBJECTIFS = [
-  {id:"testo",   ico:SVG_ICONS.testo, nm:"Hormones & Testo", nmF:"Hormones", icoF:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="6"/><line x1="12" y1="14" x2="12" y2="21"/><line x1="9" y1="18" x2="15" y2="18"/></svg>`,         c:"var(--testo)"},
-  {id:"muscu",   ico:SVG_ICONS.muscu, nm:"Musculation & Perf.",     c:"var(--muscu)"},
-  {id:"libido",  ico:SVG_ICONS.libido, nm:"Libido & Vie Intime",       c:"var(--libido)"},
-  {id:"perf", ico:SVG_ICONS.energie, nm:"Énergie & Vitalité",       c:"var(--energie)"},
-  {id:"mental",  ico:SVG_ICONS.mental, nm:"Santé Mentale & Anxiété",  c:"var(--mental)"},
-  {id:"cerveau", ico:SVG_ICONS.cerveau, nm:"Cerveau & Focus",          c:"var(--cerveau)"},
-  {id:"sommeil", ico:SVG_ICONS.sommeil, nm:"Sommeil & Récupération",   c:"var(--sommeil)"},
-  {id:"poids",   ico:SVG_ICONS.poids, nm:"Poids & Métabolisme",     c:"var(--poids)"},
-  {id:"immun",   ico:SVG_ICONS.immun, nm:"Immunité",                c:"var(--immun)"},
-  {id:"coeur",   ico:SVG_ICONS.coeur, nm:"Coeur & Circulation",     c:"var(--coeur)"},
-  {id:"peau",    ico:SVG_ICONS.peau, nm:"Peau & Anti-âge",         c:"var(--peau)"},
-  {id:"cheveux", ico:SVG_ICONS.cheveux, nm:"Cheveux & Ongles",         c:"var(--cheveux)"},
-  {id:"articulations", ico:SVG_ICONS.articulations, nm:"Os & Articulations", c:"var(--os)"},
-  {id:"digest",  ico:SVG_ICONS.digest, nm:"Digestion & Microbiome",   c:"var(--digest)"},
-  {id:"detox",   ico:SVG_ICONS.detox, nm:"Foie & Détox",             c:"var(--detox)"},
-  {id:"anti",    ico:SVG_ICONS.anti, nm:"Antioxydants & Longévité", c:"var(--anti)"},
-  {id:"vision",  ico:SVG_ICONS.vision, nm:"Vision & Santé des Yeux", c:"var(--vision)"},
-  {id:"cycle",    ico:SVG_ICONS.cycle, nm:"Cycle & SPM",               c:"#E91E63", femaleOnly:true},
-  {id:"endometriose", ico:SVG_ICONS.endometriose, nm:"Endométriose & Douleurs",   c:"#880E4F", femaleOnly:true},
-  {id:"acne",     ico:SVG_ICONS.acne, nm:"Acné Hormonale",             c:"#7B1FA2", femaleOnly:true},
-  {id:"grossesse",ico:SVG_ICONS.grossesse, nm:"Grossesse & Fertilité",     c:"#1565C0", femaleOnly:true},
-  {id:"menopause",ico:SVG_ICONS.menopause, nm:"Ménopause",                 c:"#E65100", femaleOnly:true},
+  {id:"testo",   ico:SVG_ICONS.testo, nm:"Hormones & Testo", nmF:"Hormones", icoF:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="6"/><line x1="12" y1="14" x2="12" y2="21"/><line x1="9" y1="18" x2="15" y2="18"/></svg>`,         c:"var(--testo)",
+   tip:["Ces actifs agissent sur différents leviers hormonaux : gestion du stress (Ashwagandha), soutien à la testostérone (Tribulus, Fenugrec, Bore) ou carences fréquentes (Zinc, Vitamine D3).","Lis les fiches et détermine ce qui répond le mieux à ton besoin du moment. Inutile de cumuler plusieurs actifs pour un même objectif."]},
+  {id:"muscu",   ico:SVG_ICONS.muscu, nm:"Musculation & Perf.",     c:"var(--muscu)",
+   tip:["Ces compléments couvrent plusieurs besoins : force et masse (Créatine, Whey), endurance (Bêta-Alanine, Citrulline) ou récupération (Glutamine, BCAA).","Lis les fiches et choisis 2 à 3 piliers complémentaires, plutôt qu'un cumul de tout."]},
+  {id:"libido",  ico:SVG_ICONS.libido, nm:"Libido & Vie Intime",       c:"var(--libido)",
+   tip:["Plusieurs plantes agissent sur la libido, mais par des voies différentes : stress (Ashwagandha), soutien hormonal (Tribulus) ou fatigue générale (Maca, Tongkat Ali).","Lis les fiches et détermine celle qui correspond le mieux à ta situation, plutôt que de cumuler plusieurs plantes pour le même besoin."]},
+  {id:"perf", ico:SVG_ICONS.energie, nm:"Énergie & Vitalité",       c:"var(--energie)",
+   tip:["Cette catégorie est large car la fatigue a de nombreuses causes possibles : carences (Fer, B12, Magnésium), stress chronique (Rhodiola, Ashwagandha) ou récupération sportive (Créatine, Citrulline).","Lis les fiches, identifie ta cause principale, puis retiens 2 à 3 actifs en conséquence."]},
+  {id:"mental",  ico:SVG_ICONS.mental, nm:"Santé Mentale & Anxiété",  c:"var(--mental)",
+   tip:["L'anxiété peut être apaisée par différents leviers : adaptogènes anti-stress (Ashwagandha, Rhodiola), relaxation immédiate (L-Théanine) ou équilibre hormonal (Gattilier).","Lis les fiches et retiens 1 à 2 leviers ciblés, plutôt qu'une accumulation."]},
+  {id:"cerveau", ico:SVG_ICONS.cerveau, nm:"Cerveau & Focus",          c:"var(--cerveau)",
+   tip:["Le focus mental répond à plusieurs approches : oxygénation cérébrale (Oméga-3), énergie cellulaire (CoQ10, Créatine) ou concentration immédiate (L-Théanine).","Lis les fiches et choisis selon si ton besoin est ponctuel ou de fond."]},
+  {id:"sommeil", ico:SVG_ICONS.sommeil, nm:"Sommeil & Récupération",   c:"var(--sommeil)",
+   tip:["Un bon sommeil dépend de plusieurs facteurs : relaxation (L-Théanine, Glycine), régulation du rythme (Mélatonine) ou gestion du stress (Ashwagandha, Magnésium).","Lis les fiches et retiens 1 à 2 actifs qui correspondent à ta difficulté principale."]},
+  {id:"poids",   ico:SVG_ICONS.poids, nm:"Poids & Métabolisme",     c:"var(--poids)",
+   tip:["Le métabolisme se travaille sous plusieurs angles : glycémie (Berbérine), thyroïde (Iode/Sélénium) ou satiété et digestion (Probiotiques, Gingembre).","Lis les fiches, identifie la cause la plus probable de ta situation, puis choisis en conséquence."]},
+  {id:"immun",   ico:SVG_ICONS.immun, nm:"Immunité",                c:"var(--immun)",
+   tip:["L'immunité mobilise plusieurs mécanismes : barrière antioxydante (Vitamine C, Zinc), microbiote (Probiotiques) ou récupération générale (Vitamine D3, Fer).","Lis les fiches et retiens 2 à 3 actifs qui couvrent déjà l'essentiel."]},
+  {id:"coeur",   ico:SVG_ICONS.coeur, nm:"Coeur & Circulation",     c:"var(--coeur)",
+   tip:["La santé cardiovasculaire repose sur plusieurs piliers : cholestérol et inflammation (Oméga-3, Berbérine), énergie cardiaque (CoQ10) ou circulation (Citrulline).","Lis les fiches et retiens 1 à 2 actifs en lien avec ton bilan actuel."]},
+  {id:"peau",    ico:SVG_ICONS.peau, nm:"Peau & Anti-âge",         c:"var(--peau)",
+   tip:["Cette catégorie couvre plusieurs objectifs bien différents : hydratation et fermeté (Collagène, Acide Hyaluronique), protection antioxydante (Astaxanthine, Resvératrol) ou éclat général (Vitamine C, Biotine).","Lis les fiches et choisis 2 à 3 actifs selon ton besoin réel. La peau ne bénéficie pas d'un cumul de tout à la fois."]},
+  {id:"cheveux", ico:SVG_ICONS.cheveux, nm:"Cheveux & Ongles",         c:"var(--cheveux)",
+   tip:["La pousse et la solidité dépendent de plusieurs nutriments : structure (Biotine, Silicium), oxygénation (Fer) ou hormones thyroïdiennes (Iode).","Lis les fiches et commence par corriger une carence identifiée, plutôt que tout cumuler."]},
+  {id:"articulations", ico:SVG_ICONS.articulations, nm:"Os & Articulations", c:"var(--os)",
+   tip:["Le confort articulaire combine plusieurs axes : lubrification (Acide Hyaluronique, Collagène), anti-inflammatoire (Curcumine) ou structure osseuse (Bore).","Lis les fiches et retiens 1 à 2 actifs ciblés pour commencer."]},
+  {id:"digest",  ico:SVG_ICONS.digest, nm:"Digestion & Microbiome",   c:"var(--digest)",
+   tip:["La digestion répond à différents besoins : flore intestinale (Probiotiques), inflammation (Curcumine, Gingembre) ou confort ponctuel (Berbérine).","Lis les fiches et commence simple avec un seul actif, avant d'en ajouter d'autres si besoin."]},
+  {id:"detox",   ico:SVG_ICONS.detox, nm:"Foie & Détox",             c:"var(--detox)",
+   tip:["Le soutien hépatique passe par plusieurs voies : protection cellulaire (NAC, Chardon-Marie) ou élimination hormonale (DIM).","Une fiche ciblée suffit largement. Le foie n'a pas besoin d'être \"détoxifié\" en permanence."]},
+  {id:"anti",    ico:SVG_ICONS.anti, nm:"Antioxydants & Longévité", c:"var(--anti)",
+   tip:["La longévité cellulaire se travaille par plusieurs angles : protection oxydative (Astaxanthine, Resvératrol) ou régénération cellulaire (NMN).","Lis les fiches et retiens 1 à 2 actifs selon ton objectif principal, pas la totalité."]},
+  {id:"vision",  ico:SVG_ICONS.vision, nm:"Vision & Santé des Yeux", c:"var(--vision)",
+   tip:["La santé oculaire dépend surtout de deux familles d'actifs : caroténoïdes protecteurs (Lutéine, Astaxanthine) et acides gras essentiels (Oméga-3).","Une fiche bien choisie couvre déjà l'essentiel."]},
+  {id:"cycle",    ico:SVG_ICONS.cycle, nm:"Cycle & SPM",               c:"#E91E63", femaleOnly:true,
+   tip:["Le cycle féminin implique plusieurs mécanismes différents : inflammation (Oméga-3, Curcumine), équilibre hormonal (Gattilier, DIM) ou carences fréquentes (Fer, Magnésium).","Lis les fiches et retiens 1 à 2 actifs qui répondent à ton symptôme principal, plutôt que de tout cumuler."]},
+  {id:"endometriose", ico:SVG_ICONS.endometriose, nm:"Endométriose & Douleurs",   c:"#880E4F", femaleOnly:true,
+   tip:["Cette catégorie cible surtout l'inflammation et l'équilibre hormonal : anti-inflammatoires (Oméga-3, Curcumine) ou régulateurs hormonaux (DIM).","Ces fiches sont un complément. Parles-en aussi à ton médecin, surtout en cas de douleurs importantes."]},
+  {id:"acne",     ico:SVG_ICONS.acne, nm:"Acné Hormonale",             c:"#7B1FA2", femaleOnly:true,
+   tip:["L'acné hormonale répond à plusieurs leviers : régulation du cycle (Inositol, Gattilier) ou inflammation cutanée (Zinc, NAC).","Lis les fiches et retiens 1 à 2 actifs ciblés pour commencer."]},
+  {id:"grossesse",ico:SVG_ICONS.grossesse, nm:"Grossesse & Fertilité",     c:"#1565C0", femaleOnly:true,
+   tip:["Cette période a des besoins précis et souvent complémentaires (Fer, Oméga-3 et Vitamine D3 sont fréquemment recommandés ensemble).","Vérifie toujours ces choix avec ta sage-femme ou ton médecin avant de démarrer."]},
+  {id:"menopause",ico:SVG_ICONS.menopause, nm:"Ménopause",                 c:"#E65100", femaleOnly:true,
+   tip:["La ménopause touche plusieurs sphères : confort hormonal (Maca, DHEA), densité osseuse (Vitamine D3) ou fermeté cutanée (Collagène).","Lis les fiches et choisis en fonction du symptôme qui te gêne le plus au quotidien."]},
   
-  {id:"anemie",   ico:SVG_ICONS.anemie, nm:"Anémie & Carence en Fer",   c:"#B71C1C"},
+  {id:"anemie",   ico:SVG_ICONS.anemie, nm:"Anémie & Carence en Fer",   c:"#B71C1C",
+   tip:["Le fer est l'actif central ici. La Vitamine C améliore son absorption, la B12 comble d'autres carences fréquentes.","Le Fer Bisglycinate seul suffit souvent : n'ajoute les autres qu'en cas de carence confirmée."]},
   {id:"hydratation", ico:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>`, nm:"Hydratation & Sport", c:"#0097A7"},
   {id:"thyroide", ico:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><ellipse cx="12" cy="11" rx="7" ry="5"/><path d="M9 16c0 2 1.3 4 3 4s3-2 3-4"/><line x1="12" y1="6" x2="12" y2="2"/></svg>`, nm:"Thyroïde", c:"#00838F"},
   {id:"bronzage", ico:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="5"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>`, nm:"Bronzage & Solaire", c:"#F57F17"},
@@ -3285,7 +3312,11 @@ function showObj(id){
     `<div class="obj-back-content"><span class="obj-back-ico">${dispIco}</span><span class="obj-back-title">${dispNm}</span></div>`;
 
   // ⑤ Générer le contenu
-  let html = items.map(s=>card(s,null,false)).join("");
+  const tipHtml = obj.tip ? `<div class="obj-tip">
+      <div class="obj-tip-hd">💡 Conseils MyDoseUp</div>
+      ${obj.tip.map(t=>`<div class="obj-tip-line">${t}</div>`).join('')}
+    </div>` : '';
+  let html = tipHtml + items.map(s=>card(s,null,false)).join("");
   if(id==="muscu") html += `<div class="prot-sep"><div class="prot-sep-t">Protéines en Poudre</div>${PROTEINES.map(protCard).join("")}</div>`;
   document.getElementById("objList").innerHTML = html;
 
