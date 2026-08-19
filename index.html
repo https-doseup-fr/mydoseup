@@ -132,8 +132,8 @@ body.F .search{background:#1D1E20}
 .s-clr{position:absolute;right:10px;top:50%;transform:translateY(-50%);font-size:14px;cursor:pointer;color:rgba(255,255,255,0.45);display:none}
 /* TABS */
 .tabs{position:sticky;top:0;z-index:100;display:flex;border-bottom:1px solid rgba(255,255,255,0.06);padding:0 6px}
-body.M .tabs{background:#35373A}
-body.F .tabs{background:#35373A}
+body.M .tabs{background:#151617}
+body.F .tabs{background:#151617}
 .tab{flex:1;padding:10px 6px;font-size:12px;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.14);border-radius:14px;cursor:pointer;margin:8px 5px;transition:all 0.18s;font-family:"DM Sans",sans-serif;color:rgba(255,255,255,0.78)}
 body.M .tab.on{color:#D6B98A;background:rgba(214,185,138,0.10);border-color:#D6B98A}
 body.F .tab.on{color:#D6B98A;background:rgba(214,185,138,0.10);border-color:#D6B98A}
@@ -294,7 +294,7 @@ body.F .az-letter{background:#1D1E20;color:#DEC49C}
 /* ─── NAV BANDEAU ─── */
 
 /* ── MENU MOBILE HAMBURGER ── */
-.nav-bandeau{position:sticky;top:0;z-index:200;background:#26282A;box-shadow:0 4px 20px rgba(0,0,0,0.35);border-bottom:1px solid rgba(255,255,255,0.10);margin-top:4px}
+.nav-bandeau{position:sticky;top:0;z-index:200;background:#151617;box-shadow:none;border-bottom:1px solid rgba(255,255,255,0.10);margin-top:0}
 @media(max-width:599px){.nav-bandeau{display:none}}
 .nav-top-bar{display:none}
 
@@ -392,6 +392,7 @@ body.F .footer-logo span{color:inherit;-webkit-text-fill-color:inherit}
   .obj-grid{grid-template-columns:repeat(3,1fr);gap:14px;}
   .header{border-radius:20px 20px 0 0;}
   .footer{border-radius:0 0 20px 20px;}
+  .tabs{border-radius:0 0 20px 20px;}
 }
 @media(min-width:1200px){
   .app-wrapper{max-width:960px;}
@@ -882,10 +883,10 @@ body.F .header{background:#151617 !important}
 body.M .az-letter{background:#1D1E20 !important}
 body.F .az-letter{background:#1D1E20 !important}
 /* Tabs bar */
-body.M .tabs{background:#35373A !important}
-body.F .tabs{background:#35373A !important}
+body.M .tabs{background:#151617 !important}
+body.F .tabs{background:#151617 !important}
 /* Nav bandeau un peu plus visible */
-.nav-bandeau{box-shadow:0 4px 24px rgba(0,0,0,0.6) !important}
+.nav-bandeau{box-shadow:none !important}
 /* Bouton stack dans fiches — encore plus visible */
 
 
@@ -1148,8 +1149,9 @@ html{overflow-x:hidden}
 @media(min-width:600px){
   .nav-hamburger{display:none !important;}
   .nav-dropdown{display:flex !important;flex-direction:row;padding:0 6px;gap:2px}
-  .nav-btn{flex:1;padding:6px 4px;font-size:10px;text-align:center;border-radius:6px;border-bottom:2px solid transparent;margin:3px 2px}
+  .nav-btn{flex:1;padding:9px 6px;font-size:11.5px;text-align:center;border-radius:8px;border-bottom:2px solid transparent;margin:4px 3px}
   .nav-btn.active{background:transparent;border:1.5px solid #D6B98A;border-bottom-color:#D6B98A;border-radius:8px}
+  .tab{padding:7px 6px;font-size:10.5px;margin:5px 5px}
   .menu-btn{display:none !important;}
   .search-inner{flex:1 !important;}
   .search-wrap{display:flex !important;padding-bottom:4px !important;}
