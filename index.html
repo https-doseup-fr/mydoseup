@@ -422,7 +422,7 @@ img{pointer-events:none;-webkit-user-drag:none;user-drag:none;}
 .az-fam-count{font-size:11px;color:rgba(255,255,255,0.68);font-weight:600}
 .az-fam-chevron{font-size:12px;color:rgba(255,255,255,0.68);transition:transform 0.2s;margin-left:auto}
 .az-fam-section.collapsed .az-fam-chevron{transform:rotate(-90deg)}
-.az-fam-items{padding:0 14px 8px}
+.az-fam-items{padding:10px 14px 8px}
 .az-fam-section.collapsed .az-fam-items{display:none}
 /* List item — compact clickable row that expands into sc card */
 .az-li{display:flex;align-items:flex-start;gap:10px;padding:9px 12px;border-radius:12px;cursor:pointer;margin-bottom:4px;border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.03);transition:background 0.15s,border-color 0.15s;position:relative;overflow:hidden}
@@ -3404,7 +3404,7 @@ function buildAZ(){
     });
   });
 
-  // Bind list item clicks → expand sc card inline
+  // Bind list item clicks → expand sc card inline, déjà ouverte (fiche complète directement)
   document.querySelectorAll(".az-li").forEach(li=>{
     li.addEventListener("click", function(e){
       e.stopPropagation();
@@ -3414,12 +3414,19 @@ function buildAZ(){
       // Close all open cards in same family
       const section = this.closest(".az-fam-items");
       if(section){
-        section.querySelectorAll(".az-li-card.open").forEach(c=>c.classList.remove("open"));
+        section.querySelectorAll(".az-li-card.open").forEach(c=>{
+          c.classList.remove("open");
+          const innerSc=c.querySelector(".sc");
+          if(innerSc) innerSc.classList.remove("open");
+        });
         section.querySelectorAll(".az-li.active-li").forEach(l=>l.classList.remove("active-li"));
       }
       if(!isOpen){
         cardEl.classList.add("open");
         this.classList.add("active-li");
+        // Ouvrir directement la fiche complète (skip l'étape intermédiaire repliée)
+        const innerSc=cardEl.querySelector(".sc");
+        if(innerSc) innerSc.classList.add("open");
         // Scroll into view smoothly
         setTimeout(()=>cardEl.scrollIntoView({behavior:"smooth",block:"nearest"}),50);
       }
