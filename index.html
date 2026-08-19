@@ -154,10 +154,10 @@ body.F .tab.on{color:#D6B98A;background:rgba(214,185,138,0.10);border-color:#D6B
 .obj-back-btn{height:34px;padding:0 14px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.85);white-space:nowrap;gap:4px;letter-spacing:0.02em;cursor:pointer}
 .obj-back-title{font-size:16px;font-weight:700;color:#FFF}
 /* SUPPLEMENT CARD */
-.sc{background:#F4EFE6;border-radius:8px;margin-bottom:10px;overflow:hidden;border:1px solid rgba(0,0,0,0.12);position:relative;transition:border-color 0.2s}
+.sc{background:#EAE0C8;border-radius:8px;margin-bottom:10px;overflow:hidden;border:1px solid rgba(0,0,0,0.12);position:relative;transition:border-color 0.2s}
 .sc::before{display:none}
 .sc-hd,.sc-body{position:relative;z-index:1}
-.sc.open{border-color:#BC9569}
+.sc.open{border-color:#BC9569;background:#F4EFE6}
 .sc-hd{padding:12px 14px;display:flex;align-items:stretch;gap:10px;cursor:pointer}
 .sc-accent{display:none}
 .sc-main{flex:1;min-width:0;display:flex;flex-direction:column;gap:6px}
@@ -434,7 +434,8 @@ img{pointer-events:none;-webkit-user-drag:none;user-drag:none;}
 .az-fam-items{padding:10px 14px 8px}
 .az-fam-section.collapsed .az-fam-items{display:none}
 /* List item — compact clickable row that expands into sc card */
-.az-li{display:flex;align-items:flex-start;gap:10px;padding:9px 12px;border-radius:12px;cursor:pointer;margin-bottom:4px;border:1.5px solid rgba(188,149,105,0.55);background:#F4EFE6;transition:background 0.15s,border-color 0.15s;position:relative;overflow:hidden}
+.az-li{display:flex;align-items:flex-start;gap:10px;padding:9px 12px;border-radius:12px;cursor:pointer;margin-bottom:4px;border:1.5px solid rgba(188,149,105,0.55);background:#EAE0C8;transition:background 0.15s,border-color 0.15s;position:relative;overflow:hidden}
+.az-li.active-li{background:#F4EFE6;border-color:#BC9569}
 .az-li::before{display:none}
 .az-li:active{background:rgba(0,0,0,0.05)}
 .az-li-dot{width:8px;height:8px;border-radius:50%;background:var(--c);flex-shrink:0}
