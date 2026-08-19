@@ -151,10 +151,14 @@ body.F .tab.on{color:#D6B98A;background:rgba(214,185,138,0.10);border-color:#D6B
 .obj-results{padding:0 14px 14px;display:none}
 .obj-results.on{display:block}
 .obj-back{display:flex;flex-direction:row;align-items:center;gap:10px;padding:10px 0 12px;border-bottom:1px solid rgba(255,255,255,0.08);margin-bottom:12px;cursor:pointer}
-.obj-tip{background:#26282A;border:1px solid rgba(188,149,105,0.45);border-radius:12px;padding:14px 16px;margin-bottom:14px}
-.obj-tip-hd{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:0.10em;color:#D6B98A;margin-bottom:9px}
-.obj-tip-line{font-size:12.5px;color:rgba(255,255,255,0.78);line-height:1.6;margin-bottom:7px}
-.obj-tip-line:last-child{margin-bottom:0;color:#EDE0C8;font-weight:700}
+.obj-tip{background:#1C1D1F;border:1.5px solid rgba(188,149,105,0.55);border-radius:12px;padding:16px 17px;margin-bottom:14px;box-shadow:0 4px 14px rgba(0,0,0,0.25)}
+.obj-tip-hd{font-size:13px;font-weight:900;text-transform:uppercase;letter-spacing:0.08em;color:#D6B98A;margin-bottom:10px}
+.obj-tip-line{font-size:13px;color:#FFFFFF;line-height:1.65;margin-bottom:8px}
+.obj-tip-line:last-child{margin-bottom:0}
+.obj-tip-compact{background:#35373A !important;border:none !important;border-radius:12px !important;box-shadow:0 3px 10px rgba(0,0,0,0.18) !important;padding:12px 14px !important;margin-bottom:10px !important}
+.obj-tip-compact .obj-tip-hd{background:none !important;display:block !important;color:#D6B98A !important;padding:0 !important;font-size:12px !important;margin-bottom:7px !important}
+.obj-tip-compact .obj-tip-line{color:#FFFFFF !important;font-size:11.5px !important;line-height:1.55 !important;margin-bottom:5px !important}
+.obj-tip-compact .obj-tip-line:last-child{margin-bottom:0 !important}
 .obj-back-btn{height:34px;padding:0 14px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.85);white-space:nowrap;gap:4px;letter-spacing:0.02em;cursor:pointer}
 .obj-back-title{font-size:16px;font-weight:700;color:#FFF}
 /* SUPPLEMENT CARD */
@@ -975,19 +979,19 @@ body.F .tabs{background:#151617 !important}
 
 /* ═══ QUIZ — THÈME BEIGE (harmonisé avec le reste du site) ═══ */
 .qz-panel{background:#F4EFE6 !important}
-.qz-top{background:#F4EFE6 !important;border-bottom:1px solid rgba(0,0,0,0.10) !important}
+.qz-top{background:#1C1D1F !important;border-bottom:1px solid rgba(188,149,105,0.30) !important}
 .qz-logo-hex{border-color:rgba(188,149,105,0.55) !important;background:rgba(188,149,105,0.10) !important}
-.qz-logo-name{color:#2B2620 !important}
-.qz-eyebrow{color:#8A6633 !important}
+.qz-logo-name{color:#EDE9DF !important}
+.qz-eyebrow{color:#D6B98A !important}
 .qz-eyebrow::before{background:#8A6633 !important}
-.qz-hero-title{color:#2B2620 !important}
-.qz-hero-title span{color:#8A6633 !important;background:none !important;-webkit-text-fill-color:#8A6633 !important}
-.qz-hero-sub{color:rgba(43,38,32,0.60) !important}
-.qz-close-btn{background:rgba(0,0,0,0.06) !important;border-color:rgba(0,0,0,0.14) !important;color:#2B2620 !important}
+.qz-hero-title{color:#EDE9DF !important}
+.qz-hero-title span{color:#D6B98A !important;background:none !important;-webkit-text-fill-color:#D6B98A !important}
+.qz-hero-sub{color:rgba(255,255,255,0.55) !important}
+.qz-close-btn{background:rgba(255,255,255,0.08) !important;border-color:rgba(255,255,255,0.18) !important;color:#EDE9DF !important}
 .qz-close-btn:hover{background:rgba(239,83,80,0.15) !important;border-color:rgba(239,83,80,0.4) !important;color:#D32F2F !important}
-.qz-progress{background:#EDE4D3 !important;border-bottom:1px solid rgba(0,0,0,0.06) !important}
-.qz-prog-lbl{color:#8A6633 !important}
-.qz-prog-pct{color:rgba(43,38,32,0.55) !important}
+.qz-progress{background:#1C1D1F !important;border-bottom:1px solid rgba(188,149,105,0.20) !important}
+.qz-prog-lbl{color:#D6B98A !important}
+.qz-prog-pct{color:rgba(255,255,255,0.60) !important}
 .qz-bar{background:rgba(0,0,0,0.08) !important}
 .qz-fill{background:#BC9569 !important}
 .qz-step-dot{background:rgba(0,0,0,0.14) !important}
@@ -1012,7 +1016,7 @@ body.F .tabs{background:#151617 !important}
 .qz-load-title{color:#2B2620 !important}
 .qz-load-msg{color:rgba(43,38,32,0.55) !important}
 .qz-load-bar-w{background:rgba(0,0,0,0.08) !important}
-.qz-result-hd{background:#EDE4D3 !important;border-bottom:1px solid rgba(0,0,0,0.08) !important}
+.qz-result-hd{background:#EDE4D3 !important;border-bottom:1px solid rgba(188,149,105,0.30) !important;border-radius:10px !important;margin:-2px -2px 12px -2px !important}
 .qz-result-tag{background:rgba(188,149,105,0.14) !important;border-color:rgba(188,149,105,0.35) !important;color:#8A6633 !important}
 .qz-result-tag::before{background:#8A6633 !important}
 .qz-result-title{color:#2B2620 !important}
@@ -1033,10 +1037,10 @@ body.F .tabs{background:#151617 !important}
 .qb-e{background:rgba(188,149,105,0.14) !important;color:#8A6633 !important;border-color:rgba(188,149,105,0.30) !important}
 .qb-b{background:rgba(188,149,105,0.10) !important;color:#8A6633 !important;border-color:rgba(188,149,105,0.20) !important}
 .qb-x{background:rgba(0,0,0,0.05) !important;color:rgba(43,38,32,0.40) !important;border-color:rgba(0,0,0,0.08) !important}
-.qz-obj-group-lbl{color:#8A6633 !important;border-bottom-color:rgba(188,149,105,0.30) !important}
+.qz-obj-group-lbl{color:#1C1D1F !important;font-size:13px !important;font-weight:900 !important;border-bottom-color:rgba(28,29,31,0.25) !important}
 .qz-btn-restart{color:rgba(43,38,32,0.55) !important;border-color:rgba(0,0,0,0.14) !important;background:transparent !important}
 .qz-btn-restart:hover{background:rgba(0,0,0,0.05) !important;color:#2B2620 !important}
-.qz-disclaimer{background:rgba(0,0,0,0.03) !important;border-left-color:rgba(0,0,0,0.14) !important;color:rgba(43,38,32,0.55) !important}
+.qz-disclaimer{background:rgba(0,0,0,0.03) !important;border-left-color:rgba(0,0,0,0.14) !important;color:rgba(43,38,32,0.75) !important}
 .qz-disclaimer strong{color:rgba(43,38,32,0.80) !important}
 .qz-fab-trigger{background:rgba(188,149,105,0.10) !important;border-color:rgba(188,149,105,0.30) !important;color:#8A6633 !important}
 .qz-fab-trigger:hover{background:rgba(188,149,105,0.16) !important}
@@ -1949,7 +1953,7 @@ const DATA = [
 
  {nm:"Oméga-3 (EPA/DHA)",kw:"omega oméga poisson dha epa inflammation cerveau coeur endometriose endométriose douleurs pelviennes inflammation",tag:"Essentiel",c:"var(--coeur)",dispo:1,where:"Supermarché, pharmacie, Decathlon, Amazon",forme:"both",gender:"MF",
   objectifs:["peau","coeur","cerveau","muscu","immun","testo","mental","vision","cycle","grossesse","endometriose"],
-  fn:"Acides gras essentiels que ton corps ne fabrique pas seul. L\'EPA réduit l\'inflammation, le DHA nourrit le cerveau et les yeux. Indispensables pour le cœur, le mental et les performances.",
+  fn:"Acides gras essentiels que ton corps ne fabrique pas seul. L\'EPA réduit l\'inflammation, le DHA nourrit le cerveau et les yeux, y compris pendant la grossesse pour le développement du fœtus. Indispensables pour le cœur, le mental et les performances.",
   plus:["Triglycérides -30% (protège le cœur)","Anti-inflammatoire naturel puissant","Cerveau plus performant et humeur stabilisée","Peau et cheveux plus sains","Courbatures réduites après le sport","Vision protégée sur le long terme"],
   moins:["Odeur de poisson si le produit est de mauvaise qualité","Légèrement fluidifiant du sang à haute dose","Stopper 2 semaines avant une chirurgie"],
   dose:[["Dose min","1g EPA+DHA/j"],["Dose thérap.","2-4g EPA+DHA/j"],["Grossesse","Min 3g DHA/j"],["Timing","Avec repas gras (dîner idéal)"],["Forme","Triglycérides > éthyl esters"],["Ratio","EPA > DHA si inflammation"]],
@@ -2034,7 +2038,7 @@ const DATA = [
   food:["🌿 Curcuma frais + poivre noir","🌿 Gingembre (propriétés similaires)","🫐 Fruits rouges (antioxydants)"]},
 
  {nm:"Vitamine D3 + K2",kw:"vitamine d soleil immunité os testostérone calcium dépression endometriose endométriose immunité hormones",tag:"Essentielle",c:"var(--energie)",dispo:1,where:"Pharmacie, supermarché, Amazon",forme:"both",gender:"MF",
-  objectifs:["immun","os","testo","perf","sommeil","mental","grossesse","menopause","cycle","endometriose"],
+  objectifs:["immun","os","articulations","testo","perf","sommeil","mental","grossesse","menopause","cycle","endometriose"],
   fn:"La vitamine du soleil, indispensable mais très souvent en déficit (surtout en France). Elle renforce les os, booste l\'immunité, régule les hormones et améliore l\'humeur.",
   plus:["Immunité : infections respiratoires −50%","Santé osseuse et musculaire","Humeur et dépression saisonnière","Synthèse protéique musculaire","Anti-inflammatoire"],
   moins:["Toxique à très forte dose long terme","Analyse sanguine recommandée","K2 indispensable en association"],
@@ -2047,7 +2051,7 @@ const DATA = [
 
  {nm:"Fer Bisglycinate",kw:"fer anemie anémie ferritine hemoglobine fatigue sang grossesse",tag:"Essentiel",c:"var(--energie)",dispo:2,where:"Pharmacie uniquement. Ne jamais acheter sans bilan sanguin préalable",forme:"both",gender:"MF",
   objectifs:["perf","cheveux","immun","mental","cycle","grossesse","anemie"],
-  fn:"Le minéral qui transporte l\'oxygène dans ton sang. La carence en fer est la plus fréquente au monde. 1 femme sur 3 est concernée. Toujours vérifier par une prise de sang avant de se supplémenter.",
+  fn:"Le minéral qui transporte l\'oxygène dans ton sang. La carence en fer est la plus fréquente au monde. 1 femme sur 3 est concernée, et les besoins augmentent nettement pendant la grossesse. Toujours vérifier par une prise de sang avant de se supplémenter.",
   plus:["Fatigue chronique disparaît","Chute de cheveux réduite","Concentration et mémoire améliorées","Essoufflement à l\'effort supprimé","Immunité renforcée"],
   moins:["JAMAIS sans prise de sang préalable","Toxique en excès (hémochromatose)","Constipation possible (moindre avec bisglycinate)"],
   dose:[["Dose H","10-20mg/j fer élémentaire"],["Dose F","25-50mg/j fer élémentaire"],["Timing","À jeun + Vitamine C"],["Durée","3 mois minimum"],["Cible","Ferritine > 50 µg/L (microgrammes par litre)"]],
@@ -2549,7 +2553,7 @@ const DATA = [
 
  {nm:"Bore (Boron)",kw:"bore boron testostérone vitamine D hormones articulations",tag:"Minéral Hormonal",c:"var(--testo)",dispo:2,where:"Amazon, boutique spécialisée",forme:"suppl",gender:"MF",
   objectifs:["testo","os","articulations"],
-  fn:"Oligo-élément souvent oublié mais crucial pour le métabolisme des hormones sexuelles et de la vitamine D. Le bore réduit la protéine qui bloque la testostérone libre (SHBG) (protéine qui capture la testostérone) et améliore l'utilisation de la vitamine D et du magnésium.",
+  fn:"Oligo-élément souvent oublié mais crucial pour le métabolisme des hormones sexuelles, de la vitamine D et de la santé osseuse. Le bore réduit la protéine qui bloque la testostérone libre (SHBG) et améliore l'utilisation de la vitamine D et du magnésium, deux nutriments essentiels au métabolisme osseux et articulaire.",
   plus:["Testostérone libre augmentée (réduction de la protéine qui bloque la testostérone (SHBG))","Vitamine D mieux activée","Métabolisme osseux optimisé","Santé articulaire (arthrite rhumatoïde, études)","Cognition et mémoire légèrement améliorées"],
   moins:["Peu d'études de grande envergure","Surdosage toxique (>20mg/j)","Disponibilité limitée en Europe"],
   dose:[["Dose","3-10mg/j de boron élémentaire"],["MAXIMUM","20mg/j à ne jamais dépasser"],["Timing","Matin avec repas"]],
@@ -2678,7 +2682,7 @@ const OBJECTIFS = [
   {id:"cheveux", ico:SVG_ICONS.cheveux, nm:"Cheveux & Ongles",         c:"var(--cheveux)",
    tip:["La pousse et la solidité dépendent de plusieurs nutriments : structure (Biotine, Silicium), oxygénation (Fer) ou hormones thyroïdiennes (Iode).","Lis les fiches et commence par corriger une carence identifiée, plutôt que tout cumuler."]},
   {id:"articulations", ico:SVG_ICONS.articulations, nm:"Os & Articulations", c:"var(--os)",
-   tip:["Le confort articulaire combine plusieurs axes : lubrification (Acide Hyaluronique, Collagène), anti-inflammatoire (Curcumine) ou structure osseuse (Bore).","Lis les fiches et retiens 1 à 2 actifs ciblés pour commencer."]},
+   tip:["Le confort articulaire combine plusieurs axes : lubrification (Acide Hyaluronique, Collagène), anti-inflammatoire (Curcumine) ou structure osseuse (Silicium Organique).","Lis les fiches et retiens 1 à 2 actifs ciblés pour commencer."]},
   {id:"digest",  ico:SVG_ICONS.digest, nm:"Digestion & Microbiome",   c:"var(--digest)",
    tip:["La digestion répond à différents besoins : flore intestinale (Probiotiques), inflammation (Curcumine, Gingembre) ou confort ponctuel (Berbérine).","Lis les fiches et commence simple avec un seul actif, avant d'en ajouter d'autres si besoin."]},
   {id:"detox",   ico:SVG_ICONS.detox, nm:"Foie & Détox",             c:"var(--detox)",
@@ -4139,8 +4143,10 @@ if(!_nlBlocked){
         <button class="qz-close-btn" onclick="closeQuiz()" aria-label="Fermer le quiz Ma Routine">&#x2715;</button>
       </div>
       <div class="qz-eyebrow">Ma Routine Personnalis&eacute;e</div>
-      <h2 class="qz-hero-title">Trouve tes <span>compléments</span><br>sur mesure</h2>
-      <p class="qz-hero-sub">5 questions · Parmi 61 produits · Résultat instantané</p>
+      <div id="qz-hero-block">
+        <h2 class="qz-hero-title">Trouve tes <span>compléments</span><br>sur mesure</h2>
+        <p class="qz-hero-sub">5 questions · Parmi 61 produits · Résultat instantané</p>
+      </div>
     </div>
     <!-- PROGRESS -->
     <div class="qz-progress">
@@ -4445,6 +4451,7 @@ function qzBuildStack(a){
     var score = 0;
     // Exclusions securite
     if(isVegan && (s.animal || s.collagen)) return;
+    if(!isVegan && s.name === "Protéine de Pois (Isolat)") return;
     if(isFemme && s.gender === "M") return;
     if(!isFemme && s.gender === "F") return;
     if(niv === "deb" && (s.name === "DHEA" || s.name === "NMN (Nicotinamide Mononucléotide)")) return;
@@ -4551,6 +4558,9 @@ function qzUpdateProgress(){
       steps.appendChild(d);
     }
   }
+  // Le gros titre d'intro ne sert qu'à l'étape 1, on l'efface ensuite pour alléger
+  var heroBlock = document.getElementById("qz-hero-block");
+  if(heroBlock) heroBlock.style.display = qzState.step === 0 ? "" : "none";
 }
 
 function qzRender(){
@@ -4576,8 +4586,7 @@ function qzRender(){
 
   var card = document.getElementById("qz-card");
   card.innerHTML =
-    '<div class="qz-q-chip">'+q.label+'</div>'
-    +'<div class="qz-q-text">'+q.text+'</div>'
+    '<div class="qz-q-text">'+q.text+'</div>'
     +(isMulti ? '<div class="qz-multi-note">'+(q.maxSelect ? 'Choisis jusqu\'à '+q.maxSelect+' réponses ('+ca.length+'/'+q.maxSelect+')' : 'Tu peux choisir plusieurs réponses')+'</div>' : '')
     +'<div class="qz-grid '+cc+'" id="qz-opts">'+optsHTML+'</div>'
     +'<div class="qz-nav">'
@@ -4721,14 +4730,20 @@ function qzRenderResult(){
     '<div class="qz-result-hd">'
       +'<div class="qz-result-tag">Ta routine personnalis&eacute;e</div>'
       +'<div class="qz-result-title">'+(isFemme?'Femme':'Homme')+' · '+objLabel+' · '+budLabel+'</div>'
-      +'<div class="qz-result-meta"><span>'+stack.length+' produits</span><span>Clique un nom pour voir sa fiche ↗</span></div>'
+      +'<div class="qz-result-meta"><span>'+stack.length+' produits</span></div>'
+    +'</div>'
+    +'<div class="obj-tip obj-tip-compact">'
+      +'<div class="obj-tip-hd">💡 Conseils MyDoseUp</div>'
+      +'<div class="obj-tip-line">Cette sélection est basée sur tes réponses, elle n\'est pas figée et ne remplace pas ton jugement.</div>'
+      +'<div class="obj-tip-line">Ne prends pas tout d\'un coup : clique sur chaque nom pour lire la fiche complète et détermine ce qui correspond vraiment à ton besoin.</div>'
+      +'<div class="obj-tip-line">Essentiel = le plus prioritaire, Actif = un bon complément, Bonus = optionnel pour aller plus loin.</div>'
     +'</div>'
     +'<div class="qz-stack">'+suppHTML+'</div>'
     +'<div class="qz-actions">'
       +'<button class="qz-btn-restart" id="qz-restart-btn">Recommencer l\'analyse</button>'
     +'</div>'
     +'<div class="qz-disclaimer">'
-      +'Informations éducatives uniquement — consultez un professionnel de santé avant tout protocole.'
+      +'Informations éducatives uniquement. Consultez un professionnel de santé avant tout protocole.'
     +'</div>';
 
   document.getElementById("qz-restart-btn").addEventListener("click", function(){
