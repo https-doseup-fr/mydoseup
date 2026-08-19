@@ -110,7 +110,7 @@ body.F .logo-txt span{color:inherit;-webkit-text-fill-color:inherit}
 .g-switch{display:flex;background:rgba(255,255,255,0.06);border-radius:14px;padding:4px;gap:0;margin-bottom:0;width:100%;box-shadow:0 2px 12px rgba(0,0,0,0.30);border:1px solid rgba(255,255,255,0.12);position:relative;overflow:hidden}
 .g-switch::before{content:"";position:absolute;top:4px;bottom:4px;width:calc(50% - 4px);border-radius:10px;transition:transform 0.3s cubic-bezier(0.4,0,0.2,1),background 0.3s;z-index:0}
 body.M .g-switch::before{background:#D6B98A;box-shadow:0 2px 8px rgba(0,0,0,0.30);transform:translateX(4px)}
-body.F .g-switch::before{background:#D6B98A;box-shadow:0 2px 8px rgba(0,0,0,0.30);transform:translateX(calc(100% + 4px))}
+body.F .g-switch::before{background:#D6B98A;box-shadow:0 2px 8px rgba(0,0,0,0.30);transform:translateX(100%)}
 .g-pill{flex:1;padding:12px 8px;border-radius:10px;border:none;font-size:14px;font-weight:800;font-family:"DM Sans",sans-serif;cursor:pointer;transition:color 0.3s;color:rgba(255,255,255,0.76);background:transparent;text-align:center;letter-spacing:0.01em;position:relative;z-index:1;display:flex;align-items:center;justify-content:center;gap:6px}
 .g-pill.on{color:#FFF}
 .pill-icon{font-size:15px;transition:transform 0.3s}
@@ -151,8 +151,8 @@ body.F .tab.on{color:#D6B98A;background:rgba(214,185,138,0.10);border-color:#D6B
 .obj-count{font-size:11px;color:rgba(255,255,255,0.65);font-weight:600;margin-top:4px}
 .obj-results{padding:0 14px 14px;display:none}
 .obj-results.on{display:block}
-.obj-back{display:flex;flex-direction:row;align-items:center;gap:10px;padding:10px 0 12px;border-bottom:1px solid rgba(255,255,255,0.08);margin-bottom:12px}
-.obj-back-btn{height:34px;padding:0 14px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.85);white-space:nowrap;gap:4px;letter-spacing:0.02em}
+.obj-back{display:flex;flex-direction:row;align-items:center;gap:10px;padding:10px 0 12px;border-bottom:1px solid rgba(255,255,255,0.08);margin-bottom:12px;cursor:pointer}
+.obj-back-btn{height:34px;padding:0 14px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.85);white-space:nowrap;gap:4px;letter-spacing:0.02em;cursor:pointer}
 .obj-back-title{font-size:16px;font-weight:700;color:#FFF}
 /* SUPPLEMENT CARD */
 .sc{border-radius:8px;margin-bottom:10px;overflow:hidden;border:1px solid rgba(255,255,255,0.18);position:relative;transition:border-color 0.2s}
@@ -289,7 +289,7 @@ body.F .az-letter{background:#1D1E20;color:#DEC49C}
 .obj-arrow{font-size:30px;color:#FFF;opacity:0.9;line-height:1;display:flex;align-items:center;position:relative;top:3px;transition:transform 0.2s}
 .obj-tile:hover .obj-arrow,.obj-tile:active .obj-arrow{transform:translateX(2px)}
 /* Header catégorie compact : icône + titre côte à côte */
-.obj-back{display:flex;flex-direction:row;align-items:center;gap:10px;padding:10px 0 12px;border-bottom:1px solid rgba(255,255,255,0.08);margin-bottom:12px}
+.obj-back{display:flex;flex-direction:row;align-items:center;gap:10px;padding:10px 0 12px;border-bottom:1px solid rgba(255,255,255,0.08);margin-bottom:12px;cursor:pointer}
 .obj-back-ico{width:36px;height:36px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:rgba(255,255,255,0.15);border-radius:10px;font-size:20px}.obj-back-ico svg{width:22px;height:22px;stroke:rgba(255,255,255,0.95)}
 .obj-back-content{display:flex;align-items:center;justify-content:flex-start;gap:8px;flex:1;min-width:0}
 .obj-back-title{font-size:16px;font-weight:800;color:#FFF;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -659,6 +659,9 @@ img{pointer-events:none;-webkit-user-drag:none;user-drag:none;}
 
 /* STACK */
 .qz-stack{padding:14px}
+.qz-obj-group{margin-bottom:6px}
+.qz-obj-group-lbl{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:0.10em;color:#D6B98A;padding:10px 2px 6px;border-bottom:1px solid rgba(214,185,138,0.20);margin-bottom:6px}
+.qz-obj-group:first-child .qz-obj-group-lbl{padding-top:2px}
 .qz-stack-lbl{
   font-size:10px;font-weight:800;color:rgba(255,255,255,0.2);
   letter-spacing:0.16em;text-transform:uppercase;
@@ -2804,11 +2807,13 @@ function card(s, letter, azMode){
   const plus = (s.plus||[]).map(p=>`<div class="col-item"><span class="col-dot">·</span>${p}</div>`).join("");
   const moins = (s.moins||[]).map(m=>`<div class="col-item"><span class="col-dot">·</span>${m}</div>`).join("");
   const dose = (s.dose||[]).filter(d=>{
-    const k = d[0].toLowerCase();
+    const k = d[0].toLowerCase().trim();
     // In A-Z mode show all, in gender mode filter
     if(azMode) return true;
-    if(G==="M") return !k.includes("dose f") && !k.includes("grossesse") && !k.includes("spm");
-    if(G==="F") return !k.includes("dose h");
+    const femaleOnly = /\bf$/.test(k) || k.includes("grossesse") || k.includes("spm") || k.includes("sop");
+    const maleOnly = /\bh$/.test(k);
+    if(G==="M") return !femaleOnly;
+    if(G==="F") return !maleOnly;
     return true;
   }).map(d=>`<div class="d-row"><span class="d-k">${d[0]}</span><span class="d-v">${d[1]}</span></div>`).join("");
   const syn = (s.syn||[]).map(sy=>`<span class="syn-chip">${sy}</span>`).join("");
@@ -4289,8 +4294,8 @@ var QZ_SYN = {
 // ═══ QUESTIONS ═══
 var QZ_QS = [
   {
-    id:"objectif", label:"Ton objectif", type:"single",
-    text:"Quel est ton objectif principal ?",
+    id:"objectif", label:"Ton objectif", type:"multi", maxSelect:3,
+    text:"Quels sont tes objectifs principaux ?",
     opts:[
       {v:"masse",    t:"Muscle",           d:"Masse, force et hypertrophie"},
       {v:"fatloss",  t:"Perte de gras",    d:"Brûler les graisses, affiner"},
@@ -4344,7 +4349,7 @@ var QZ_QS = [
 
 // ═══ MOTEUR DE SCORE ═══
 function qzBuildStack(a){
-  var obj    = a.objectif;
+  var objs   = Array.isArray(a.objectif) ? a.objectif : (a.objectif ? [a.objectif] : []);
   var genre  = a.genre;
   var niv    = a.niveau;
   var bud    = a.budget;
@@ -4368,11 +4373,11 @@ function qzBuildStack(a){
     if(!isFemme && s.gender === "F") return;
     if(niv === "deb" && (s.name === "DHEA" || s.name === "NMN (Nicotinamide Mononucléotide)")) return;
 
-    // Score objectif direct
-    if(s.obj.includes(obj)){
-      if(s.tag === "e") score += 100;
-      else if(s.tag === "b") score += 65;
-      else score += 30;
+    // Score objectif direct — cumule si plusieurs objectifs matchent
+    var matchCount = objs.filter(function(o){ return s.obj.includes(o); }).length;
+    if(matchCount > 0){
+      var base = s.tag === "e" ? 100 : s.tag === "b" ? 65 : 30;
+      score += base + (matchCount - 1) * Math.round(base * 0.4);
     }
 
     // Contraintes additionnelles
@@ -4395,7 +4400,7 @@ function qzBuildStack(a){
 
     // Debutants : eviter les bonus complexes
     if(niv === "deb" && s.tag === "x") score -= 35;
-    if(isAv && s.tag === "x" && s.obj.includes(obj)) score += 15;
+    if(isAv && s.tag === "x" && matchCount > 0) score += 15;
 
     if(score <= 0) return;
     scored.push({s:s, score:score});
@@ -4408,7 +4413,7 @@ function qzBuildStack(a){
   var final = [];
   // Pour budget faible : garantir que le n1 objectif est en premier
   if(isFaible){
-    var bestObj = scored.find(function(x){ return x.s.obj.includes(obj) && x.s.tag === "e"; });
+    var bestObj = scored.find(function(x){ return objs.some(function(o){return x.s.obj.includes(o);}) && x.s.tag === "e"; });
     if(bestObj && (!usedTypes[bestObj.s.type])){
       usedTypes[bestObj.s.type] = true;
       final.push(bestObj);
@@ -4435,10 +4440,12 @@ function qzBuildStack(a){
   });
 
   return final.map(function(item){
+    var primaryObj = objs.find(function(o){ return item.s.obj.includes(o); }) || null;
     return Object.assign({}, item.s, {
       score: item.score,
       detSyn: detSyn[item.s.name] || [],
-      url: qzGetUrl(item.s.name) || "https://mydoseup.com"
+      url: qzGetUrl(item.s.name) || "https://mydoseup.com",
+      primaryObj: primaryObj
     });
   });
 }
@@ -4491,7 +4498,7 @@ function qzRender(){
   card.innerHTML =
     '<div class="qz-q-chip">'+q.label+'</div>'
     +'<div class="qz-q-text">'+q.text+'</div>'
-    +(isMulti ? '<div class="qz-multi-note">Tu peux choisir plusieurs réponses</div>' : '')
+    +(isMulti ? '<div class="qz-multi-note">'+(q.maxSelect ? 'Choisis jusqu\'à '+q.maxSelect+' réponses ('+ca.length+'/'+q.maxSelect+')' : 'Tu peux choisir plusieurs réponses')+'</div>' : '')
     +'<div class="qz-grid '+cc+'" id="qz-opts">'+optsHTML+'</div>'
     +'<div class="qz-nav">'
     +(qzState.step > 0 ? '<button class="qz-btn-back" id="qz-back">← Precedent</button>' : '<span></span>')
@@ -4505,7 +4512,12 @@ function qzRender(){
       if(isMulti){
         var arr = Array.isArray(qzState.answers[q.id]) ? qzState.answers[q.id].slice() : [];
         if(val === "aucune"){ arr = ["aucune"]; }
-        else{ arr = arr.filter(function(v){return v!=="aucune";}); if(arr.includes(val)) arr=arr.filter(function(v){return v!==val;}); else arr.push(val); }
+        else{
+          arr = arr.filter(function(v){return v!=="aucune";});
+          if(arr.includes(val)) arr=arr.filter(function(v){return v!==val;});
+          else if(q.maxSelect && arr.length >= q.maxSelect){ /* limite atteinte, ignore */ return; }
+          else arr.push(val);
+        }
         qzState.answers[q.id] = arr;
       } else { qzState.answers[q.id] = val; }
       qzRender();
@@ -4556,7 +4568,8 @@ function qzRenderResult(){
   var isFemme = qzState.answers.genre === "F";
   var objMap = {masse:"Muscle",fatloss:"Perte de Gras",perf:"Energie & Focus",sante:"Sante & Vitalite",stress:"Sommeil & Stress",libido:"Libido & Hormones",longevite:"Longevite",beaute:"Beaute"};
   var budMap = {faible:"Essentiel",moyen:"Equilibre",eleve:"Complet",premium:"Premium"};
-  var objLabel = objMap[qzState.answers.objectif]||"";
+  var objsSel = Array.isArray(qzState.answers.objectif) ? qzState.answers.objectif : (qzState.answers.objectif ? [qzState.answers.objectif] : []);
+  var objLabel = objsSel.map(function(o){ return objMap[o]||""; }).filter(Boolean).join(" + ");
   var budLabel = budMap[qzState.answers.budget]||"";
   var tagLbl = {e:"Essentiel",b:"Actif",x:"Bonus"};
   var tagCls = {e:"qb-e",b:"qb-b",x:"qb-x"};
@@ -4573,7 +4586,10 @@ function qzRenderResult(){
     qzState.answers.niveau==='deb'?'Debutant':qzState.answers.niveau==='inter'?'Intermediaire':'Avance'
   ].filter(Boolean).map(function(t){return '<span class="qz-choice-tag">'+t+'</span>';}).join('');
 
-  var suppHTML = stack.map(function(s,i){
+  // Fonction de rendu d'une carte produit (numérotation globale conservée)
+  var globalIndex = 0;
+  function renderSupp(s){
+    globalIndex++;
     var nc=numCls[s.tag]||"qn-x";
     var tc=tagCls[s.tag]||"qb-x";
     var tl=tagLbl[s.tag]||s.tag;
@@ -4581,15 +4597,42 @@ function qzRenderResult(){
     var nameHTML = url
       ? '<a href="'+url+'" target="_blank" rel="noopener noreferrer" title="Voir la fiche '+s.name+' (nouvel onglet)">'+s.name+' ↗</a>'
       : s.name;
-    return '<div class="qz-supp" style="animation-delay:'+(i*0.06)+'s">'
-      +'<div class="qz-supp-num '+nc+'">'+(i+1)+'</div>'
+    return '<div class="qz-supp" style="animation-delay:'+(globalIndex*0.06)+'s">'
+      +'<div class="qz-supp-num '+nc+'">'+globalIndex+'</div>'
       +'<div class="qz-supp-body">'
         +'<div class="qz-supp-name">'+nameHTML+'</div>'
         +'<div class="qz-supp-dose">'+s.dose+'</div>'
       +'</div>'
       +'<span class="qz-badge '+tc+'">'+tl+'</span>'
       +'</div>';
-  }).join("");
+  }
+
+  // Regroupement par objectif sélectionné (dans l'ordre choisi par l'utilisateur)
+  var suppHTML;
+  if(objsSel.length > 1){
+    var groups = objsSel.map(function(o){ return {key:o, label:objMap[o]||o, items:[]}; });
+    var groupByKey = {};
+    groups.forEach(function(g){ groupByKey[g.key]=g; });
+    var autres = [];
+    stack.forEach(function(s){
+      if(s.primaryObj && groupByKey[s.primaryObj]) groupByKey[s.primaryObj].items.push(s);
+      else autres.push(s);
+    });
+    suppHTML = groups.filter(function(g){ return g.items.length; }).map(function(g){
+      return '<div class="qz-obj-group">'
+        +'<div class="qz-obj-group-lbl">'+g.label+'</div>'
+        +g.items.map(renderSupp).join("")
+      +'</div>';
+    }).join("");
+    if(autres.length){
+      suppHTML += '<div class="qz-obj-group">'
+        +'<div class="qz-obj-group-lbl">Base santé complémentaire</div>'
+        +autres.map(renderSupp).join("")
+      +'</div>';
+    }
+  } else {
+    suppHTML = stack.map(renderSupp).join("");
+  }
 
   var card = document.getElementById("qz-card");
   card.innerHTML =
