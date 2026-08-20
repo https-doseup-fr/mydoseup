@@ -213,25 +213,22 @@ body.F .tab.on{color:#D6B98A;background:rgba(214,185,138,0.10);border-color:#D6B
 .col-item{font-size:13px;line-height:1.5;padding:2px 0;display:flex;gap:4px;color:#332E27}
 .col-dot{opacity:0.4;flex-shrink:0}
 .dose-t{border-radius:6px;overflow:hidden;border:1px solid rgba(0,0,0,0.14);margin-top:2px;background:rgba(0,0,0,0.02)}
-.d-row{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;padding:8px 12px;gap:3px 10px;border-bottom:1px solid rgba(0,0,0,0.08);font-size:13px}
+.d-row{display:flex;flex-direction:column;align-items:flex-start;padding:8px 12px;gap:2px;border-bottom:1px solid rgba(0,0,0,0.08);font-size:13px}
 .d-row:nth-child(even){background:rgba(0,0,0,0.035)}
 .d-row:last-child{border-bottom:none}
-.d-row:last-child{border-bottom:none}
-.d-k{color:#8A8477;font-weight:700;padding-right:8px;flex-shrink:0}
-.d-v{font-weight:700;color:#1F2933;text-align:right;flex:1 1 120px;min-width:0;word-break:break-word;white-space:normal}
-.d-row-stack{flex-direction:column;align-items:flex-start}
-.d-row-stack .d-v{text-align:left;font-weight:600;color:#3A342A;line-height:1.5;flex:1 1 100%}
+.d-k{color:#8A5A2B;font-weight:900;font-size:12px;letter-spacing:0.03em}
+.d-v{font-weight:600;color:#1F2933;text-align:left;width:100%;word-break:break-word;overflow-wrap:break-word;white-space:normal;line-height:1.5}
 .hf-block{border-radius:6px;padding:10px 12px;margin-bottom:6px}
 .hf-m{background:rgba(0,0,0,0.03);border:1px solid rgba(0,0,0,0.10);border-left:3px solid #BC9569}
 .hf-f{background:rgba(0,0,0,0.03);border:1px solid rgba(0,0,0,0.10);border-left:3px solid #BC9569}
-.hf-lbl{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px}
-.hf-m .hf-lbl{color:#BC9569}
-.hf-f .hf-lbl{color:#BC9569}
+.hf-lbl{font-size:12px;font-weight:800;letter-spacing:0.03em;margin-bottom:4px}
+.hf-m .hf-lbl{color:#8A5A2B}
+.hf-f .hf-lbl{color:#8A5A2B}
 .hf-txt{font-size:13px;color:#332E27;line-height:1.65}
 .syn-list{display:flex;flex-wrap:wrap;gap:5px;margin-top:2px}
 .syn-group{margin-bottom:8px}
 .syn-group:last-child{margin-bottom:0}
-.syn-group-title{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;color:#8A8578;margin-bottom:4px}
+.syn-group-title{font-size:12px;font-weight:800;letter-spacing:0.03em;color:#8A5A2B;margin-bottom:4px}
 .syn-chip{font-size:13px;font-weight:600;padding:4px 10px;border-radius:5px;background:rgba(0,0,0,0.04);color:#332E27;border:1px solid rgba(0,0,0,0.16)}
 .prec-bar{border-radius:6px;padding:10px 12px;background:rgba(0,0,0,0.03);border:1px solid rgba(0,0,0,0.10);border-left:3px solid #C62828}
 .prec-txt{font-size:13px;color:#332E27;line-height:1.65}
@@ -2899,10 +2896,7 @@ function card(s, letter, azMode){
     if(G==="M") return !femaleOnly;
     if(G==="F") return !maleOnly;
     return true;
-  }).map(d=>{
-    const long = (d[1]||"").length > 28;
-    return `<div class="d-row${long?" d-row-stack":""}"><span class="d-k">${d[0]}</span><span class="d-v">${d[1]}</span></div>`;
-  }).join("");
+  }).map(d=>`<div class="d-row"><span class="d-k">${d[0]}</span><span class="d-v">${d[1]}</span></div>`).join("");
   let syn = "";
   if (Array.isArray(s.syn)) {
     syn = (s.syn||[]).map(sy=>`<span class="syn-chip">${sy}</span>`).join("");
