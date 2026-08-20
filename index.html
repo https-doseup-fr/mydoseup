@@ -253,8 +253,8 @@ body.F .az-letter{background:#1D1E20;color:#DEC49C}
 .sp.on{display:block}
 .sp-count{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.60);padding:4px 0 12px}
 .no-res{text-align:center;padding:40px 20px;font-size:14px;color:rgba(255,255,255,0.20)}
-.prot-sep{margin-top:20px;padding-top:16px;border-top:1px dashed rgba(255,255,255,0.10)}
-.prot-sep-t{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;color:var(--muscu);margin-bottom:12px}
+.prot-sep{margin-top:20px;padding-top:16px}
+.prot-sep-t{font-size:14px;font-weight:900;text-transform:uppercase;letter-spacing:0.08em;color:#FFFFFF;margin-bottom:12px}
 
 
 /* ── DRAWER MENU ── */
@@ -300,6 +300,10 @@ body.F .az-letter{background:#1D1E20;color:#DEC49C}
 /* Header catégorie compact : icône + titre côte à côte */
 .obj-back{display:flex;flex-direction:row;align-items:center;gap:10px;padding:10px 0 12px;border-bottom:1px solid rgba(255,255,255,0.08);margin-bottom:12px;cursor:pointer}
 .obj-back-ico{width:36px;height:36px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:rgba(255,255,255,0.15);border-radius:10px;font-size:20px}.obj-back-ico svg{width:22px;height:22px;stroke:rgba(255,255,255,0.95)}
+.obj-subhd{display:flex;align-items:center;gap:8px;padding:14px 2px 8px;font-size:14px;font-weight:900;text-transform:uppercase;letter-spacing:0.08em;color:#FFFFFF}
+.obj-subhd:first-child{padding-top:2px}
+.obj-subhd-badge{font-size:10px;font-weight:700;letter-spacing:0.02em;text-transform:none;color:#D6B98A;background:rgba(214,185,138,0.14);border:1px solid rgba(214,185,138,0.35);border-radius:20px;padding:2px 9px;margin-left:auto}
+.obj-subnote{font-size:12.5px;color:#FFFFFF;line-height:1.6;padding:0 2px 10px;margin-top:-4px}
 .obj-back-content{display:flex;align-items:center;justify-content:flex-start;gap:8px;flex:1;min-width:0}
 .obj-back-title{font-size:16px;font-weight:800;color:#FFF;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .obj-back-arr{width:26px;height:26px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:13px;border:1px solid rgba(255,255,255,0.20);background:rgba(255,255,255,0.08);color:#FFF;font-weight:900;flex-shrink:0}
@@ -2482,7 +2486,7 @@ const DATA = [
   food:["🥕 Carotte, patate douce (bêta-carotène)","🍅 Tomate (lycopène, antioxydant)","🌿 Spiruline (astaxanthine traces)","🥝 Kiwi, agrumes (vitamine C)","🫒 Huile d'olive (vitamine E)"]},
 
  {nm:"Gattilier (Vitex agnus-castus)",kw:"gattilier vitex cycle hormones prolactine SPM Syndrome Prémenstruel fertilité",tag:"Équilibre Hormonal",c:"var(--libido)",dispo:2,where:"Pharmacie, parapharmacie, boutique spécialisée",forme:"suppl",gender:"F",
-  objectifs:["cycle","acne","grossesse","mental"],
+  objectifs:["cycle","acne","mental"],
   fn:"Plante médicinale européenne qui régule la prolactine (hormone de la lactation) et rééquilibre les hormones féminines. Utilisée cliniquement pour réduire les symptômes du Syndrome Prémenstruel, l'acné hormonale et les cycles irréguliers.",
   plus:["Syndrome Prémenstruel réduit (douleurs, humeur, tensions)","Cycles irréguliers régularisés","Prolactine normalisée","Acné hormonale améliorée","Douleurs mammaires cycliques réduites"],
   moins:["Résultats progressifs : 3-6 mois minimum","Contre-indiqué avec contraceptifs hormonaux (interaction)","Déconseillé si grossesse en cours"],
@@ -3299,6 +3303,152 @@ function showTimingResults(timing){
   setTimeout(()=>tr.scrollIntoView({behavior:'smooth',block:'start'}),80);
 }
 
+// ── Sous-groupes pour découper l'affichage "Par objectif" ──
+const OBJ_SUBGROUPS = {
+  muscu: [
+    {label:"Les plus utilisés", note:"Ce sont les deux compléments sportifs les plus étudiés scientifiquement. Ce qui suit peut être pertinent selon ton profil, sans qu'il soit nécessaire de tout cumuler.", items:["Créatine Monohydrate"]},
+    {label:"Endurance & Performance", items:["Bêta-Alanine","L-Citrulline","Hydratation & Électrolytes"]},
+    {label:"Récupération", items:["Magnésium Bisglycinate","BCAA (Acides Aminés Ramifiés)","EAA (Acides Aminés Essentiels)","L-Glutamine","Glycine","HMB (Hydroxy-Méthyl-Butyrate)"]},
+    {label:"Soutien & Polyvalents", items:["Oméga-3 (EPA/DHA)","Vitamine C","Zinc Bisglycinate","L-Carnitine","MSM (Méthylsulfonylméthane)","Astaxanthine","Tribulus Terrestris"]}
+  ],
+  sommeil: [
+    {label:"Les plus utilisés", note:"C'est la carence la plus fréquente en lien avec le sommeil. Les options suivantes peuvent être pertinentes selon la cause de tes difficultés.", items:["Magnésium Bisglycinate"]},
+    {label:"Relaxation & endormissement", items:["L-Théanine","Glycine"]},
+    {label:"Régulation du rythme circadien", items:["Mélatonine"]},
+    {label:"Terrain de fond", items:["Ashwagandha (KSM-66)","Vitamine D3 + K2"]}
+  ],
+  coeur: [
+    {label:"Les plus utilisés", note:"C'est l'actif le plus étudié pour la santé cardiovasculaire. Ce qui suit peut être pertinent selon ton bilan.", items:["Oméga-3 (EPA/DHA)"]},
+    {label:"Cholestérol & glycémie", items:["Berbérine"]},
+    {label:"Énergie cardiaque", items:["CoQ10 (Ubiquinol)","L-Carnitine"]},
+    {label:"Circulation", items:["L-Citrulline"]},
+    {label:"Protection antioxydante", items:["Resvératrol","Astaxanthine","Quercétine"]}
+  ],
+  mental: [
+    {label:"Les plus utilisés", note:"Ce sont les deux pistes les plus documentées pour la gestion du stress. Lis les fiches pour voir ce qui correspond à ta situation.", items:["Ashwagandha (KSM-66)","Magnésium Bisglycinate"]},
+    {label:"Relaxation immédiate", items:["L-Théanine"]},
+    {label:"Adaptogènes anti-stress", items:["Rhodiola Rosea"]},
+    {label:"Carences fréquentes", items:["Vitamine D3 + K2","Fer Bisglycinate"]},
+    {label:"Équilibre hormonal féminin", items:["Inositol (Myo-Inositol)","Gattilier (Vitex agnus-castus)","Damiana (Turnera diffusa)"]},
+    {label:"Autres pistes", items:["Oméga-3 (EPA/DHA)","Curcumine (Curcuma)","Probiotiques","NAC (N-Acétyl Cystéine)","Maca (Lepidium meyenii)","Tongkat Ali (Eurycoma longifolia)"]}
+  ],
+  cerveau: [
+    {label:"Les plus utilisés", note:"C'est l'actif le plus étudié pour les fonctions cognitives. Ce qui suit peut être pertinent selon ton besoin.", items:["Oméga-3 (EPA/DHA)"]},
+    {label:"Focus immédiat", items:["L-Théanine"]},
+    {label:"Énergie cellulaire", items:["Créatine Monohydrate","CoQ10 (Ubiquinol)"]},
+    {label:"Carences fréquentes", items:["Vitamine B12 (Méthylcobalamine)","Magnésium Bisglycinate"]},
+    {label:"Adaptogènes & longévité", items:["Rhodiola Rosea","Resvératrol","Myrtille (Anthocyanines)","NMN (Nicotinamide Mononucléotide)","Shilajit"]}
+  ],
+  poids: [
+    {label:"Glycémie & métabolisme", note:"C'est l'axe le plus étudié pour agir sur le poids. Ce qui suit peut être pertinent selon la cause probable de ta situation.", items:["Berbérine","Inositol (Myo-Inositol)"]},
+    {label:"Thyroïde", items:["Thyroïde (Iode + Sélénium)"]},
+    {label:"Digestion & satiété", items:["Probiotiques","Gingembre"]},
+    {label:"Gestion du stress (cortisol)", items:["Ashwagandha (KSM-66)","Rhodiola Rosea"]},
+    {label:"Autres pistes", items:["L-Carnitine","Maca (Lepidium meyenii)","NMN (Nicotinamide Mononucléotide)","Fenugrec","DIM (Diindolylméthane)"]}
+  ],
+  peau: [
+    {label:"Les plus utilisés", note:"Ce sont les deux actifs les plus utilisés pour la peau. Ce qui suit peut être pertinent selon ton objectif précis.", items:["Collagène Marin","Acide Hyaluronique"]},
+    {label:"Cofacteurs essentiels", items:["Vitamine C","Zinc Bisglycinate"]},
+    {label:"Protection antioxydante", items:["Astaxanthine","Resvératrol","Lutéine + Zéaxanthine","Myrtille (Anthocyanines)"]},
+    {label:"Structure & fermeté", items:["MSM (Méthylsulfonylméthane)","Silicium Organique","Glycine"]},
+    {label:"Autres pistes", items:["Oméga-3 (EPA/DHA)","Biotine (Vitamine B8)","Curcumine (Curcuma)","Probiotiques","CoQ10 (Ubiquinol)","NAC (N-Acétyl Cystéine)","Vitamine A (Bêta-carotène)","Spiruline","Bronzage & Préparation Solaire"]}
+  ],
+  cheveux: [
+    {label:"Les plus utilisés", note:"C'est l'actif le plus utilisé pour la solidité des cheveux et ongles. Ce qui suit peut être pertinent selon la cause de ta situation.", items:["Biotine (Vitamine B8)"]},
+    {label:"Carences fréquentes", items:["Fer Bisglycinate","Zinc Bisglycinate"]},
+    {label:"Structure", items:["Silicium Organique","MSM (Méthylsulfonylméthane)","Collagène Marin"]},
+    {label:"Autres pistes", items:["Acide Hyaluronique","Vitamine B12 (Méthylcobalamine)","Sélénium","Spiruline","Thyroïde (Iode + Sélénium)"]}
+  ],
+  articulations: [
+    {label:"Les plus utilisés", note:"Ce sont les deux actifs les plus utilisés pour le confort articulaire. Ce qui suit peut être pertinent selon ton besoin.", items:["Collagène Marin","Curcumine (Curcuma)"]},
+    {label:"Lubrification", items:["Acide Hyaluronique"]},
+    {label:"Anti-inflammatoire", items:["Gingembre","Quercétine"]},
+    {label:"Structure osseuse", items:["Vitamine D3 + K2","Silicium Organique","Bore (Boron)"]},
+    {label:"Autres pistes", items:["MSM (Méthylsulfonylméthane)","HMB (Hydroxy-Méthyl-Butyrate)","Glycine"]}
+  ],
+  digest: [
+    {label:"Les plus utilisés", note:"C'est l'actif le plus utilisé pour la santé digestive. Ce qui suit peut être pertinent selon ton besoin.", items:["Probiotiques"]},
+    {label:"Anti-inflammatoire", items:["Curcumine (Curcuma)","Gingembre"]},
+    {label:"Barrière intestinale", items:["L-Glutamine"]},
+    {label:"Autres pistes", items:["Berbérine","Inositol (Myo-Inositol)","Chardon-Marie (Silymarine)"]}
+  ],
+  testo: [
+    {label:"Les plus utilisés", note:"Ce sont les carences les plus fréquentes et les mieux documentées dans ce contexte. Ce qui suit peut être pertinent selon ta situation.", items:["Vitamine D3 + K2","Zinc Bisglycinate","Magnésium Bisglycinate"]},
+    {label:"Gestion du stress", items:["Ashwagandha (KSM-66)"]},
+    {label:"Soutien hormonal spécifique", items:["DHEA","Tribulus Terrestris","Fenugrec","Bore (Boron)","Tongkat Ali (Eurycoma longifolia)","Shilajit","Maca (Lepidium meyenii)"]},
+    {label:"Autres pistes", items:["Oméga-3 (EPA/DHA)","Inositol (Myo-Inositol)","Sélénium"]}
+  ],
+  libido: [
+    {label:"Les plus utilisés", note:"Ce sont les pistes les plus étudiées dans ce contexte. Lis les fiches pour voir ce qui correspond à ta situation.", items:["Ashwagandha (KSM-66)","Maca (Lepidium meyenii)"]},
+    {label:"Soutien hormonal", items:["Tribulus Terrestris","Tongkat Ali (Eurycoma longifolia)","Fenugrec","DHEA"]},
+    {label:"Autres pistes", items:["Zinc Bisglycinate","Gingembre","Damiana (Turnera diffusa)"]}
+  ],
+  vision: [
+    {label:"Les plus utilisés", note:"C'est l'actif le plus étudié pour la santé oculaire. Ce qui suit peut être pertinent en complément.", items:["Lutéine + Zéaxanthine"]},
+    {label:"Protection antioxydante", items:["Astaxanthine","Myrtille (Anthocyanines)"]},
+    {label:"Autres pistes", items:["Oméga-3 (EPA/DHA)","Vitamine A (Bêta-carotène)","Bronzage & Préparation Solaire"]}
+  ],
+  anti: [
+    {label:"Les plus utilisés", note:"Ce sont les actifs les plus documentés dans ce contexte. Ce qui suit peut être pertinent selon ton objectif.", items:["Vitamine C","Resvératrol"]},
+    {label:"Protection oxydative", items:["Astaxanthine","Quercétine","Lutéine + Zéaxanthine","Myrtille (Anthocyanines)"]},
+    {label:"Régénération cellulaire", items:["NMN (Nicotinamide Mononucléotide)"]},
+    {label:"Autres pistes", items:["Mélatonine","Sélénium","Shilajit","DHEA","Glycine","Bronzage & Préparation Solaire"]}
+  ],
+  detox: [
+    {label:"Les plus utilisés", note:"Ce sont les deux actifs les plus utilisés pour soutenir le foie. Une fiche ciblée suffit généralement.", items:["NAC (N-Acétyl Cystéine)","Chardon-Marie (Silymarine)"]},
+    {label:"Autres pistes", items:["Spiruline","DIM (Diindolylméthane)","Glycine"]}
+  ],
+  cycle: [
+    {label:"Les plus utilisés", note:"Ce sont les actifs les plus documentés dans ce contexte. Ce qui suit peut être pertinent selon ton symptôme principal.", items:["Magnésium Bisglycinate","Oméga-3 (EPA/DHA)"]},
+    {label:"Anti-inflammatoire", items:["Curcumine (Curcuma)","Gingembre"]},
+    {label:"Équilibre hormonal", items:["Gattilier (Vitex agnus-castus)","DIM (Diindolylméthane)","Inositol (Myo-Inositol)"]},
+    {label:"Carences fréquentes", items:["Fer Bisglycinate","Vitamine D3 + K2","Zinc Bisglycinate"]},
+    {label:"Autres pistes", items:["Ashwagandha (KSM-66)","Probiotiques","NAC (N-Acétyl Cystéine)"]}
+  ],
+  immun: [
+    {label:"Les plus utilisés", note:"Ce sont les carences les plus fréquentes et les mieux documentées pour l'immunité. Ce qui suit peut être pertinent selon ta situation.", items:["Vitamine D3 + K2","Vitamine C","Zinc Bisglycinate"]},
+    {label:"Barrière antioxydante", items:["Quercétine","Vitamine A (Bêta-carotène)","Sélénium"]},
+    {label:"Microbiote", items:["Probiotiques"]},
+    {label:"Carences fréquentes", items:["Fer Bisglycinate","Vitamine B12 (Méthylcobalamine)"]},
+    {label:"Récupération générale", items:["Oméga-3 (EPA/DHA)","Curcumine (Curcuma)","L-Glutamine","BCAA (Acides Aminés Ramifiés)","Hydratation & Électrolytes"]},
+    {label:"Cas spécifiques", items:["NAC (N-Acétyl Cystéine)","Gingembre","Mélatonine","Spiruline","Thyroïde (Iode + Sélénium)","Croissance & Immunité Enfant","Chardon-Marie (Silymarine)"]}
+  ],
+  perf: [
+    {label:"Les plus utilisés", note:"Ce sont les carences les plus fréquentes en cas de fatigue. Ce qui suit peut être pertinent selon la cause probable de la tienne.", items:["Fer Bisglycinate","Magnésium Bisglycinate","Vitamine B12 (Méthylcobalamine)"]},
+    {label:"Gestion du stress chronique", items:["Ashwagandha (KSM-66)","Rhodiola Rosea"]},
+    {label:"Récupération sportive", items:["Créatine Monohydrate","L-Citrulline","Bêta-Alanine","BCAA (Acides Aminés Ramifiés)","EAA (Acides Aminés Essentiels)","L-Glutamine","HMB (Hydroxy-Méthyl-Butyrate)","Hydratation & Électrolytes"]},
+    {label:"Énergie cellulaire", items:["CoQ10 (Ubiquinol)","Vitamine D3 + K2","Vitamine C","Thyroïde (Iode + Sélénium)"]},
+    {label:"Adaptogènes & vitalité", items:["Maca (Lepidium meyenii)","Tribulus Terrestris","Tongkat Ali (Eurycoma longifolia)","Shilajit","Fenugrec","Damiana (Turnera diffusa)","NMN (Nicotinamide Mononucléotide)","DHEA"]},
+    {label:"Autres pistes", items:["L-Théanine","Spiruline","Croissance & Immunité Enfant"]}
+  ],
+  acne: [
+    {label:"Les plus utilisés", note:"C'est la carence la plus fréquente en lien avec l'acné hormonale. Ce qui suit peut être pertinent selon la cause probable de ta situation.", items:["Zinc Bisglycinate"]},
+    {label:"Équilibre hormonal", items:["Gattilier (Vitex agnus-castus)","DIM (Diindolylméthane)","Inositol (Myo-Inositol)"]},
+    {label:"Autres pistes", items:["Magnésium Bisglycinate","NAC (N-Acétyl Cystéine)"]}
+  ],
+  grossesse: [
+    {label:"Les plus utilisés", note:"Ce sont les apports les plus souvent recommandés en grossesse. Suis les repères de ta sage-femme ou de ton médecin en priorité.", items:["Vitamine D3 + K2","Fer Bisglycinate","Oméga-3 (EPA/DHA)"]},
+    {label:"Carences ciblées", items:["Vitamine B12 (Méthylcobalamine)","Probiotiques"]},
+    {label:"Énergie", items:["CoQ10 (Ubiquinol)"]},
+    {label:"Fertilité (pré-conception)", items:["Inositol (Myo-Inositol)"]}
+  ],
+  menopause: [
+    {label:"Les plus utilisés", note:"C'est l'un des actifs les plus pertinents dans ce contexte, en lien direct avec la baisse hormonale. Ce qui suit peut être pertinent en complément.", items:["DHEA"]},
+    {label:"Structure & confort", items:["Collagène Marin","Vitamine D3 + K2","Silicium Organique"]},
+    {label:"Adaptogènes", items:["Ashwagandha (KSM-66)","Maca (Lepidium meyenii)"]}
+  ],
+  endometriose: [
+    {label:"Les plus utilisés", note:"Ce sont les deux actifs anti-inflammatoires les plus documentés dans ce contexte.", items:["Oméga-3 (EPA/DHA)","Curcumine (Curcuma)"]},
+    {label:"Équilibre hormonal", items:["DIM (Diindolylméthane)"]},
+    {label:"Confort digestif & carences", items:["Probiotiques","Magnésium Bisglycinate","Vitamine D3 + K2"]},
+    {label:"Autres pistes", items:["NAC (N-Acétyl Cystéine)"]}
+  ],
+  anemie: [
+    {label:"Les plus utilisés", note:"C'est la cause la plus fréquente d'anémie. Vitamine C et B12 sont des cofacteurs qui peuvent compléter selon la cause identifiée par une prise de sang.", items:["Fer Bisglycinate"]},
+    {label:"Cofacteurs", items:["Vitamine C","Vitamine B12 (Méthylcobalamine)"]}
+  ]
+};
+
 function showObj(id){
   // ① Sauvegarder position avant de quitter la grille
   _savedScrollY = window.scrollY;
@@ -3329,7 +3479,34 @@ function showObj(id){
       ${obj.tip.map(t=>`<div class="obj-tip-line">${t}</div>`).join('')}
     </div>` : '';
   let html = tipHtml + items.map(s=>card(s,null,false)).join("");
-  if(id==="muscu") html += `<div class="prot-sep"><div class="prot-sep-t">Protéines en Poudre</div>${PROTEINES.map(protCard).join("")}</div>`;
+  const subgroups = OBJ_SUBGROUPS[id];
+  if(subgroups){
+    const byName = {};
+    items.forEach(s=>{byName[s.nm]=s;});
+    const used = new Set();
+    let grouped = "";
+    subgroups.forEach((g,gi)=>{
+      const groupItems = g.items.map(nm=>byName[nm]).filter(Boolean);
+      groupItems.forEach(s=>used.add(s.nm));
+      const proteinHtml = (gi===0 && id==="muscu") ? PROTEINES.filter(p=>p.nm==="Whey Isolat (WPI)").map(protCard).join("") : "";
+      if(!groupItems.length && !proteinHtml) return;
+      grouped += `<div class="obj-subhd">${g.label}</div>`;
+      if(g.note) grouped += `<div class="obj-subnote">${g.note}</div>`;
+      grouped += proteinHtml + groupItems.map(s=>card(s,null,false)).join("");
+    });
+    const rest = items.filter(s=>!used.has(s.nm));
+    if(rest.length){
+      grouped += `<div class="obj-subhd">Autres actifs</div>`;
+      grouped += rest.map(s=>card(s,null,false)).join("");
+    }
+    if(id==="muscu"){
+      const otherProt = PROTEINES.filter(p=>p.nm!=="Whey Isolat (WPI)");
+      if(otherProt.length){
+        grouped += `<div class="prot-sep"><div class="prot-sep-t">Autres protéines en poudre</div>${otherProt.map(protCard).join("")}</div>`;
+      }
+    }
+    html = tipHtml + grouped;
+  } else if(id==="muscu") html += `<div class="prot-sep"><div class="prot-sep-t">Protéines en Poudre</div>${PROTEINES.map(protCard).join("")}</div>`;
   document.getElementById("objList").innerHTML = html;
 
   // ⑥ Header compact — masquer tout
