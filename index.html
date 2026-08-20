@@ -210,28 +210,28 @@ body.F .tab.on{color:#D6B98A;background:rgba(214,185,138,0.10);border-color:#D6B
 .col-title{font-size:10px;font-weight:800;text-transform:uppercase;margin-bottom:6px}
 .col-plus .col-title{color:#2E7D32}
 .col-minus .col-title{color:#C4650A}
-.col-item{font-size:13px;line-height:1.5;padding:2px 0;display:flex;gap:4px;color:#332E27}
+.col-item{font-size:13px;line-height:1.65;padding:2px 0;display:flex;gap:4px;color:#1F2933;font-weight:600}
 .col-dot{opacity:0.4;flex-shrink:0}
 .dose-t{border-radius:6px;overflow:hidden;border:1px solid rgba(0,0,0,0.14);margin-top:2px;background:rgba(0,0,0,0.02)}
 .d-row{display:flex;flex-direction:column;align-items:flex-start;padding:8px 12px;gap:2px;border-bottom:1px solid rgba(0,0,0,0.08);font-size:13px}
 .d-row:nth-child(even){background:rgba(0,0,0,0.035)}
 .d-row:last-child{border-bottom:none}
 .d-k{color:#8A5A2B;font-weight:900;font-size:12px;letter-spacing:0.03em}
-.d-v{font-weight:600;color:#1F2933;text-align:left;width:100%;word-break:break-word;overflow-wrap:break-word;white-space:normal;line-height:1.5}
+.d-v{font-weight:600;color:#1F2933;text-align:left;width:100%;word-break:break-word;overflow-wrap:break-word;white-space:normal;font-size:13px;line-height:1.65}
 .hf-block{border-radius:6px;padding:10px 12px;margin-bottom:6px}
 .hf-m{background:rgba(0,0,0,0.03);border:1px solid rgba(0,0,0,0.10);border-left:3px solid #BC9569}
 .hf-f{background:rgba(0,0,0,0.03);border:1px solid rgba(0,0,0,0.10);border-left:3px solid #BC9569}
 .hf-lbl{font-size:12px;font-weight:800;letter-spacing:0.03em;margin-bottom:4px}
 .hf-m .hf-lbl{color:#8A5A2B}
 .hf-f .hf-lbl{color:#8A5A2B}
-.hf-txt{font-size:13px;color:#332E27;line-height:1.65}
+.hf-txt{font-size:13px;color:#1F2933;line-height:1.65;font-weight:600}
 .syn-list{display:flex;flex-wrap:wrap;gap:5px;margin-top:2px}
 .syn-group{margin-bottom:8px}
 .syn-group:last-child{margin-bottom:0}
 .syn-group-title{font-size:12px;font-weight:800;letter-spacing:0.03em;color:#8A5A2B;margin-bottom:4px}
 .syn-chip{font-size:13px;font-weight:600;padding:4px 10px;border-radius:5px;background:rgba(0,0,0,0.04);color:#332E27;border:1px solid rgba(0,0,0,0.16)}
 .prec-bar{border-radius:6px;padding:10px 12px;background:rgba(0,0,0,0.03);border:1px solid rgba(0,0,0,0.10);border-left:3px solid #C62828}
-.prec-txt{font-size:13px;color:#332E27;line-height:1.65}
+.prec-txt{font-size:13px;color:#1F2933;line-height:1.65;font-weight:600}
 .dispo-row{display:flex;align-items:flex-start;gap:10px;border-radius:6px;padding:10px 12px;margin-top:2px}
 .dispo-1-block{background:rgba(0,0,0,0.03);border:1px solid rgba(0,0,0,0.10);border-left:3px solid #2E7D32}
 .dispo-2-block{background:rgba(0,0,0,0.03);border:1px solid rgba(0,0,0,0.10);border-left:3px solid #C77700}
@@ -2964,7 +2964,7 @@ function card(s, letter, azMode){
       </div><span class="sc-chv"><span class="sc-chv-closed">Dérouler</span><span class="sc-chv-open">Replier</span></span>
     </div>
     <div class="sc-body">
-      <div class="sb"><div class="sb-lbl">Rôle</div><div class="sb-txt" style="background:rgba(0,0,0,0.03);border-radius:6px;border:1px solid rgba(0,0,0,0.10);padding:12px;font-size:13px;font-weight:600;color:#1F2933;line-height:1.75">${s.fn}</div></div>
+      <div class="sb"><div class="sb-lbl">Rôle</div><div class="sb-txt" style="background:rgba(0,0,0,0.03);border-radius:6px;border:1px solid rgba(0,0,0,0.10);padding:12px;font-size:13px;font-weight:600;color:#1F2933;line-height:1.65">${s.fn}</div></div>
       <div class="sb"><div class="sb-lbl">Effets</div>
         <div class="two-col">
           <div class="col-plus"><div class="col-title">Pour</div>${plus}</div>
@@ -2994,7 +2994,7 @@ function protCard(p){
   const plus=(p.plus||[]).map(x=>`<div class="col-item"><span class="col-dot">·</span>${x}</div>`).join("");
   const moins=(p.moins||[]).map(x=>`<div class="col-item"><span class="col-dot">·</span>${x}</div>`).join("");
   const dose=(p.dose||[]).map(d=>`<div class="d-row"><span class="d-k">${d[0]}</span><span class="d-v">${d[1]}</span></div>`).join("");
-  const roleBlock = p.fn ? `<div class="sb"><div class="sb-lbl">Rôle</div><div class="sb-txt" style="background:rgba(0,0,0,0.03);border-radius:6px;border:1px solid rgba(0,0,0,0.10);padding:12px;font-size:13px;font-weight:600;color:#1F2933;line-height:1.75">${p.fn}</div></div>` : "";
+  const roleBlock = p.fn ? `<div class="sb"><div class="sb-lbl">Rôle</div><div class="sb-txt" style="background:rgba(0,0,0,0.03);border-radius:6px;border:1px solid rgba(0,0,0,0.10);padding:12px;font-size:13px;font-weight:600;color:#1F2933;line-height:1.65">${p.fn}</div></div>` : "";
   return `<div class="sc" style="--c:${FAM_CFG["Protéines"].color}" onclick="this.classList.toggle('open');event.stopPropagation()">
     <div class="sc-hd"><div class="sc-accent"></div>
       <div class="sc-main"><div class="sc-nm">${p.nm}</div><div class="sc-fam">Protéines</div></div>
