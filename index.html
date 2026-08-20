@@ -213,12 +213,14 @@ body.F .tab.on{color:#D6B98A;background:rgba(214,185,138,0.10);border-color:#D6B
 .col-item{font-size:13px;line-height:1.5;padding:2px 0;display:flex;gap:4px;color:#332E27}
 .col-dot{opacity:0.4;flex-shrink:0}
 .dose-t{border-radius:6px;overflow:hidden;border:1px solid rgba(0,0,0,0.14);margin-top:2px;background:rgba(0,0,0,0.02)}
-.d-row{display:flex;justify-content:space-between;align-items:center;padding:8px 12px;border-bottom:1px solid rgba(0,0,0,0.08);font-size:13px}
+.d-row{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;padding:8px 12px;gap:3px 10px;border-bottom:1px solid rgba(0,0,0,0.08);font-size:13px}
 .d-row:nth-child(even){background:rgba(0,0,0,0.035)}
 .d-row:last-child{border-bottom:none}
 .d-row:last-child{border-bottom:none}
 .d-k{color:#8A8477;font-weight:700;padding-right:8px;flex-shrink:0}
-.d-v{font-weight:700;color:#1F2933;text-align:right}
+.d-v{font-weight:700;color:#1F2933;text-align:right;flex:1 1 120px;min-width:0;word-break:break-word;white-space:normal}
+.d-row-stack{flex-direction:column;align-items:flex-start}
+.d-row-stack .d-v{text-align:left;font-weight:600;color:#3A342A;line-height:1.5;flex:1 1 100%}
 .hf-block{border-radius:6px;padding:10px 12px;margin-bottom:6px}
 .hf-m{background:rgba(0,0,0,0.03);border:1px solid rgba(0,0,0,0.10);border-left:3px solid #BC9569}
 .hf-f{background:rgba(0,0,0,0.03);border:1px solid rgba(0,0,0,0.10);border-left:3px solid #BC9569}
@@ -227,6 +229,9 @@ body.F .tab.on{color:#D6B98A;background:rgba(214,185,138,0.10);border-color:#D6B
 .hf-f .hf-lbl{color:#BC9569}
 .hf-txt{font-size:13px;color:#332E27;line-height:1.65}
 .syn-list{display:flex;flex-wrap:wrap;gap:5px;margin-top:2px}
+.syn-group{margin-bottom:8px}
+.syn-group:last-child{margin-bottom:0}
+.syn-group-title{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;color:#8A8578;margin-bottom:4px}
 .syn-chip{font-size:13px;font-weight:600;padding:4px 10px;border-radius:5px;background:rgba(0,0,0,0.04);color:#332E27;border:1px solid rgba(0,0,0,0.16)}
 .prec-bar{border-radius:6px;padding:10px 12px;background:rgba(0,0,0,0.03);border:1px solid rgba(0,0,0,0.10);border-left:3px solid #C62828}
 .prec-txt{font-size:13px;color:#332E27;line-height:1.65}
@@ -1929,99 +1934,99 @@ let G = "F";
 const DATA = [
  {nm:"Ashwagandha (KSM-66)",kw:"ashwagandha stress anxiété cortisol testostérone adaptogène",tag:"Adaptogène",c:"var(--mental)",dispo:2,where:"Boutique fitness, Amazon, parapharmacie",forme:"suppl",gender:"MF",
   objectifs:["sommeil","mental","testo","perf","poids","libido","cycle","menopause"],
-  fn:"Plante adaptogène qui aide ton corps à mieux gérer le stress. Elle agit sur les hormones du stress (cortisol) et soutient naturellement l\'énergie, la récupération et l\'équilibre hormonal.",
-  plus:["Stress et anxiété réduits rapidement","Testostérone +15% en 90 jours","Sommeil plus profond et récupération améliorée","Énergie et endurance physique boostées","Libido améliorée chez l\'homme et la femme"],
+  fn:"Plante adaptogène étudiée pour son rôle possible dans la réponse au stress. Elle agirait sur l\'axe du cortisol et pourrait soutenir l\'énergie et l\'équilibre hormonal, avec des résultats variables selon les protocoles.",
+  plus:["Stress et anxiété : baisse rapportée dans plusieurs études, effet variable selon les personnes","Testostérone : une hausse a été observée dans certaines études chez l\'homme, à confirmer sur des cohortes plus larges","Sommeil et récupération : amélioration suggérée par certaines études","Énergie et endurance : effets rapportés, données encore limitées","Libido : quelques études positives chez l\'homme et la femme, échantillons souvent restreints"],
   moins:["Déconseillé si maladie auto-immune","Éviter pendant la grossesse","Interactions avec médicaments thyroïdiens","Effets légers au début : somnolence possible"],
-  dose:[["Dose H","600mg/j"],["Dose F","300mg/j"],["Timing","Soir, avant coucher"],["Forme","KSM-66 ou Sensoril (extraits brevetés)"],["Durée","Cycles 8-12 semaines"]],
-  hM:"La science est claire : -27% de cortisol en 8 semaines. +15% de testostérone libre en 90 jours. Moins de stress = meilleure récupération, meilleur sommeil, meilleure libido. C\'est le complément anti-stress n°1 chez l\'homme actif.",
-  hF:"Réduit le cortisol et apaise l\'anxiété, particulièrement efficace en période de Syndrome Prémenstruel (SPM) ou de stress chronique. Améliore la libido féminine et la qualité du sommeil. Études cliniques positives sur la fonction sexuelle.",
-  syn:["Magnésium (sommeil)","Zinc (testo)","Rhodiola (énergie)"],
+  dose:[["Dose étudiée H","600mg/j"],["Dose étudiée F","300mg/j"],["Timing","Soir, avant coucher"],["Forme","KSM-66 ou Sensoril (extraits standardisés utilisés dans les études)"],["Durée","Cycles 8-12 semaines, correspondant à la durée des études disponibles"]],
+  hM:"Certaines études rapportent une baisse du cortisol après plusieurs semaines de prise, avec un effet qui semble se traduire par un meilleur ressenti sur le stress, la récupération et le sommeil. Les données sur la testostérone existent mais reposent sur des échantillons limités et restent à consolider.",
+  hF:"Peut être pertinente en période de stress chronique ou de Syndrome Prémenstruel (SPM), selon des études encore peu nombreuses. Certaines données suggèrent un effet positif sur la libido féminine et le sommeil, à confirmer par des recherches plus larges.",
+  syn:{abs:[],pot:["Magnésium (mécanismes complémentaires sur le sommeil, pas de synergie démontrée spécifique)","Zinc","Rhodiola"],inutile:[]},
   prec:"Éviter si maladie auto-immune, hyperthyroïdie ou troubles bipolaires. De rares cas de symptômes dépressifs ont été rapportés à haute dose. Surveiller l'humeur et réduire ou arrêter si besoin. Ne pas combiner avec sédatifs, antidépresseurs ou immunosuppresseurs sans avis médical.",
   food:["Pas d'équivalent alimentaire direct en Europe","🌿 Disponible uniquement sous forme de complément (extrait KSM-66 ou Sensoril)","⚡ Les doses efficaces ne sont pas atteignables via l'alimentation"]},
 
  {nm:"Acide Hyaluronique",kw:"hyaluronique acide peau hydratation articulations cheveux ongles",tag:"Peau",c:"var(--peau)",dispo:2,where:"Pharmacie, parapharmacie, Amazon",forme:"suppl",gender:"MF",
   objectifs:["peau","articulations","cheveux"],
-  fn:"Molécule naturellement présente dans tes articulations et ta peau. Elle retient l\'eau et maintient l\'hydratation. Diminue avec l\'âge. Disponible en gélules en parapharmacie, elle améliore les douleurs articulaires, l\'élasticité de la peau et l\'hydratation des cheveux.",
-  plus:["Hydratation dermique profonde","Rides réduites −30% (Göllner 2017)","Articulations et cartilages soutenus","Cicatrisation accélérée"],
+  fn:"Molécule naturellement présente dans les articulations et la peau, où elle retient l\'eau et participe à l\'hydratation. Sa production diminue avec l\'âge. En gélules, elle peut contribuer à soutenir le confort articulaire et l\'hydratation cutanée, avec des résultats qui varient selon les études.",
+  plus:["Peut contribuer à l\'hydratation dermique","Rides : une réduction a été observée dans certaines études (Göllner 2017), à confirmer sur des échantillons plus larges","Peut soutenir les articulations et cartilages","Cicatrisation : effet suggéré par certaines données, preuves encore limitées"],
   moins:["Oral moins efficace qu\'injection","Résultats variables selon poids moléculaire","Qualité très variable selon les marques"],
-  dose:[["Dose","80-200mg/j"],["Timing","Avec repas"],["Forme","Bas poids moléculaire (mieux absorbé)"],["Durée","8-12 semaines minimum"]],
-  hM:"Déclin naturel dès 40 ans, plus lent que chez la femme. Utile pour les sportifs intensifs : protège le cartilage articulaire sous les impacts répétés. Associé au collagène, il améliore la mobilité articulaire et réduit les douleurs du genou chez les sportifs.",
-  hF:"Particulièrement utile après 35 ans (chute oestrogènes = peau plus sèche). Synergie forte avec collagène.",
-  syn:["Collagène marin","Vitamine C","Zinc","MSM"],
+  dose:[["Dose étudiée","80-200mg/j"],["Timing","Avec repas"],["Forme","Bas poids moléculaire, mieux absorbée selon les études"],["Durée d\'évaluation dans les études","8-12 semaines minimum"]],
+  hM:"Le déclin naturel commence dès 40 ans, plus lentement que chez la femme. Chez les sportifs soumis à des impacts répétés, certaines études suggèrent un rôle de soutien pour le cartilage articulaire. Associée au collagène, une amélioration de la mobilité et des douleurs de genou a été rapportée dans plusieurs études sportives.",
+  hF:"Peut être pertinente après 35 ans, période où la baisse des œstrogènes s\'accompagne souvent d\'une peau plus sèche. Une synergie avec le collagène est suggérée par certaines données, sans preuve d\'un effet garanti pour toutes.",
+  syn:{abs:[],pot:["Collagène marin (synergie suggérée sur la peau)","Vitamine C","Zinc","MSM"],inutile:[]},
   prec:"Consulter si traitement cancer (favorise vascularisation). Sans danger général.",
   food:["Bouillon d\'os (collagène + glycine)","Aloe vera (précurseur)","Poulet, poisson (lysine)"]},
 
  {nm:"Oméga-3 (EPA/DHA)",kw:"omega oméga poisson dha epa inflammation cerveau coeur endometriose endométriose douleurs pelviennes inflammation",tag:"Essentiel",c:"var(--coeur)",dispo:1,where:"Supermarché, pharmacie, Decathlon, Amazon",forme:"both",gender:"MF",
   objectifs:["peau","coeur","cerveau","muscu","immun","testo","mental","vision","cycle","grossesse","endometriose"],
-  fn:"Acides gras essentiels que ton corps ne fabrique pas seul. L\'EPA réduit l\'inflammation, le DHA nourrit le cerveau et les yeux, y compris pendant la grossesse pour le développement du fœtus. Indispensables pour le cœur, le mental et les performances.",
-  plus:["Triglycérides -30% (protège le cœur)","Anti-inflammatoire naturel puissant","Cerveau plus performant et humeur stabilisée","Peau et cheveux plus sains","Courbatures réduites après le sport","Vision protégée sur le long terme"],
+  fn:"Acides gras essentiels que l\'organisme ne fabrique pas seul. L\'EPA participe à la régulation de l\'inflammation, le DHA contribue au fonctionnement cérébral et visuel, y compris pendant la grossesse pour le développement du fœtus. Des rôles sont également étudiés pour le cœur et les performances mentales.",
+  plus:["Triglycérides : baisse d\'environ 30% rapportée dans les études, pouvant contribuer à la santé cardiovasculaire","Peut contribuer à réguler l\'inflammation","Certaines études suggèrent un effet positif sur les fonctions cognitives et l\'humeur","Peut soutenir la santé de la peau et des cheveux","Des données suggèrent une réduction des courbatures après l\'effort","Vision : rôle protecteur à long terme suggéré par les études"],
   moins:["Odeur de poisson si le produit est de mauvaise qualité","Légèrement fluidifiant du sang à haute dose","Stopper 2 semaines avant une chirurgie"],
-  dose:[["Dose min","1g EPA+DHA/j"],["Dose thérap.","2-4g EPA+DHA/j"],["Grossesse","Min 3g DHA/j"],["Timing","Avec repas gras (dîner idéal)"],["Forme","Triglycérides > éthyl esters"],["Ratio","EPA > DHA si inflammation"]],
-  hM:"Le DHA constitue 40% des lipides des spermatozoïdes. Une carence réduit leur mobilité. Pour le cœur : -30% de risque cardiovasculaire à 4g EPA/j (étude REDUCE-IT 2018). Pour le muscle : réduit les courbatures et améliore la synthèse protéique.",
-  hF:"Réduit les douleurs menstruelles et les symptômes du Syndrome Prémenstruel (SPM). Essentiel pour le développement du cerveau fœtal (DHA) pendant la grossesse. Améliore l\'humeur et réduit le risque de dépression post-partum.",
-  syn:["Vitamine D3","Vitamine E (antioxydant)","Astaxanthine"],
+  dose:[["Apport recommandé (ANSES, prévention)","250mg EPA+DHA/j"],["Dose étudiée en contexte anti-inflammatoire","2-4g EPA+DHA/j — au-delà de 3g/j, avis médical conseillé"],["Grossesse (ANSES)","Environ 500mg EPA+DHA/j, dont au moins 250mg de DHA — pas de justification à dépasser fortement ce repère sans avis médical"],["Timing","Avec un repas contenant des graisses"],["Forme","Triglycérides : forme mieux absorbée que les éthyl esters selon les études"],["Ratio EPA/DHA","Un ratio plus riche en EPA est parfois privilégié en contexte inflammatoire, sur avis professionnel"]],
+  hM:"Le DHA constitue une part importante des lipides des spermatozoïdes ; un déficit est associé à une mobilité réduite dans certaines études. Pour le cœur, une réduction du risque cardiovasculaire a été rapportée à 4g EPA/j dans l\'étude REDUCE-IT (2018), une dose élevée à discuter avec un professionnel. Pour le muscle, des données suggèrent une réduction des courbatures et un possible soutien de la synthèse protéique.",
+  hF:"Des études suggèrent une réduction des douleurs menstruelles et des symptômes du Syndrome Prémenstruel (SPM). Le DHA est important pour le développement du cerveau fœtal pendant la grossesse, dans les repères d\'apport recommandés. Un effet positif sur l\'humeur et une réduction du risque de dépression post-partum sont suggérés par certaines études, à confirmer.",
+  syn:{abs:[],pot:["Vitamine D3 (rôles complémentaires, pas de synergie démontrée spécifique)","Vitamine E (antioxydant, protège les oméga-3 de l\'oxydation)","Astaxanthine"],inutile:[]},
   prec:"Attention si anticoagulants. Stopper 2 semaines avant chirurgie. Conserver au frais.",
   food:["🐟 Saumon sauvage (2-3g/100g)","🐟 Maquereau, sardines","🌾 Graines de chia (ALA, conversion limitée)","🌰 Noix (ALA)"]},
 
  {nm:"Bêta-Alanine",kw:"bêta-alanine beta alanine endurance musculation sport performance",tag:"Performance",c:"var(--muscu)",dispo:1,where:"Boutique fitness, Myprotein, Amazon",forme:"suppl",gender:"MF",
   objectifs:["muscu","perf"],
-  fn:"Elle retarde la sensation de brûlure musculaire pendant l\'effort. Concrètement : tu tiens plus longtemps avant de lâcher. Efficace sur les efforts intenses entre 1 et 4 minutes : HIIT, CrossFit, sprint.",
-  plus:["Carnosine musculaire +64% en 4 semaines","Endurance anaérobie améliorée","Retarde la brûlure musculaire","Synergie prouvée avec créatine"],
-  moins:["Fourmillements (paresthésie) (inoffensif)","Peu utile si effort > 4 min ou < 1 min","Saturation lente (4-6 semaines)"],
-  dose:[["Dose H","4-6,4g/j"],["Dose F","3,2g/j"],["Timing","45 min avant la séance"],["Fractionnement","2 prises/j réduit fourmillements"],["Durée","4-6 semaines minimum"]],
-  hM:"Bénéfices maximaux sur sports explosifs courts (Hyrox, CrossFit). Dose 4-6g/j recommandée.",
-  hF:"Dose 3,2g/j suffisante. Particulièrement utile pour HIIT, spinning, body pump.",
-  syn:["Créatine (synergie force + endurance)","Bicarbonate sodé"],
+  fn:"Peut retarder la sensation de brûlure musculaire pendant l\'effort, ce qui permettrait de tenir plus longtemps avant de lâcher. L\'effet est étudié surtout sur les efforts intenses entre 1 et 4 minutes (HIIT, CrossFit, sprint).",
+  plus:["Carnosine musculaire : hausse d\'environ 64% rapportée après 4 semaines dans les études","Peut améliorer l\'endurance anaérobie","Peut retarder la sensation de brûlure musculaire","Une synergie avec la créatine est suggérée par certaines études"],
+  moins:["Fourmillements (paresthésie), sans danger connu","Peu utile si effort > 4 min ou < 1 min","Saturation lente (4-6 semaines)"],
+  dose:[["Dose étudiée H","4-6,4g/j"],["Dose étudiée F","3,2g/j"],["Timing","45 min avant la séance"],["Fractionnement","2 prises/j peuvent réduire les fourmillements"],["Durée d\'évaluation dans les études","4-6 semaines minimum"]],
+  hM:"Les bénéfices les plus documentés concernent les sports explosifs courts (Hyrox, CrossFit). Une dose de 4-6g/j est celle généralement étudiée dans ce contexte.",
+  hF:"Une dose de 3,2g/j est celle généralement étudiée. Peut être pertinente pour le HIIT, le spinning ou le body pump.",
+  syn:{abs:[],pot:["Créatine (mécanismes complémentaires sur force et endurance, pas d\'obligation de cumul)","Bicarbonate sodé"],inutile:[]},
   prec:"Totalement inoffensif. Les fourmillements sont normaux et disparaissent avec l\'habitude.",
   food:["🥩 Poulet, dinde (sources naturelles de bêta-alanine)","🐟 Poisson blanc, thon","⚠️ Les concentrations alimentaires sont 10× inférieures au complément. Effet tampon insuffisant sans supplémentation"]},
 
  {nm:"Biotine (Vitamine B8)",kw:"biotine cheveux ongles kératine beauté",tag:"Beauté",c:"var(--cheveux)",dispo:1,where:"Pharmacie, supermarché bio, Amazon",forme:"both",gender:"MF",
   objectifs:["cheveux","peau"],
-  fn:"Vitamine B indispensable à la fabrication de la kératine, la molécule qui constitue tes cheveux et tes ongles. Aussi essentielle pour transformer les aliments en énergie.",
+  fn:"Vitamine B qui participe à la fabrication de la kératine, la molécule qui constitue les cheveux et les ongles. Elle contribue aussi à transformer les aliments en énergie.",
 
-  plus:["Ongles cassants renforcés (prouvé)","Chevelure améliorée si carence","Peau soutenue","Métabolisme glucides et graisses"],
-  moins:["Efficace surtout si carence préalable","Fausse certains tests sanguins","Résultats après 3-6 mois"],
-  dose:[["Dose standard","2500-5000µg/j (microgrammes par jour)"],["Timing","Matin avec repas"],["Durée","Minimum 3 mois"]],
-  hM:"Utile si alimentation déséquilibrée. Rarement déficient autrement.",
-  hF:"Grossesse et pilule consomment la biotine. Cheveux fins post-partum = biotine prioritaire.",
-  syn:["Zinc","Silicium","MSM","Collagène marin"],
+  plus:["Peut renforcer les ongles cassants, surtout en cas de carence avérée","Peut améliorer la chevelure en cas de carence","Peut soutenir la peau","Participe au métabolisme des glucides et graisses"],
+  moins:["Efficace surtout si carence préalable, effet incertain sinon","Fausse certains tests sanguins","Résultats après 3-6 mois"],
+  dose:[["Dose couramment utilisée","2500-5000µg/j (microgrammes par jour)"],["Timing","Matin avec repas"],["Durée d\'évaluation dans les études","Minimum 3 mois"]],
+  hM:"Peut être pertinente en cas d\'alimentation déséquilibrée. Une carence reste rare en dehors de ce contexte.",
+  hF:"La grossesse et la pilule contraceptive peuvent augmenter les besoins en biotine. En cas de chute de cheveux post-partum, une carence en biotine est l\'une des pistes à envisager, sans être systématique.",
+  syn:{abs:[],pot:["Zinc","Silicium","MSM","Collagène marin"],inutile:[]},
   prec:"⚠️ Arrêter 48-72h avant prise de sang (fausse résultats thyroïdiens et cardiaques).",
   food:["🥚 Jaune d\'oeuf (61µg/oeuf)","🥜 Amandes, noix de cajou","🐟 Saumon","🍠 Patate douce"]},
 
  {nm:"Berbérine",kw:"berbérine berbérine glycémie insuline diabete poids metabolisme sop",tag:"Métabolisme",c:"var(--poids)",dispo:2,where:"Amazon, parapharmacie, boutique spécialisée",forme:"suppl",gender:"MF",
   objectifs:["poids","digest","coeur"],
-  fn:"Extrait végétal naturel aux effets reconnus sur la glycémie, le cholestérol LDL et la résistance à l'insuline. Aide à réguler le sucre dans le sang, améliore la sensibilité à l\'insuline et soutient la perte de poids.",
-  plus:["Glycémie à jeun −20% (méta-analyse)","Sensibilité insuline comparable à metformine","Cholestérol LDL −20%","Microbiome intestinal amélioré","Perte de poids modérée"],
+  fn:"Extrait végétal étudié pour ses effets sur la glycémie, le cholestérol LDL et la sensibilité à l\'insuline. Les études suggèrent un rôle dans la régulation du sucre sanguin et un possible soutien à la perte de poids en complément d\'autres mesures.",
+  plus:["Glycémie à jeun : baisse d\'environ 20% rapportée dans une méta-analyse","Sensibilité à l\'insuline : effet jugé comparable à la metformine dans certaines études, à prendre avec prudence hors cadre médical","Cholestérol LDL : baisse d\'environ 20% rapportée dans les études","Un effet sur le microbiome intestinal est suggéré","Perte de poids modérée rapportée dans certaines études"],
   moins:["Effets digestifs au début (nausées)","Nombreuses interactions médicamenteuses","Contre-indiqué grossesse et enfants"],
-  dose:[["Dose","500mg × 2-3/j"],["Timing","Avant les repas"],["Cycles","8 semaines, pause 4 semaines"]],
-  hM:"Réduit la glycémie à jeun de -20% en 3 mois, comparable à la metformine dans plusieurs études. Améliore la sensibilité à l\'insuline, clé pour la composition corporelle et la testostérone.",
-  hF:"Résistance à l\'insuline fréquente dans le SOP. Berbérine améliore l\'ovulation et régule les cycles hormonaux. À associer avec l\'inositol pour un effet maximal sur le SOP.",
-  syn:["Chrome","Cannelle","Inositol (SOP)"],
+  dose:[["Dose étudiée","500mg × 2-3/j"],["Timing","Avant les repas"],["Cycles","8 semaines, pause 4 semaines"]],
+  hM:"Une baisse de la glycémie à jeun d\'environ 20% sur 3 mois est rapportée dans plusieurs études, un effet jugé comparable à la metformine dans certains protocoles de recherche. Une amélioration de la sensibilité à l\'insuline est également suggérée.",
+  hF:"La résistance à l\'insuline est fréquente dans le contexte du SOP. La berbérine est étudiée pour son effet sur l\'ovulation et la régulation des cycles hormonaux. Une association avec l\'inositol est parfois étudiée dans ce contexte, sans que le cumul soit systématiquement nécessaire.",
+  syn:{abs:[],pot:["Chrome","Cannelle","Inositol (association étudiée dans le contexte du SOP)"],inutile:[]},
   prec:"Interactions importantes : antibiotiques, anticoagulants, médicaments diabète. Consultation médicale obligatoire.",
   food:["Pas d'équivalent alimentaire direct","🌿 La berbérine est extraite de plantes (épine-vinette, goldenseal) impossibles à consommer en quantité thérapeutique","⚡ 500mg extrait pur nécessaire, alimentation seule insuffisante"]},
 
  {nm:"Collagène Marin",kw:"collagene collagène peau articulations cheveux ongles",tag:"Peau & Structure",c:"var(--peau)",dispo:1,where:"Pharmacie, boutique fitness, Amazon, supermarché bio",forme:"both",gender:"MF",
   objectifs:["peau","cheveux","os","articulations","menopause"],
-  fn:"Le collagène est la colle naturelle de ton corps. Il maintient la souplesse de ta peau, de tes articulations et de tes tendons. Ta production naturelle diminue dès 25 ans. La supplémentation aide à compenser.",
+  fn:"Le collagène est une protéine structurelle qui contribue à la souplesse de la peau, des articulations et des tendons. Sa production naturelle diminue dès 25 ans. La supplémentation vise à compenser cette baisse, avec des résultats variables selon les études.",
 
-  plus:["Élasticité peau +15%","Densité dermique +7%","Rides −20% en 8 semaines","Tendons et cartilages renforcés","Cheveux et ongles améliorés"],
+  plus:["Élasticité de la peau : hausse d\'environ 15% rapportée dans certaines études","Densité dermique : hausse d\'environ 7% rapportée","Rides : baisse d\'environ 20% observée sur 8 semaines dans certaines études","Peut soutenir tendons et cartilages","Peut améliorer l\'aspect des cheveux et ongles"],
   moins:["Résultats après 8-12 semaines","Origine marine (allergie possible)","Qualité très variable"],
-  dose:[["Dose","10g/j de peptides hydrolysés"],["Timing","Matin, avec Vitamine C"],["Forme","Peptides < 5kDa (bas poids moléculaire)"],["Durée","3 mois minimum"]],
-  hM:"Déclin progressif dès 25 ans (−1%/an) mais plus lent que chez la femme. Priorité sport intensif : tendons et ligaments contiennent 70% de collagène. Études : 5g/j peptides réduit douleurs genou −40% ( sportifs).",
-  hF:"Production chute −1%/an dès 25 ans. Ménopause : chute brutale −30% en 5 ans due à la chute des oestrogènes → rides, peau fine, cheveux cassants, ongles fragiles, douleurs articulaires. 10g/j peptides + Vit C = protocole anti-âge féminin de référence. Cheveux : densité +12% en 6 mois. Ongles : croissance +12%, fragilité −42%.",
-  syn:["Vitamine C (INDISPENSABLE)","Zinc","Acide hyaluronique","Silicium"],
+  dose:[["Dose étudiée","10g/j de peptides hydrolysés"],["Timing","Matin, avec vitamine C"],["Forme","Peptides < 5kDa (bas poids moléculaire), mieux absorbés selon les études"],["Durée d\'évaluation dans les études","3 mois minimum"]],
+  hM:"Le déclin progressif dès 25 ans (environ −1%/an) est plus lent que chez la femme. Chez les sportifs, les tendons et ligaments contiennent une forte proportion de collagène : certaines études rapportent une réduction des douleurs de genou avec 5g/j de peptides.",
+  hF:"La production chute progressivement dès 25 ans. À la ménopause, la baisse des œstrogènes s\'accompagne d\'une chute plus marquée sur quelques années, associée à des rides, une peau plus fine, des cheveux et ongles plus fragiles, et parfois des douleurs articulaires. Une prise de 10g/j de peptides associée à la vitamine C est le protocole le plus étudié dans ce contexte, avec des effets rapportés sur la densité des cheveux et la croissance des ongles après plusieurs mois.",
+  syn:{abs:["Vitamine C (cofacteur nécessaire à la synthèse du collagène)"],pot:["Zinc","Acide hyaluronique","Silicium"],inutile:[]},
   prec:"Choisir certifié (MSC). Allergie poisson rare mais possible.",
   food:["🦴 Bouillon d\'os (4-6h de cuisson)","🐟 Peau du poisson","🐔 Peau de poulet","🫐 Vitamine C stimule collagène endogène"]},
 
  {nm:"Créatine Monohydrate",kw:"creatine créatine force muscle musculation sport atp récupération performance",tag:"Performance N°1",c:"var(--muscu)",dispo:1,where:"Boutique fitness, Decathlon, Myprotein, Amazon",forme:"both",gender:"MF",
   objectifs:["muscu","cerveau","perf"],
-  fn:"Le complément sportif le plus étudié au monde. Elle recharge tes réserves d\'énergie musculaire (ATP) pour des efforts plus intenses, une meilleure récupération et même des bénéfices cognitifs.",
-  plus:["Force +8% en 4-6 semaines","Récupération musculaire plus rapide","Masse musculaire augmentée","Mémoire et concentration améliorées","Fatigue mentale réduite"],
+  fn:"Recharge les réserves d\'énergie musculaire (ATP), ce qui peut permettre des efforts plus intenses et une récupération facilitée. Des effets cognitifs sont également à l\'étude.",
+  plus:["Force : +8% en 4-6 semaines (études sur sujets entraînés)","Peut favoriser la récupération musculaire","Masse musculaire : gain observé en complément d\'un entraînement en résistance","Mémoire et concentration : effets suggérés par plusieurs études, moins constants que sur la force"],
   moins:["Rétention d\'eau légère au début (normal)","Boire beaucoup d\'eau obligatoire","Pas de bénéfice sans effort physique régulier"],
-  dose:[["Dose H","5g/j"],["Dose F","3-5g/j"],["Timing post-séance","Avec Whey"],["Sans sport","Avec le petit-déjeuner"],["Phase de charge","Deux approches possibles pour atteindre la saturation musculaire en créatine, avec le même résultat final. Option rapide : 20g/j répartis sur la journée pendant 5 jours, puis on redescend à 5g/j en entretien. Les muscles sont saturés en une semaine. Option progressive : 5g/j dès le premier jour, sans phase de charge. La saturation prend simplement plus de temps, 3 à 4 semaines environ. Aucune des deux n'est plus efficace à long terme, c'est uniquement une question de rapidité des premiers effets ressentis."],["Forme","Monohydrate uniquement. Les autres formes (Kre-Alkalyn, HCl) ne présentent pas de bénéfice supérieur prouvé."]],
-  hM:"+8% de force sur 4-6 semaines. +10% de masse musculaire sur 12 semaines. Le complément sportif le plus prouvé scientifiquement. Aussi efficace pour le cerveau : mémoire et temps de réaction améliorés.",
-  hF:"Bénéfice égal à celui des hommes pour la force et la masse musculaire maigre. Améliore l\'humeur et réduit les symptômes dépressifs. Réduit la fatigue en phase lutéale (pré-menstruelle).",
-  syn:["Whey protéine","Bêta-alanine","Glucides (favorisent absorption)"],
+  dose:[["Dose H","5g/j"],["Dose F","3-5g/j"],["Timing post-séance","Avec Whey"],["Sans sport","Avec le petit-déjeuner"],["Phase de charge","Deux approches possibles pour atteindre la saturation musculaire en créatine, avec un résultat final comparable. Option rapide : 20g/j répartis sur la journée pendant 5 jours, puis on redescend à 5g/j en entretien. Les muscles sont saturés en une semaine. Option progressive : 5g/j dès le premier jour, sans phase de charge. La saturation prend simplement plus de temps, 3 à 4 semaines environ. Les études ne montrent pas de différence significative à long terme entre les deux approches, la différence porte surtout sur la rapidité des premiers effets ressentis."],["Forme","Monohydrate : forme la plus étudiée. Les autres formes (Kre-Alkalyn, HCl) n\'ont pas démontré de bénéfice supérieur dans les études disponibles."]],
+  hM:"Force : +8% sur 4-6 semaines dans les études. Masse musculaire : gain associé sur 12 semaines en complément d\'un entraînement en résistance. C\'est l\'un des compléments sportifs les plus étudiés, avec des résultats consistants sur la force chez les sujets entraînés. Des effets cognitifs (mémoire, temps de réaction) sont suggérés par certaines études.",
+  hF:"Les études suggèrent un bénéfice comparable à celui observé chez l\'homme pour la force et la masse musculaire maigre. Un effet positif sur l\'humeur et une réduction de la fatigue en phase lutéale (pré-menstruelle) sont rapportés par certaines études, à confirmer sur des cohortes plus larges.",
+  syn:{abs:["Glucides (peuvent favoriser la captation musculaire de la créatine)"],pot:["Bêta-alanine (mécanismes complémentaires, pas d\'obligation de cumul)"],inutile:["Whey protéine (association fréquente en pratique, mais sans synergie propre démontrée avec la créatine)"]},
   prec:"Très sûre long terme. S\'hydrater. Inutile de cycler.",
   food:["🥩 Viande rouge (2g/kg)","🐟 Saumon (4,5g/kg). 10 fois moins concentré que le complément"]},
 
@@ -2183,13 +2188,13 @@ const DATA = [
 
  {nm:"Vitamine B12 (Méthylcobalamine)",kw:"vitamine b12 énergie végane végétarien nerfs anémie",tag:"Essentielle",c:"var(--energie)",dispo:1,where:"Pharmacie, supermarché bio, Amazon",forme:"both",gender:"MF",
   objectifs:["perf","cerveau","cheveux","immun","grossesse","anemie"],
-  fn:"La seule vitamine que les plantes ne fabriquent pas. Sans elle : fatigue chronique, fourmillements, mémoire qui flanche. Si tu ne manges pas de viande ou de poisson régulièrement, tu en manques probablement.",
-  plus:["Prévient anémie mégaloblastique","Santé neurologique maintenue","Énergie si déficit","Cheveux et ongles soutenus","Indispensable végans/végétariens"],
-  moins:["Carence longtemps asymptomatique","Absorption réduite après 50 ans","Certains médicaments bloquent l\'absorption"],
-  dose:[["Préventif","250-500µg/j (microgrammes par jour)"],["Correction déficit","1000µg/j (microgrammes par jour)"],["Forme","Méthylcobalamine (active)"],["Timing","Matin avec B9"]],
-  hM:"Essentielle pour l\'énergie nerveuse et les performances cognitives. Déficit fréquent chez les sportifs et végétariens : fatigue chronique, baisse de concentration, irritabilité. La méthylcobalamine (forme active) est mieux assimilée que la cyanocobalamine.",
-  hF:"La pilule contraceptive diminue les niveaux de B12. Penser à supplémenter. Grossesse : 2,8µg/j (microgrammes par jour) minimum, indispensable pour le développement neurologique du bébé. Véganes : OBLIGATOIRE.",
-  syn:["Vitamine B9 (folate)","Fer","Vitamine B6"],
+  fn:"Vitamine que l\'alimentation végétale n\'apporte pas naturellement. Un déficit peut se traduire par de la fatigue, des fourmillements et des troubles de la mémoire. Les personnes ne consommant pas régulièrement viande ou poisson y sont plus exposées.",
+  plus:["Contribue à prévenir l\'anémie mégaloblastique en cas de carence avérée","Participe au maintien de la fonction neurologique","Peut réduire la fatigue en cas de déficit confirmé","Participe à la santé des cheveux et des ongles en cas de carence","Apport généralement nécessaire par supplémentation en l\'absence de sources animales"],
+  moins:["Carence longtemps asymptomatique","Absorption réduite après 50 ans","Certains médicaments réduisent l\'absorption"],
+  dose:[["Apport nutritionnel recommandé (ANSES)","4µg/j chez l\'adulte (4,5µg grossesse, 5µg allaitement) — repère nutritionnel, non un dosage de complément"],["Dose orale courante en complément (prévention/entretien)","250-500µg/j — dose élevée par rapport au besoin réel, utilisée car l\'absorption orale de la B12 est faible (~1%)"],["Dose couramment utilisée en cas de déficit confirmé","1000µg/j, sur avis médical"],["Forme","Méthylcobalamine (forme active)"],["Timing","Matin avec B9"]],
+  hM:"Participe à la fonction nerveuse et aux performances cognitives. Un déficit, plus fréquent chez les sportifs et les végétariens, peut se traduire par de la fatigue, une baisse de concentration ou de l\'irritabilité. La méthylcobalamine (forme active) serait mieux assimilée que la cyanocobalamine selon certaines études.",
+  hF:"La pilule contraceptive peut diminuer les niveaux de B12 ; un contrôle sanguin permet de vérifier si une supplémentation est pertinente. Pendant la grossesse, un apport d\'au moins 2,8µg/j est recommandé pour le développement neurologique du bébé. Les régimes 100% végétaux n\'apportent pas de B12 assimilable : une supplémentation est généralement nécessaire dans ce cas.",
+  syn:{abs:[],pot:["Vitamine B9 / folate (fonctions métaboliques liées)","Fer","Vitamine B6"],inutile:[]},
   prec:"Non toxique. Metformine, IPP, certains antibiotiques réduisent l\'absorption.",
   food:["🦪 Palourdes (98µg/100g)","🥩 Foie de boeuf","🐟 Sardines, saumon","🥚 Oeufs, laitages","🌱 Végétal : aucune source fiable"]},
 
@@ -2894,8 +2899,17 @@ function card(s, letter, azMode){
     if(G==="M") return !femaleOnly;
     if(G==="F") return !maleOnly;
     return true;
-  }).map(d=>`<div class="d-row"><span class="d-k">${d[0]}</span><span class="d-v">${d[1]}</span></div>`).join("");
-  const syn = (s.syn||[]).map(sy=>`<span class="syn-chip">${sy}</span>`).join("");
+  }).map(d=>{
+    const long = (d[1]||"").length > 28;
+    return `<div class="d-row${long?" d-row-stack":""}"><span class="d-k">${d[0]}</span><span class="d-v">${d[1]}</span></div>`;
+  }).join("");
+  let syn = "";
+  if (Array.isArray(s.syn)) {
+    syn = (s.syn||[]).map(sy=>`<span class="syn-chip">${sy}</span>`).join("");
+  } else if (s.syn && typeof s.syn === "object") {
+    const synGrp = (title, items) => (items && items.length) ? `<div class="syn-group"><div class="syn-group-title">${title}</div><div class="syn-list">${items.map(sy=>`<span class="syn-chip">${sy}</span>`).join("")}</div></div>` : "";
+    syn = synGrp("Utile pour l'absorption", s.syn.abs) + synGrp("Synergie potentielle", s.syn.pot) + synGrp("Pas nécessaire de cumuler", s.syn.inutile);
+  }
 
   // ── GENDER BLOCKS — adapted per mode ──
   let genderBlock = "";
@@ -2965,7 +2979,7 @@ function card(s, letter, azMode){
       </div>
       <div class="sb"><div class="sb-lbl">Dosage</div><div class="dose-t">${dose}</div></div>
       ${genderBlock}
-      <div class="sb"><div class="sb-lbl">À prendre avec</div><div class="syn-list">${syn}</div></div>
+      <div class="sb"><div class="sb-lbl">Associations pertinentes</div>${Array.isArray(s.syn) ? `<div class="syn-list">${syn}</div>` : syn}</div>
       <div class="sb"><div class="sb-lbl">Précautions</div><div class="prec-bar"><div class="prec-txt">${s.prec}</div></div></div>
       <div class="sb"><div class="sb-lbl">Alimentation & Complément</div>
         ${formeHTML}
