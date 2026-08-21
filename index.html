@@ -3837,7 +3837,7 @@ function doSearch(val){
   const totalRes=res.length+resProt.length;
   sp.innerHTML=totalRes>0
     ?`<div class="sp-count">${totalRes} résultat${totalRes>1?"s":""} pour "${val}"</div>`
-      +res.map(s=>card(s,null,true)).join("")
+      +res.map(s=>card(s,null,false)).join("")
       +(resProt.length?`<div style="padding:10px 0 6px;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;color:var(--muscu)">Protéines en Poudre</div>`+resProt.map(p=>protCard(p)).join(""):"")
     :`<div class="no-res">🔍 Aucun résultat pour "${val}"</div>`;
 }
