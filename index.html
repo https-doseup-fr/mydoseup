@@ -151,13 +151,23 @@ body.F .tab.on{color:#D6B98A;background:rgba(214,185,138,0.10);border-color:#D6B
 .obj-results{padding:0 14px 14px;display:none}
 .obj-results.on{display:block}
 .obj-back{display:flex;flex-direction:row;align-items:center;gap:10px;padding:10px 0 12px;border-bottom:1px solid rgba(255,255,255,0.08);margin-bottom:12px;cursor:pointer}
-.obj-tip{background:#1C1D1F;border:1.5px solid rgba(188,149,105,0.55);border-radius:12px;padding:16px 17px;margin-bottom:14px;box-shadow:0 4px 14px rgba(0,0,0,0.25)}
-.obj-tip-hd{font-size:13px;font-weight:900;text-transform:uppercase;letter-spacing:0.08em;color:#D6B98A;margin-bottom:10px}
-.obj-tip-line{font-size:13px;color:#FFFFFF;line-height:1.65;margin-bottom:8px}
+.obj-tip-stack{position:relative;margin-bottom:26px;margin-top:14px}
+.obj-tip-stack::before{content:"";position:absolute;left:8px;right:2px;bottom:-6px;height:calc(100% - 14px);background:#E8D488;border-radius:2px;transform:rotate(1.4deg);box-shadow:0 6px 14px rgba(0,0,0,0.3);z-index:0}
+.obj-tip-stack::after{content:"";position:absolute;left:16px;right:-2px;bottom:-11px;height:calc(100% - 26px);background:#DCC876;border-radius:2px;transform:rotate(-1.6deg);box-shadow:0 5px 12px rgba(0,0,0,0.28);z-index:-1}
+.obj-tip{background:#F5E6A8;border:none;border-radius:2px;padding:22px 19px 17px;margin-bottom:0;margin-top:0;box-shadow:3px 5px 0 rgba(0,0,0,0.10),0 12px 24px rgba(0,0,0,0.35);transform:rotate(-2.2deg);position:relative;z-index:1;overflow:visible}
+.obj-tip-inner{transform:rotate(2.2deg)}
+.obj-tip::before{content:"";position:absolute;top:-13px;left:50%;margin-left:-9px;width:18px;height:18px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#E57373 0%,#C62828 55%,#8E1F1F 100%);box-shadow:0 3px 5px rgba(0,0,0,0.4);z-index:2}
+.obj-tip-pin-stem{position:absolute;top:5px;left:50%;margin-left:-2px;width:4px;height:11px;background:linear-gradient(90deg,#8A8A8A 0%,#E8E8E8 35%,#B8B8B8 60%,#6A6A6A 100%);clip-path:polygon(0 0,100% 0,60% 100%,40% 100%);z-index:1;box-shadow:0 1px 2px rgba(0,0,0,0.3)}
+.obj-tip-hd{font-size:13px;font-weight:900;text-transform:uppercase;letter-spacing:0.08em;color:#000000;margin-bottom:10px}
+.obj-tip-line{font-size:13px;color:#000000;line-height:1.65;margin-bottom:8px}
 .obj-tip-line:last-child{margin-bottom:0}
-.obj-tip-compact{background:#35373A !important;border:none !important;border-radius:12px !important;box-shadow:0 3px 10px rgba(0,0,0,0.18) !important;padding:12px 14px !important;margin-bottom:10px !important}
-.obj-tip-compact .obj-tip-hd{background:none !important;display:block !important;color:#D6B98A !important;padding:0 !important;font-size:12px !important;margin-bottom:7px !important}
-.obj-tip-compact .obj-tip-line{color:#FFFFFF !important;font-size:11.5px !important;line-height:1.55 !important;margin-bottom:5px !important}
+.obj-tip-compact{margin-bottom:0 !important;margin-top:0 !important}
+.obj-tip-compact.obj-tip{background:#F5E6A8;border-radius:2px;box-shadow:2px 4px 0 rgba(0,0,0,0.10),0 8px 18px rgba(0,0,0,0.3);padding:16px 15px 14px;transform:rotate(-1.8deg)}
+.obj-tip-compact .obj-tip-inner{transform:rotate(1.8deg)}
+.obj-tip-compact.obj-tip::before{top:-11px;margin-left:-8px;width:16px;height:16px;box-shadow:0 3px 4px rgba(0,0,0,0.4)}
+.obj-tip-compact .obj-tip-pin-stem{top:4px;width:3px;height:9px}
+.obj-tip-compact .obj-tip-hd{background:none !important;display:block !important;color:#000000 !important;padding:0 !important;font-size:12px !important;margin-bottom:7px !important}
+.obj-tip-compact .obj-tip-line{color:#000000 !important;font-size:11.5px !important;line-height:1.55 !important;margin-bottom:5px !important}
 .obj-tip-compact .obj-tip-line:last-child{margin-bottom:0 !important}
 .obj-back-btn{height:34px;padding:0 14px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.85);white-space:nowrap;gap:4px;letter-spacing:0.02em;cursor:pointer}
 .obj-back-title{font-size:16px;font-weight:700;color:#FFF}
@@ -3475,10 +3485,10 @@ function showObj(id){
     `<div class="obj-back-content"><span class="obj-back-ico">${dispIco}</span><span class="obj-back-title">${dispNm}</span></div>`;
 
   // ⑤ Générer le contenu
-  const tipHtml = obj.tip ? `<div class="obj-tip">
-      <div class="obj-tip-hd">💡 Conseils MyDoseUp</div>
+  const tipHtml = obj.tip ? `<div class="obj-tip-stack"><div class="obj-tip"><div class="obj-tip-pin-stem"></div><div class="obj-tip-inner">
+      <div class="obj-tip-hd">Conseils MyDoseUp</div>
       ${obj.tip.map(t=>`<div class="obj-tip-line">${t}</div>`).join('')}
-    </div>` : '';
+    </div></div></div>` : '';
   let html = tipHtml + items.map(s=>card(s,null,false)).join("");
   const subgroups = OBJ_SUBGROUPS[id];
   if(subgroups){
@@ -4918,12 +4928,12 @@ function qzRenderResult(){
       +'<div class="qz-result-title">'+(isFemme?'Femme':'Homme')+' · '+objLabel+' · '+budLabel+'</div>'
       +'<div class="qz-result-meta"><span>'+stack.length+' produits</span></div>'
     +'</div>'
-    +'<div class="obj-tip obj-tip-compact">'
-      +'<div class="obj-tip-hd">💡 Conseils MyDoseUp</div>'
+    +'<div class="obj-tip-stack"><div class="obj-tip obj-tip-compact"><div class="obj-tip-pin-stem"></div><div class="obj-tip-inner">'
+      +'<div class="obj-tip-hd">Conseils MyDoseUp</div>'
       +'<div class="obj-tip-line">Cette sélection est basée sur tes réponses, elle n\'est pas figée et ne remplace pas ton jugement.</div>'
       +'<div class="obj-tip-line">Ne prends pas tout d\'un coup : clique sur chaque nom pour lire la fiche complète et détermine ce qui correspond vraiment à ton besoin.</div>'
       +'<div class="obj-tip-line">Essentiel = le plus prioritaire, Actif = un bon complément, Bonus = optionnel pour aller plus loin.</div>'
-    +'</div>'
+    +'</div></div></div>'
     +'<div class="qz-stack">'+suppHTML+'</div>'
     +'<div class="qz-actions">'
       +'<button class="qz-btn-restart" id="qz-restart-btn">Recommencer l\'analyse</button>'
