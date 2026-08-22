@@ -390,7 +390,36 @@ body.F .az-letter{background:#1D1E20;color:#DEC49C}
 .header{min-height:auto}
 .logo-pill svg{display:block}
 
-.footer{padding:20px 20px 40px;text-align:center;border-top:1px solid rgba(255,255,255,0.08)}
+.footer{padding:20px 20px 40px;text-align:center;border-top:1px solid rgba(255,255,255,0.08);display:flex;flex-direction:column;align-items:center}
+.footer-brand-mobile{order:1}
+.footer-mobile-nav{order:2}
+.footer-btn-row{order:3}
+.src-btn{order:4}
+.src-panel{order:5}
+.footer-legal-disclaimer{order:6}
+.footer-legal{order:6}
+.footer-credits{order:6}
+.footer-cols-desktop{display:none}
+@media (min-width:701px){
+  .footer-cols-desktop{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;width:100%;margin:0 0 24px;text-align:left;flex-wrap:wrap}
+  .footer-col{flex:1 1 220px;max-width:300px}
+  .footer-col-title{font-size:11px;font-weight:900;letter-spacing:0.1em;text-transform:uppercase;color:#D6B98A;margin-bottom:14px}
+  .footer-col-link{display:block;font-size:13px;color:rgba(255,255,255,0.72);margin-bottom:10px;text-decoration:none;cursor:pointer;background:none;border:none;padding:0;font-family:'DM Sans',sans-serif;text-align:left}
+  .footer-col-link:hover{color:#FFFFFF}
+  .footer-col-text{font-size:13px;color:rgba(255,255,255,0.6);line-height:1.6}
+  .footer-brand-mobile{display:none !important}
+  .footer-btn-row{display:none !important}
+  .footer-legal-btn{display:none !important}
+  .footer-legal{display:none !important}
+  .footer-credits{display:none !important}
+  .footer-subbar-desktop{display:flex !important;justify-content:space-between;align-items:center;width:100%;padding-top:18px;border-top:1px solid rgba(255,255,255,0.08);margin-top:8px}
+  .footer-subbar-text{font-size:12px;color:rgba(255,255,255,0.55);text-align:left}
+  .src-btn{display:none !important}
+  .footer-src-btn-desktop{display:inline-flex !important;padding:7px 12px;border:1px solid rgba(255,255,255,0.15);border-radius:8px;background:transparent;color:rgba(255,255,255,0.6);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;cursor:pointer;font-family:'DM Sans',sans-serif}
+  .footer{text-align:left;max-width:900px;margin:0 auto;padding-left:20px;padding-right:20px}
+}
+.footer-src-btn-desktop{display:none}
+.footer-subbar-desktop{display:none}
 .footer-logo{font-size:22px;font-weight:900;margin-bottom:4px;color:#EDE9DF}
 body.M .footer-logo span{color:inherit;-webkit-text-fill-color:inherit}
 body.F .footer-logo span{color:inherit;-webkit-text-fill-color:inherit}
@@ -1594,7 +1623,7 @@ html{overflow-x:hidden}
     </div>
   </div>
 
-  <div class="page-card">
+  <div class="page-card" id="avertissement-medical">
     <div class="page-card-title">⚕️ Avertissement médical & Responsabilité</div>
     <div class="page-card-txt">
       MyDoseUp® est un <strong style="color:#FFF">guide informatif à titre éducatif uniquement</strong>.<br><br>
@@ -1716,7 +1745,40 @@ html{overflow-x:hidden}
 </div>
 
 <div class="footer">
-  <div style="display:flex;flex-direction:column;align-items:center;gap:8px;margin-bottom:4px">
+  <div class="footer-cols-desktop">
+    <div class="footer-col">
+      <div class="footer-col-title">Marque & Légal</div>
+      <svg width="32" height="32" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Logo MyDoseUp" style="margin-bottom:10px">
+        <defs><clipPath id="capsuleLowerHalfFooterDesk"><rect x="0" y="34" width="64" height="26"/></clipPath></defs>
+        <rect x="18" y="9" width="26" height="48" rx="13" fill="#BC9569" clip-path="url(#capsuleLowerHalfFooterDesk)"/>
+        <rect x="18" y="9" width="26" height="48" rx="13" fill="none" stroke="#BC9569" stroke-width="2.4"/>
+        <line x1="18.7" y1="34" x2="43.3" y2="34" stroke="#5E4A2C" stroke-width="1.1" opacity="0.5" fill="none"/>
+        <line x1="24" y1="39" x2="24" y2="53" stroke="#EDE0C8" stroke-width="1.8" stroke-linecap="round" opacity="0.32" fill="none"/>
+        <path d="M34 16 C37 10, 44 4, 53 4 C52 12, 46 18, 39 20 C36.8 20.6, 35 19.5, 34 16 Z" fill="#D6B98A" stroke="#9C7C52" stroke-width="1.1" stroke-linejoin="round"/>
+        <path d="M35 15.5 L51 6" stroke="#9C7C52" stroke-width="1" stroke-linecap="round" opacity="0.7" fill="none"/>
+      </svg>
+      <div class="footer-col-text">MyDoseUp — Guide des Compléments Alimentaires<br><br>Informations à titre éducatif uniquement.</div>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Navigation</div>
+      <button class="footer-col-link" onclick="navGo('accueil', null)">Guide des actifs</button>
+      <button class="footer-col-link" onclick="openQuiz()">Routine sur-mesure</button>
+      <button class="footer-col-link" onclick="drawerGo('parcours')">Sport & Performance</button>
+      <button class="footer-col-link" onclick="drawerGo('experts')">Sources & Validation</button>
+      <button class="footer-col-link" onclick="navGo('legal', null)">Mentions légales</button>
+      <button class="footer-col-link" onclick="navGo('legal', null);setTimeout(()=>document.getElementById('avertissement-medical').scrollIntoView({behavior:'smooth',block:'start'}),100)">Avertissement médical</button>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Newsletter</div>
+      <div class="footer-col-text" style="margin-bottom:14px">Reste informé des mises à jour scientifiques.</div>
+      <button onclick="showNewsletter()" style="background:#BC9569;border:none;color:#FFF;font-size:12px;font-weight:800;padding:11px 18px;border-radius:10px;cursor:pointer;font-family:'DM Sans',sans-serif;letter-spacing:0.03em">S'inscrire</button>
+    </div>
+  </div>
+  <div class="footer-subbar-desktop">
+    <div class="footer-subbar-text">© 2026 MyDoseUp® · Yanis Bensaadi · contact&#64;mydoseup&#46;com</div>
+    <button class="footer-src-btn-desktop" onclick="document.getElementById('srcPanel').classList.toggle('open')">📖 Sources</button>
+  </div>
+  <div class="footer-brand-mobile" style="display:flex;flex-direction:column;align-items:center;gap:8px;margin-bottom:4px">
   <svg width="48" height="48" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Logo MyDoseUp">
     <defs>
       <clipPath id="capsuleLowerHalfFooter"><rect x="0" y="34" width="64" height="26"/></clipPath>
@@ -1730,21 +1792,24 @@ html{overflow-x:hidden}
   </svg>
   <div style="font-size:20px;font-weight:500;letter-spacing:-0.5px;color:#EDE9DF">My<span style="font-weight:900">Dose</span>Up</div>
 </div>
-  <div class="footer-sub">Guide des Compléments Alimentaires</div>
-  <div class="footer-legal">
-    Informations à titre éducatif uniquement. Consultez un professionnel de santé avant tout usage.<br>
+  <div class="footer-sub footer-brand-mobile">Guide des Compléments Alimentaires</div>
+  <div class="footer-legal-disclaimer footer-brand-mobile" style="font-size:12px;color:rgba(255,255,255,0.55);line-height:1.6;margin-bottom:2px;padding-top:18px;border-top:1px solid rgba(255,255,255,0.08);width:100%;max-width:320px">
+    Informations à titre éducatif uniquement. Consultez un professionnel de santé avant tout usage.
+  </div>
+  <div class="footer-legal" style="font-size:12px;color:rgba(255,255,255,0.55);line-height:1.6">
     © 2026 MyDoseUp® · Yanis Bensaadi · INPI n° 5239885 · Tous droits réservés
   </div>
   <div class="footer-credits">contact&#64;mydoseup&#46;com</div>
-  <div style="margin-top:24px;padding-top:18px;border-top:1px solid rgba(255,255,255,0.08)">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:480px;margin:0 auto 12px">
-      <button onclick="navGo('legal', null)" 
-        style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.72);font-size:11px;font-weight:700;padding:11px 14px;border-radius:10px;cursor:pointer;font-family:'DM Sans',sans-serif;letter-spacing:0.04em;display:flex;align-items:center;justify-content:center;gap:6px;transition:background .15s,border-color .15s">
-        Mentions légales
-      </button>
+  <div class="footer-mobile-nav footer-brand-mobile" style="display:flex;flex-direction:column;align-items:center;gap:12px;margin:4px 0 20px">
+    <button onclick="navGo('accueil', null)" style="background:none;border:none;color:rgba(255,255,255,0.75);font-size:13px;font-family:'DM Sans',sans-serif;cursor:pointer;padding:0">Guide des actifs</button>
+    <button onclick="openQuiz()" style="background:none;border:none;color:rgba(255,255,255,0.75);font-size:13px;font-family:'DM Sans',sans-serif;cursor:pointer;padding:0">Routine sur-mesure</button>
+    <button onclick="navGo('legal', null)" style="background:none;border:none;color:rgba(255,255,255,0.75);font-size:13px;font-family:'DM Sans',sans-serif;cursor:pointer;padding:0">Mentions légales</button>
+  </div>
+  <div style="width:100%;order:3">
+    <div class="footer-btn-row" style="max-width:280px;margin:0 auto 12px">
       <button onclick="showNewsletter()" id="footer-nl-btn"
-        style="background:#BC9569;border:1px solid rgba(255,255,255,0.15);color:#FFF;font-size:11px;font-weight:800;padding:11px 14px;border-radius:10px;cursor:pointer;font-family:'DM Sans',sans-serif;letter-spacing:0.04em;display:flex;align-items:center;justify-content:center;gap:6px;transition:transform .15s">
-        Newsletter
+        style="width:100%;background:#BC9569;border:none;color:#FFF;font-size:13px;font-weight:800;padding:13px 14px;border-radius:12px;cursor:pointer;font-family:'DM Sans',sans-serif;letter-spacing:0.04em;display:flex;align-items:center;justify-content:center;gap:6px;transition:transform .15s">
+        S'inscrire à la Newsletter
       </button>
     </div>
   </div>
