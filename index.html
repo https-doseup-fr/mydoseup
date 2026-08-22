@@ -151,7 +151,7 @@ body.F .tab.on{color:#D6B98A;background:rgba(214,185,138,0.10);border-color:#D6B
 .obj-results{padding:0 14px 14px;display:none}
 .obj-results.on{display:block}
 .obj-back{display:flex;flex-direction:row;align-items:center;gap:10px;padding:10px 0 12px;border-bottom:1px solid rgba(255,255,255,0.08);margin-bottom:12px;cursor:pointer}
-.obj-tip-stack{position:relative;margin:14px 0 26px}
+.obj-tip-stack{position:relative;margin:14px 0 14px}
 .obj-tip{border:none;border-radius:12px;padding:13px 14px;box-shadow:0 4px 14px rgba(0,0,0,0.22);position:relative}
 .obj-tip-hd{font-size:14px;font-weight:900;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px}
 .obj-tip-line{font-size:12px;line-height:1.55;margin-bottom:6px}
@@ -164,7 +164,7 @@ body.F .tab.on{color:#D6B98A;background:rgba(214,185,138,0.10);border-color:#D6B
 .obj-tip-compact .obj-tip-line{color:#FFFFFF !important;font-size:11.5px !important;line-height:1.55 !important;margin-bottom:5px !important}
 .obj-tip-compact .obj-tip-line:last-child{margin-bottom:0 !important}
 @media (min-width:701px){
-  .obj-tip-stack{max-width:380px;margin-left:auto;margin-right:0}
+  .obj-tip-stack{max-width:100%;margin-left:0;margin-right:0}
 }
 .obj-back-btn{height:34px;padding:0 14px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.85);white-space:nowrap;gap:4px;letter-spacing:0.02em;cursor:pointer}
 .obj-back-title{font-size:16px;font-weight:700;color:#FFF}
@@ -390,7 +390,36 @@ body.F .az-letter{background:#1D1E20;color:#DEC49C}
 .header{min-height:auto}
 .logo-pill svg{display:block}
 
-.footer{padding:20px 20px 40px;text-align:center;border-top:1px solid rgba(255,255,255,0.08)}
+.footer{padding:20px 20px 40px;text-align:center;border-top:1px solid rgba(255,255,255,0.08);display:flex;flex-direction:column;align-items:center}
+.footer-brand-mobile{order:1}
+.footer-mobile-nav{order:2}
+.footer-btn-row{order:3}
+.src-btn{order:4}
+.src-panel{order:5}
+.footer-legal-disclaimer{order:6}
+.footer-legal{order:6}
+.footer-credits{order:6}
+.footer-cols-desktop{display:none}
+@media (min-width:701px){
+  .footer-cols-desktop{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;width:100%;margin:0 0 24px;text-align:left;flex-wrap:wrap}
+  .footer-col{flex:1 1 220px;max-width:300px}
+  .footer-col-title{font-size:11px;font-weight:900;letter-spacing:0.1em;text-transform:uppercase;color:#D6B98A;margin-bottom:14px}
+  .footer-col-link{display:block;font-size:13px;color:rgba(255,255,255,0.72);margin-bottom:10px;text-decoration:none;cursor:pointer;background:none;border:none;padding:0;font-family:'DM Sans',sans-serif;text-align:left}
+  .footer-col-link:hover{color:#FFFFFF}
+  .footer-col-text{font-size:13px;color:rgba(255,255,255,0.6);line-height:1.6}
+  .footer-brand-mobile{display:none !important}
+  .footer-btn-row{display:none !important}
+  .footer-legal-btn{display:none !important}
+  .footer-legal{display:none !important}
+  .footer-credits{display:none !important}
+  .footer-subbar-desktop{display:flex !important;justify-content:space-between;align-items:center;width:100%;padding-top:18px;border-top:1px solid rgba(255,255,255,0.08);margin-top:8px}
+  .footer-subbar-text{font-size:12px;color:rgba(255,255,255,0.55);text-align:left}
+  .src-btn{display:none !important}
+  .footer-src-btn-desktop{display:inline-flex !important;padding:7px 12px;border:1px solid rgba(255,255,255,0.15);border-radius:8px;background:transparent;color:rgba(255,255,255,0.6);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;cursor:pointer;font-family:'DM Sans',sans-serif}
+  .footer{text-align:left;max-width:900px;margin:0 auto;padding-left:20px;padding-right:20px}
+}
+.footer-src-btn-desktop{display:none}
+.footer-subbar-desktop{display:none}
 .footer-logo{font-size:22px;font-weight:900;margin-bottom:4px;color:#EDE9DF}
 body.M .footer-logo span{color:inherit;-webkit-text-fill-color:inherit}
 body.F .footer-logo span{color:inherit;-webkit-text-fill-color:inherit}
@@ -442,6 +471,8 @@ img{pointer-events:none;-webkit-user-drag:none;user-drag:none;}
   /* Mobile : drawer menu, pas de nav-bandeau */
   
   .menu-btn{display:flex !important;}
+  /* Mobile : Pour / À noter empilés verticalement pour aérer le texte */
+  .two-col{grid-template-columns:1fr;gap:12px;}
 }
 
 /* ── AZ FAMILLES ── */
@@ -1255,9 +1286,9 @@ html{overflow-x:hidden}
 .drawer-panel{background:#F4EFE6 !important;}
 .drawer-sep{font-size:9px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;color:rgba(0,0,0,0.42);padding:14px 4px 6px;}
 .drawer-sep:first-child{padding-top:4px;}
-.drawer-item{padding:11px 12px !important;border-radius:14px !important;background:transparent !important;border:1px solid rgba(0,0,0,0.08) !important;display:flex;align-items:center;gap:12px !important;cursor:pointer;margin-bottom:3px;transition:background .15s;}
-@media (hover:hover) and (pointer:fine){.drawer-item:hover{background:rgba(0,0,0,0.04) !important;}}
-.drawer-item.active{background:rgba(188,149,105,0.14) !important;border-color:rgba(188,149,105,0.55) !important;}
+.drawer-item{padding:11px 12px !important;border-radius:14px !important;background:#EAE0C8 !important;border:none !important;display:flex;align-items:center;gap:12px !important;cursor:pointer;margin-bottom:3px;transition:background .15s;}
+@media (hover:hover) and (pointer:fine){.drawer-item:hover{background:#E2D5B4 !important;}}
+.drawer-item.active{background:#DEC49C !important;border:none !important;}
 .drawer-ico{width:42px !important;height:42px !important;border-radius:11px !important;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
 .drawer-text{flex:1;min-width:0;}
 .drawer-nm{font-size:14px !important;font-weight:700 !important;color:#2B2620 !important;line-height:1.25;}
@@ -1594,7 +1625,7 @@ html{overflow-x:hidden}
     </div>
   </div>
 
-  <div class="page-card">
+  <div class="page-card" id="avertissement-medical">
     <div class="page-card-title">⚕️ Avertissement médical & Responsabilité</div>
     <div class="page-card-txt">
       MyDoseUp® est un <strong style="color:#FFF">guide informatif à titre éducatif uniquement</strong>.<br><br>
@@ -1706,8 +1737,9 @@ html{overflow-x:hidden}
 
   </nav>
 
-  <div style="padding:12px 16px 24px">
-    <button onclick="closeDrawer();showNewsletter();" style="width:100%;padding:14px;border-radius:12px;border:1.5px solid #BC9569;background:rgba(188,149,105,0.12);color:#8A6633;font-size:14px;font-weight:800;cursor:pointer;font-family:'DM Sans',sans-serif;letter-spacing:0.03em;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:none">
+  <div style="padding:12px 16px 32px">
+    <button onclick="closeDrawer();showNewsletter();" style="width:100%;padding:14px;border-radius:14px;border:none;background:#DEC49C;color:#5A4020;font-size:14px;font-weight:800;cursor:pointer;font-family:'DM Sans',sans-serif;letter-spacing:0.03em;display:flex;align-items:center;justify-content:center;gap:10px;box-shadow:none">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5A4020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M22 6l-10 7L2 6"></path></svg>
       S'inscrire à la Newsletter
     </button>
   </div>
@@ -1715,7 +1747,40 @@ html{overflow-x:hidden}
 </div>
 
 <div class="footer">
-  <div style="display:flex;flex-direction:column;align-items:center;gap:8px;margin-bottom:4px">
+  <div class="footer-cols-desktop">
+    <div class="footer-col">
+      <div class="footer-col-title">Marque & Légal</div>
+      <svg width="32" height="32" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Logo MyDoseUp" style="margin-bottom:10px">
+        <defs><clipPath id="capsuleLowerHalfFooterDesk"><rect x="0" y="34" width="64" height="26"/></clipPath></defs>
+        <rect x="18" y="9" width="26" height="48" rx="13" fill="#BC9569" clip-path="url(#capsuleLowerHalfFooterDesk)"/>
+        <rect x="18" y="9" width="26" height="48" rx="13" fill="none" stroke="#BC9569" stroke-width="2.4"/>
+        <line x1="18.7" y1="34" x2="43.3" y2="34" stroke="#5E4A2C" stroke-width="1.1" opacity="0.5" fill="none"/>
+        <line x1="24" y1="39" x2="24" y2="53" stroke="#EDE0C8" stroke-width="1.8" stroke-linecap="round" opacity="0.32" fill="none"/>
+        <path d="M34 16 C37 10, 44 4, 53 4 C52 12, 46 18, 39 20 C36.8 20.6, 35 19.5, 34 16 Z" fill="#D6B98A" stroke="#9C7C52" stroke-width="1.1" stroke-linejoin="round"/>
+        <path d="M35 15.5 L51 6" stroke="#9C7C52" stroke-width="1" stroke-linecap="round" opacity="0.7" fill="none"/>
+      </svg>
+      <div class="footer-col-text">MyDoseUp — Guide des Compléments Alimentaires<br><br>Informations à titre éducatif uniquement.</div>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Navigation</div>
+      <button class="footer-col-link" onclick="navGo('accueil', null)">Guide des actifs</button>
+      <button class="footer-col-link" onclick="openQuiz()">Routine sur-mesure</button>
+      <button class="footer-col-link" onclick="drawerGo('parcours')">Sport & Performance</button>
+      <button class="footer-col-link" onclick="drawerGo('experts')">Sources & Validation</button>
+      <button class="footer-col-link" onclick="navGo('legal', null)">Mentions légales</button>
+      <button class="footer-col-link" onclick="navGo('legal', null);setTimeout(()=>document.getElementById('avertissement-medical').scrollIntoView({behavior:'smooth',block:'start'}),100)">Avertissement médical</button>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Newsletter</div>
+      <div class="footer-col-text" style="margin-bottom:14px">Reste informé des mises à jour scientifiques.</div>
+      <button onclick="showNewsletter()" style="background:#BC9569;border:none;color:#FFF;font-size:12px;font-weight:800;padding:11px 18px;border-radius:10px;cursor:pointer;font-family:'DM Sans',sans-serif;letter-spacing:0.03em">S'inscrire</button>
+    </div>
+  </div>
+  <div class="footer-subbar-desktop">
+    <div class="footer-subbar-text">© 2026 MyDoseUp® · Yanis Bensaadi · contact&#64;mydoseup&#46;com</div>
+    <button class="footer-src-btn-desktop" onclick="document.getElementById('srcPanel').classList.toggle('open')">📖 Sources</button>
+  </div>
+  <div class="footer-brand-mobile" style="display:flex;flex-direction:column;align-items:center;gap:8px;margin-bottom:4px">
   <svg width="48" height="48" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Logo MyDoseUp">
     <defs>
       <clipPath id="capsuleLowerHalfFooter"><rect x="0" y="34" width="64" height="26"/></clipPath>
@@ -1729,21 +1794,24 @@ html{overflow-x:hidden}
   </svg>
   <div style="font-size:20px;font-weight:500;letter-spacing:-0.5px;color:#EDE9DF">My<span style="font-weight:900">Dose</span>Up</div>
 </div>
-  <div class="footer-sub">Guide des Compléments Alimentaires</div>
-  <div class="footer-legal">
-    Informations à titre éducatif uniquement. Consultez un professionnel de santé avant tout usage.<br>
+  <div class="footer-sub footer-brand-mobile">Guide des Compléments Alimentaires</div>
+  <div class="footer-legal-disclaimer footer-brand-mobile" style="font-size:12px;color:rgba(255,255,255,0.55);line-height:1.6;margin-bottom:2px;padding-top:18px;border-top:1px solid rgba(255,255,255,0.08);width:100%;max-width:320px">
+    Informations à titre éducatif uniquement. Consultez un professionnel de santé avant tout usage.
+  </div>
+  <div class="footer-legal" style="font-size:12px;color:rgba(255,255,255,0.55);line-height:1.6">
     © 2026 MyDoseUp® · Yanis Bensaadi · INPI n° 5239885 · Tous droits réservés
   </div>
   <div class="footer-credits">contact&#64;mydoseup&#46;com</div>
-  <div style="margin-top:24px;padding-top:18px;border-top:1px solid rgba(255,255,255,0.08)">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:480px;margin:0 auto 12px">
-      <button onclick="navGo('legal', null)" 
-        style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.72);font-size:11px;font-weight:700;padding:11px 14px;border-radius:10px;cursor:pointer;font-family:'DM Sans',sans-serif;letter-spacing:0.04em;display:flex;align-items:center;justify-content:center;gap:6px;transition:background .15s,border-color .15s">
-        Mentions légales
-      </button>
+  <div class="footer-mobile-nav footer-brand-mobile" style="display:flex;flex-direction:column;align-items:center;gap:12px;margin:4px 0 20px">
+    <button onclick="navGo('accueil', null)" style="background:none;border:none;color:rgba(255,255,255,0.75);font-size:13px;font-family:'DM Sans',sans-serif;cursor:pointer;padding:0">Guide des actifs</button>
+    <button onclick="openQuiz()" style="background:none;border:none;color:rgba(255,255,255,0.75);font-size:13px;font-family:'DM Sans',sans-serif;cursor:pointer;padding:0">Routine sur-mesure</button>
+    <button onclick="navGo('legal', null)" style="background:none;border:none;color:rgba(255,255,255,0.75);font-size:13px;font-family:'DM Sans',sans-serif;cursor:pointer;padding:0">Mentions légales</button>
+  </div>
+  <div style="width:100%;order:3">
+    <div class="footer-btn-row" style="max-width:280px;margin:0 auto 12px">
       <button onclick="showNewsletter()" id="footer-nl-btn"
-        style="background:#BC9569;border:1px solid rgba(255,255,255,0.15);color:#FFF;font-size:11px;font-weight:800;padding:11px 14px;border-radius:10px;cursor:pointer;font-family:'DM Sans',sans-serif;letter-spacing:0.04em;display:flex;align-items:center;justify-content:center;gap:6px;transition:transform .15s">
-        Newsletter
+        style="width:100%;background:#BC9569;border:none;color:#FFF;font-size:13px;font-weight:800;padding:13px 14px;border-radius:12px;cursor:pointer;font-family:'DM Sans',sans-serif;letter-spacing:0.04em;display:flex;align-items:center;justify-content:center;gap:6px;transition:transform .15s">
+        S'inscrire à la Newsletter
       </button>
     </div>
   </div>
@@ -2207,6 +2275,66 @@ const DATA = [
   prec:"Sans risque de toxicité connu, même à haute dose, l\'excès étant éliminé par les reins. Les personnes traitées au long cours par metformine (diabète), par IPP ou anti-acides (reflux), ou par certains antibiotiques peuvent développer une carence car ces traitements réduisent l\'absorption de la B12 : ce n\'est pas une contre-indication à en prendre, mais plutôt une bonne raison de faire vérifier son taux avec un médecin.",
   food:["🦪 Palourdes (98µg/100g)","🥩 Foie de boeuf","🐟 Sardines, saumon","🥚 Oeufs, laitages","🌱 Végétal : aucune source fiable"]},
 
+ {nm:"Vitamine B9 (Folate, 5-MTHF)",kw:"vitamine b9 folate acide folique grossesse homocystéine anémie 5-mthf",tag:"Essentielle Grossesse",c:"var(--energie)",dispo:1,where:"Pharmacie, supermarché bio, Amazon",forme:"both",gender:"MF",
+  objectifs:["grossesse","cerveau","coeur","anemie"],
+  fn:"Vitamine essentielle à la division cellulaire et à la formation des globules rouges. Un apport suffisant avant la conception et en début de grossesse limite le risque d\'anomalies de fermeture du tube neural chez le foetus. Intervient aussi dans le métabolisme de l\'homocystéine, un marqueur associé au risque cardiovasculaire.",
+  plus:["Contribue à réduire le risque d\'anomalies du tube neural en cas de supplémentation avant et en début de grossesse","Participe à la formation normale des globules rouges et peut aider en cas d\'anémie par carence en folates","Contribue à la réduction de la fatigue (allégation EFSA)","Peut contribuer à abaisser l\'homocystéine sanguine, un marqueur associé au risque cardiovasculaire, en association avec la B12"],
+  moins:["Une carence peut être masquée par une carence en B12 associée (anémie corrigée en apparence, mais atteinte neurologique non détectée)","La forme 5-MTHF est recommandée pour les personnes porteuses d\'une variante du gène MTHFR, plus fréquente qu\'on ne le pense","Une supplémentation à dose élevée avant un dosage sanguin peut compliquer le diagnostic d\'une carence en B12"],
+  dose:[["Apport nutritionnel recommandé (ANSES)","330µg/j en équivalents folates alimentaires (EFA) chez l\'adulte, un repère nutritionnel et non un dosage de complément"],["Apport recommandé en projet de grossesse et grossesse (ANSES)","600µg/j EFA, une supplémentation à débuter idéalement avant la conception"],["Dose couramment utilisée en complément (5-MTHF)","400-800µg/j, la forme méthylée ne nécessitant pas la conversion hépatique requise pour l\'acide folique de synthèse"],["Limite supérieure de sécurité (EFSA, acide folique/5-MTHF)","1000µg/j chez l\'adulte, y compris femme enceinte et allaitante"],["Forme","5-MTHF (méthylfolate) à privilégier plutôt que l\'acide folique de synthèse"]],
+  hM:"Contribue au métabolisme de l\'homocystéine avec la B12 et la B6, un point parfois suivi chez les hommes ayant des antécédents familiaux cardiovasculaires. Pas de rôle spécifique démontré par ailleurs.",
+  hF:"Nutriment surveillé en priorité chez les femmes en âge de procréer : l\'ANSES recommande une supplémentation à 400µg/j dès le projet de grossesse ou l\'arrêt de la contraception, et jusqu\'à la fin du premier trimestre, pour réduire le risque d\'anomalies du tube neural chez le foetus. Les femmes ayant déjà eu une grossesse concernée par ce type d\'anomalie relèvent d\'un protocole à dose plus élevée, sur prescription médicale uniquement.",
+  syn:{abs:["Vitamine B12 (cofacteur du même cycle métabolique, à associer pour éviter de masquer une carence)"],pot:["Vitamine B6","Fer"],inutile:[]},
+  prec:"Sans toxicité connue aux doses nutritionnelles ou aux doses courantes de complémentation, l\'excès étant éliminé par les reins. Le principal risque de la vitamine B9 en excès n\'est pas une toxicité directe mais un effet masquant : une supplémentation à dose élevée peut normaliser l\'aspect des globules rouges en cas de carence en B12 sous-jacente, sans corriger l\'atteinte neurologique associée, ce qui retarde le diagnostic. C\'est pourquoi les deux vitamines sont souvent associées. Les personnes suivant un traitement par méthotrexate ou par certains antiépileptiques doivent demander l\'avis de leur médecin avant toute supplémentation, ces traitements interagissant directement avec le métabolisme des folates.",
+  food:["🥬 Épinards, mâche, roquette","🫘 Lentilles, pois chiches","🍊 Foie, orange, melon","🌾 Levure de bière","🥑 Avocat"]},
+
+ {nm:"Calcium (Citrate/Bisglycinate)",kw:"calcium os ossature dentition citrate bisglycinate carbonate absorption",tag:"Essentiel Os",c:"var(--os)",dispo:1,where:"Pharmacie, supermarché bio, Amazon (privilégier citrate ou bisglycinate plutôt que carbonate)",forme:"both",gender:"MF",
+  objectifs:["articulations","menopause"],
+  fn:"Minéral principal de la structure osseuse et dentaire, également impliqué dans la contraction musculaire, la coagulation et la transmission nerveuse. La majorité des apports provient de l\'alimentation ; la supplémentation vise surtout à compléter un déficit plutôt qu\'à remplacer les apports alimentaires.",
+  plus:["Contribue au maintien d\'une ossature et d\'une dentition normales","Participe à la fonction musculaire et à la coagulation sanguine normales","Le citrate et le bisglycinate sont mieux absorbés que le carbonate, en particulier chez les personnes à faible acidité gastrique (âge avancé, traitement par IPP)","Peut être pertinent en complément d\'un apport alimentaire insuffisant, notamment en cas d\'éviction des produits laitiers"],
+  moins:["Peu utile en excès : au-delà des besoins réels, l\'organisme n\'absorbe pas le surplus et l\'ajout ne renforce pas davantage l\'os","Le carbonate de calcium nécessite une bonne acidité gastrique pour être absorbé, contrairement au citrate","Une supplémentation isolée sans vitamine D et K2 est moins efficace pour la fixation osseuse"],
+  dose:[["Apport nutritionnel recommandé (ANSES)","950mg/j chez l\'adulte de plus de 25 ans, sans distinction après 50 ans. La référence tient compte de l\'ensemble des apports, alimentation et compléments confondus"],["Dose couramment utilisée en complément","300-600mg/j, en complément d\'un apport alimentaire estimé plutôt qu\'en superposition systématique de la référence ANSES"],["Limite supérieure de sécurité (EFSA/ANSES)","2500mg/j tous apports confondus (alimentation et compléments). Au-delà, risque accru d\'hypercalciurie et de lithiase rénale chez les personnes prédisposées"],["Forme","Citrate ou bisglycinate de calcium, mieux absorbés que le carbonate"],["Timing","Fractionner en 2 prises au-delà de 500mg, l\'absorption intestinale saturant au-delà de cette quantité par prise unique"]],
+  hM:"Pas de spécificité propre, le besoin restant stable à l\'âge adulte. Les hommes pratiquant une activité d\'endurance à forte transpiration peuvent avoir des pertes légèrement supérieures, sans que cela justifie une supplémentation systématique.",
+  hF:"Le sujet est régulièrement associé à la ménopause, mais l\'ANSES n\'a pas retenu de référence nutritionnelle augmentée après la ménopause : les études de supplémentation calcique seule n\'ont pas montré de réduction significative de la perte de densité osseuse ni du risque de fracture chez la femme ménopausée. La vitamine D et l\'activité physique en charge restent les leviers les mieux documentés pour la santé osseuse à cette période. Pendant la grossesse, les besoins ne sont pas majorés selon l\'ANSES, l\'absorption intestinale du calcium augmentant naturellement.",
+  syn:{abs:["Vitamine D3 (indispensable à l\'absorption intestinale du calcium)"],pot:["Vitamine K2 (oriente le calcium vers l\'os plutôt que les tissus mous)","Magnésium"],inutile:["Fer (à décaler de quelques heures, le calcium réduisant son absorption)"]},
+  prec:"Ne pas dépasser 2500mg/j tous apports confondus : au-delà, le risque de calculs rénaux augmente chez les personnes prédisposées, et certaines études suggèrent un lien entre supplémentation calcique isolée à haute dose et événements cardiovasculaires, un point qui reste débattu dans la littérature. Les personnes ayant des antécédents de lithiase rénale calcique, d\'hyperparathyroïdie ou de sarcoïdose doivent demander un avis médical avant toute supplémentation. Prendre le calcium à distance des repas riches en fer ou d\'un complément de fer, ces deux minéraux entrant en compétition pour l\'absorption intestinale.",
+  food:["🥛 Produits laitiers (lait, yaourt, fromage)","💧 Eaux minérales calciques (>300mg/L)","🥬 Chou frisé, chou vert","🐟 Sardines avec arêtes","🌰 Amandes"]},
+
+ {nm:"Vitamine B6 (P5P)",kw:"vitamine b6 p5p pyridoxal phosphate spm nausées grossesse système nerveux",tag:"Essentielle",c:"var(--mental)",dispo:1,where:"Pharmacie, supermarché bio, Amazon",forme:"both",gender:"MF",
+  objectifs:["cerveau","mental","cycle","grossesse"],
+  fn:"Vitamine impliquée dans la synthèse des neurotransmetteurs (sérotonine, dopamine, GABA), le métabolisme des protéines et la formation des globules rouges. Souvent utilisée en cas de troubles de l\'humeur légers liés au cycle menstruel ou de nausées de grossesse, avec des données d\'efficacité inégales selon les indications.",
+  plus:["Contribue au fonctionnement normal du système nerveux et à des fonctions psychologiques normales (allégations EFSA)","Peut atténuer des nausées légères en début de grossesse selon certaines études, en complément d\'autres mesures","Participe à la réduction de la fatigue et au métabolisme normal des protéines","Souvent associée au magnésium dans les compléments ciblant le syndrome prémenstruel, avec des données encore limitées sur cette association spécifique"],
+  moins:["Longtemps considérée comme 'sans risque à forte dose', ce qui n\'est plus le cas depuis la révision de la limite de sécurité par l\'EFSA en 2023","Des cas de neuropathie périphérique ont été rapportés à des doses de complémentation aussi basses que 40 à 100mg/j en prise prolongée","De nombreux produits du marché contiennent encore des dosages dépassant largement la nouvelle limite de sécurité"],
+  dose:[["Apport de référence (ANSES/EFSA)","1,7mg/j chez l\'homme adulte, 1,6mg/j chez la femme adulte"],["Dose couramment utilisée en complément (P5P)","5-10mg/j, largement suffisant pour couvrir un déficit sans s\'approcher de la limite de sécurité"],["Limite supérieure de sécurité (EFSA, révisée en 2023)","12mg/j chez l\'adulte, y compris femme enceinte et allaitante. Cette limite a été divisée par deux par rapport à l\'ancienne valeur de 25mg/j, sur la base de cas de neuropathie périphérique documentés"],["Forme","P5P (pyridoxal-5-phosphate), forme active ne nécessitant pas de conversion hépatique"]],
+  hM:"Pas de spécificité propre démontrée. Intervient comme les autres vitamines du groupe B dans le métabolisme énergétique général.",
+  hF:"Vitamine fréquemment proposée dans les compléments ciblant le syndrome prémenstruel (irritabilité, rétention d\'eau, sensibilité mammaire), souvent associée au magnésium, avec des données d\'efficacité encore hétérogènes selon les études. Également utilisée en début de grossesse contre les nausées, sur avis médical et à dose modérée uniquement : rester au plus près des dosages recommandés est particulièrement important pendant cette période.",
+  syn:{abs:[],pot:["Magnésium (association courante ciblant le syndrome prémenstruel)","Vitamine B9 / B12 (cycle de l\'homocystéine)"],inutile:[]},
+  prec:"Contrairement à une idée longtemps répandue, la vitamine B6 n\'est pas sans risque à forte dose : l\'EFSA a divisé par deux sa limite supérieure de sécurité en 2023, la fixant à 12mg/j, sur la base de cas de neuropathie périphérique (fourmillements, perte de sensibilité) observés à des doses de complément parfois inférieures à 100mg/j en prise prolongée. Il est donc recommandé de vérifier le dosage total de vitamine B6 apporté par l\'ensemble des compléments pris simultanément (multivitamines, complexe B, boissons énergisantes) et de rester au plus proche de la dose couramment utilisée plutôt que de rechercher des dosages élevés. Les symptômes de neuropathie sont le plus souvent réversibles à l\'arrêt de la supplémentation, mais peuvent mettre plusieurs mois à régresser.",
+  food:["🍗 Volaille, poisson","🥔 Pomme de terre","🫘 Pois chiches","🍌 Banane","🌾 Céréales complètes"]},
+
+ {nm:"Complexe B (B1, B2, B3, B5)",kw:"complexe b vitamine b1 b2 b3 b5 thiamine riboflavine niacine acide pantothénique énergie stress",tag:"Énergie & Métabolisme",c:"var(--energie)",dispo:1,where:"Pharmacie, supermarché bio, Amazon",forme:"both",gender:"MF",
+  objectifs:["perf","mental","cerveau"],
+  fn:"Regroupement de quatre vitamines B impliquées dans le métabolisme énergétique cellulaire : thiamine (B1), riboflavine (B2), niacine (B3) et acide pantothénique (B5). Elles agissent comme cofacteurs de nombreuses réactions productrices d\'énergie et sont souvent proposées ensemble plutôt qu\'isolément, faute de demande spécifique pour chacune séparément.",
+  plus:["Contribuent toutes les quatre à un métabolisme énergétique normal et à la réduction de la fatigue (allégations EFSA)","La B1 participe au fonctionnement normal du système nerveux","La B2 contribue au maintien de globules rouges normaux et à la protection des cellules contre le stress oxydatif","La B3 (niacine) participe au maintien d\'une peau et de muqueuses normales, en plus de son rôle énergétique","La B5 intervient dans la synthèse de la coenzyme A, centrale dans le métabolisme des glucides, protéines et lipides"],
+  moins:["Peu d\'intérêt en cas d\'alimentation variée : les carences isolées en B1, B2 ou B5 sont rares en population générale","La B3 sous forme d\'acide nicotinique (et non de nicotinamide) peut provoquer un flush cutané (rougeurs, chaleur) dès 30 à 50mg","À très haute dose et sur le long terme, la B3 présente un risque de toxicité hépatique, sans rapport avec les doses nutritionnelles courantes"],
+  dose:[["Apport de référence B1 (ANSES)","1,3mg/j homme, 1,1mg/j femme"],["Apport de référence B2 (ANSES/EFSA)","1,6mg/j homme, 1,3mg/j femme"],["Apport de référence B3 (ANSES/EFSA, en équivalents niacine)","14-16mg/j selon le sexe"],["Apport de référence B5 (ANSES)","5,8mg/j homme, 4,7mg/j femme"],["Limite de sécurité B3 (EFSA)","900mg/j pour le nicotinamide (forme sans flush), mais seulement 10mg/j pour l\'acide nicotinique libre : c\'est la forme utilisée qui détermine la limite, pas seulement la quantité"],["B1, B2, B5","Aucune limite supérieure de sécurité établie par l\'EFSA, la marge de sécurité étant jugée très large pour ces trois vitamines"],["Forme de B3 à privilégier","Nicotinamide (niacinamide), qui ne provoque pas de flush, plutôt que l\'acide nicotinique"]],
+  hM:"Pas de spécificité propre démontrée. Les sportifs à forte dépense énergétique ont des besoins légèrement supérieurs, généralement couverts par l\'augmentation naturelle de l\'apport alimentaire liée à un appétit plus élevé.",
+  hF:"Pas de spécificité propre démontrée en dehors de la grossesse et de l\'allaitement, périodes où les besoins en B1, B2 et B3 augmentent légèrement et sont couverts par un supplément prénatal adapté plutôt que par un complexe B généraliste.",
+  syn:{abs:[],pot:["Magnésium (cofacteur commun de nombreuses réactions énergétiques)","Fer (en cas de fatigue associée)"],inutile:["Vitamine B12 et B9 (déjà présentes dans la plupart des compléments 'complexe B' complets, à vérifier sur la composition pour éviter les doublons)"]},
+  prec:"La B1, la B2 et la B5 sont considérées comme sûres même à doses élevées, l\'excès étant éliminé par les reins sans toxicité documentée aux doses de complémentation courantes. La B3 fait exception et demande plus d\'attention : sous forme d\'acide nicotinique, elle provoque un flush cutané transitoire (rougeurs, sensation de chaleur) dès 30 à 50mg chez les personnes sensibles, un effet inconfortable mais sans danger qui disparaît en général en 20 à 30 minutes. Au-delà de 1 à 3g/j, quelle que soit la forme, un risque de toxicité hépatique existe et nécessite un suivi médical ; ce niveau de dose est sans rapport avec celui d\'un complément multivitaminé courant. Choisir la forme nicotinamide permet d\'éviter le flush tout en conservant l\'activité vitaminique.",
+  food:["🌾 Levure de bière, céréales complètes","🥩 Viande, abats","🥚 Œufs, produits laitiers","🫘 Légumineuses","🥜 Oléagineux"]},
+
+ {nm:"Vitamine E (Tocophérol)",kw:"vitamine e tocophérol antioxydant peau cellules vieillissement",tag:"Antioxydant",c:"var(--anti)",dispo:1,where:"Pharmacie, supermarché bio, Amazon",forme:"both",gender:"MF",
+  objectifs:["anti","peau","coeur"],
+  fn:"Vitamine liposoluble antioxydante qui protège les membranes cellulaires contre l\'oxydation des acides gras polyinsaturés. L\'alimentation (huiles végétales, oléagineux) couvre généralement les besoins ; les grands essais cliniques n\'ont pas confirmé les bénéfices préventifs longtemps attribués à la supplémentation chez la personne en bonne santé.",
+  plus:["Contribue à la protection des cellules contre le stress oxydatif (allégation EFSA)","Participe au fonctionnement normal du système immunitaire","Les besoins augmentent avec la consommation d\'acides gras polyinsaturés (oméga-3, oméga-6), qu\'elle contribue à protéger de l\'oxydation","La carence, rare en population générale, évoque surtout une malabsorption des graisses plutôt qu\'un déficit alimentaire simple"],
+  moins:["Les grands essais cliniques (cardiovasculaire, cancer) n\'ont pas montré de bénéfice de la supplémentation chez l\'adulte en bonne santé sans déficit avéré","La forme synthétique (DL-alpha-tocophérol) est moins bien utilisée par l\'organisme que la forme naturelle (D-alpha-tocophérol)","À dose élevée, peut interférer avec la coagulation sanguine, un point de vigilance sous traitement anticoagulant"],
+  dose:[["Apport satisfaisant (ANSES)","10mg/j chez l\'homme adulte, 9mg/j chez la femme adulte, en équivalents alpha-tocophérol"],["Dose couramment utilisée en complément","100-268mg/j, soit environ 150-400 UI. Au-delà, aucun bénéfice supplémentaire démontré chez la personne sans déficit"],["Limite supérieure de sécurité (EFSA, confirmée en 2024)","300mg/j chez l\'adulte, en raison d\'un risque hémorragique au-delà. Cette limite ne s\'applique pas aux personnes sous traitement anticoagulant ou antiplaquettaire, pour qui un seuil bien plus bas s\'impose sur avis médical"],["Forme à privilégier","D-alpha-tocophérol (forme naturelle) plutôt que DL-alpha-tocophérol (forme synthétique)"]],
+  hM:"Pas de spécificité propre démontrée. Les études cardiovasculaires menées chez l\'homme n\'ont pas montré de bénéfice de la supplémentation isolée en prévention chez le sujet sans déficit.",
+  hF:"Pas de spécificité propre démontrée. La vitamine E est parfois proposée en application cutanée pour ses propriétés antioxydantes locales, un usage distinct de la supplémentation orale et qui ne repose pas sur les mêmes données.",
+  syn:{abs:[],pot:["Vitamine C (régénère la forme active de la vitamine E après son action antioxydante)","Sélénium (cofacteur d\'autres systèmes antioxydants complémentaires)"],inutile:[]},
+  prec:"Sans risque aux doses nutritionnelles ou aux doses courantes de complémentation. Au-delà de 300mg/j, un risque hémorragique existe car la vitamine E à haute dose peut interférer avec l\'agrégation plaquettaire et le métabolisme de la vitamine K. Ce point de vigilance concerne particulièrement les personnes sous anticoagulants (warfarine notamment) ou antiplaquettaires, ou présentant une carence en vitamine K, pour qui un avis médical est nécessaire avant toute supplémentation, y compris à dose modérée. Il est recommandé d\'arrêter la supplémentation avant une intervention chirurgicale programmée, selon les délais indiqués par le chirurgien ou l\'anesthésiste.",
+  food:["🌻 Huile de germe de blé, huile de tournesol","🌰 Amandes, noisettes","🥑 Avocat","🥬 Épinards","🐟 Huile de foie de morue"]},
+
  {nm:"Zinc Bisglycinate",kw:"zinc acne acné testostérone immunité cheveux peau libido",tag:"Essentiel",c:"var(--testo)",dispo:1,where:"Pharmacie, supermarché, boutique fitness, Amazon",forme:"both",gender:"MF",
   objectifs:["testo","peau","cheveux","immun","muscu","libido","acne","cycle"],
   fn:"Minéral essentiel à la testostérone, l\'immunité et la santé de la peau. Les sportifs en perdent beaucoup par la transpiration. La forme bisglycinate est bien tolérée et bien absorbée.",
@@ -2631,12 +2759,18 @@ const PROTEINES = [
   moins:["Absorption lente (pas idéale post-séance)","Texture épaisse","Contient lactose"],
   dose:[["Protéines/dose","75-80%"],["Dose","30-40g avant coucher"],["Timing","Le soir uniquement, inutile en journée"],["Pour qui","Masse musculaire, anti-catabolisme nocturne"]],
   food:"Fromage blanc 0%, skyr, yaourt grec = caséine native naturelle. excellent choix."},
- {nm:"Whey Native (Isolat Natif)",tag:"Premium Naturel",c:"var(--protein)",dispo:2,
-  fn:"Protéine extraite directement du lait frais (microfiltration à froid), sans passer par le processus de fabrication du fromage. Profil d'acides aminés supérieur, leucine très élevée (11%), quasi sans lactose. La forme la plus proche de la protéine naturelle du lait.",
-  plus:["Leucine élevée (11%, déclencheur anabolique optimal)","Très faible lactose (<1%)","Profil BCAA supérieur à la whey classique","Sans arômes ajoutés possible (naturelle)","Absorption rapide et complète"],
-  moins:["Plus coûteuse que la concentrée","Moins disponible en France","Goût naturellement plus doux (moins gourmand)"],
-  dose:[["Protéines/dose","90-95%"],["Dose","25-30g post-séance"],["Prix","~40-55€/kg"],["Pour qui","Sportifs exigeants, intolérance légère lactose, recherche de naturalité"]],
+ {nm:"Whey Native",tag:"Premium Naturel",c:"var(--protein)",dispo:2,
+  fn:"Protéine extraite directement du lait frais par microfiltration à froid, sans passer par le processus de fabrication du fromage (contrairement à la whey classique, sous-produit du fromage). Ce procédé préserve mieux la structure des protéines natives et atteint généralement une pureté proche de l'isolat, avec un profil d'acides aminés considéré supérieur.",
+  plus:["Leucine élevée (11%, déclencheur anabolique optimal)","Très faible lactose (<1%) grâce à la pureté atteinte par le procédé","Profil BCAA supérieur à la whey classique","Sans arômes ajoutés possible (naturelle)","Absorption rapide et complète"],
+  moins:["Plus coûteuse que la whey isolat classique ou concentrée","Moins disponible en France","Goût naturellement plus doux (moins gourmand)"],
+  dose:[["Protéines/dose","90-95%"],["Dose","25-30g post-séance"],["Prix","~40-55€/kg"],["Pour qui","Sportifs exigeants, intolérance légère au lactose, recherche de naturalité"]],
   food:"4 oeufs ou 120g thon = protéines équivalentes mais absorption moins rapide post-séance."},
+ {nm:"Whey Concentrée (WPC)",tag:"Classique & Accessible",c:"var(--protein)",dispo:1,
+  fn:"Forme la moins transformée de la whey, obtenue directement à partir du lactosérum sans étape de purification poussée. Contient davantage de lactose et de matières grasses que l'isolat, mais reste la version la plus vendue et souvent la plus abordable.",
+  plus:["Prix généralement inférieur à l'isolat","Goût souvent jugé plus gourmand grâce aux graisses résiduelles","Conserve certains composés bioactifs du lactosérum (immunoglobulines, lactoferrine) en plus grande quantité que l'isolat","Largement disponible en supermarché et boutiques de sport"],
+  moins:["Teneur en lactose plus élevée (environ 4 à 8g pour 100g de poudre), à surveiller en cas de sensibilité digestive ou de problèmes de digestion fréquents","Pourcentage de protéines plus faible que l'isolat (70 à 80% contre 90%+)","Digestion un peu plus lente, moins adaptée pour qui recherche l'absorption la plus rapide en post-effort immédiat"],
+  dose:[["Protéines/dose","70-80%"],["Dose","25-30g post-séance ou en complément des repas"],["Prix","~20-30€/kg"],["Pour qui","Usage général, budget serré, tolérance normale au lactose"]],
+  food:"4 oeufs ou 100g thon = protéines équivalentes, avec une absorption post-effort moins rapide."},
  {nm:"Protéine de Pois (Isolat)",fn:"Protéine végétale extraite du pois jaune, naturellement sans lactose, sans gluten et sans allergènes majeurs. Profil BCAA complet, digestibilité excellente (score de qualité protéique (PDCAAS) 0,93). Idéale pour les véganes ou les intolérants au lactose.",tag:"Végane",c:"var(--protein)",dispo:2,
   plus:["Végane 100%","Profil BCAA correct","Digestibilité excellente","Sans allergènes majeurs"],
   moins:["Leucine inférieure à la whey","Méthionine plus faible","Goût terreux naturel"],
@@ -2802,6 +2936,11 @@ const FAM_MAP = {
   "Hydratation & Électrolytes":         "Vitamines & Minéraux",
   "Thyroïde (Iode + Sélénium)": "Vitamines & Minéraux",
   "Berbérine":                          "Vitamines & Minéraux",
+  "Vitamine B9 (Folate, 5-MTHF)":      "Vitamines & Minéraux",
+  "Calcium (Citrate/Bisglycinate)":    "Vitamines & Minéraux",
+  "Vitamine B6 (P5P)":                  "Vitamines & Minéraux",
+  "Complexe B (B1, B2, B3, B5)":       "Vitamines & Minéraux",
+  "Vitamine E (Tocophérol)":            "Vitamines & Minéraux",
   "Créatine Monohydrate":              "Acides Aminés",
   "L-Glutamine":                             "Acides Aminés",
   "L-Citrulline":                            "Acides Aminés",
@@ -3300,7 +3439,7 @@ function showTimingResults(timing){
     if(showProteines){
       html += `<div class="prot-sep" style="margin-top:16px"><div class="prot-sep-t">🥛 Protéines en Poudre : Indispensable après l'effort</div>`;
       html += `<div style="background:rgba(188,149,105,0.12);border:1px solid rgba(214,185,138,0.18);border-radius:12px;padding:10px 12px;margin-bottom:12px;font-size:12px;color:rgba(230,228,220,0.80);line-height:1.65">La <strong>fenêtre anabolique</strong> (30-60 min post-effort) est le moment optimal pour apporter des protéines : synthèse protéique musculaire maximisée. <strong>Whey Isolat</strong> ou <strong>Concentrée</strong> recommandés.</div>`;
-      html += PROTEINES.filter(p=>['Whey Isolat (WPI)','Whey Native (Isolat Natif)','Caséine Micellaire','Gainer (Mass Gainer)','Protéine de Pois (Isolat)'].includes(p.nm)).map(protCard).join('');
+      html += PROTEINES.filter(p=>['Whey Isolat (WPI)','Whey Concentrée (WPC)','Whey Native','Caséine Micellaire','Gainer (Mass Gainer)','Protéine de Pois (Isolat)'].includes(p.nm)).map(protCard).join('');
       html += `</div>`;
     }
     trl.innerHTML = html;
@@ -3330,21 +3469,22 @@ const OBJ_SUBGROUPS = {
     {label:"Cholestérol & glycémie", items:["Berbérine"]},
     {label:"Énergie cardiaque", items:["CoQ10 (Ubiquinol)","L-Carnitine"]},
     {label:"Circulation", items:["L-Citrulline"]},
-    {label:"Protection antioxydante", items:["Resvératrol","Astaxanthine","Quercétine"]}
+    {label:"Homocystéine", sub:"acide aminé lié au risque cardiovasculaire", items:["Vitamine B9 (Folate, 5-MTHF)"]},
+    {label:"Protection antioxydante", items:["Resvératrol","Astaxanthine","Quercétine","Vitamine E (Tocophérol)"]}
   ],
   mental: [
     {label:"Les plus utilisés", note:"Ce sont les deux pistes les plus documentées pour la gestion du stress. Lis les fiches pour voir ce qui correspond à ta situation.", items:["Ashwagandha (KSM-66)","Magnésium Bisglycinate"]},
     {label:"Relaxation immédiate", items:["L-Théanine"]},
     {label:"Adaptogènes anti-stress", items:["Rhodiola Rosea"]},
-    {label:"Carences fréquentes", items:["Vitamine D3 + K2","Fer Bisglycinate"]},
+    {label:"Carences fréquentes", items:["Vitamine D3 + K2","Fer Bisglycinate","Vitamine B6 (P5P)","Complexe B (B1, B2, B3, B5)"]},
     {label:"Équilibre hormonal féminin", items:["Inositol (Myo-Inositol)","Gattilier (Vitex agnus-castus)","Damiana (Turnera diffusa)"]},
     {label:"Autres pistes", items:["Oméga-3 (EPA/DHA)","Curcumine (Curcuma)","Probiotiques","NAC (N-Acétyl Cystéine)","Maca (Lepidium meyenii)","Tongkat Ali (Eurycoma longifolia)"]}
   ],
   cerveau: [
     {label:"Les plus utilisés", note:"C'est l'actif le plus étudié pour les fonctions cognitives. Ce qui suit peut être pertinent selon ton besoin.", items:["Oméga-3 (EPA/DHA)"]},
     {label:"Focus immédiat", items:["L-Théanine"]},
-    {label:"Énergie cellulaire", items:["Créatine Monohydrate","CoQ10 (Ubiquinol)"]},
-    {label:"Carences fréquentes", items:["Vitamine B12 (Méthylcobalamine)","Magnésium Bisglycinate"]},
+    {label:"Énergie cellulaire", items:["Créatine Monohydrate","CoQ10 (Ubiquinol)","Complexe B (B1, B2, B3, B5)"]},
+    {label:"Carences fréquentes", items:["Vitamine B12 (Méthylcobalamine)","Vitamine B9 (Folate, 5-MTHF)","Vitamine B6 (P5P)","Magnésium Bisglycinate"]},
     {label:"Adaptogènes & longévité", items:["Rhodiola Rosea","Resvératrol","Myrtille (Anthocyanines)","NMN (Nicotinamide Mononucléotide)","Shilajit"]}
   ],
   poids: [
@@ -3356,7 +3496,7 @@ const OBJ_SUBGROUPS = {
   ],
   peau: [
     {label:"Les plus utilisés", note:"Ce sont les deux actifs les plus utilisés pour la peau. Ce qui suit peut être pertinent selon ton objectif précis.", items:["Collagène Marin","Acide Hyaluronique"]},
-    {label:"Cofacteurs essentiels", items:["Vitamine C","Zinc Bisglycinate"]},
+    {label:"Cofacteurs essentiels", items:["Vitamine C","Vitamine E (Tocophérol)","Zinc Bisglycinate"]},
     {label:"Protection antioxydante", items:["Astaxanthine","Resvératrol","Lutéine + Zéaxanthine","Myrtille (Anthocyanines)"]},
     {label:"Structure & fermeté", items:["MSM (Méthylsulfonylméthane)","Silicium Organique","Glycine"]},
     {label:"Autres pistes", items:["Oméga-3 (EPA/DHA)","Biotine (Vitamine B8)","Curcumine (Curcuma)","Probiotiques","CoQ10 (Ubiquinol)","NAC (N-Acétyl Cystéine)","Vitamine A (Bêta-carotène)","Spiruline","Bronzage & Préparation Solaire"]}
@@ -3371,7 +3511,7 @@ const OBJ_SUBGROUPS = {
     {label:"Les plus utilisés", note:"Ce sont les deux actifs les plus utilisés pour le confort articulaire. Ce qui suit peut être pertinent selon ton besoin.", items:["Collagène Marin","Curcumine (Curcuma)"]},
     {label:"Lubrification", items:["Acide Hyaluronique"]},
     {label:"Anti-inflammatoire", items:["Gingembre","Quercétine"]},
-    {label:"Structure osseuse", items:["Vitamine D3 + K2","Silicium Organique","Bore (Boron)"]},
+    {label:"Structure osseuse", items:["Vitamine D3 + K2","Calcium (Citrate/Bisglycinate)","Silicium Organique","Bore (Boron)"]},
     {label:"Autres pistes", items:["MSM (Méthylsulfonylméthane)","HMB (Hydroxy-Méthyl-Butyrate)","Glycine"]}
   ],
   digest: [
@@ -3398,7 +3538,7 @@ const OBJ_SUBGROUPS = {
   ],
   anti: [
     {label:"Les plus utilisés", note:"Ce sont les actifs les plus documentés dans ce contexte. Ce qui suit peut être pertinent selon ton objectif.", items:["Vitamine C","Resvératrol"]},
-    {label:"Protection oxydative", items:["Astaxanthine","Quercétine","Lutéine + Zéaxanthine","Myrtille (Anthocyanines)"]},
+    {label:"Protection oxydative", items:["Astaxanthine","Quercétine","Lutéine + Zéaxanthine","Myrtille (Anthocyanines)","Vitamine E (Tocophérol)"]},
     {label:"Régénération cellulaire", items:["NMN (Nicotinamide Mononucléotide)"]},
     {label:"Autres pistes", items:["Mélatonine","Sélénium","Shilajit","DHEA","Glycine","Bronzage & Préparation Solaire"]}
   ],
@@ -3407,7 +3547,7 @@ const OBJ_SUBGROUPS = {
     {label:"Autres pistes", items:["Spiruline","DIM (Diindolylméthane)","Glycine"]}
   ],
   cycle: [
-    {label:"Les plus utilisés", note:"Ce sont les actifs les plus documentés dans ce contexte. Ce qui suit peut être pertinent selon ton symptôme principal.", items:["Magnésium Bisglycinate","Oméga-3 (EPA/DHA)"]},
+    {label:"Les plus utilisés", note:"Ce sont les actifs les plus documentés dans ce contexte. Ce qui suit peut être pertinent selon ton symptôme principal.", items:["Magnésium Bisglycinate","Vitamine B6 (P5P)","Oméga-3 (EPA/DHA)"]},
     {label:"Anti-inflammatoire", items:["Curcumine (Curcuma)","Gingembre"]},
     {label:"Équilibre hormonal", items:["Gattilier (Vitex agnus-castus)","DIM (Diindolylméthane)","Inositol (Myo-Inositol)"]},
     {label:"Carences fréquentes", items:["Fer Bisglycinate","Vitamine D3 + K2","Zinc Bisglycinate"]},
@@ -3425,7 +3565,7 @@ const OBJ_SUBGROUPS = {
     {label:"Les plus utilisés", note:"Ce sont les carences les plus fréquentes en cas de fatigue. Ce qui suit peut être pertinent selon la cause probable de la tienne.", items:["Fer Bisglycinate","Magnésium Bisglycinate","Vitamine B12 (Méthylcobalamine)"]},
     {label:"Gestion du stress chronique", items:["Ashwagandha (KSM-66)","Rhodiola Rosea"]},
     {label:"Récupération sportive", items:["Créatine Monohydrate","L-Citrulline","Bêta-Alanine","BCAA (Acides Aminés Ramifiés)","EAA (Acides Aminés Essentiels)","L-Glutamine","HMB (Hydroxy-Méthyl-Butyrate)","Hydratation & Électrolytes"]},
-    {label:"Énergie cellulaire", items:["CoQ10 (Ubiquinol)","Vitamine D3 + K2","Vitamine C","Thyroïde (Iode + Sélénium)"]},
+    {label:"Énergie cellulaire", items:["CoQ10 (Ubiquinol)","Vitamine D3 + K2","Vitamine C","Complexe B (B1, B2, B3, B5)","Thyroïde (Iode + Sélénium)"]},
     {label:"Adaptogènes & vitalité", items:["Maca (Lepidium meyenii)","Tribulus Terrestris","Tongkat Ali (Eurycoma longifolia)","Shilajit","Fenugrec","Damiana (Turnera diffusa)","NMN (Nicotinamide Mononucléotide)","DHEA"]},
     {label:"Autres pistes", items:["L-Théanine","Spiruline","Croissance & Immunité Enfant"]}
   ],
@@ -3435,14 +3575,15 @@ const OBJ_SUBGROUPS = {
     {label:"Autres pistes", items:["Magnésium Bisglycinate","NAC (N-Acétyl Cystéine)"]}
   ],
   grossesse: [
-    {label:"Les plus utilisés", note:"Ce sont les apports les plus souvent recommandés en grossesse. Suis les repères de ta sage-femme ou de ton médecin en priorité.", items:["Vitamine D3 + K2","Fer Bisglycinate","Oméga-3 (EPA/DHA)"]},
+    {label:"Les plus utilisés", note:"Ce sont les apports les plus souvent recommandés en grossesse. Suis les repères de ta sage-femme ou de ton médecin en priorité.", items:["Vitamine D3 + K2","Fer Bisglycinate","Oméga-3 (EPA/DHA)","Vitamine B9 (Folate, 5-MTHF)"]},
     {label:"Carences ciblées", items:["Vitamine B12 (Méthylcobalamine)","Probiotiques"]},
+    {label:"Confort (nausées)", items:["Vitamine B6 (P5P)"]},
     {label:"Énergie", items:["CoQ10 (Ubiquinol)"]},
     {label:"Fertilité (pré-conception)", items:["Inositol (Myo-Inositol)"]}
   ],
   menopause: [
     {label:"Les plus utilisés", note:"C'est l'un des actifs les plus pertinents dans ce contexte, en lien direct avec la baisse hormonale. Ce qui suit peut être pertinent en complément.", items:["DHEA"]},
-    {label:"Structure & confort", items:["Collagène Marin","Vitamine D3 + K2","Silicium Organique"]},
+    {label:"Structure & confort", items:["Collagène Marin","Vitamine D3 + K2","Calcium (Citrate/Bisglycinate)","Silicium Organique"]},
     {label:"Adaptogènes", items:["Ashwagandha (KSM-66)","Maca (Lepidium meyenii)"]}
   ],
   endometriose: [
@@ -3452,8 +3593,8 @@ const OBJ_SUBGROUPS = {
     {label:"Autres pistes", items:["NAC (N-Acétyl Cystéine)"]}
   ],
   anemie: [
-    {label:"Les plus utilisés", note:"C'est la cause la plus fréquente d'anémie. Vitamine C et B12 sont des cofacteurs qui peuvent compléter selon la cause identifiée par une prise de sang.", items:["Fer Bisglycinate"]},
-    {label:"Cofacteurs", items:["Vitamine C","Vitamine B12 (Méthylcobalamine)"]}
+    {label:"Les plus utilisés", note:"C'est la cause la plus fréquente d'anémie. Vitamine C, B9 et B12 sont des cofacteurs qui peuvent compléter selon la cause identifiée par une prise de sang.", items:["Fer Bisglycinate"]},
+    {label:"Cofacteurs", items:["Vitamine C","Vitamine B12 (Méthylcobalamine)","Vitamine B9 (Folate, 5-MTHF)"]}
   ]
 };
 
@@ -3498,7 +3639,7 @@ function showObj(id){
       groupItems.forEach(s=>used.add(s.nm));
       const proteinHtml = (gi===0 && id==="muscu") ? PROTEINES.filter(p=>p.nm==="Whey Isolat (WPI)").map(protCard).join("") : "";
       if(!groupItems.length && !proteinHtml) return;
-      grouped += `<div class="obj-subhd">${g.label}</div>`;
+      grouped += `<div class="obj-subhd">${g.label}${g.sub?` <span style="text-transform:none;font-weight:400;font-size:11px;color:#FFFFFF;opacity:.85">(${g.sub})</span>`:''}</div>`;
       if(g.note) grouped += `<div class="obj-subnote">${g.note}</div>`;
       grouped += proteinHtml + groupItems.map(s=>card(s,null,false)).join("");
     });
@@ -4233,7 +4374,7 @@ window.addEventListener('load', function(){
 <!-- ═══ SCHEMA.ORG STRUCTURED DATA — E-E-A-T + SEO ═══ -->
 <script type="application/ld+json">{"@context":"https://schema.org","@type":["WebSite","MedicalWebPage"],"@id":"https://mydoseup.com/#website","name":"MyDoseUp®","alternateName":"doseUp","url":"https://mydoseup.com","description":"Guide de référence des compléments alimentaires : 63 fiches scientifiques avec dosages exacts, effets prouvés, synergies et contre-indications. Personnalisé Homme & Femme. Marque déposée INPI n°5239885.","inLanguage":"fr-FR","dateCreated":"2025-01-01","dateModified":"2026-08-17","audience":{"@type":"MedicalAudience","audienceType":"Patients, sportifs, professionnels de santé"},"medicalAudience":{"@type":"MedicalAudience","audienceType":"Consumers"},"author":{"@id":"https://mydoseup.com/#author"},"publisher":{"@type":"Organization","@id":"https://mydoseup.com/#organization","name":"MyDoseUp","alternateName":"doseUp","url":"https://mydoseup.com","logo":{"@type":"ImageObject","url":"https://mydoseup.com/og-image.png","width":1200,"height":630},"sameAs":["https://www.inpi.fr","https://doseup.fr"],"legalName":"MyDoseUp — Marque déposée INPI n°5239885"},"potentialAction":{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://mydoseup.com/?q={search_term_string}"},"query-input":"required name=search_term_string"},"about":{"@type":"MedicalEntity","name":"Compléments alimentaires","description":"Vitamines, minéraux, acides aminés, adaptogènes, probiotiques et autres suppléments nutritionnels"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","@id":"https://mydoseup.com/#author","name":"Yanis Bensaadi","url":"https://mydoseup.com","jobTitle":"Fondateur de MyDoseUp® — Guide des compléments alimentaires","description":"Fondateur de MyDoseUp®, guide de référence francophone sur les compléments alimentaires. Passionné de nutrition sportive et de santé préventive. Agent en assurance, spécialisé en analyse de données et conseil personnalisé.","knowsAbout":["Compléments alimentaires","Nutrition sportive","Biochimie des suppléments","Dosages et interactions","Santé préventive","Médecine fonctionnelle"],"sameAs":["https://mydoseup.com","https://doseup.fr"],"worksFor":{"@type":"Organization","@id":"https://mydoseup.com/#organization"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","@id":"https://mydoseup.com/#itemlist","name":"Guide complet des compléments alimentaires","description":"61 fiches compléments alimentaires avec dosages exacts, effets cliniquement prouvés, synergies et contre-indications. Vitamines, minéraux, acides aminés, adaptogènes, probiotiques et protéines.","url":"https://mydoseup.com","numberOfItems":61,"author":{"@id":"https://mydoseup.com/#author"},"itemListElement":[{"@type":"ListItem","position":1,"name":"Acide Hyaluronique","url":"https://mydoseup.com/#acide-hyaluronique"},{"@type":"ListItem","position":2,"name":"Ashwagandha (KSM-66)","url":"https://mydoseup.com/#ashwagandha-ksm-66"},{"@type":"ListItem","position":3,"name":"Astaxanthine","url":"https://mydoseup.com/#astaxanthine"},{"@type":"ListItem","position":4,"name":"BCAA (Acides Aminés Ramifiés)","url":"https://mydoseup.com/#bcaa-acides-amines-ramifies"},{"@type":"ListItem","position":5,"name":"Berbérine","url":"https://mydoseup.com/#berberine"},{"@type":"ListItem","position":6,"name":"Biotine (Vitamine B8)","url":"https://mydoseup.com/#biotine-vitamine-b8"},{"@type":"ListItem","position":7,"name":"Bore (Boron)","url":"https://mydoseup.com/#bore-boron"},{"@type":"ListItem","position":8,"name":"Bronzage & Préparation Solaire","url":"https://mydoseup.com/#bronzage-preparation-solaire"},{"@type":"ListItem","position":9,"name":"Bêta-Alanine","url":"https://mydoseup.com/#beta-alanine"},{"@type":"ListItem","position":10,"name":"Caséine Micellaire","url":"https://mydoseup.com/#caseine-micellaire"},{"@type":"ListItem","position":11,"name":"Chardon-Marie (Silymarine)","url":"https://mydoseup.com/#chardon-marie-silymarine"},{"@type":"ListItem","position":12,"name":"CoQ10 (Ubiquinol)","url":"https://mydoseup.com/#coq10-ubiquinol"},{"@type":"ListItem","position":13,"name":"Collagène Marin","url":"https://mydoseup.com/#collagene-marin"},{"@type":"ListItem","position":14,"name":"Croissance & Immunité Enfant","url":"https://mydoseup.com/#croissance-immunite-enfant"},{"@type":"ListItem","position":15,"name":"Créatine Monohydrate","url":"https://mydoseup.com/#creatine-monohydrate"},{"@type":"ListItem","position":16,"name":"Curcumine (Curcuma)","url":"https://mydoseup.com/#curcumine-curcuma"},{"@type":"ListItem","position":17,"name":"DHEA","url":"https://mydoseup.com/#dhea"},{"@type":"ListItem","position":18,"name":"DIM (Diindolylméthane)","url":"https://mydoseup.com/#dim-diindolylmethane"},{"@type":"ListItem","position":19,"name":"Damiana (Turnera diffusa)","url":"https://mydoseup.com/#damiana-turnera-diffusa"},{"@type":"ListItem","position":20,"name":"EAA (Acides Aminés Essentiels)","url":"https://mydoseup.com/#eaa-acides-amines-essentiels"},{"@type":"ListItem","position":21,"name":"Fenugrec","url":"https://mydoseup.com/#fenugrec"},{"@type":"ListItem","position":22,"name":"Fer Bisglycinate","url":"https://mydoseup.com/#fer-bisglycinate"},{"@type":"ListItem","position":23,"name":"Gainer (Mass Gainer)","url":"https://mydoseup.com/#gainer-mass-gainer"},{"@type":"ListItem","position":24,"name":"Gattilier (Vitex agnus-castus)","url":"https://mydoseup.com/#gattilier-vitex-agnus-castus"},{"@type":"ListItem","position":25,"name":"Gingembre","url":"https://mydoseup.com/#gingembre"},{"@type":"ListItem","position":26,"name":"Glycine","url":"https://mydoseup.com/#glycine"},{"@type":"ListItem","position":27,"name":"HMB (Hydroxy-Méthyl-Butyrate)","url":"https://mydoseup.com/#hmb-hydroxy-methyl-butyrate"},{"@type":"ListItem","position":28,"name":"Hydratation & Électrolytes","url":"https://mydoseup.com/#hydratation-electrolytes"},{"@type":"ListItem","position":29,"name":"Inositol (Myo-Inositol)","url":"https://mydoseup.com/#inositol-myo-inositol"},{"@type":"ListItem","position":30,"name":"L-Carnitine","url":"https://mydoseup.com/#l-carnitine"},{"@type":"ListItem","position":31,"name":"L-Citrulline","url":"https://mydoseup.com/#l-citrulline"},{"@type":"ListItem","position":32,"name":"L-Glutamine","url":"https://mydoseup.com/#l-glutamine"},{"@type":"ListItem","position":33,"name":"L-Théanine","url":"https://mydoseup.com/#l-theanine"},{"@type":"ListItem","position":34,"name":"Lutéine + Zéaxanthine","url":"https://mydoseup.com/#luteine-zeaxanthine"},{"@type":"ListItem","position":35,"name":"MSM (Méthylsulfonylméthane)","url":"https://mydoseup.com/#msm-methylsulfonylmethane"},{"@type":"ListItem","position":36,"name":"Maca (Lepidium meyenii)","url":"https://mydoseup.com/#maca-lepidium-meyenii"},{"@type":"ListItem","position":37,"name":"Magnésium Bisglycinate","url":"https://mydoseup.com/#magnesium-bisglycinate"},{"@type":"ListItem","position":38,"name":"Myrtille (Anthocyanines)","url":"https://mydoseup.com/#myrtille-anthocyanines"},{"@type":"ListItem","position":39,"name":"Mélatonine","url":"https://mydoseup.com/#melatonine"},{"@type":"ListItem","position":40,"name":"NAC (N-Acétyl Cystéine)","url":"https://mydoseup.com/#nac-n-acetyl-cysteine"},{"@type":"ListItem","position":41,"name":"NMN (Nicotinamide Mononucléotide)","url":"https://mydoseup.com/#nmn-nicotinamide-mononucleotide"},{"@type":"ListItem","position":42,"name":"Oméga-3 (EPA/DHA)","url":"https://mydoseup.com/#omega-3-epa-dha"},{"@type":"ListItem","position":43,"name":"Probiotiques","url":"https://mydoseup.com/#probiotiques"},{"@type":"ListItem","position":44,"name":"Protéine de Pois (Isolat)","url":"https://mydoseup.com/#proteine-de-pois-isolat"},{"@type":"ListItem","position":45,"name":"Quercétine","url":"https://mydoseup.com/#quercetine"},{"@type":"ListItem","position":46,"name":"Resvératrol","url":"https://mydoseup.com/#resveratrol"},{"@type":"ListItem","position":47,"name":"Rhodiola Rosea","url":"https://mydoseup.com/#rhodiola-rosea"},{"@type":"ListItem","position":48,"name":"Shilajit","url":"https://mydoseup.com/#shilajit"},{"@type":"ListItem","position":49,"name":"Silicium Organique","url":"https://mydoseup.com/#silicium-organique"},{"@type":"ListItem","position":50,"name":"Spiruline","url":"https://mydoseup.com/#spiruline"},{"@type":"ListItem","position":51,"name":"Sélénium","url":"https://mydoseup.com/#selenium"},{"@type":"ListItem","position":52,"name":"Thyroïde (Iode + Sélénium)","url":"https://mydoseup.com/#thyroide-iode-selenium"},{"@type":"ListItem","position":53,"name":"Tongkat Ali (Eurycoma longifolia)","url":"https://mydoseup.com/#tongkat-ali-eurycoma-longifolia"},{"@type":"ListItem","position":54,"name":"Tribulus Terrestris","url":"https://mydoseup.com/#tribulus-terrestris"},{"@type":"ListItem","position":55,"name":"Vitamine A (Bêta-carotène)","url":"https://mydoseup.com/#vitamine-a-beta-carotene"},{"@type":"ListItem","position":56,"name":"Vitamine B12 (Méthylcobalamine)","url":"https://mydoseup.com/#vitamine-b12-methylcobalamine"},{"@type":"ListItem","position":57,"name":"Vitamine C","url":"https://mydoseup.com/#vitamine-c"},{"@type":"ListItem","position":58,"name":"Vitamine D3 + K2","url":"https://mydoseup.com/#vitamine-d3-k2"},{"@type":"ListItem","position":59,"name":"Whey Isolat (WPI)","url":"https://mydoseup.com/#whey-isolat-wpi"},{"@type":"ListItem","position":60,"name":"Whey Native (Isolat Natif)","url":"https://mydoseup.com/#whey-native-isolat-natif"},{"@type":"ListItem","position":61,"name":"Zinc Bisglycinate","url":"https://mydoseup.com/#zinc-bisglycinate"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","@id":"https://mydoseup.com/#itemlist","name":"Guide complet des compléments alimentaires","description":"61 fiches compléments alimentaires avec dosages exacts, effets cliniquement prouvés, synergies et contre-indications. Vitamines, minéraux, acides aminés, adaptogènes, probiotiques et protéines.","url":"https://mydoseup.com","numberOfItems":61,"author":{"@id":"https://mydoseup.com/#author"},"itemListElement":[{"@type":"ListItem","position":1,"name":"Acide Hyaluronique","url":"https://mydoseup.com/#acide-hyaluronique"},{"@type":"ListItem","position":2,"name":"Ashwagandha (KSM-66)","url":"https://mydoseup.com/#ashwagandha-ksm-66"},{"@type":"ListItem","position":3,"name":"Astaxanthine","url":"https://mydoseup.com/#astaxanthine"},{"@type":"ListItem","position":4,"name":"BCAA (Acides Aminés Ramifiés)","url":"https://mydoseup.com/#bcaa-acides-amines-ramifies"},{"@type":"ListItem","position":5,"name":"Berbérine","url":"https://mydoseup.com/#berberine"},{"@type":"ListItem","position":6,"name":"Biotine (Vitamine B8)","url":"https://mydoseup.com/#biotine-vitamine-b8"},{"@type":"ListItem","position":7,"name":"Bore (Boron)","url":"https://mydoseup.com/#bore-boron"},{"@type":"ListItem","position":8,"name":"Bronzage & Préparation Solaire","url":"https://mydoseup.com/#bronzage-preparation-solaire"},{"@type":"ListItem","position":9,"name":"Bêta-Alanine","url":"https://mydoseup.com/#beta-alanine"},{"@type":"ListItem","position":10,"name":"Caséine Micellaire","url":"https://mydoseup.com/#caseine-micellaire"},{"@type":"ListItem","position":11,"name":"Chardon-Marie (Silymarine)","url":"https://mydoseup.com/#chardon-marie-silymarine"},{"@type":"ListItem","position":12,"name":"CoQ10 (Ubiquinol)","url":"https://mydoseup.com/#coq10-ubiquinol"},{"@type":"ListItem","position":13,"name":"Collagène Marin","url":"https://mydoseup.com/#collagene-marin"},{"@type":"ListItem","position":14,"name":"Croissance & Immunité Enfant","url":"https://mydoseup.com/#croissance-immunite-enfant"},{"@type":"ListItem","position":15,"name":"Créatine Monohydrate","url":"https://mydoseup.com/#creatine-monohydrate"},{"@type":"ListItem","position":16,"name":"Curcumine (Curcuma)","url":"https://mydoseup.com/#curcumine-curcuma"},{"@type":"ListItem","position":17,"name":"DHEA","url":"https://mydoseup.com/#dhea"},{"@type":"ListItem","position":18,"name":"DIM (Diindolylméthane)","url":"https://mydoseup.com/#dim-diindolylmethane"},{"@type":"ListItem","position":19,"name":"Damiana (Turnera diffusa)","url":"https://mydoseup.com/#damiana-turnera-diffusa"},{"@type":"ListItem","position":20,"name":"EAA (Acides Aminés Essentiels)","url":"https://mydoseup.com/#eaa-acides-amines-essentiels"},{"@type":"ListItem","position":21,"name":"Fenugrec","url":"https://mydoseup.com/#fenugrec"},{"@type":"ListItem","position":22,"name":"Fer Bisglycinate","url":"https://mydoseup.com/#fer-bisglycinate"},{"@type":"ListItem","position":23,"name":"Gainer (Mass Gainer)","url":"https://mydoseup.com/#gainer-mass-gainer"},{"@type":"ListItem","position":24,"name":"Gattilier (Vitex agnus-castus)","url":"https://mydoseup.com/#gattilier-vitex-agnus-castus"},{"@type":"ListItem","position":25,"name":"Gingembre","url":"https://mydoseup.com/#gingembre"},{"@type":"ListItem","position":26,"name":"Glycine","url":"https://mydoseup.com/#glycine"},{"@type":"ListItem","position":27,"name":"HMB (Hydroxy-Méthyl-Butyrate)","url":"https://mydoseup.com/#hmb-hydroxy-methyl-butyrate"},{"@type":"ListItem","position":28,"name":"Hydratation & Électrolytes","url":"https://mydoseup.com/#hydratation-electrolytes"},{"@type":"ListItem","position":29,"name":"Inositol (Myo-Inositol)","url":"https://mydoseup.com/#inositol-myo-inositol"},{"@type":"ListItem","position":30,"name":"L-Carnitine","url":"https://mydoseup.com/#l-carnitine"},{"@type":"ListItem","position":31,"name":"L-Citrulline","url":"https://mydoseup.com/#l-citrulline"},{"@type":"ListItem","position":32,"name":"L-Glutamine","url":"https://mydoseup.com/#l-glutamine"},{"@type":"ListItem","position":33,"name":"L-Théanine","url":"https://mydoseup.com/#l-theanine"},{"@type":"ListItem","position":34,"name":"Lutéine + Zéaxanthine","url":"https://mydoseup.com/#luteine-zeaxanthine"},{"@type":"ListItem","position":35,"name":"MSM (Méthylsulfonylméthane)","url":"https://mydoseup.com/#msm-methylsulfonylmethane"},{"@type":"ListItem","position":36,"name":"Maca (Lepidium meyenii)","url":"https://mydoseup.com/#maca-lepidium-meyenii"},{"@type":"ListItem","position":37,"name":"Magnésium Bisglycinate","url":"https://mydoseup.com/#magnesium-bisglycinate"},{"@type":"ListItem","position":38,"name":"Myrtille (Anthocyanines)","url":"https://mydoseup.com/#myrtille-anthocyanines"},{"@type":"ListItem","position":39,"name":"Mélatonine","url":"https://mydoseup.com/#melatonine"},{"@type":"ListItem","position":40,"name":"NAC (N-Acétyl Cystéine)","url":"https://mydoseup.com/#nac-n-acetyl-cysteine"},{"@type":"ListItem","position":41,"name":"NMN (Nicotinamide Mononucléotide)","url":"https://mydoseup.com/#nmn-nicotinamide-mononucleotide"},{"@type":"ListItem","position":42,"name":"Oméga-3 (EPA/DHA)","url":"https://mydoseup.com/#omega-3-epa-dha"},{"@type":"ListItem","position":43,"name":"Probiotiques","url":"https://mydoseup.com/#probiotiques"},{"@type":"ListItem","position":44,"name":"Protéine de Pois (Isolat)","url":"https://mydoseup.com/#proteine-de-pois-isolat"},{"@type":"ListItem","position":45,"name":"Quercétine","url":"https://mydoseup.com/#quercetine"},{"@type":"ListItem","position":46,"name":"Resvératrol","url":"https://mydoseup.com/#resveratrol"},{"@type":"ListItem","position":47,"name":"Rhodiola Rosea","url":"https://mydoseup.com/#rhodiola-rosea"},{"@type":"ListItem","position":48,"name":"Shilajit","url":"https://mydoseup.com/#shilajit"},{"@type":"ListItem","position":49,"name":"Silicium Organique","url":"https://mydoseup.com/#silicium-organique"},{"@type":"ListItem","position":50,"name":"Spiruline","url":"https://mydoseup.com/#spiruline"},{"@type":"ListItem","position":51,"name":"Sélénium","url":"https://mydoseup.com/#selenium"},{"@type":"ListItem","position":52,"name":"Thyroïde (Iode + Sélénium)","url":"https://mydoseup.com/#thyroide-iode-selenium"},{"@type":"ListItem","position":53,"name":"Tongkat Ali (Eurycoma longifolia)","url":"https://mydoseup.com/#tongkat-ali-eurycoma-longifolia"},{"@type":"ListItem","position":54,"name":"Tribulus Terrestris","url":"https://mydoseup.com/#tribulus-terrestris"},{"@type":"ListItem","position":55,"name":"Vitamine A (Bêta-carotène)","url":"https://mydoseup.com/#vitamine-a-beta-carotene"},{"@type":"ListItem","position":56,"name":"Vitamine B12 (Méthylcobalamine)","url":"https://mydoseup.com/#vitamine-b12-methylcobalamine"},{"@type":"ListItem","position":57,"name":"Vitamine C","url":"https://mydoseup.com/#vitamine-c"},{"@type":"ListItem","position":58,"name":"Vitamine D3 + K2","url":"https://mydoseup.com/#vitamine-d3-k2"},{"@type":"ListItem","position":59,"name":"Whey Isolat (WPI)","url":"https://mydoseup.com/#whey-isolat-wpi"},{"@type":"ListItem","position":60,"name":"Whey Native","url":"https://mydoseup.com/#whey-native"},{"@type":"ListItem","position":61,"name":"Zinc Bisglycinate","url":"https://mydoseup.com/#zinc-bisglycinate"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://mydoseup.com/#faq","author":{"@id":"https://mydoseup.com/#author"},"mainEntity":[{"@type":"Question","name":"Quel est le meilleur complément pour la musculation ?","acceptedAnswer":{"@type":"Answer","text":"La créatine monohydrate est le complément sportif le plus étudié au monde. Elle augmente la force de 8% en 4-6 semaines et la masse musculaire. 5g/j suffisent sans phase de charge."}},{"@type":"Question","name":"Quel complément pour le Syndrome Prémenstruel (SPM) et les douleurs menstruelles ?","acceptedAnswer":{"@type":"Answer","text":"Le magnésium bisglycinate (300mg/j) réduit les tensions et l'irritabilité du SPM de 34%. Les oméga-3 réduisent les douleurs menstruelles aussi efficacement que l'ibuprofène."}},{"@type":"Question","name":"Comment augmenter naturellement la testostérone ?","acceptedAnswer":{"@type":"Answer","text":"Le zinc, la vitamine D3 et le magnésium sont les 3 piliers naturels de la testostérone. L'ashwagandha KSM-66 augmente la testostérone libre de 15% en 90 jours selon les études cliniques."}},{"@type":"Question","name":"Quel complément pour dormir mieux ?","acceptedAnswer":{"@type":"Answer","text":"Le magnésium bisglycinate le soir est la base (300mg). La mélatonine (0,5-1mg, maximum légal en France sans ordonnance) aide à l'endormissement. La L-théanine réduit l'anxiété sans somnolence."}},{"@type":"Question","name":"Quelle vitamine manque le plus souvent en France ?","acceptedAnswer":{"@type":"Answer","text":"La vitamine D3 : 80% des Français sont en déficit entre octobre et avril. 2000-4000 UI/j avec K2 (100mcg) est la supplémentation de base recommandée par la plupart des médecins nutritionnistes."}},{"@type":"Question","name":"Quels compléments pour la prise de masse musculaire ?","acceptedAnswer":{"@type":"Answer","text":"Le trio de base : créatine monohydrate (5g/j), whey protéine (25-40g post-entraînement) et magnésium bisglycinate (300mg/j). La L-citrulline (6-8g avant l'effort) améliore la pompe musculaire et l'endurance."}},{"@type":"Question","name":"Les compléments alimentaires sont-ils dangereux ?","acceptedAnswer":{"@type":"Answer","text":"La majorité des compléments courants (magnésium, vitamine D, oméga-3, créatine) sont sûrs aux doses recommandées. Certains nécessitent un avis médical : fer, sélénium, DHEA, thyroïde. Toutes les fiches MyDoseUp incluent les contre-indications et interactions médicamenteuses."}},{"@type":"Question","name":"Quelle différence entre Whey concentrée, isolat et hydrolysée ?","acceptedAnswer":{"@type":"Answer","text":"La whey concentrée (WPC) contient 70-80% de protéines, c'est la plus accessible. L'isolat (WPI, 90%+) est quasi sans lactose et plus rapide à absorber. L'hydrolysée (WPH) est pré-digérée en 20-30 minutes, réservée aux sportifs de haut niveau ou aux intolérances digestives sévères."}},{"@type":"Question","name":"Quels compléments pour lutter contre le stress et l'anxiété ?","acceptedAnswer":{"@type":"Answer","text":"L'ashwagandha KSM-66 (300-600mg/j) réduit le cortisol de 28% en 60 jours. Le magnésium bisglycinate agit sur la relaxation musculaire et nerveuse. La L-théanine (200mg) procure calme et concentration sans sédation, idéale associée à la caféine."}},{"@type":"Question","name":"Comment choisir un bon probiotique ?","acceptedAnswer":{"@type":"Answer","text":"Privilégiez les formules multi-souches avec au minimum Lactobacillus et Bifidobacterium, à 10-50 milliards UFC/j. Les souches doivent être viables à l'achat et résistantes à l'acidité gastrique (gélules gastro-résistantes). À prendre à jeun ou 30 minutes avant le repas."}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","@id":"https://mydoseup.com/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://mydoseup.com"},{"@type":"ListItem","position":2,"name":"Guide Compléments A-Z","item":"https://mydoseup.com/#az"},{"@type":"ListItem","position":3,"name":"Parcours Sportifs","item":"https://mydoseup.com/#parcours"}]}</script>
 
@@ -4414,7 +4555,7 @@ var QZ_URLS = {
   "Gattilier (Vitex agnus-castus)": "https://mydoseup.com/#gattilier-vitex-agnus-castus",
   "DIM (Diindolylméthane)":         "https://mydoseup.com/#dim-diindolylmethane",
   "Fer Bisglycinate":               "https://mydoseup.com/#fer-bisglycinate",
-  "Acide Folique (B9)":             "https://mydoseup.com/#vitamine-b9",
+  "Vitamine B9 (Folate, 5-MTHF)":   "https://mydoseup.com/#vitamine-b9-folate-5-mthf",
   "Astaxanthine":                   "https://mydoseup.com/#astaxanthine",
   "Lutéine + Zéaxanthine":          "https://mydoseup.com/#luteine-zeaxanthine",
   "Myrtille (Anthocyanines)":       "https://mydoseup.com/#myrtille-anthocyanines",
@@ -4459,8 +4600,8 @@ var QZ_DB = [
   // ─── SANTE / LONGEVITE ───
   {name:"Vitamine D3 + K2",           why:"Le duo incontournable : immunité, os solides, hormones équilibrées. 80% des Français sont carencés.",    dose:"2 000 à 5 000 UI D3/jour",               tag:"e", obj:["sante","longevite","libido"], gender:"MF", vegan:true, animal:false, collagen:false, type:"vitd",      syn:["omega3","zinc","magnesium"]},
   {name:"Oméga-3 (EPA/DHA)",          why:"Anti-inflammatoire naturel puissant. Protège le cœur, le cerveau et réduit les courbatures.",            dose:"2 à 3g EPA+DHA/jour avec un repas gras", tag:"e", obj:["sante","longevite","stress","perf"], gender:"MF", vegan:false, animal:true, collagen:false, type:"omega3",     syn:["vitd","vitc","astaxanthine"]},
-  {name:"Vitamine C",                 why:"Immunité renforcée, collagène synthétisé, récupération accélérée. Multiplie l'absorption du fer x3.",    dose:"500 à 1000mg/jour",                      tag:"e", obj:["sante","longevite","beaute"],gender:"MF", vegan:true,  animal:false, collagen:false, type:"vitc",        syn:["collagene","fer","zinc"]},
-  {name:"Vitamine B12 (Méthylcobalamine)", why:"Énergie, système nerveux, formation des globules rouges. Essentielle pour les vegans.",           dose:"1000mcg/jour (méthylcobalamine)",         tag:"e", obj:["perf","sante"], gender:"MF", vegan:true,  animal:false, collagen:false, type:"vitb12",      syn:["fer","folique"]},
+  {name:"Vitamine C",                 why:"Immunité renforcée, collagène synthétisé, récupération accélérée. Multiplie l'absorption du fer x3.",    dose:"500 à 1000mg/jour",                      tag:"b", obj:["sante","longevite","beaute"],gender:"MF", vegan:true,  animal:false, collagen:false, type:"vitc",        syn:["collagene","fer","zinc"]},
+  {name:"Vitamine B12 (Méthylcobalamine)", why:"Énergie, système nerveux, formation des globules rouges. Essentielle pour les vegans.",           dose:"1000mcg/jour (méthylcobalamine)",         tag:"b", obj:["perf","sante"], gender:"MF", vegan:true,  animal:false, collagen:false, type:"vitb12",      syn:["fer","folique"]},
   {name:"Zinc Bisglycinate",          why:"Testostérone, immunité, peau et libido. Forme bisglycinate = meilleure absorption, moins d'effets GI.", dose:"15 à 25mg/jour",                         tag:"e", obj:["sante","libido","masse","beaute"], gender:"MF", vegan:true, animal:false, collagen:false, type:"zinc",       syn:["magnesium","vitd","ashwa"]},
   {name:"Probiotiques",               why:"Rééquilibre le microbiote, renforce l'immunité et améliore la digestion et l'absorption des nutriments.", dose:"5 à 50 milliards UFC/jour",             tag:"b", obj:["sante"],             gender:"MF", vegan:true,  animal:false, collagen:false, type:"probio",      syn:["vitd","glutamine"]},
   {name:"Spiruline",                  why:"Super-aliment vegan : protéines complètes, fer biodisponible, B12 végétale et antioxydants.",            dose:"3 à 5g/jour",                            tag:"b", obj:["sante","perf"], gender:"MF", vegan:true,  animal:false, collagen:false, type:"spiruline",   syn:["vitc","omega3"]},
@@ -4481,12 +4622,12 @@ var QZ_DB = [
   {name:"Shilajit",                   why:"Résine minérale himalayenne riche en acides fulviques. Énergie cellulaire, vitalité et testosterone.",    dose:"250 à 500mg/jour (produit certifié)",    tag:"x", obj:["libido","perf"], gender:"M",  vegan:true,  animal:false, collagen:false, type:"shilajit",    syn:["tongkat","zinc","coq10"]},
   {name:"Fenugrec",                   why:"Soutient la testostérone, régule la glycémie et améliore la vitalité. Effet lent mais durable.",          dose:"500 à 600mg/jour",                       tag:"x", obj:["libido","fatloss"],  gender:"MF", vegan:true,  animal:false, collagen:false, type:"fenugrec",    syn:["zinc","maca"]},
   {name:"Damiana (Turnera diffusa)",  why:"Plante aphrodisiaque naturelle. Stimule la libido féminine et apaise l'anxiété légère.",                  dose:"200 à 400mg/jour",                       tag:"x", obj:["libido","stress"],     gender:"F",  vegan:true,  animal:false, collagen:false, type:"libido_f2",   syn:["maca","ashwa"]},
-  {name:"Inositol (Myo-Inositol)",    why:"Régule les hormones féminines, améliore l'insulino-résistance et les cycles. Clé du SOPK.",              dose:"2 à 4g/jour",                            tag:"b", obj:["libido","sante"],    gender:"F",  vegan:true,  animal:false, collagen:false, type:"hormones_f",  syn:["folique","vitd","berberin"]},
+  {name:"Inositol (Myo-Inositol)",    why:"Améliore la sensibilité à l'insuline et régule les cycles, particulièrement utile en cas de SOPK. Un effet sur la libido est possible mais reste secondaire, lié à l'équilibre hormonal global plutôt qu'à une action ciblée.", dose:"2 à 4g/jour",                            tag:"b", obj:["sante"],    gender:"F",  vegan:true,  animal:false, collagen:false, type:"hormones_f",  syn:["folique","vitd","berberin"]},
   {name:"Gattilier (Vitex agnus-castus)", why:"Rééquilibre les hormones féminines, réduit le SPM et régule les cycles menstruels.",               dose:"20 à 40mg d'extrait/jour",                tag:"b", obj:["sante","libido"],    gender:"F",  vegan:true,  animal:false, collagen:false, type:"hormones_f2", syn:["magnesium","vitb6"]},
   {name:"DIM (Diindolylméthane)",     why:"Détoxifie les oestrogènes, réduit l'acné hormonale et le SPM. Issu du brocoli.",                         dose:"100 à 200mg/jour",                       tag:"x", obj:["sante"],             gender:"F",  vegan:true,  animal:false, collagen:false, type:"hormones_f3", syn:["gattilier","vitd"]},
   // ─── SPECIFIQUE FEMME ───
   {name:"Fer Bisglycinate",           why:"Prévient l'anémie et la fatigue chronique. Forme bisglycinate : sans troubles digestifs.",               dose:"14 à 18mg/jour à jeun + Vitamine C",     tag:"e", obj:["sante","perf"],   gender:"F",  vegan:true,  animal:false, collagen:false, type:"fer",         syn:["vitc","vitb12","folique"]},
-  {name:"Acide Folique (B9)",         why:"Essentielle pour la femme : énergie, équilibre nerveux, fertilité et santé cellulaire.",                 dose:"400 à 800mcg/jour",                      tag:"e", obj:["sante"],             gender:"F",  vegan:true,  animal:false, collagen:false, type:"folique",     syn:["vitb12","fer"]},
+  {name:"Vitamine B9 (Folate, 5-MTHF)", why:"Réduit le risque d'anomalies du tube neural en cas de supplémentation avant et pendant le début de grossesse. Participe aussi à la formation des globules rouges.", dose:"400 à 800mcg/jour (forme 5-MTHF)",       tag:"e", obj:["sante"],             gender:"F",  vegan:true,  animal:false, collagen:false, type:"folique",     syn:["vitb12","fer"]},
   // ─── LONGEVITE ───
   {name:"CoQ10 (Ubiquinol)",          why:"Carburant des mitochondries. Énergie cellulaire, protection cardiaque et ralentissement du vieillissement.", dose:"100 à 200mg/jour (forme ubiquinol)", tag:"b", obj:["longevite","perf"], gender:"MF", vegan:true, animal:false, collagen:false, type:"coq10",       syn:["resveratrol","omega3","nmn"]},
   {name:"Resvératrol",                why:"Active les gènes de longévité (sirtuines), protège les cellules et les vaisseaux sanguins.",              dose:"150 à 500mg/jour",                       tag:"b", obj:["longevite"],          gender:"MF", vegan:true,  animal:false, collagen:false, type:"resveratrol", syn:["coq10","quercetin","omega3"]},
@@ -4613,11 +4754,13 @@ var QZ_QS = [
     id:"contraintes", label:"Contraintes", type:"multi",
     text:"Des contraintes a prendre en compte ?",
     opts:[
-      {v:"vegan",  t:"Vegan / vegetalien",  d:"Ni gélatine, ni collagène, ni lait"},
-      {v:"mini",   t:"Minimum de prises",   d:"Simplifier au maximum"},
-      {v:"sport",  t:"Sport intensif",      d:"Plus de 4h de sport par semaine"},
-      {v:"stress", t:"Stress & sommeil",    d:"Fatigue, anxiété, mauvais sommeil"},
-      {v:"aucune", t:"Aucune contrainte",   d:"Pas de restriction spécifique"}
+      {v:"vegan",     t:"Vegan / vegetalien",      d:"Ni gélatine, ni collagène, ni lait"},
+      {v:"mini",      t:"Minimum de prises",       d:"Simplifier au maximum"},
+      {v:"sport",     t:"Sport intensif",          d:"Plus de 4h de sport par semaine"},
+      {v:"stress",    t:"Stress & sommeil",        d:"Fatigue, anxiété, mauvais sommeil"},
+      {v:"grossesse", t:"Grossesse / allaitement", d:"Écarte les actifs non recommandés"},
+      {v:"diabete",   t:"Diabète / prédiabète",    d:"Écarte les actifs à risque d'interaction glycémique"},
+      {v:"aucune",    t:"Aucune contrainte",       d:"Pas de restriction spécifique"}
     ]
   }
 ];
@@ -4629,15 +4772,23 @@ function qzBuildStack(a){
   var niv    = a.niveau;
   var bud    = a.budget;
   var c      = Array.isArray(a.contraintes) ? a.contraintes : [];
-  var isVegan  = c.includes("vegan");
-  var isMini   = c.includes("mini");
-  var isSport  = c.includes("sport");
-  var isStress = c.includes("stress");
+  var isVegan     = c.includes("vegan");
+  var isMini      = c.includes("mini");
+  var isSport     = c.includes("sport");
+  var isStress    = c.includes("stress");
+  var isGrossesse = c.includes("grossesse");
+  var isDiabete   = c.includes("diabete");
   var isFemme  = genre === "F";
   var isAv     = niv === "av";
   var isFaible = bud === "faible";
   var maxItems = {faible:3, moyen:5, eleve:7, premium:10}[bud]||5;
   if(isMini) maxItems = Math.min(maxItems, 4);
+
+  // Types a ecarter en cas de grossesse/allaitement : actifs hormonaux, adaptogenes concentres,
+  // plantes non etablies comme sures, ou necessitant un avis medical prealable.
+  var GROSSESSE_EXCLUDE_TYPES = ["dhea","nmn","adaptogene","adaptogene2","libido_plante","libido_h","libido_h2","shilajit","fenugrec","libido_f2","hormones_f2","hormones_f3","resveratrol","selenium","foie","detox","metabolisme","antiinflamm","astaxanthine","antioxydant","melatonine"];
+  // Types a ecarter en cas de diabete/prediabete : actifs a effet glycemiant ou interagissant avec les traitements
+  var DIABETE_EXCLUDE_TYPES = ["metabolisme","dhea","nmn"];
 
   var scored = [];
   QZ_DB.forEach(function(s){
@@ -4648,6 +4799,8 @@ function qzBuildStack(a){
     if(isFemme && s.gender === "M") return;
     if(!isFemme && s.gender === "F") return;
     if(niv === "deb" && (s.name === "DHEA" || s.name === "NMN (Nicotinamide Mononucléotide)")) return;
+    if(isGrossesse && GROSSESSE_EXCLUDE_TYPES.includes(s.type)) return;
+    if(isDiabete && DIABETE_EXCLUDE_TYPES.includes(s.type)) return;
 
     // Score objectif direct — cumule si plusieurs objectifs matchent
     var matchCount = objs.filter(function(o){ return s.obj.includes(o); }).length;
@@ -4661,8 +4814,12 @@ function qzBuildStack(a){
     if(isSport && (s.obj.includes("perf") || s.obj.includes("masse"))) score += 20;
 
     // Specificite Femme : Fer + Folique toujours, sauf budget faible
-    if(isFemme && (s.name === "Fer Bisglycinate" || s.name === "Acide Folique (B9)")){
+    if(isFemme && (s.name === "Fer Bisglycinate" || s.name === "Vitamine B9 (Folate, 5-MTHF)")){
       score += isFaible ? 12 : 85;
+    }
+    // Grossesse : priorite forte sur les reperes ANSES, sans effet du budget
+    if(isGrossesse && (s.name === "Vitamine B9 (Folate, 5-MTHF)" || s.name === "Fer Bisglycinate" || s.name === "Vitamine D3 + K2" || s.name === "Oméga-3 (EPA/DHA)")){
+      score += 60;
     }
     if(isFemme && (s.type === "hormones_f" || s.type === "hormones_f2")) score += 25;
 
@@ -4989,6 +5146,18 @@ document.addEventListener('DOMContentLoaded', function(){
   if(drawerBtn) drawerBtn.addEventListener('click', function(e){
     closeDrawer(); openQuiz();
   });
+});
+
+// ═══ PANNEAU SOURCES — fermeture au clic ailleurs sur le site ═══
+document.addEventListener('click', function(e){
+  var panel = document.getElementById('srcPanel');
+  if(!panel || !panel.classList.contains('open')) return;
+  var isToggleBtn = e.target.closest('.src-btn') || e.target.closest('.footer-src-btn-desktop');
+  var isInsidePanel = e.target.closest('#srcPanel');
+  if(isToggleBtn || isInsidePanel) return;
+  panel.classList.remove('open');
+  var mobileBtn = document.querySelector('.src-btn');
+  if(mobileBtn) mobileBtn.textContent = '📖 Sources ▼';
 });
 </script>
 
