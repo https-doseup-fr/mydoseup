@@ -1,0 +1,8 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "com.mydoseup.twa",
+        "sha256_cert_fingerprints": ["22:09:F1:C8:BB:1E:82:A8:72:63:0E:69:B9:46:57:DD:E7:E2:54:82:AB:02:81:8E:DF:AF:7B:38:BB:A5:2C:CF"]
+      }
+    }]
