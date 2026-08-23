@@ -3874,6 +3874,16 @@ function buildAZ(){
         if(innerSc) innerSc.classList.add("open");
         // Scroll into view smoothly
         setTimeout(()=>cardEl.scrollIntoView({behavior:"smooth",block:"nearest"}),50);
+        // ═══ Met à jour l'URL (bouton retour, favoris, partage) ═══
+        if(!window._skipUrlSync){
+          const slug = nmToSlug(this.getAttribute("data-nm")||"");
+          if(slug) history.pushState({fiche:slug}, "", "#"+slug);
+        }
+      } else {
+        // Re-clic sur une fiche déjà ouverte → la referme et nettoie l'URL
+        if(!window._skipUrlSync && window.location.hash.slice(1) === nmToSlug(this.getAttribute("data-nm")||"")){
+          history.pushState({}, "", window.location.pathname + window.location.search);
+        }
       }
     });
   });
@@ -4184,19 +4194,31 @@ window.openFiche = openFiche;
 
 
 
-// ═══ DEEP LINK : ouvrir une fiche via le hash URL ═══
-function openFicheFromHash(){
-  var hash = window.location.hash;
-  if(!hash || hash.length < 2) return;
-  var slug = hash.slice(1);
+// ═══ Slug : identique partout (deep-link, générateur SEO, pushState) ═══
+function nmToSlug(nm){
+  return (nm||'').toLowerCase()
+    .replace(/[àáâãäå]/g,'a').replace(/[éèêë]/g,'e')
+    .replace(/[îï]/g,'i').replace(/[ôö]/g,'o')
+    .replace(/[ùûü]/g,'u').replace(/[ç]/g,'c')
+    .replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
+}
 
-  function nmToSlug(nm){
-    return nm.toLowerCase()
-      .replace(/[àáâãäå]/g,'a').replace(/[éèêë]/g,'e')
-      .replace(/[îï]/g,'i').replace(/[ôö]/g,'o')
-      .replace(/[ùûü]/g,'u').replace(/[ç]/g,'c')
-      .replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
-  }
+// Ferme toute fiche actuellement ouverte (utilisé par le bouton retour)
+function _closeAllFicheCards(){
+  document.querySelectorAll('.az-li-card.open').forEach(function(el){
+    el.classList.remove('open');
+    var innerSc = el.querySelector('.sc');
+    if(innerSc) innerSc.classList.remove('open');
+  });
+  document.querySelectorAll('.az-li.active-li').forEach(function(el){ el.classList.remove('active-li'); });
+}
+
+// ═══ DEEP LINK : ouvrir une fiche via le hash URL ═══
+// skipPush=true quand appelée depuis popstate (l'URL a déjà changé, pas besoin de la re-pousser)
+function openFicheFromHash(skipPush){
+  var hash = window.location.hash;
+  if(!hash || hash.length < 2){ if(skipPush) _closeAllFicheCards(); return; }
+  var slug = hash.slice(1);
 
   // Trouver la fiche par son slug
   var allLi = document.querySelectorAll('.az-li[data-nm]');
@@ -4229,8 +4251,7 @@ function openFicheFromHash(){
   if(famSection) famSection.classList.remove('collapsed');
 
   // Fermer les autres, ouvrir celle-ci
-  document.querySelectorAll('.az-li-card.open').forEach(function(el){ el.classList.remove('open'); });
-  document.querySelectorAll('.az-li.active-li').forEach(function(el){ el.classList.remove('active-li'); });
+  _closeAllFicheCards();
   var cardEl = target.nextElementSibling;
   if(cardEl && cardEl.classList.contains('az-li-card')){
     cardEl.classList.add('open');
@@ -4242,9 +4263,15 @@ function openFicheFromHash(){
     target.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }, 400);
 
-  // Nettoyer le hash
-  if(history.replaceState) history.replaceState(null, '', window.location.pathname);
+  // On garde le hash dans l'URL (favoris, partage, indexation) — plus de nettoyage ici
 }
+
+// ═══ Bouton retour / suivant du navigateur ═══
+window.addEventListener('popstate', function(){
+  window._skipUrlSync = true; // empêche le click-handler de re-pousser une entrée d'historique
+  openFicheFromHash(true);
+  setTimeout(function(){ window._skipUrlSync = false; }, 0);
+});
 
 // Lancer au chargement si hash présent OU si paramètre ?q= (Schema SearchAction)
 window.addEventListener('load', function(){
