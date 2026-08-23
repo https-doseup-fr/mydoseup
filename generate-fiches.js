@@ -134,6 +134,21 @@ async function main() {
     console.log('⚠️  icons/ INTROUVABLE à', iconsDir, '— non copié');
   }
 
+  // Copie .well-known/assetlinks.json (lien app Android / site, pour la Play Store)
+  const wellKnownDir = path.join(__dirname, '.well-known');
+  if (fs.existsSync(wellKnownDir)) {
+    fs.cpSync(wellKnownDir, path.join(OUT_DIR, '.well-known'), { recursive: true });
+    console.log('✅ .well-known/ copié dans dist/ :', fs.readdirSync(wellKnownDir).join(', '));
+  } else {
+    console.log('⚠️  .well-known/ INTROUVABLE à', wellKnownDir, '— non copié');
+  }
+
+  // .nojekyll : indispensable pour que GitHub Pages serve les dossiers commençant
+  // par un point (.well-known, etc.) — sinon ils sont ignorés silencieusement (404)
+  fs.writeFileSync(path.join(OUT_DIR, '.nojekyll'), '');
+  console.log('✅ .nojekyll créé dans dist/ (sert les dossiers en point, ex: .well-known)');
+
+
   const sitemapUrls = [`${SITE_URL}/`];
   const usedSlugs = new Set();
 
