@@ -1,0 +1,52 @@
+{
+  "id": "/",
+  "name": "MyDoseUp — Guide Compléments Alimentaires",
+  "short_name": "MyDoseUp",
+  "description": "Guide de référence des compléments alimentaires : fiches scientifiques avec dosages exacts, effets prouvés, synergies et contre-indications. Personnalisé Homme & Femme.",
+  "start_url": "/?source=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
+  "orientation": "portrait-primary",
+  "background_color": "#151617",
+  "theme_color": "#151617",
+  "lang": "fr",
+  "dir": "ltr",
+  "categories": ["health", "lifestyle", "medical"],
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Ma Routine Personnalisée",
+      "short_name": "Ma Routine",
+      "description": "Lance le quiz pour trouver tes compléments sur mesure",
+      "url": "/?shortcut=quiz",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Parcours Sportifs",
+      "short_name": "Sport",
+      "description": "Compléments par sport et par moment de l'effort",
+      "url": "/?shortcut=parcours",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}
