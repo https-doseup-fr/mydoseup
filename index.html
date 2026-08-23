@@ -150,11 +150,11 @@ body.F .tab.on{color:#D6B98A;background:rgba(214,185,138,0.10);border-color:#D6B
 .obj-count{font-size:11px;color:rgba(255,255,255,0.65);font-weight:600;margin-top:4px}
 .obj-results{padding:0 14px 14px;display:none}
 .obj-results.on{display:block}
-.obj-back{display:flex;flex-direction:row;align-items:center;gap:10px;padding:10px 0 12px;border-bottom:1px solid rgba(255,255,255,0.08);margin-bottom:12px;cursor:pointer}
+.obj-back{display:flex;flex-direction:row;align-items:center;gap:10px;padding:10px 0 12px;margin-bottom:12px;cursor:pointer}
 .obj-tip-stack{position:relative;margin:14px 0 14px}
 .obj-tip{border:none;border-radius:12px;padding:13px 14px;box-shadow:0 4px 14px rgba(0,0,0,0.22);position:relative}
 .obj-tip-hd{font-size:14px;font-weight:900;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px}
-.obj-tip-line{font-size:12px;line-height:1.55;margin-bottom:6px}
+.obj-tip-line{font-size:12px;font-weight:600;line-height:1.55;margin-bottom:6px}
 .obj-tip-line:last-child{margin-bottom:0}
 .obj-tip:not(.obj-tip-compact){background:#F0E5C8}
 .obj-tip:not(.obj-tip-compact) .obj-tip-hd{color:#2B2620}
@@ -168,6 +168,15 @@ body.F .tab.on{color:#D6B98A;background:rgba(214,185,138,0.10);border-color:#D6B
 }
 .obj-back-btn{height:34px;padding:0 14px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.85);white-space:nowrap;gap:4px;letter-spacing:0.02em;cursor:pointer}
 .obj-back-title{font-size:16px;font-weight:700;color:#FFF}
+/* Colonne filtres (mobile: puces horizontales au-dessus de la liste ; desktop: colonne fixe à gauche) */
+.obj-sidebar{margin-bottom:6px}
+.obj-filters{display:none;flex-wrap:wrap;gap:8px;margin-top:10px}
+.obj-filters.open{display:flex}
+.obj-filter-toggle{display:inline-flex;align-items:center;gap:6px;margin-top:12px;padding:9px 16px;border-radius:20px;border:1px solid rgba(255,255,255,0.16);background:rgba(255,255,255,0.06);color:#FFFFFF;font-size:12px;font-weight:700;font-family:"DM Sans",sans-serif;cursor:pointer}
+#objFilterActiveLabel{color:#D6B98A;font-weight:800}
+.obj-filter-btn{padding:8px 14px;border-radius:20px;border:1px solid rgba(255,255,255,0.14);background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.78);font-size:12px;font-weight:700;font-family:"DM Sans",sans-serif;cursor:pointer;transition:all 0.18s;white-space:nowrap}
+.obj-filter-btn.active{background:#D6B98A;border-color:#D6B98A;color:#1F1B14}
+.obj-filter-btn:active{transform:scale(0.96)}
 /* SUPPLEMENT CARD */
 .sc{background:#EAE0C8;border-radius:8px;margin-bottom:10px;overflow:hidden;border:none;position:relative;transition:border-color 0.2s}
 .sc::before{display:none}
@@ -310,7 +319,7 @@ body.F .az-letter{background:#1D1E20;color:#DEC49C}
 .obj-arrow{font-size:30px;color:#FFF;opacity:0.9;line-height:1;display:flex;align-items:center;position:relative;top:3px;transition:transform 0.2s}
 .obj-tile:hover .obj-arrow,.obj-tile:active .obj-arrow{transform:translateX(2px)}
 /* Header catégorie compact : icône + titre côte à côte */
-.obj-back{display:flex;flex-direction:row;align-items:center;gap:10px;padding:10px 0 12px;border-bottom:1px solid rgba(255,255,255,0.08);margin-bottom:12px;cursor:pointer}
+.obj-back{display:flex;flex-direction:row;align-items:center;gap:10px;padding:10px 0 12px;margin-bottom:12px;cursor:pointer}
 .obj-back-ico{width:36px;height:36px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:rgba(255,255,255,0.15);border-radius:10px;font-size:20px}.obj-back-ico svg{width:22px;height:22px;stroke:rgba(255,255,255,0.95)}
 .obj-subhd{display:flex;align-items:center;gap:8px;padding:14px 2px 8px;font-size:14px;font-weight:900;text-transform:uppercase;letter-spacing:0.08em;color:#FFFFFF}
 .obj-subhd:first-child{padding-top:2px}
@@ -457,14 +466,36 @@ body.F .footer-logo span{color:inherit;-webkit-text-fill-color:inherit}
   .header{border-radius:20px 20px 0 0;}
   .footer{border-radius:0 0 20px 20px;}
   .tabs{border-radius:0 0 20px 20px;}
+  /* Header desktop : recherche + sélecteur de genre sur une seule ligne */
+  .header-controls{display:flex;justify-content:center}
+  .header-controls .g-switch{width:300px;margin-top:0 !important;margin-bottom:0 !important;}
+  /* Menu desktop : boutons compacts (pas étirés) + barre de recherche qui prend la ligne restante */
+  .nav-dropdown{justify-content:center !important;align-items:center}
+  .nav-btn{flex:0 0 auto !important;padding:9px 16px !important;}
+  .nav-search-slot{display:flex;flex:0 0 auto;width:170px;margin-left:14px}
+  .nav-search-slot .search-wrap{width:100%;padding-bottom:0;display:flex !important}
+  .nav-search-slot .search-inner{flex:1}
+  /* Page catégorie desktop : filtres à gauche, fiches à droite — bloc centré, pas étiré sur toute la largeur */
+  .obj-results-grid{display:grid;grid-template-columns:280px minmax(0,520px);gap:24px;align-items:start;width:fit-content;max-width:100%;margin:0 auto}
+  .obj-back{max-width:824px;margin-left:auto;margin-right:auto}
+  .obj-sidebar{position:sticky;top:16px;margin-bottom:0}
+  .obj-filters{display:flex !important;flex-direction:column;flex-wrap:nowrap}
+  .obj-filter-toggle{display:none !important}
+  .obj-filter-btn{text-align:left;width:100%}
 }
 @media(min-width:1200px){
-  .app-wrapper{max-width:960px;}
-  .obj-grid{grid-template-columns:repeat(4,1fr);}
+  .app-wrapper{max-width:1080px;}
+  .obj-grid{grid-template-columns:repeat(5,1fr);gap:12px;}
+  .obj-tile{padding:12px 10px 14px;border-radius:16px;}
+  .obj-ico{width:26px;height:26px;margin-bottom:7px}
+  .obj-ico svg{width:26px;height:26px}
+  .obj-nm{font-size:12.5px}
+  .obj-count{font-size:10px;margin-top:2px}
+  .obj-results-grid{grid-template-columns:300px minmax(0,560px);}
+  .obj-back{max-width:884px;}
 }
 @media(min-width:1600px){
-  .app-wrapper{max-width:1100px;}
-  .obj-grid{grid-template-columns:repeat(5,1fr);}
+  .app-wrapper{max-width:1240px;}
 }
 /* ====== ANTI-COPIE / PROTECTION CONTENU ====== */
 .card,.modal,.fiche,.suppl-card,.content,.dose-table,h1,h2,h3,p,li,td,th,.fn-text,.hM,.hF,.prec-text,.synergie,.plus,.moins{user-select:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;}
@@ -1332,20 +1363,22 @@ html{overflow-x:hidden}
       <div class="logo-tag">Guide des Compléments Alimentaires</div>
     </div>
   </div>
-  <div class="search-wrap">
-    <div class="search-inner">
-      <span class="s-ico">🔍</span>
-      <input class="search" id="si" type="text" placeholder="Rechercher..." oninput="doSearch(this.value)" maxlength="100" style="font-size:16px" autocomplete="off" spellcheck="false" aria-label="Rechercher un complément alimentaire">
-      <span class="s-clr" id="sc" onclick="clearS()">✕</span>
+  <div class="header-controls">
+    <div class="search-wrap">
+      <div class="search-inner">
+        <span class="s-ico">🔍</span>
+        <input class="search" id="si" type="text" placeholder="Rechercher..." oninput="doSearch(this.value)" maxlength="100" style="font-size:16px" autocomplete="off" spellcheck="false" aria-label="Rechercher un complément alimentaire">
+        <span class="s-clr" id="sc" onclick="clearS()">✕</span>
+      </div>
+      <button class="menu-btn" onclick="openDrawer()" aria-label="Menu">
+        <div class="menu-btn-ico"><span></span><span></span><span></span></div>
+        Menu
+      </button>
     </div>
-    <button class="menu-btn" onclick="openDrawer()" aria-label="Menu">
-      <div class="menu-btn-ico"><span></span><span></span><span></span></div>
-      Menu
-    </button>
-  </div>
-  <div class="g-switch" style="margin-bottom:2px;margin-top:4px">
-    <button class="g-pill" id="gM" onclick="setG('M')"><span class="pill-icon">♂</span>Homme</button>
-    <button class="g-pill on" id="gF" onclick="setG('F')"><span class="pill-icon">♀</span>Femme</button>
+    <div class="g-switch" style="margin-bottom:2px;margin-top:4px">
+      <button class="g-pill" id="gM" onclick="setG('M')"><span class="pill-icon">♂</span>Homme</button>
+      <button class="g-pill on" id="gF" onclick="setG('F')"><span class="pill-icon">♀</span>Femme</button>
+    </div>
   </div>
 </div>
 
@@ -1359,13 +1392,14 @@ html{overflow-x:hidden}
     <button class="nav-btn" id="navParcours" onclick="navGo('parcours',this)">Parcours Sportifs</button>
     <button class="nav-btn" id="navExperts" onclick="navGo('experts',this)">Nos Experts</button>
     <button class="nav-btn" id="navConcept" onclick="navGo('concept',this)">Le Concept</button>
+    <div class="nav-search-slot" id="navSearchSlot"></div>
   </div>
 </nav>
 
 <!-- ═══ ONGLETS (Besoin / A-Z) — visibles uniquement sur Accueil ═══ -->
 <nav class="tabs" id="tabsBar">
-  <button class="tab on" onclick="switchTab('obj',this)">Ton besoin</button>
-  <button class="tab" onclick="switchTab('az',this)">Par famille</button>
+  <button class="tab on" id="tabObj" onclick="switchTab('obj',this)">Ton besoin</button>
+  <button class="tab" id="tabAz" onclick="switchTab('az',this)">Par famille</button>
 </nav>
 <div id="tabHint" style="font-size:13px;font-weight:700;color:#FFFFFF;text-align:center;padding:4px 16px 8px"></div>
 
@@ -1381,7 +1415,10 @@ html{overflow-x:hidden}
         <div class="obj-back-btn">← Retour</div>
         <div id="objTitle"></div>
       </div>
-      <div id="objList"></div>
+      <div class="obj-results-grid">
+        <aside class="obj-sidebar" id="objSidebar"></aside>
+        <div id="objList"></div>
+      </div>
     </div>
   </div>
   <div class="panel" id="panel-az">
@@ -3664,8 +3701,9 @@ function showObj(id){
       <div class="obj-tip-hd">Conseils MyDoseUp</div>
       ${obj.tip.map(t=>`<div class="obj-tip-line">${t}</div>`).join('')}
     </div></div>` : '';
-  let html = tipHtml + items.map(s=>card(s,null,false)).join("");
   const subgroups = OBJ_SUBGROUPS[id];
+  const filters = []; // {key, label} pour la colonne filtres (desktop) et mobile
+  let html;
   if(subgroups){
     const byName = {};
     items.forEach(s=>{byName[s.nm]=s;});
@@ -3676,24 +3714,50 @@ function showObj(id){
       groupItems.forEach(s=>used.add(s.nm));
       const proteinHtml = (gi===0 && id==="muscu") ? PROTEINES.filter(p=>p.nm==="Whey Isolat (WPI)").map(protCard).join("") : "";
       if(!groupItems.length && !proteinHtml) return;
+      const groupKey = nmToSlug(g.label) || ("grp-"+gi);
+      filters.push({key:groupKey, label:g.label});
+      grouped += `<div class="obj-group" data-group="${groupKey}">`;
       grouped += `<div class="obj-subhd">${g.label}${g.sub?` <span style="text-transform:none;font-weight:400;font-size:11px;color:#FFFFFF;opacity:.85">(${g.sub})</span>`:''}</div>`;
       if(g.note) grouped += `<div class="obj-subnote">${g.note}</div>`;
       grouped += proteinHtml + groupItems.map(s=>card(s,null,false)).join("");
+      grouped += `</div>`;
     });
     const rest = items.filter(s=>!used.has(s.nm));
     if(rest.length){
+      filters.push({key:"autres", label:"Autres actifs"});
+      grouped += `<div class="obj-group" data-group="autres">`;
       grouped += `<div class="obj-subhd">Autres actifs</div>`;
       grouped += rest.map(s=>card(s,null,false)).join("");
+      grouped += `</div>`;
     }
     if(id==="muscu"){
       const otherProt = PROTEINES.filter(p=>p.nm!=="Whey Isolat (WPI)");
       if(otherProt.length){
-        grouped += `<div class="prot-sep"><div class="prot-sep-t">Autres protéines en poudre</div>${otherProt.map(protCard).join("")}</div>`;
+        filters.push({key:"proteines", label:"Protéines en Poudre"});
+        grouped += `<div class="obj-group" data-group="proteines"><div class="prot-sep"><div class="prot-sep-t">Autres protéines en poudre</div>${otherProt.map(protCard).join("")}</div></div>`;
       }
     }
-    html = tipHtml + grouped;
-  } else if(id==="muscu") html += `<div class="prot-sep"><div class="prot-sep-t">Protéines en Poudre</div>${PROTEINES.map(protCard).join("")}</div>`;
+    html = grouped;
+  } else {
+    html = items.map(s=>card(s,null,false)).join("");
+    if(id==="muscu") html += `<div class="prot-sep"><div class="prot-sep-t">Protéines en Poudre</div>${PROTEINES.map(protCard).join("")}</div>`;
+  }
   document.getElementById("objList").innerHTML = html;
+
+  // Colonne de gauche : conseils MyDoseUp + filtres rapides
+  // Mobile : repliés derrière un bouton "Filtrer" (évite les puces qui prennent toute la largeur)
+  // Desktop : toujours visibles en colonne
+  const filtersHtml = filters.length ? `<button class="obj-filter-toggle" id="objFilterToggle" onclick="toggleObjFilters()">Filtrer <span id="objFilterActiveLabel"></span></button>
+    <div class="obj-filters" id="objFiltersList">
+      <button class="obj-filter-btn active" data-group="all" onclick="filterObjGroup('all',this)">Tous</button>
+      ${filters.map(f=>`<button class="obj-filter-btn" data-group="${f.key}" onclick="filterObjGroup('${f.key}',this)">${f.label}</button>`).join('')}
+    </div>` : '';
+  const sidebarEl = document.getElementById("objSidebar");
+  if(sidebarEl) sidebarEl.innerHTML = tipHtml + filtersHtml;
+
+  // Masque le message d'aide ("Clique sur une bulle...") une fois entré dans une catégorie
+  const tabHintEl = document.getElementById("tabHint");
+  if(tabHintEl) tabHintEl.style.display = "none";
 
   // ⑥ Header compact — masquer tout
   // header reste visible
@@ -3707,10 +3771,41 @@ function showObj(id){
 
 
 
+// Filtre rapide (colonne de gauche) : affiche uniquement le sous-groupe sélectionné,
+// ou tout si "Tous" est cliqué. Re-cliquer sur un filtre déjà actif le désactive.
+function filterObjGroup(groupKey, btnEl){
+  const alreadyActive = groupKey !== 'all' && btnEl && btnEl.classList.contains('active');
+  const groups = document.querySelectorAll('#objList .obj-group');
+  document.querySelectorAll('.obj-filter-btn').forEach(b=>b.classList.remove('active'));
+  let activeLabel = '';
+  if(groupKey === 'all' || alreadyActive){
+    groups.forEach(g=>{ g.style.display=''; });
+    const allBtn = document.querySelector('.obj-filter-btn[data-group="all"]');
+    if(allBtn) allBtn.classList.add('active');
+  } else {
+    if(btnEl) btnEl.classList.add('active');
+    activeLabel = btnEl ? btnEl.textContent.trim() : '';
+    groups.forEach(g=>{ g.style.display = (g.getAttribute('data-group')===groupKey) ? '' : 'none'; });
+  }
+  // Referme le panneau sur mobile après sélection, et affiche le filtre actif sur le bouton
+  const list = document.getElementById('objFiltersList');
+  if(list) list.classList.remove('open');
+  const label = document.getElementById('objFilterActiveLabel');
+  if(label) label.textContent = activeLabel ? '· ' + activeLabel : '';
+}
+
+// Mobile uniquement : replie/déplie la liste de filtres derrière le bouton "Filtrer"
+function toggleObjFilters(){
+  const list = document.getElementById('objFiltersList');
+  if(list) list.classList.toggle('open');
+}
+
 function backToGrid(){
   document.getElementById("objGrid").style.display="grid";
   document.getElementById("objResults").classList.remove("on");
   document.getElementById("objList").innerHTML="";
+  const tabHintEl = document.getElementById("tabHint");
+  if(tabHintEl) tabHintEl.style.display = "";
   const hdr=document.querySelector('.header');if(hdr)hdr.style.padding='';
   const lp=document.querySelector('.logo-pill');if(lp){lp.style.width='64px';lp.style.height='64px';lp.style.minWidth='64px';lp.style.minHeight='64px';}
   const lt=document.querySelector('.logo-txt');if(lt)lt.style.fontSize='';
@@ -3983,12 +4078,19 @@ function switchTab(id,btn){
   navGo('accueil', document.querySelector('.nav-btn'), true);
   // Double RAF pour garantir après reflow
   requestAnimationFrame(()=>{ window.scrollTo(0,0); });
+
+  // ═══ Met à jour l'URL (bouton retour du navigateur) ═══
+  if(!window._skipUrlSync){
+    if(id==="az") history.pushState({tab:"az"}, "", "#tab-az");
+    else history.pushState({}, "", window.location.pathname + window.location.search);
+  }
 }
 
 // Petit texte d'aide sous les onglets pour clarifier leur rôle respectif
 function updateTabHint(id){
   var el = document.getElementById('tabHint');
   if(!el) return;
+  el.style.display = ""; // un changement d'onglet ramène toujours au niveau "liste", jamais dans une catégorie
   el.textContent = id === 'az'
     ? "Explore les catégories si tu cherches une molécule précise."
     : "Clique sur une bulle qui correspond à ton besoin et découvre les compléments les plus adaptés.";
@@ -4288,13 +4390,8 @@ function openFicheFromHash(skipPush){
   });
   if(!target) return;
 
-  // Activer l'onglet A-Z via switchTab (la fonction officielle)
-  var tabAZ = null;
-  document.querySelectorAll('.tab').forEach(function(t){
-    if(t.textContent.trim().indexOf('Z') >= 0 && t.textContent.trim().indexOf('A') >= 0){
-      tabAZ = t;
-    }
-  });
+  // Activer l'onglet "Par famille" via switchTab (la fonction officielle)
+  var tabAZ = document.getElementById('tabAz');
   if(tabAZ && typeof switchTab === 'function'){
     switchTab('az', tabAZ);
   } else {
@@ -4379,6 +4476,11 @@ function _routeFromHash(hash){
     _openCategoryFromHash(hash.slice(5));
     return true;
   }
+  if(hash === '#tab-az'){
+    var azBtn = document.getElementById('tabAz');
+    if(azBtn) switchTab('az', azBtn);
+    return true;
+  }
   return false;
 }
 
@@ -4400,6 +4502,11 @@ window.addEventListener('popstate', function(){
     var activePage = document.querySelector('.page-view.on');
     if(activePage && activePage.id !== 'page-accueil'){
       _activatePage('accueil');
+    }
+    var azTabOn = document.getElementById('panel-az');
+    if(azTabOn && azTabOn.classList.contains('on')){
+      var objBtn = document.getElementById('tabObj');
+      if(objBtn) switchTab('obj', objBtn);
     }
   }
   setTimeout(function(){ window._skipUrlSync = false; }, 0);
@@ -4426,6 +4533,7 @@ window.addEventListener('load', function(){
 
   function tryAct(){
     if(azContent.querySelectorAll('.az-li[data-nm]').length === 0) return false;
+    window._skipUrlSync = true; // l'URL de chargement est déjà la bonne (fiche via lien direct/favori)
     if(hash){
       openFicheFromHash();
     } else if(qParam){
@@ -4438,6 +4546,7 @@ window.addEventListener('load', function(){
         if(history.replaceState) history.replaceState(null, '', window.location.pathname);
       }
     }
+    window._skipUrlSync = false;
     return true;
   }
 
@@ -5348,6 +5457,24 @@ document.addEventListener('click', function(e){
 </script>
 
 <script>
+// ═══ Placement dynamique de la barre de recherche : à côté du switch H/F sur
+// mobile/tablette, dans la barre de menu (à côté des boutons) sur desktop ═══
+function _placeSearchBar(){
+  var navSlot = document.getElementById('navSearchSlot');
+  var headerControls = document.querySelector('.header-controls');
+  var searchWrap = document.querySelector('.search-wrap');
+  if(!navSlot || !headerControls || !searchWrap) return;
+  var wantNav = window.matchMedia('(min-width:900px)').matches;
+  if(wantNav){
+    if(searchWrap.parentElement !== navSlot) navSlot.appendChild(searchWrap);
+  } else {
+    if(searchWrap.parentElement !== headerControls) headerControls.insertBefore(searchWrap, headerControls.firstChild);
+  }
+}
+window.addEventListener('DOMContentLoaded', _placeSearchBar);
+window.addEventListener('load', _placeSearchBar);
+window.addEventListener('resize', _placeSearchBar);
+
 if('serviceWorker' in navigator){
   window.addEventListener('load', function(){
     var swCode = 'const C="mydoseup-v1";self.addEventListener("install",e=>{e.waitUntil(caches.open(C).then(c=>c.addAll([location.href])));self.skipWaiting();});self.addEventListener("activate",e=>{e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(n=>n!==C).map(n=>caches.delete(n)))));self.clients.claim();});self.addEventListener("fetch",e=>{if(e.request.method!=="GET")return;e.respondWith(caches.match(e.request).then(r=>{var f=fetch(e.request).then(res=>{if(res&&res.status===200)caches.open(C).then(c=>c.put(e.request,res.clone()));return res;}).catch(()=>r);return r||f;}));});';
