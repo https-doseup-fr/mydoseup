@@ -3677,6 +3677,9 @@ function showObj(id){
 
   // ⑦ Scroll final après injection DOM
   requestAnimationFrame(()=>{ window.scrollTo(0,0); });
+
+  // ═══ Met à jour l'URL (bouton retour du navigateur) ═══
+  if(!window._skipUrlSync) history.pushState({cat:id}, "", "#cat-"+id);
 }
 
 
@@ -3701,6 +3704,10 @@ function backToGrid(){
   document.getElementById('searchPanel').classList.remove('on');
   // Restaurer scroll
   requestAnimationFrame(()=>{ window.scrollTo(0,_savedScrollY); });
+  // ═══ Nettoie l'URL si on quitte une catégorie ═══
+  if(!window._skipUrlSync && window.location.hash.indexOf('#cat-')===0){
+    history.pushState({}, "", window.location.pathname + window.location.search);
+  }
 }
 
 function setG(g){
@@ -4299,9 +4306,35 @@ function openFicheFromHash(skipPush){
 }
 
 // ═══ Bouton retour / suivant du navigateur ═══
+function _activateObjTab(){
+  document.querySelectorAll('.tab').forEach(function(b){ b.classList.remove('on'); });
+  document.querySelectorAll('.panel').forEach(function(p){ p.classList.remove('on'); });
+  var panelObj = document.getElementById('panel-obj');
+  if(panelObj) panelObj.classList.add('on');
+  var objTabBtn = document.querySelector('.tab');
+  if(objTabBtn) objTabBtn.classList.add('on');
+}
+function _openCategoryFromHash(id){
+  if(typeof OBJECTIFS === 'undefined') return;
+  var obj = OBJECTIFS.find(function(o){ return o.id === id; });
+  if(!obj) return;
+  _activateObjTab();
+  showObj(id);
+}
+
 window.addEventListener('popstate', function(){
-  window._skipUrlSync = true; // empêche le click-handler de re-pousser une entrée d'historique
-  openFicheFromHash(true);
+  window._skipUrlSync = true; // empêche les fonctions d'ouverture de re-pousser une entrée d'historique
+  var hash = window.location.hash;
+  if(hash.indexOf('#cat-') === 0){
+    _openCategoryFromHash(hash.slice(5));
+  } else if(hash && hash.length > 1){
+    openFicheFromHash(true);
+  } else {
+    // Plus rien dans l'URL : fermer toute fiche ouverte, et revenir à la grille si on est dans une catégorie
+    _closeAllFicheCards();
+    var objResults = document.getElementById('objResults');
+    if(objResults && objResults.classList.contains('on')) backToGrid();
+  }
   setTimeout(function(){ window._skipUrlSync = false; }, 0);
 });
 
@@ -4317,6 +4350,10 @@ window.addEventListener('load', function(){
   if(!azContent) return;
 
   function tryAct(){
+    if(hash && hash.indexOf('#cat-') === 0){
+      _openCategoryFromHash(hash.slice(5));
+      return true;
+    }
     if(azContent.querySelectorAll('.az-li[data-nm]').length === 0) return false;
     if(hash){
       openFicheFromHash();
