@@ -1367,6 +1367,7 @@ html{overflow-x:hidden}
   <button class="tab on" onclick="switchTab('obj',this)">Ton besoin</button>
   <button class="tab" onclick="switchTab('az',this)">Par famille</button>
 </nav>
+<div id="tabHint" style="font-size:13px;font-weight:700;color:#FFFFFF;text-align:center;padding:4px 16px 8px"></div>
 
 
 <div class="sp" id="searchPanel"></div>
@@ -3120,7 +3121,7 @@ function card(s, letter, azMode, neutral){
   const dbi = "";
   const dbt = s.dispo===3?"Complexe / Avis médical":s.dispo===2?"Boutique spécialisée":"Facile à trouver";
 
-  return `<div class="sc" style="--c:${famColorFor(s.nm) || s.c}" onclick="this.classList.toggle('open')">
+  return `<div class="sc" data-nm="${s.nm.replace(/"/g,'&quot;')}" style="--c:${famColorFor(s.nm) || s.c}" onclick="toggleFicheCard(this)">
     ${azMode ? "" : `<div class="sc-hd"><div class="sc-accent"></div>
       <div class="sc-main">
         <div class="sc-nm">${ltr}${s.nm}</div>
@@ -3159,7 +3160,7 @@ function protCard(p){
   const moins=(p.moins||[]).map(fmtPoint).join("");
   const dose=(p.dose||[]).map(d=>`<div class="d-row"><span class="d-k">${d[0]}</span><span class="d-v">${d[1]}</span></div>`).join("");
   const roleBlock = p.fn ? `<div class="sb"><div class="sb-lbl">Rôle</div><div class="sb-txt" style="background:rgba(0,0,0,0.03);border-radius:6px;border:1px solid rgba(0,0,0,0.10);padding:12px;font-size:13px;font-weight:600;color:#1F2933;line-height:1.65">${p.fn}</div></div>` : "";
-  return `<div class="sc" style="--c:${FAM_CFG["Protéines"].color}" onclick="this.classList.toggle('open');event.stopPropagation()">
+  return `<div class="sc" data-nm="${p.nm.replace(/"/g,'&quot;')}" style="--c:${FAM_CFG["Protéines"].color}" onclick="toggleFicheCard(this);event.stopPropagation()">
     <div class="sc-hd"><div class="sc-accent"></div>
       <div class="sc-main"><div class="sc-nm">${p.nm}</div><div class="sc-fam">Protéines</div></div>
       <span class="sc-chv"><span class="sc-chv-closed">Dérouler</span><span class="sc-chv-open">Replier</span></span>
@@ -3875,15 +3876,10 @@ function buildAZ(){
         // Scroll into view smoothly
         setTimeout(()=>cardEl.scrollIntoView({behavior:"smooth",block:"nearest"}),50);
         // ═══ Met à jour l'URL (bouton retour, favoris, partage) ═══
-        if(!window._skipUrlSync){
-          const slug = nmToSlug(this.getAttribute("data-nm")||"");
-          if(slug) history.pushState({fiche:slug}, "", "#"+slug);
-        }
+        _syncUrlOnOpen(this.getAttribute("data-nm")||"");
       } else {
         // Re-clic sur une fiche déjà ouverte → la referme et nettoie l'URL
-        if(!window._skipUrlSync && window.location.hash.slice(1) === nmToSlug(this.getAttribute("data-nm")||"")){
-          history.pushState({}, "", window.location.pathname + window.location.search);
-        }
+        _syncUrlOnClose(this.getAttribute("data-nm")||"");
       }
     });
   });
@@ -3949,6 +3945,7 @@ function switchTab(id,btn){
   document.getElementById("si").value="";
   document.getElementById("sc").style.display="none";
   if(id==="obj") backToGrid();
+  updateTabHint(id);
   // Scroll top immédiat AVANT navGo
   window.scrollTo(0,0);
   document.documentElement.scrollTop=0;
@@ -3957,6 +3954,16 @@ function switchTab(id,btn){
   // Double RAF pour garantir après reflow
   requestAnimationFrame(()=>{ window.scrollTo(0,0); });
 }
+
+// Petit texte d'aide sous les onglets pour clarifier leur rôle respectif
+function updateTabHint(id){
+  var el = document.getElementById('tabHint');
+  if(!el) return;
+  el.textContent = id === 'az'
+    ? "Explore les catégories si tu cherches une molécule précise."
+    : "Clique sur une bulle qui correspond à ton besoin et découvre les compléments les plus adaptés.";
+}
+document.addEventListener('DOMContentLoaded', function(){ updateTabHint('obj'); });
 
 function doSearch(val){
   const sp=document.getElementById("searchPanel");
@@ -4203,13 +4210,36 @@ function nmToSlug(nm){
     .replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
 }
 
-// Ferme toute fiche actuellement ouverte (utilisé par le bouton retour)
+// ═══ Point d'entrée UNIQUE pour synchroniser l'URL avec l'ouverture/fermeture
+// d'une fiche, quel que soit l'onglet d'où elle est ouverte (Ton Besoin,
+// Par famille, recherche...) ═══
+function _syncUrlOnOpen(nm){
+  if(window._skipUrlSync) return;
+  var slug = nmToSlug(nm);
+  if(slug) history.pushState({fiche:slug}, "", "#"+slug);
+}
+function _syncUrlOnClose(nm){
+  if(window._skipUrlSync) return;
+  var slug = nmToSlug(nm);
+  if(window.location.hash.slice(1) === slug){
+    history.pushState({}, "", window.location.pathname + window.location.search);
+  }
+}
+
+// Appelée par le onclick de TOUTES les cartes fiches (card() et protCard()),
+// que ce soit dans "Ton Besoin", "Par famille", la recherche ou les grilles.
+function toggleFicheCard(el){
+  var nm = el.getAttribute('data-nm') || '';
+  var willOpen = !el.classList.contains('open');
+  el.classList.toggle('open');
+  if(willOpen) _syncUrlOnOpen(nm); else _syncUrlOnClose(nm);
+}
+
+// Ferme toute fiche actuellement ouverte, où qu'elle soit sur le site
+// (utilisé par le bouton retour du navigateur)
 function _closeAllFicheCards(){
-  document.querySelectorAll('.az-li-card.open').forEach(function(el){
-    el.classList.remove('open');
-    var innerSc = el.querySelector('.sc');
-    if(innerSc) innerSc.classList.remove('open');
-  });
+  document.querySelectorAll('.sc.open').forEach(function(el){ el.classList.remove('open'); });
+  document.querySelectorAll('.az-li-card.open').forEach(function(el){ el.classList.remove('open'); });
   document.querySelectorAll('.az-li.active-li').forEach(function(el){ el.classList.remove('active-li'); });
 }
 
@@ -4256,6 +4286,8 @@ function openFicheFromHash(skipPush){
   if(cardEl && cardEl.classList.contains('az-li-card')){
     cardEl.classList.add('open');
     target.classList.add('active-li');
+    var innerSc = cardEl.querySelector('.sc');
+    if(innerSc) innerSc.classList.add('open'); // sinon le contenu reste replié (invisible)
   }
 
   // Scroll vers la fiche
