@@ -99,6 +99,13 @@ async function main() {
   // Copie de la page d'accueil telle quelle
   fs.writeFileSync(path.join(OUT_DIR, 'index.html'), originalHtml);
 
+  // Copie CNAME si présent (nom de domaine perso GitHub Pages) — sinon le
+  // domaine mydoseup.com se déconnecterait à chaque déploiement sur gh-pages
+  const cnamePath = path.join(__dirname, 'CNAME');
+  if (fs.existsSync(cnamePath)) {
+    fs.copyFileSync(cnamePath, path.join(OUT_DIR, 'CNAME'));
+  }
+
   const sitemapUrls = [`${SITE_URL}/`];
   const usedSlugs = new Set();
 
