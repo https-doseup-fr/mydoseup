@@ -2014,6 +2014,7 @@ function refuseCookies(){
  */
 
 let G = "F";
+let _savedScrollY = 0;
 const DATA = [
  {nm:"Ashwagandha (KSM-66)",kw:"ashwagandha stress anxiété cortisol testostérone adaptogène",tag:"Adaptogène",c:"var(--mental)",dispo:2,where:"Boutique fitness, Amazon, parapharmacie",forme:"suppl",gender:"MF",
   objectifs:["sommeil","mental","testo","perf","poids","libido","cycle","menopause"],
@@ -3239,6 +3240,15 @@ function navGo(pageId, btn, _fromSwitchTab){
   document.documentElement.scrollTop = 0;
   document.body.scrollTop = 0;
   window.scrollTo(0,0);
+
+  // ═══ Met à jour l'URL (bouton retour du navigateur) ═══
+  if(!_fromSwitchTab && !window._skipUrlSync){
+    if(pageId === 'accueil'){
+      history.pushState({}, "", window.location.pathname + window.location.search);
+    } else {
+      history.pushState({page:pageId}, "", "#page-"+pageId);
+    }
+  }
 }
 
 // ──────────────────────────────────────────────
@@ -3405,6 +3415,13 @@ const TIMING_LABELS = {
   apres: "🔋 Après l'effort"
 };
 
+// Noms lisibles des sports (pour reconstruire le titre depuis une URL directe)
+const SPORT_NAMES = {
+  running: "Running", musculation: "Musculation", hyrox: "Hyrox",
+  boxe: "Boxe & Arts Martiaux", crossfit: "CrossFit / HIIT",
+  cyclisme: "Cyclisme", natation: "Natation", yoga: "Yoga & Pilates"
+};
+
 let currentSport = null;
 
 function showSport(sportKey, sportName){
@@ -3417,6 +3434,8 @@ function showSport(sportKey, sportName){
   // Réinitialiser résultats
   document.getElementById('timingResults').classList.remove('on');
   document.getElementById('timingResultsList').innerHTML = '';
+  // ═══ Met à jour l'URL (bouton retour du navigateur) ═══
+  if(!window._skipUrlSync) history.pushState({sport:sportKey}, "", "#page-parcours-"+sportKey);
 }
 
 function backToSportGrid(){
@@ -3425,6 +3444,8 @@ function backToSportGrid(){
   document.getElementById('timingView').classList.remove('on');
   document.getElementById('timingResults').classList.remove('on');
   currentSport = null;
+  // ═══ Nettoie l'URL (retour à la grille des sports) ═══
+  if(!window._skipUrlSync) history.pushState({page:'parcours'}, "", "#page-parcours");
 }
 
 function showTimingResults(timing){
@@ -3434,6 +3455,8 @@ function showTimingResults(timing){
   const tr = document.getElementById('timingResults');
   const trl = document.getElementById('timingResultsList');
   const trt = document.getElementById('timingResultsTitle');
+  // ═══ Met à jour l'URL (bouton retour du navigateur) ═══
+  if(!window._skipUrlSync) history.pushState({sport:currentSport,timing:timing}, "", "#page-parcours-"+currentSport+"-"+timing);
 
   // Sports où la protéine post-effort est recommandée
   const protoSports = ['musculation','hyrox','crossfit','running','boxe','cyclisme','natation'];
@@ -4305,7 +4328,7 @@ function openFicheFromHash(skipPush){
   // On garde le hash dans l'URL (favoris, partage, indexation) — plus de nettoyage ici
 }
 
-// ═══ Bouton retour / suivant du navigateur ═══
+// ═══ Bouton retour / suivant du navigateur — ROUTEUR CENTRAL ═══
 function _activateObjTab(){
   document.querySelectorAll('.tab').forEach(function(b){ b.classList.remove('on'); });
   document.querySelectorAll('.panel').forEach(function(p){ p.classList.remove('on'); });
@@ -4321,19 +4344,63 @@ function _openCategoryFromHash(id){
   _activateObjTab();
   showObj(id);
 }
+function _activatePage(pageId){
+  var btnId = 'nav' + pageId.charAt(0).toUpperCase() + pageId.slice(1);
+  var btn = document.getElementById(btnId);
+  navGo(pageId, btn);
+}
+
+// Traite les routes qui NE dépendent PAS du contenu A-Z (pages, sport, quiz, catégorie).
+// Retourne true si la route a été prise en charge.
+function _routeFromHash(hash){
+  if(hash === '#quiz'){
+    if(typeof openQuiz === 'function') openQuiz();
+    return true;
+  }
+  if(hash.indexOf('#page-parcours-') === 0){
+    var rest = hash.slice('#page-parcours-'.length);
+    var dash = rest.indexOf('-');
+    var sportKey = dash === -1 ? rest : rest.slice(0, dash);
+    var timing = dash === -1 ? null : rest.slice(dash+1);
+    if(SPORT_NAMES[sportKey]){
+      _activatePage('parcours');
+      showSport(sportKey, SPORT_NAMES[sportKey]);
+      if(timing === 'avant' || timing === 'pendant' || timing === 'apres'){
+        showTimingResults(timing);
+      }
+    }
+    return true;
+  }
+  if(hash === '#page-parcours' || hash === '#page-experts' || hash === '#page-concept' || hash === '#page-legal'){
+    _activatePage(hash.slice('#page-'.length));
+    return true;
+  }
+  if(hash.indexOf('#cat-') === 0){
+    _openCategoryFromHash(hash.slice(5));
+    return true;
+  }
+  return false;
+}
 
 window.addEventListener('popstate', function(){
   window._skipUrlSync = true; // empêche les fonctions d'ouverture de re-pousser une entrée d'historique
   var hash = window.location.hash;
-  if(hash.indexOf('#cat-') === 0){
-    _openCategoryFromHash(hash.slice(5));
+  if(_routeFromHash(hash)){
+    // route gérée (page, sport, timing, quiz, catégorie)
   } else if(hash && hash.length > 1){
     openFicheFromHash(true);
   } else {
-    // Plus rien dans l'URL : fermer toute fiche ouverte, et revenir à la grille si on est dans une catégorie
+    // Plus rien dans l'URL : fermer toute fiche ouverte, revenir à la grille si on est dans une
+    // catégorie, fermer le quiz, et revenir à l'accueil si on était sur une autre page du menu
     _closeAllFicheCards();
     var objResults = document.getElementById('objResults');
     if(objResults && objResults.classList.contains('on')) backToGrid();
+    var quizOverlay = document.getElementById('quiz-overlay');
+    if(quizOverlay && quizOverlay.classList.contains('on')) closeQuiz();
+    var activePage = document.querySelector('.page-view.on');
+    if(activePage && activePage.id !== 'page-accueil'){
+      _activatePage('accueil');
+    }
   }
   setTimeout(function(){ window._skipUrlSync = false; }, 0);
 });
@@ -4345,15 +4412,19 @@ window.addEventListener('load', function(){
 
   if(!hash && !qParam) return;
 
+  // Routes indépendantes du contenu A-Z (pages, sport, quiz, catégorie) : traitées tout de suite
+  if(hash){
+    window._skipUrlSync = true; // l'URL de chargement est déjà la bonne, pas besoin de la re-pousser
+    var handled = _routeFromHash(hash);
+    window._skipUrlSync = false;
+    if(handled) return;
+  }
+
   // Attendre que le contenu A-Z soit rendu (MutationObserver, pas de timeout fixe)
   var azContent = document.getElementById('azContent');
   if(!azContent) return;
 
   function tryAct(){
-    if(hash && hash.indexOf('#cat-') === 0){
-      _openCategoryFromHash(hash.slice(5));
-      return true;
-    }
     if(azContent.querySelectorAll('.az-li[data-nm]').length === 0) return false;
     if(hash){
       openFicheFromHash();
@@ -5228,10 +5299,16 @@ function openQuiz(){
   // Toujours reset et rendre à chaque ouverture
   qzState = {step:0, answers:{}};
   qzRender();
+  // ═══ Met à jour l'URL (bouton retour du navigateur) ═══
+  if(!window._skipUrlSync) history.pushState({quiz:true}, "", "#quiz");
 }
 function closeQuiz(){
   document.getElementById("quiz-overlay").classList.remove("on");
   document.body.style.overflow="";
+  // ═══ Nettoie l'URL ═══
+  if(!window._skipUrlSync && window.location.hash === "#quiz"){
+    history.pushState({}, "", window.location.pathname + window.location.search);
+  }
 }
 // ESC key
 document.addEventListener("keydown",function(e){ if(e.key==="Escape") closeQuiz(); });
