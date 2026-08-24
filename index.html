@@ -371,6 +371,20 @@ body.F .az-letter{background:#1D1E20;color:#DEC49C}
 .page-card{margin:0 12px 12px;border-radius:14px;padding:16px 14px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.09)}
 .page-card-title{font-size:13px;font-weight:700;color:rgba(255,255,255,0.90);margin-bottom:7px;display:flex;align-items:center;gap:7px;letter-spacing:0.01em}
 .page-card-txt{font-size:13px;color:rgba(255,255,255,0.75);line-height:1.65}
+.vit-filter{padding:8px 16px;border-radius:20px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.75);font-size:13px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .15s}
+.vit-filter.on{background:#DEC49C;color:#5A4020;border-color:#DEC49C}
+#vitGrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:0 12px}
+.vitform-card{background:#EAE0C8;border-radius:11px;padding:10px 11px;margin:0;display:flex;flex-direction:column}
+.vitform-hd{display:flex;align-items:center;gap:7px}
+.vitform-nm{font-size:18px;font-weight:900;color:#000000;line-height:1.15}
+.vitform-sub{font-size:10px;font-weight:600;color:rgba(0,0,0,0.50);margin:1px 0 7px}
+.vitform-role{font-size:11.5px;font-weight:700;color:#000000;line-height:1.4;margin-bottom:8px;min-height:47px}
+.vitform-grid{display:grid;grid-template-columns:1fr;gap:6px;margin-bottom:8px}
+.vitform-box{background:rgba(255,255,255,0.45);border:1px solid rgba(43,38,32,0.08);border-radius:8px;padding:7px 8px;min-height:64px}
+.vitform-box-lbl{font-size:9px;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;color:#8A5A2B;margin-bottom:4px;display:flex;align-items:center;gap:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.vitform-box-txt{font-size:11px;color:#000000;font-weight:700;line-height:1.4}
+.vitform-more{display:inline-block;align-self:center;text-align:center;font-size:10.5px;font-weight:800;color:#3A2E1A;cursor:pointer;background:#DEC49C;border:none;padding:5px 11px;border-radius:20px;font-family:'DM Sans',sans-serif;transition:opacity .15s;width:auto;margin-top:auto}
+.vitform-more:active{opacity:0.75}
 .coming-badge{display:inline-block;background:rgba(214,185,138,0.20);border:1px solid rgba(214,185,138,0.40);color:#D6B98A;font-size:10px;font-weight:800;padding:3px 10px;border-radius:5px;letter-spacing:0.08em}
 /* ─── PARCOURS SPORTIFS ─── */
 .sport-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:16px 14px}
@@ -484,6 +498,9 @@ body.F .footer-logo span{color:inherit;-webkit-text-fill-color:inherit}
   .obj-filters{display:flex !important;flex-direction:column;flex-wrap:nowrap}
   .obj-filter-toggle{display:none !important}
   .obj-filter-btn{text-align:left;width:100%}
+  /* Page Vitamines & Minéraux desktop : grille centrée à taille raisonnable, pas étirée sur toute la largeur */
+  #vitGrid{max-width:700px;margin:0 auto;grid-template-columns:1fr 1fr 1fr}
+  .vit-filterbar{max-width:700px;margin:0 auto 14px}
 }
 @media(min-width:1200px){
   .app-wrapper{max-width:1080px;}
@@ -1392,6 +1409,7 @@ html{overflow-x:hidden}
     <button class="nav-btn active" id="navAccueil" onclick="navGo('accueil',this)">Accueil</button>
     <button class="nav-btn" id="navQuiz" onclick="openQuiz()" aria-label="Ouvrir Ma Routine Personnalisée">Ma Routine</button>
     <button class="nav-btn" id="navParcours" onclick="navGo('parcours',this)">Parcours Sportifs</button>
+    <button class="nav-btn" id="navVitamines" onclick="navGo('vitamines',this)">Vitamines & Minéraux</button>
     <button class="nav-btn" id="navExperts" onclick="navGo('experts',this)">Nos Experts</button>
     <button class="nav-btn" id="navConcept" onclick="navGo('concept',this)">Le Concept</button>
     <div class="nav-search-slot" id="navSearchSlot"></div>
@@ -1625,6 +1643,20 @@ html{overflow-x:hidden}
 </div>
 
 
+<!-- ═══ PAGE GUIDE VITAMINES & MINÉRAUX ═══ -->
+<div class="page-view" id="page-vitamines">
+  <div class="page-hero">
+    <div class="page-title">Vitamines & Minéraux</div>
+  </div>
+  <div class="vit-filterbar" style="display:flex;gap:8px;flex-wrap:wrap;padding:0 12px 14px">
+    <button class="vit-filter on" data-f="tout" onclick="filterVitPage('tout',this)">Tout</button>
+    <button class="vit-filter" data-f="vitamine" onclick="filterVitPage('vitamine',this)">Vitamines</button>
+    <button class="vit-filter" data-f="mineral" onclick="filterVitPage('mineral',this)">Minéraux</button>
+  </div>
+  <div id="vitGrid"></div>
+</div>
+
+
 <!-- ═══ PAGE MENTIONS LÉGALES ═══ -->
 <div class="page-view" id="page-legal">
   <div class="page-hero">
@@ -1752,6 +1784,17 @@ html{overflow-x:hidden}
       <div class="drawer-text">
         <div class="drawer-nm">Sport &amp; Performance</div>
         <div class="drawer-sub">Running &middot; Muscu &middot; Hyrox</div>
+      </div>
+      <div class="drawer-arr">&rsaquo;</div>
+    </div>
+
+    <div class="drawer-item" id="ditem-vitamines" onclick="drawerGo('vitamines')">
+      <div class="drawer-ico" style="background:#2B2D2F;box-shadow:inset 0 0 0 1px rgba(214,185,138,0.30)">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D6B98A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/><circle cx="12" cy="12" r="3"/></svg>
+      </div>
+      <div class="drawer-text">
+        <div class="drawer-nm">Vitamines &amp; Min&eacute;raux</div>
+        <div class="drawer-sub">Rep&egrave;res nutritionnels rapides</div>
       </div>
       <div class="drawer-arr">&rsaquo;</div>
     </div>
@@ -2082,9 +2125,9 @@ const DATA = [
  {nm:"Oméga-3 (EPA/DHA)",kw:"omega oméga poisson dha epa inflammation cerveau coeur endometriose endométriose douleurs pelviennes inflammation",tag:"Essentiel",c:"var(--coeur)",dispo:1,where:"Supermarché, pharmacie, Decathlon, Amazon",forme:"both",gender:"MF",
   objectifs:["peau","coeur","cerveau","muscu","immun","testo","mental","vision","cycle","grossesse","endometriose"],
   fn:"Des acides gras essentiels que ton corps ne sait pas fabriquer. L\'EPA aide à réguler l\'inflammation, le DHA soutient le cerveau et la vue, y compris pendant la grossesse pour le foetus. Des rôles sont aussi étudiés pour le coeur et le mental.",
-  plus:["Triglycérides : baisse d\'environ 30% dans les études, un plus pour le coeur","Inflammation : peut aider à la réguler","Cerveau et humeur : effet positif suggéré par certaines études","Peau et cheveux : peut les soutenir","Courbatures : moins marquées après l\'effort selon certaines données","Vision : rôle protecteur à long terme suggéré"],
+  plus:["Triglycérides (un type de graisse mesuré en prise de sang) : baisse d\'environ 30% dans les études, un plus pour le coeur","Inflammation : peut aider à la réguler","Cerveau et humeur : effet positif suggéré par certaines études","Peau et cheveux : peut les soutenir","Courbatures : moins marquées après l\'effort selon certaines données","Vision : rôle protecteur à long terme suggéré"],
   moins:["Odeur de poisson : possible si le produit est de mauvaise qualité","Sang : léger effet fluidifiant à haute dose","Chirurgie : à stopper 2 semaines avant"],
-  dose:[["Apport recommandé (ANSES, prévention)","250mg EPA+DHA/j"],["Dose étudiée en contexte anti-inflammatoire","2-4g EPA+DHA/j, au-delà de 3g/j un avis médical est conseillé"],["Grossesse (ANSES)","Environ 500mg EPA+DHA/j, dont au moins 250mg de DHA, sans justification à dépasser fortement ce repère sans avis médical"],["Timing","Avec un repas contenant des graisses"],["Forme","Triglycérides : forme mieux absorbée que les éthyl esters selon les études"],["Ratio EPA/DHA","Un ratio plus riche en EPA est parfois privilégié en contexte inflammatoire, sur avis professionnel"]],
+  dose:[["Apport recommandé (ANSES, prévention)","250mg EPA+DHA/j"],["Dose étudiée en contexte anti-inflammatoire","2-4g EPA+DHA/j, au-delà de 3g/j un avis médical est conseillé"],["Grossesse (ANSES)","Environ 500mg EPA+DHA/j, dont au moins 250mg de DHA, sans justification à dépasser fortement ce repère sans avis médical"],["Timing","Avec un repas contenant des graisses"],["Forme","Sous forme de triglycéride (structure proche des graisses naturelles), mieux absorbée que les éthyl esters selon les études"],["Ratio EPA/DHA","Un ratio plus riche en EPA est parfois privilégié en contexte inflammatoire, sur avis professionnel"]],
   hM:"Le DHA fait partie des lipides des spermatozoïdes : un déficit est associé à une mobilité réduite dans certaines études. Pour le coeur, l\'étude REDUCE-IT (2018) a montré un risque cardiovasculaire réduit à 4g EPA/j, une dose élevée à voir avec un professionnel. Pour le muscle, certaines données suggèrent moins de courbatures et un possible coup de pouce à la synthèse protéique.",
   hF:"Des études suggèrent moins de douleurs de règles et de symptômes du SPM. Le DHA est important pour le cerveau du foetus pendant la grossesse, dans les repères recommandés. Un effet positif sur l\'humeur et moins de dépression post-partum sont suggérés par certaines études, à confirmer.",
   syn:{abs:[],pot:["Vitamine D3, rôles complémentaires, sans synergie démontrée","Vitamine E, antioxydant qui protège les oméga-3 de l\'oxydation","Astaxanthine"],inutile:[]},
@@ -2268,7 +2311,7 @@ const DATA = [
   hM:"La supplémentation en ubiquinol est particulièrement utile si tu es sous statines et que tu ressens fatigue ou douleurs musculaires, ces médicaments bloquant la même voie de synthèse que le CoQ10. Plusieurs essais rapportent une meilleure mobilité et morphologie des spermatozoïdes chez les hommes avec une fertilité réduite, sur au moins un cycle complet de spermatogenèse.",
   hF:"Tes ovocytes (les cellules qui deviennent tes ovules) ont des besoins énergétiques très élevés pendant leur maturation, un processus qui décline avec l\'âge, surtout après 35 ans. Plusieurs essais suggèrent qu\'une supplémentation avant une FIV peut soutenir la réponse ovarienne si ta réserve est diminuée, à 200-600mg/j débutés 2 à 3 mois avant la ponction.",
   syn:{abs:[],pot:["L-Carnitine, soutien énergétique cellulaire complémentaire","Oméga-3","Vitamine E"],inutile:[]},
-  prec:"Très bien toléré en général, avec de rares troubles digestifs légers à haute dose. Le CoQ10 fluidifie légèrement le sang, ce qui impose une surveillance de l\'INR (le test sanguin qui mesure la coagulation) si tu es sous warfarine. Si tu es diabétique, surveille ta glycémie en début de supplémentation, le CoQ10 pouvant légèrement l\'abaisser. Sous statines, ça ne remplace jamais un avis médical en cas de douleurs musculaires qui persistent, qui peuvent avoir d\'autres causes.",
+  prec:"Très bien toléré en général, avec de rares troubles digestifs légers à haute dose. Le CoQ10 fluidifie légèrement le sang, ce qui impose une surveillance de l\'INR (le test sanguin qui mesure la coagulation) si tu es sous warfarine (un médicament anticoagulant). Si tu es diabétique, surveille ta glycémie en début de supplémentation, le CoQ10 pouvant légèrement l\'abaisser. Sous statines, ça ne remplace jamais un avis médical en cas de douleurs musculaires qui persistent, qui peuvent avoir d\'autres causes.",
   food:["🥩 Coeur de boeuf, la meilleure source alimentaire (11mg/100g)","🐟 Sardines, maquereau (6mg/100g)","🥜 Cacahuètes (2,6mg/100g)","🥦 Brocoli, épinards, en quantités bien plus faibles","⚠️ Les doses thérapeutiques (200mg et plus) ne sont pas atteignables par l\'alimentation seule"]},
 
  {nm:"Rhodiola Rosea",kw:"rhodiola fatigue mentale stress adaptogène endurance",tag:"Adaptogène",c:"var(--mental)",dispo:2,where:"Boutique spécialisée, Amazon, parapharmacie",forme:"suppl",gender:"MF",
@@ -2376,7 +2419,7 @@ const DATA = [
   hM:"Pas de spécificité propre démontrée. Les études cardiovasculaires menées chez l\'homme n\'ont pas montré de bénéfice de la supplémentation isolée en prévention chez le sujet sans déficit.",
   hF:"Pas de spécificité propre démontrée. La vitamine E est parfois proposée en application cutanée pour ses propriétés antioxydantes locales, un usage distinct de la supplémentation orale et qui ne repose pas sur les mêmes données.",
   syn:{abs:[],pot:["Vitamine C (régénère la forme active de la vitamine E après son action antioxydante)","Sélénium (cofacteur d\'autres systèmes antioxydants complémentaires)"],inutile:[]},
-  prec:"Sans risque aux doses nutritionnelles ou aux doses courantes de complémentation. Au-delà de 300mg/j, un risque hémorragique existe car la vitamine E à haute dose peut interférer avec l\'agrégation plaquettaire et le métabolisme de la vitamine K. Ce point de vigilance concerne particulièrement les personnes sous anticoagulants (warfarine notamment) ou antiplaquettaires, ou présentant une carence en vitamine K, pour qui un avis médical est nécessaire avant toute supplémentation, y compris à dose modérée. Il est recommandé d\'arrêter la supplémentation avant une intervention chirurgicale programmée, selon les délais indiqués par le chirurgien ou l\'anesthésiste.",
+  prec:"Sans risque aux doses nutritionnelles ou aux doses courantes de complémentation. Au-delà de 300mg/j, un risque hémorragique existe car la vitamine E à haute dose peut interférer avec l\'agrégation plaquettaire et le métabolisme de la vitamine K. Ce point de vigilance concerne particulièrement les personnes sous anticoagulants (comme la warfarine, un médicament qui fluidifie le sang) ou antiplaquettaires, ou présentant une carence en vitamine K, pour qui un avis médical est nécessaire avant toute supplémentation, y compris à dose modérée. Il est recommandé d\'arrêter la supplémentation avant une intervention chirurgicale programmée, selon les délais indiqués par le chirurgien ou l\'anesthésiste.",
   food:["🌻 Huile de germe de blé, huile de tournesol","🌰 Amandes, noisettes","🥑 Avocat","🥬 Épinards","🐟 Huile de foie de morue"]},
 
  {nm:"Zinc Bisglycinate",kw:"zinc acne acné testostérone immunité cheveux peau libido",tag:"Essentiel",c:"var(--testo)",dispo:1,where:"Pharmacie, supermarché, boutique fitness, Amazon",forme:"both",gender:"MF",
@@ -2747,6 +2790,42 @@ const DATA = [
   prec:"Ne dépasse jamais 20mg/j. Légal en France. Peu d\'interactions médicamenteuses connues à ce jour.",
   food:["🥑 Avocat (2-3mg/100g)","🍎 Pomme, raisin sec","🌰 Amandes, noix","🍯 Miel, traces"]},
 
+ {nm:"Phosphore",kw:"phosphore os dents énergie ATP minéral",tag:"Minéral Essentiel",c:"var(--os)",dispo:1,where:"Aucun supplément nécessaire pour la quasi-totalité des gens, la carence étant extrêmement rare",forme:"food",gender:"MF",
+  objectifs:["os"],
+  fn:"Le deuxième minéral le plus abondant de ton corps après le calcium. Il structure tes os et tes dents, et sert de composant à l\'ATP, la molécule qui fournit l\'énergie à tes cellules. La quasi-totalité de tes besoins est déjà couverte par l\'alimentation, la carence étant extrêmement rare.",
+  plus:["Os et dents : structure environ 85% du phosphore de ton corps, en synergie avec le calcium","Énergie : composant essentiel de l\'ATP, la molécule qui fournit l\'énergie à tes cellules","Équilibre acido-basique : participe à sa régulation","Alimentation : tes besoins sont déjà couverts par une alimentation normale dans la grande majorité des cas"],
+  moins:["Supplémentation rarement utile : la carence est très rare chez les personnes en bonne santé","Excès plus fréquent que la carence : lié aux aliments transformés riches en additifs phosphatés","Reins : les personnes en insuffisance rénale doivent au contraire limiter leurs apports"],
+  dose:[["Apport nutritionnel recommandé (ANSES)","700mg/j chez l\'adulte"],["Supplémentation","Rarement nécessaire, réservée à des carences confirmées par prise de sang"],["Limite de sécurité","Pas de valeur fixée précisément par l\'EFSA, mais un excès chronique est déconseillé, notamment en cas d\'insuffisance rénale"]],
+  hM:"Pas de spécificité propre démontrée. Certaines études sportives anciennes ont exploré un effet sur l\'endurance, mais les auteurs eux-mêmes recommandent de privilégier l\'alimentation (comme le lait) plutôt qu\'un complément.",
+  hF:"Pas de spécificité propre démontrée. Pendant la grossesse et l\'allaitement, la supplémentation en phosphore est déconseillée sans avis médical.",
+  syn:{abs:[],pot:["Calcium, à équilibrer ensemble plutôt qu\'à dissocier","Vitamine D3"],inutile:[]},
+  prec:"Ne te supplémente jamais en phosphore sans bilan sanguin confirmant une vraie carence : c\'est l\'excès, pas le manque, qui pose le plus souvent problème, notamment chez les personnes en insuffisance rénale. Les femmes enceintes ou allaitantes doivent éviter toute supplémentation sans avis médical. Si tu manges normalement (protéines, produits laitiers, céréales), tu couvres déjà tes besoins.",
+  food:["🥛 Produits laitiers","🥩 Viande, poisson, oeufs","🌾 Céréales complètes, légumineuses","🌰 Oléagineux"]},
+
+ {nm:"Manganèse",kw:"manganèse os antioxydant métabolisme oligo-élément",tag:"Oligo-élément",c:"var(--os)",dispo:2,where:"Pharmacie, boutique spécialisée. Avis médical recommandé avant toute supplémentation",forme:"food",gender:"MF",
+  objectifs:["os","articulations"],
+  fn:"Un oligo-élément présent en toute petite quantité dans ton corps, impliqué dans la formation osseuse et certaines défenses antioxydantes. La carence est quasiment théorique chez l\'humain en bonne santé, l\'alimentation courante suffisant largement à couvrir tes besoins.",
+  plus:["Os : participe à leur formation et à leur solidité","Antioxydant : cofacteur d\'une enzyme antioxydante importante (la SOD, superoxyde dismutase)","Métabolisme : intervient dans la transformation des glucides et des lipides en énergie","Alimentation : une alimentation variée couvre déjà largement tes besoins"],
+  moins:["Carence quasi théorique : très rarement observée chez l\'humain en bonne santé","Toxicité neurologique : un excès chronique peut provoquer des troubles proches de la maladie de Parkinson (tremblements, rigidité)","Fer : entre en compétition d\'absorption avec le fer, un excès de l\'un peut réduire l\'absorption de l\'autre"],
+  dose:[["Apport satisfaisant (ANSES)","Environ 1 à 5mg/j selon les sources, sans consensus strict"],["Supplémentation","Rarement nécessaire, à réserver à un avis médical en cas de carence confirmée"],["Limite de sécurité","Pas de dose élevée en automédication, la toxicité neurologique étant documentée en cas d\'excès prolongé"]],
+  hM:"Pas de spécificité propre démontrée.",
+  hF:"Pas de spécificité propre démontrée. Comme pour les autres oligo-éléments à marge de sécurité étroite, la prudence est de mise pendant la grossesse et l\'allaitement sans avis médical.",
+  syn:{abs:[],pot:["Calcium, cofacteur commun à la santé osseuse"],inutile:["Fer en même temps, à décaler : compétition d\'absorption entre les deux minéraux"]},
+  prec:"Ne te supplémente jamais en manganèse sans avis médical : la toxicité neurologique, bien documentée en cas d\'exposition professionnelle ou de supplémentation prolongée non contrôlée, se manifeste par des symptômes proches de la maladie de Parkinson (tremblements, troubles de l\'équilibre et de la coordination). Les personnes souffrant d\'une maladie du foie sont particulièrement à risque, cet organe étant responsable de son élimination. Une alimentation variée couvre déjà tes besoins dans l\'immense majorité des cas.",
+  food:["🌾 Céréales complètes","🌰 Noix, amandes","🍵 Thé","🥬 Légumes-feuilles verts","🫘 Légumineuses"]},
+
+ {nm:"Vitamine K1",kw:"vitamine k1 phylloquinone coagulation sang anticoagulant warfarine",tag:"Coagulation",c:"var(--coeur)",dispo:3,where:"Rarement utile en automédication. Pharmacie sur avis médical uniquement si carence confirmée",forme:"food",gender:"MF",
+  objectifs:[],
+  fn:"Contrairement à la K2 (davantage associée à la santé osseuse et cardiovasculaire), la vitamine K1 joue un rôle central dans la coagulation de ton sang. Elle est abondante dans les légumes verts, la carence étant rare chez l\'adulte en bonne santé. Son usage principal en dehors de l\'alimentation est médical, notamment comme antidote en cas de surdosage en anticoagulants.",
+  plus:["Coagulation : indispensable à la fabrication des facteurs de coagulation dans ton foie","Alimentation : très largement couverte par les légumes verts, la carence est rare","Nouveau-nés : une injection systématique à la naissance prévient les hémorragies liées à l\'immaturité du foie","Usage médical : utilisée comme antidote en cas de surdosage en anticoagulants comme la warfarine (un médicament qui fluidifie le sang)"],
+  moins:["Anticoagulants : interfère directement avec l\'action de la warfarine, à ne jamais prendre en complément sans avis médical si tu es sous ce traitement","Automédication déconseillée : ce n\'est pas un supplément de bien-être général, son usage relève quasi exclusivement du contexte médical","Santé osseuse : c\'est la K2, pas la K1, qui est étudiée pour ce rôle, elles ne sont pas interchangeables"],
+  dose:[["Apport satisfaisant (ANSES)","Environ 79µg/j chez l\'homme, 70µg/j chez la femme"],["Supplémentation générale","Non recommandée hors avis médical, la carence étant rare"],["Usage médical (correction d\'un surdosage en anticoagulant)","2,5 à 10mg par voie orale, exclusivement sur prescription et sous suivi médical"]],
+  hM:"Pas de spécificité propre démontrée.",
+  hF:"Pas de spécificité propre démontrée. Pendant la grossesse, les besoins ne sont pas majorés selon l\'ANSES.",
+  syn:{abs:[],pot:[],inutile:["Vitamine K2 : rôle différent (coagulation pour la K1, os et coeur pour la K2), ne remplace pas l\'autre"]},
+  prec:"Si tu es sous traitement anticoagulant (warfarine, Coumadine et équivalents), ne prends jamais de complément de vitamine K1 sans avis médical : elle peut annuler l\'effet de ton traitement et augmenter le risque de caillot. Garde plutôt une consommation stable et régulière de légumes verts, plutôt que de la faire varier fortement d\'une semaine à l\'autre, ce qui déstabilise davantage l\'équilibre du traitement qu\'un apport constant même élevé. En dehors de ce contexte médical, la supplémentation en K1 n\'a pas d\'intérêt démontré pour la population générale.",
+  food:["🥬 Chou frisé (kale), épinards, la source la plus riche","🥦 Brocoli, choux de Bruxelles","🫒 Huile d\'olive, huile de soja","🥗 Salades vertes en général"]},
+
  {nm:"DHEA",kw:"DHEA déhydroépiandrostérone hormones anti-âge énergie ménopause libido",tag:"Anti-âge Hormonal",c:"var(--anti)",dispo:3,where:"Ordonnance médicale recommandée en France, vente restreinte",forme:"suppl",gender:"MF",
   objectifs:["testo","libido","perf","anti","menopause"],
   fn:"Une hormone précurseur, produite par tes glandes surrénales, à partir de laquelle ton corps fabrique une partie de sa testostérone et de ses oestrogènes. Ses taux baissent avec l\'âge. En France, la DHEA est classée médicament (liste I) et nécessite une ordonnance ; elle est en vente libre comme complément en Belgique, en Suisse et au Canada.",
@@ -2974,6 +3053,9 @@ const FAM_MAP = {
   "Fer Bisglycinate":                        "Vitamines & Minéraux",
   "Sélénium":                      "Vitamines & Minéraux",
   "Bore (Boron)":                            "Vitamines & Minéraux",
+  "Phosphore":                                "Vitamines & Minéraux",
+  "Manganèse":                                "Vitamines & Minéraux",
+  "Vitamine K1":                              "Vitamines & Minéraux",
   "Silicium Organique":                      "Vitamines & Minéraux",
   "Hydratation & Électrolytes":         "Vitamines & Minéraux",
   "Thyroïde (Iode + Sélénium)": "Vitamines & Minéraux",
@@ -3264,6 +3346,9 @@ function navGo(pageId, btn, _fromSwitchTab){
   // Afficher/cacher les onglets uniquement sur accueil
   const tabsBar = document.getElementById('tabsBar');
   if(tabsBar) tabsBar.style.display = (pageId==='accueil') ? '' : 'none';
+  // Masquer le message d'aide ("Clique sur une bulle...") dès qu'on quitte l'accueil
+  const tabHintOnNav = document.getElementById('tabHint');
+  if(tabHintOnNav && pageId !== 'accueil') tabHintOnNav.style.display = 'none';
   // Reset vue accueil - seulement si appelé depuis le menu (pas depuis switchTab)
   if(pageId === 'accueil' && !_fromSwitchTab) {
     backToGrid();
@@ -4154,34 +4239,34 @@ function clearS(){
 
 // ── LEXIQUE — infobulles automatiques ──
 const LEXIQUE = {
-  "IMAO": "Inhibiteur de la MonoAmine Oxydase — médicament antidépresseur avec interactions graves",
-  "T3": "Triiodothyronine — hormone thyroïdienne active, la plus puissante",
-  "T4": "Thyroxine — hormone thyroïdienne stockage, convertie en T3 dans les tissus",
+  "IMAO": "Inhibiteur de la MonoAmine Oxydase, un médicament antidépresseur avec interactions graves",
+  "T3": "Triiodothyronine, l'hormone thyroïdienne active, la plus puissante",
+  "T4": "Thyroxine, l'hormone thyroïdienne de stockage, convertie en T3 dans les tissus",
   "Glutathion": "Le principal antioxydant de tes cellules, produit par le foie",
   "Carnosine": "Dipeptide musculaire qui neutralise l'acide lactique pendant l'effort",
   "Metformine": "Médicament pour le diabète de type 2 qui interfère avec certains compléments",
-  "Triglycérides": "Graisses circulant dans le sang — taux élevé = risque cardiovasculaire",
+  "Triglycérides": "Graisses circulant dans le sang, un taux élevé est associé à un risque cardiovasculaire",
   "SHBG": "Protéine qui capte la testostérone et réduit sa disponibilité dans le sang",
   "NAD+": "Coenzyme essentiel à la production d'énergie dans toutes tes cellules",
   "biodisponibilité": "Fraction d'un nutriment réellement absorbée et utilisée par ton corps",
   "catabolisme": "Dégradation des muscles par ton corps, notamment en cas de manque de protéines",
-  "anabolisme": "Construction musculaire — le processus inverse du catabolisme",
+  "anabolisme": "Construction musculaire, le processus inverse du catabolisme",
   "hydrolyse": "Pré-digestion enzymatique d'une protéine pour une absorption plus rapide",
   "lipolyse": "Processus par lequel ton corps brûle les graisses pour produire de l'énergie",
   "microbiote": "L'ensemble des milliards de bactéries qui vivent dans ton intestin",
   "cortisol": "L'hormone du stress produite par les glandes surrénales",
   "peptides": "Petits fragments de protéines, plus faciles à absorber que les protéines entières",
-  "BCAA": "Acides aminés ramifiés (leucine, isoleucine, valine) — blocs de construction musculaire",
-  "UFC": "Unités Formant Colonies — unité de mesure des bactéries vivantes dans les probiotiques",
-  "FSH": "Hormone folliculo-stimulante — impliquée dans la fertilité masculine et féminine",
-  "LH": "Hormone lutéinisante — déclenche l'ovulation et stimule la testostérone",
+  "BCAA": "Acides aminés ramifiés (leucine, isoleucine, valine), blocs de construction musculaire",
+  "UFC": "Unités Formant Colonies, l'unité de mesure des bactéries vivantes dans les probiotiques",
+  "FSH": "Hormone folliculo-stimulante, impliquée dans la fertilité masculine et féminine",
+  "LH": "Hormone lutéinisante, déclenche l'ovulation et stimule la testostérone",
   "COX-2": "Enzyme pro-inflammatoire bloquée par les anti-inflammatoires naturels (curcuma, oméga-3)",
-  "estradiol": "Principale hormone oestrogénique féminine — régule le cycle menstruel",
+  "estradiol": "Principale hormone oestrogénique féminine, régule le cycle menstruel",
   "mélatonine": "Hormone naturelle du sommeil sécrétée par la glande pinéale",
-  "DHEAS": "Forme sulfatée du DHEA — précurseur hormonal mesuré dans le sang",
+  "DHEAS": "Forme sulfatée du DHEA, précurseur hormonal mesuré dans le sang",
   "spermatogénèse": "Production de spermatozoïdes dans les testicules",
   "épigénétique": "Modifications de l'expression des gènes sans changer l'ADN",
-  "Sélénium": "Oligoélément essentiel à la thyroïde et aux défenses antioxydantes — marge toxique étroite",
+  "Sélénium": "Oligoélément essentiel à la thyroïde et aux défenses antioxydantes, marge toxique étroite",
 };
 function applyLexique(el){
   if(!el) return;
@@ -4231,7 +4316,7 @@ buildGrid();
 function drawerGo(pageId){
   closeDrawer();
   // Map des IDs de boutons nav
-  var navIds = {accueil:'navAccueil', parcours:'navParcours', experts:'navExperts', concept:'navConcept', legal:'navLegal'};
+  var navIds = {accueil:'navAccueil', parcours:'navParcours', vitamines:'navVitamines', experts:'navExperts', concept:'navConcept', legal:'navLegal'};
   var btn = navIds[pageId] ? document.getElementById(navIds[pageId]) : null;
   navGo(pageId, btn);
 }
@@ -4313,6 +4398,9 @@ function openFiche(nm){
     if(cardEl && cardEl.classList.contains('az-li-card')){
       cardEl.classList.add('open');
       target.classList.add('active-li');
+      // Ouvrir aussi la carte intérieure .sc (sinon un premier clic "déroule" referme au lieu d'ouvrir)
+      var innerSc = cardEl.querySelector('.sc');
+      if(innerSc) innerSc.classList.add('open');
     }
 
     // 7. Scroll vers la fiche
@@ -4470,7 +4558,7 @@ function _routeFromHash(hash){
     }
     return true;
   }
-  if(hash === '#page-parcours' || hash === '#page-experts' || hash === '#page-concept' || hash === '#page-legal'){
+  if(hash === '#page-parcours' || hash === '#page-vitamines' || hash === '#page-experts' || hash === '#page-concept' || hash === '#page-legal'){
     _activatePage(hash.slice('#page-'.length));
     return true;
   }
@@ -5513,7 +5601,7 @@ function openDrawer(){
     else{df.style.background='#FFF';df.style.color='#BC9569';dm.style.background='';dm.style.color='';}
   }
   // Sync active item
-  ['accueil','parcours','experts','concept','legal'].forEach(function(id){
+  ['accueil','parcours','vitamines','experts','concept','legal'].forEach(function(id){
     var el=document.getElementById('ditem-'+id);
     if(el){
       var isActive=document.getElementById('page-'+id) && document.getElementById('page-'+id).classList.contains('on');
@@ -5531,10 +5619,164 @@ function closeDrawer(){
 function drawerGo(pageId){
   closeDrawer();
   // Map des IDs de boutons nav
-  var navIds = {accueil:'navAccueil', parcours:'navParcours', experts:'navExperts', concept:'navConcept', legal:'navLegal'};
+  var navIds = {accueil:'navAccueil', parcours:'navParcours', vitamines:'navVitamines', experts:'navExperts', concept:'navConcept', legal:'navLegal'};
   var btn = navIds[pageId] ? document.getElementById(navIds[pageId]) : null;
   navGo(pageId, btn);
 }
+
+// ═══ GUIDE VITAMINES & MINÉRAUX — carte compacte (Rôle clé en avant,
+// Sources & Risques de carence en 2 colonnes) ═══
+// "nm" = nom exact de la fiche dans DATA (utilisé pour la recherche et pour
+// ouvrir la bonne fiche au clic sur "En savoir +"). "dn" = nom affiché sur
+// la carte, toujours simplifié (sans parenthèse ni forme chimique). B1, B2,
+// B3 et B5 n'ont pas de fiche dédiée sur le site : elles pointent toutes les
+// 4 vers "Complexe B (B1, B2, B3, B5)", la fiche qui les couvre ensemble.
+// Les dosages précis (VNR/ANSES) et la forme active précise ne sont
+// volontairement PAS affichés ici : ce niveau de détail reste dans la fiche
+// complète. Le champ "sources" est un condensé du champ "food" déjà présent
+// dans chaque fiche (mêmes aliments, sans emoji ni chiffres).
+const VIT_MIN_LIST = [
+  {nm:"Magnésium Bisglycinate", dn:"Magnésium", type:"mineral", soluble:null,
+    role:"Essentiel au sommeil profond, à la détente musculaire et à la gestion du stress.",
+    sources:"Épinards, chocolat noir, graines de courge",
+    carence:"Crampes, fatigue, stress mal régulé, troubles du sommeil"},
+  {nm:"Fer Bisglycinate", dn:"Fer", type:"mineral", soluble:null,
+    role:"Transporte l'oxygène dans le sang, indispensable contre la fatigue et l'anémie.",
+    sources:"Viande rouge, palourdes, lentilles",
+    carence:"Fatigue, chute de cheveux, essoufflement, pâleur"},
+  {nm:"Zinc Bisglycinate", dn:"Zinc", type:"mineral", soluble:null,
+    role:"Soutient l'immunité, la peau et la production de testostérone.",
+    sources:"Huîtres, viande rouge, graines de courge",
+    carence:"Immunité affaiblie, cicatrisation lente, acné"},
+  {nm:"Calcium (Citrate/Bisglycinate)", dn:"Calcium", type:"mineral", soluble:null,
+    role:"Structure tes os et tes dents, participe aussi à la contraction musculaire.",
+    sources:"Produits laitiers, eaux calciques, chou frisé",
+    carence:"Fragilité osseuse, risque accru d'ostéoporose à terme"},
+  {nm:"Sélénium", dn:"Sélénium", type:"mineral", soluble:null,
+    role:"Protège tes cellules du stress oxydatif et soutient ta thyroïde.",
+    sources:"Noix du Brésil, thon, oeufs",
+    carence:"Troubles thyroïdiens, immunité affaiblie, fatigue"},
+  {nm:"Bore (Boron)", dn:"Bore", type:"mineral", soluble:null,
+    role:"Intervient dans le métabolisme hormonal, la vitamine D et la santé osseuse.",
+    sources:"Avocat, pomme, amandes",
+    carence:"Carence rare, encore mal caractérisée chez l'humain"},
+  {nm:"Silicium Organique", dn:"Silicium", type:"mineral", soluble:null,
+    role:"Participe à la structure du collagène : cheveux, ongles et os.",
+    sources:"Avoine, orge, concombre",
+    carence:"Pas de carence classique décrite chez l'humain"},
+  {nm:"Hydratation & Électrolytes", dn:"Potassium", type:"mineral", soluble:null,
+    role:"Régule l'équilibre hydrique et la contraction musculaire, avec le sodium.",
+    sources:"Banane, avocat, eau de coco",
+    carence:"Crampes, fatigue musculaire, troubles du rythme cardiaque"},
+  {nm:"Hydratation & Électrolytes", dn:"Sodium", type:"mineral", soluble:null,
+    role:"Maintient l'équilibre hydrique et la tension artérielle, perdu dans la sueur.",
+    sources:"Sel de mer, sardines, eau de coco",
+    carence:"Crampes, fatigue, étourdissements en cas de perte importante"},
+  {nm:"Thyroïde (Iode + Sélénium)", dn:"Iode", type:"mineral", soluble:null,
+    role:"Indispensable à la fabrication des hormones thyroïdiennes T3 et T4.",
+    sources:"Algues, poissons de mer, oeufs",
+    carence:"Fatigue, prise de poids, troubles thyroïdiens"},
+  {nm:"Phosphore", dn:"Phosphore", type:"mineral", soluble:null,
+    role:"Structure tes os et tes dents, composant essentiel de l'énergie de tes cellules.",
+    sources:"Produits laitiers, viande, céréales complètes",
+    carence:"Très rare : une alimentation normale couvre déjà tes besoins"},
+  {nm:"Manganèse", dn:"Manganèse", type:"mineral", soluble:null,
+    role:"Participe à la formation osseuse et aux défenses antioxydantes de ton corps.",
+    sources:"Céréales complètes, noix, thé",
+    carence:"Quasi théorique chez l'humain en bonne santé"},
+  {nm:"Vitamine K1", dn:"Vitamine K1", type:"vitamine", soluble:"Liposoluble",
+    role:"Indispensable à la coagulation de ton sang, distincte de la K2 (os et coeur).",
+    sources:"Chou frisé, épinards, brocoli",
+    carence:"Rare, sauf interaction avec les anticoagulants"},
+  {nm:"Vitamine B12 (Méthylcobalamine)", dn:"Vitamine B12", type:"vitamine", soluble:"Hydrosoluble",
+    role:"Indispensable à l'énergie, aux nerfs et à la formation des globules rouges.",
+    sources:"Palourdes, foie de boeuf, oeufs",
+    carence:"Fatigue, fourmillements, troubles de mémoire, anémie"},
+  {nm:"Vitamine B9 (Folate, 5-MTHF)", dn:"Vitamine B9", type:"vitamine", soluble:"Hydrosoluble",
+    role:"Essentielle avant et pendant la grossesse, prévient l'anémie.",
+    sources:"Épinards, lentilles, foie",
+    carence:"Fatigue, anémie, risque accru en début de grossesse"},
+  {nm:"Vitamine B6 (P5P)", dn:"Vitamine B6", type:"vitamine", soluble:"Hydrosoluble",
+    role:"Soutient le système nerveux et l'équilibre hormonal, notamment en période de cycle.",
+    sources:"Volaille, poisson, pomme de terre",
+    carence:"Irritabilité, fatigue nerveuse, troubles cutanés"},
+  {nm:"Complexe B (B1, B2, B3, B5)", dn:"Vitamine B1", type:"vitamine", soluble:"Hydrosoluble",
+    role:"Transforme les glucides en énergie, essentielle au système nerveux.",
+    sources:"Levure de bière, céréales complètes, porc",
+    carence:"Fatigue, irritabilité, troubles nerveux"},
+  {nm:"Complexe B (B1, B2, B3, B5)", dn:"Vitamine B2", type:"vitamine", soluble:"Hydrosoluble",
+    role:"Participe au métabolisme énergétique et protège tes cellules du stress oxydatif.",
+    sources:"Produits laitiers, oeufs, amandes",
+    carence:"Fatigue, lésions aux coins de la bouche, sensibilité à la lumière"},
+  {nm:"Complexe B (B1, B2, B3, B5)", dn:"Vitamine B3", type:"vitamine", soluble:"Hydrosoluble",
+    role:"Contribue au métabolisme énergétique et au maintien d'une peau normale.",
+    sources:"Viande, poisson, céréales complètes",
+    carence:"Fatigue, troubles cutanés"},
+  {nm:"Complexe B (B1, B2, B3, B5)", dn:"Vitamine B5", type:"vitamine", soluble:"Hydrosoluble",
+    role:"Intervient dans la synthèse de la coenzyme A, essentielle au métabolisme.",
+    sources:"Levure de bière, viande, oeufs",
+    carence:"Fatigue, troubles digestifs, carence très rare"},
+  {nm:"Biotine (Vitamine B8)", dn:"Biotine", type:"vitamine", soluble:"Hydrosoluble",
+    role:"Participe à la fabrication de la kératine : cheveux, ongles, peau.",
+    sources:"Jaune d'oeuf, amandes, saumon",
+    carence:"Cheveux et ongles cassants, en cas de carence avérée (rare)"},
+  {nm:"Vitamine C", dn:"Vitamine C", type:"vitamine", soluble:"Hydrosoluble",
+    role:"Antioxydant puissant, essentiel à l'immunité et à la synthèse du collagène.",
+    sources:"Poivron rouge, kiwi, agrumes",
+    carence:"Fatigue, gencives fragiles, cicatrisation lente"},
+  {nm:"Vitamine D3 + K2", dn:"Vitamine D3", type:"vitamine", soluble:"Liposoluble",
+    role:"Régule le calcium, soutient l'immunité et l'humeur.",
+    sources:"Soleil, saumon, jaune d'oeuf",
+    carence:"Fatigue, douleurs osseuses, immunité affaiblie"},
+  {nm:"Vitamine E (Tocophérol)", dn:"Vitamine E", type:"vitamine", soluble:"Liposoluble",
+    role:"Protège tes cellules des dommages oxydatifs, bénéfique pour la peau et le coeur.",
+    sources:"Huile de tournesol, amandes, avocat",
+    carence:"Carence rare, liée surtout à une malabsorption des graisses"},
+  {nm:"Vitamine A (Bêta-carotène)", dn:"Vitamine A", type:"vitamine", soluble:"Liposoluble",
+    role:"Essentielle à la vision nocturne, à la peau et à l'immunité.",
+    sources:"Carotte, patate douce, épinards",
+    carence:"Troubles de la vision nocturne, peau sèche, immunité affaiblie"}
+];
+
+function goToFicheFromVitPage(nm){
+  navGo('accueil', document.getElementById('navAccueil'));
+  setTimeout(function(){
+    openFiche(nm);
+    if(typeof _syncUrlOnOpen === 'function') _syncUrlOnOpen(nm);
+  }, 60);
+}
+
+function renderVitPage(filter){
+  filter = filter || 'tout';
+  const grid = document.getElementById('vitGrid');
+  if(!grid || typeof DATA === 'undefined') return;
+  const items = VIT_MIN_LIST.filter(function(v){ return filter==='tout' || v.type===filter; })
+    .sort(function(a,b){ return a.dn.localeCompare(b.dn, 'fr', {numeric:true}); });
+  grid.innerHTML = items.map(function(v){
+    const f = DATA.find(function(d){ return d.nm===v.nm; });
+    if(!f) return '';
+    const nmEsc = v.nm.replace(/'/g,"\\'");
+    const sub = v.type==='mineral' ? 'Minéral' : (v.soluble || '');
+    return '<div class="vitform-card">'
+      +'<div class="vitform-hd"><div class="vitform-nm">'+v.dn+'</div></div>'
+      +'<div class="vitform-sub">'+sub+'</div>'
+      +'<div class="vitform-role">'+v.role+'</div>'
+      +'<div class="vitform-grid">'
+        +'<div class="vitform-box"><div class="vitform-box-lbl">🌿 Sources</div><div class="vitform-box-txt">'+v.sources+'</div></div>'
+        +'<div class="vitform-box"><div class="vitform-box-lbl">⚠️ Risques de carence</div><div class="vitform-box-txt">'+v.carence+'</div></div>'
+      +'</div>'
+      +'<button class="vitform-more" onclick="goToFicheFromVitPage(\''+nmEsc+'\')">En savoir +</button>'
+      +'</div>';
+  }).join('');
+}
+
+function filterVitPage(f, btn){
+  document.querySelectorAll('.vit-filter').forEach(function(b){ b.classList.remove('on'); });
+  if(btn) btn.classList.add('on');
+  renderVitPage(f);
+}
+
+document.addEventListener('DOMContentLoaded', function(){ renderVitPage('tout'); });
 </script>
 </body>
 </html>
