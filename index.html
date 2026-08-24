@@ -131,16 +131,6 @@ body.F .search{background:#1D1E20}
 .search::placeholder{color:rgba(255,255,255,0.60)}
 .s-ico{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:16px;pointer-events:none;z-index:1}
 .s-clr{position:absolute;right:10px;top:50%;transform:translateY(-50%);font-size:14px;cursor:pointer;color:rgba(255,255,255,0.45);display:none}
-/* TABS */
-.tabs{position:sticky;top:0;z-index:100;display:none !important;border-bottom:1px solid rgba(255,255,255,0.06);padding:0 6px}
-body.M .tabs{background:#151617}
-body.F .tabs{background:#151617}
-.tab{flex:1;padding:10px 6px;font-size:12px;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.14);border-radius:14px;cursor:pointer;margin:8px 5px;transition:all 0.18s;font-family:"DM Sans",sans-serif;color:rgba(255,255,255,0.78)}
-body.M .tab.on{color:#D6B98A;background:rgba(214,185,138,0.10);border-color:#D6B98A}
-body.F .tab.on{color:#D6B98A;background:rgba(214,185,138,0.10);border-color:#D6B98A}
-/* PANELS */
-.panel{display:none;padding-bottom:20px}
-.panel.on{display:block;animation:fadeUp 0.2s ease}
 @keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 /* OBJ GRID */
 .obj-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:16px 14px}
@@ -307,8 +297,7 @@ body.F .az-letter{background:#1D1E20;color:#DEC49C}
 #footer-nl-btn{display:inline-flex}
 @media(min-width:600px){#footer-nl-btn{display:inline-flex}}
 /* ── ALIGNEMENT 3 BARRES ── */
-.header,.tabs,.nav-bandeau{width:100%;box-sizing:border-box;}
-.tabs{padding-left:6px;padding-right:6px;}
+.header,.nav-bandeau{width:100%;box-sizing:border-box;}
 /* ── INFOBULLES ── */
 .tip{position:relative;cursor:help;border-bottom:1px dashed rgba(255,255,255,0.40);color:inherit}
 .tip::after{content:attr(data-tip);position:absolute;bottom:120%;left:50%;transform:translateX(-50%);background:#33363A;color:#EDE9DF;font-size:11px;font-weight:500;padding:8px 12px;border-radius:10px;white-space:normal;width:220px;max-width:90vw;text-align:center;line-height:1.6;z-index:9999;border:1px solid rgba(255,255,255,0.18);box-shadow:0 6px 20px rgba(0,0,0,0.6);pointer-events:none;opacity:0;transition:opacity 0.25s}
@@ -367,7 +356,7 @@ body.F .az-letter{background:#1D1E20;color:#DEC49C}
 .page-view.on{display:block;animation:fadeUp 0.2s ease}
 .page-hero{padding:24px 20px 16px;text-align:center}
 .page-title{font-size:22px;font-weight:800;color:#EDE9DF;margin-bottom:6px}
-.page-sub{font-size:12px;color:rgba(255,255,255,0.85);line-height:1.6}
+.page-sub{font-size:13px;font-weight:700;color:#FFFFFF;line-height:1.5}
 .page-card{margin:0 12px 12px;border-radius:14px;padding:16px 14px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.09)}
 .page-card-title{font-size:13px;font-weight:700;color:rgba(255,255,255,0.90);margin-bottom:7px;display:flex;align-items:center;gap:7px;letter-spacing:0.01em}
 .page-card-txt{font-size:13px;color:rgba(255,255,255,0.75);line-height:1.65}
@@ -482,9 +471,8 @@ body.F .footer-logo span{color:inherit;-webkit-text-fill-color:inherit}
   .sport-grid{grid-template-columns:repeat(3,1fr);max-width:824px;margin:0 auto;padding:16px 0}
   .timing-layout{display:grid;grid-template-columns:280px minmax(0,520px);gap:24px;align-items:start;width:fit-content;max-width:100%;margin:0 auto}
   .timing-options{margin-bottom:0;position:sticky;top:16px}
-  .header{border-radius:20px 20px 0 0;}
+  .header{border-radius:20px;}
   .footer{border-radius:0 0 20px 20px;}
-  .tabs{border-radius:0 0 20px 20px;}
   /* Header desktop : recherche + sélecteur de genre sur une seule ligne */
   .header-controls{display:flex;justify-content:center}
   .header-controls .g-switch{width:260px;margin-top:0 !important;margin-bottom:0 !important;}
@@ -1006,9 +994,6 @@ body.F .header{background:#151617 !important}
 /* Az letter header */
 body.M .az-letter{background:#1D1E20 !important}
 body.F .az-letter{background:#1D1E20 !important}
-/* Tabs bar */
-body.M .tabs{background:#151617 !important}
-body.F .tabs{background:#151617 !important}
 /* Nav bandeau un peu plus visible */
 .nav-bandeau{box-shadow:none !important}
 /* Bouton stack dans fiches — encore plus visible */
@@ -1215,8 +1200,6 @@ body.F .g-pill.on{box-shadow:none !important}
 .qz-btn-restart{box-shadow:0 4px 16px rgba(188,149,105,0.35) !important}
 /* Bouton Newsletter CTA — glow retiré */
 #footer-nl-btn{box-shadow:none !important}
-/* Tab actif */
-.tab.on{box-shadow:none!important}
 /* Filter chip actif */
 /* sc-chv bouton ouvrir fiche */
 .sc-chv{transition:all .2s !important}
@@ -1331,7 +1314,6 @@ html{overflow-x:hidden}
   .nav-dropdown{display:flex !important;flex-direction:row;padding:0 6px;gap:2px}
   .nav-btn{flex:1;padding:9px 6px;font-size:11.5px;text-align:center;border-radius:8px;border-bottom:2px solid transparent;margin:4px 3px}
   .nav-btn.active{background:transparent;border:1.5px solid #D6B98A;border-bottom-color:#D6B98A;border-radius:8px}
-  .tab{padding:7px 6px;font-size:10.5px;margin:5px 5px}
   .menu-btn{display:none !important;}
   .search-inner{flex:1 !important;}
   .search-wrap{display:flex !important;padding-bottom:4px !important;}
@@ -1413,45 +1395,41 @@ html{overflow-x:hidden}
     <button class="nav-btn" id="navQuiz" onclick="openQuiz()" aria-label="Ouvrir Ma Routine Personnalisée">Ma Routine</button>
     <button class="nav-btn" id="navParcours" onclick="navGo('parcours',this)">Parcours Sportifs</button>
     <button class="nav-btn" id="navVitamines" onclick="navGo('vitamines',this)">Vitamines & Minéraux</button>
-    <button class="nav-btn" id="navFamille" onclick="goToFamille()">Par famille</button>
+    <button class="nav-btn" id="navFamille" onclick="navGo('famille',this)">Par famille</button>
     <button class="nav-btn" id="navExperts" onclick="navGo('experts',this)">Nos Experts</button>
     <button class="nav-btn" id="navConcept" onclick="navGo('concept',this)">Le Concept</button>
     <div class="nav-search-slot" id="navSearchSlot"></div>
   </div>
 </nav>
 
-<!-- ═══ ONGLETS (Besoin / A-Z) — visibles uniquement sur Accueil ═══ -->
-<nav class="tabs" id="tabsBar">
-  <button class="tab on" id="tabObj" onclick="switchTab('obj',this)">Ton besoin</button>
-  <button class="tab" id="tabAz" onclick="switchTab('az',this)">Par famille</button>
-</nav>
-<div id="tabHint" style="font-size:13px;font-weight:700;color:#FFFFFF;text-align:center;padding:12px 16px 8px"></div>
-
-
 <div class="sp" id="searchPanel"></div>
 
-<!-- ═══ PAGE ACCUEIL ═══ -->
+<!-- ═══ PAGE ACCUEIL (Ton besoin) ═══ -->
 <div class="page-view on" id="page-accueil">
-  <div class="panel on" id="panel-obj">
-    <div class="obj-grid" id="objGrid"></div>
-    <div class="obj-results" id="objResults">
-      <div class="obj-back" onclick="backToGrid()">
-        <div class="obj-back-btn">← Retour</div>
-        <div id="objTitle"></div>
-      </div>
-      <div class="obj-results-grid">
-        <aside class="obj-sidebar" id="objSidebar"></aside>
-        <div id="objList"></div>
-      </div>
-    </div>
+  <div class="page-hero" id="accueilHero">
+    <div class="page-title">Ton besoin</div>
+    <div class="page-sub">Clique sur une bulle qui correspond à ton besoin et découvre les compléments les plus adaptés.</div>
   </div>
-  <div class="panel" id="panel-az">
-    <div class="obj-back" style="padding:12px 12px 4px" onclick="navGo('accueil', document.getElementById('navAccueil'))">
+  <div class="obj-grid" id="objGrid"></div>
+  <div class="obj-results" id="objResults">
+    <div class="obj-back" onclick="backToGrid()">
       <div class="obj-back-btn">← Retour</div>
-      <div style="font-size:14px;font-weight:800;color:#EDE9DF">Ton besoin</div>
+      <div id="objTitle"></div>
     </div>
-    <div id="azContent"></div>
+    <div class="obj-results-grid">
+      <aside class="obj-sidebar" id="objSidebar"></aside>
+      <div id="objList"></div>
+    </div>
   </div>
+</div>
+
+<!-- ═══ PAGE PAR FAMILLE (page indépendante, comme Vitamines & Minéraux) ═══ -->
+<div class="page-view" id="page-famille">
+  <div class="page-hero">
+    <div class="page-title">Par famille</div>
+    <div class="page-sub">Explore les catégories si tu cherches une molécule précise.</div>
+  </div>
+  <div id="azContent"></div>
 </div>
 
 <!-- ═══ PAGE PARCOURS SPORTIFS ═══ -->
@@ -1657,6 +1635,7 @@ html{overflow-x:hidden}
 <div class="page-view" id="page-vitamines">
   <div class="page-hero">
     <div class="page-title">Vitamines & Minéraux</div>
+    <div class="page-sub">Compare les meilleures formes et les pièges à éviter, en un coup d'oeil.</div>
   </div>
   <div class="vit-filterbar" style="display:flex;gap:8px;flex-wrap:wrap;padding:0 12px 14px">
     <button class="vit-filter on" data-f="tout" onclick="filterVitPage('tout',this)">Tout</button>
@@ -1809,7 +1788,7 @@ html{overflow-x:hidden}
       <div class="drawer-arr">&rsaquo;</div>
     </div>
 
-    <div class="drawer-item" id="ditem-famille" onclick="closeDrawer();goToFamille()">
+    <div class="drawer-item" id="ditem-famille" onclick="drawerGo('famille')">
       <div class="drawer-ico" style="background:#2B2D2F;box-shadow:inset 0 0 0 1px rgba(214,185,138,0.30)">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D6B98A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
       </div>
@@ -2704,7 +2683,7 @@ const DATA = [
   food:["🌿 Algues kombu, nori, très concentrées en iode, attention au surdosage","🐟 Poissons de mer, crustacés","🥚 Oeufs, source d\'iode","🌰 Noix du Brésil, source de sélénium à teneur très variable selon l\'origine, à ne pas utiliser comme méthode de dosage précise","🥛 Laitages, teneur en iode variable selon l\'alimentation du bétail"]},
 
  {nm:"Croissance & Immunité Enfant",kw:"enfant immunité croissance vitamines développement pédiatrie gommes",tag:"Pédiatrie",c:"var(--immun)",dispo:1,where:"Pharmacie, parapharmacie (uniquement formules pédiatriques)",forme:"both",gender:"MF",
-  objectifs:["immun","os","perf","enfant"],
+  objectifs:["immun","os","enfant"],
   fn:"Des nutriments essentiels pour soutenir la croissance, l\'immunité et le développement du cerveau de ton enfant. Les carences les plus fréquentes concernent la vitamine D, le fer, les oméga-3 et le zinc. Utilise toujours des formules pédiatriques adaptées (gouttes ou gommes sans sucre), jamais un produit pour adulte.",
   plus:["Os et dents : se développent bien avec vitamine D et calcium","Immunité : soutenue par le zinc et la vitamine C","Cerveau : le DHA (un oméga-3) soutient son développement","Croissance : musculaire et cognitive","Carences : les plus fréquentes chez l\'enfant sont mieux couvertes"],
   moins:["Dosages : très différents de ceux des adultes, à ne jamais transposer","Surdosage : risque facile si tu ne respectes pas les repères par âge","Formes : les gélules pour adultes sont à éviter"],
@@ -3398,22 +3377,9 @@ function navGo(pageId, btn, _fromSwitchTab){
   document.querySelectorAll('.page-view').forEach(p=>p.classList.remove('on'));
   const page = document.getElementById('page-'+pageId);
   if(page) page.classList.add('on');
-  // Afficher/cacher les onglets uniquement sur accueil
-  const tabsBar = document.getElementById('tabsBar');
-  if(tabsBar) tabsBar.style.display = (pageId==='accueil') ? '' : 'none';
-  // Masquer le message d'aide ("Clique sur une bulle...") dès qu'on quitte l'accueil
-  const tabHintOnNav = document.getElementById('tabHint');
-  if(tabHintOnNav && pageId !== 'accueil') tabHintOnNav.style.display = 'none';
-  // Reset vue accueil - seulement si appelé depuis le menu (pas depuis switchTab)
+  // Reset vue accueil (grille + résultats) - seulement si appelé depuis le menu
   if(pageId === 'accueil' && !_fromSwitchTab) {
     backToGrid();
-    document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));
-    const firstTab = document.querySelector('.tab');
-    if(firstTab) firstTab.classList.add('on');
-    document.querySelectorAll('.panel').forEach(p=>p.classList.remove('on'));
-    const objPanel = document.getElementById('panel-obj');
-    if(objPanel) objPanel.classList.add('on');
-    if(tabsBar) tabsBar.style.display = '';
   }
   // Scroll top immédiat
   document.documentElement.scrollTop = 0;
@@ -3784,10 +3750,10 @@ const OBJ_SUBGROUPS = {
   perf: [
     {label:"Les plus utilisés", note:"Ce sont les carences les plus fréquentes en cas de fatigue. Ce qui suit peut être pertinent selon la cause probable de la tienne.", items:["Fer Bisglycinate","Magnésium Bisglycinate","Vitamine B12 (Méthylcobalamine)"]},
     {label:"Gestion du stress chronique", items:["Ashwagandha (KSM-66)","Rhodiola Rosea"]},
-    {label:"Récupération sportive", items:["Créatine Monohydrate","L-Citrulline","Bêta-Alanine","BCAA (Acides Aminés Ramifiés)","EAA (Acides Aminés Essentiels)","L-Glutamine","HMB (Hydroxy-Méthyl-Butyrate)","Hydratation & Électrolytes"]},
+    {label:"Récupération sportive", items:["Créatine Monohydrate","Caféine","L-Citrulline","Bêta-Alanine","BCAA (Acides Aminés Ramifiés)","EAA (Acides Aminés Essentiels)","L-Glutamine","HMB (Hydroxy-Méthyl-Butyrate)","Hydratation & Électrolytes"]},
     {label:"Énergie cellulaire", items:["CoQ10 (Ubiquinol)","Vitamine D3 + K2","Vitamine C","Complexe B (B1, B2, B3, B5)","Thyroïde (Iode + Sélénium)"]},
     {label:"Adaptogènes & vitalité", items:["Maca (Lepidium meyenii)","Tribulus Terrestris","Tongkat Ali (Eurycoma longifolia)","Shilajit","Fenugrec","Damiana (Turnera diffusa)","NMN (Nicotinamide Mononucléotide)","DHEA"]},
-    {label:"Autres pistes", items:["L-Théanine","Spiruline","Croissance & Immunité Enfant"]}
+    {label:"Autres pistes", items:["L-Théanine","Spiruline"]}
   ],
   acne: [
     {label:"Les plus utilisés", note:"C'est la carence la plus fréquente en lien avec l'acné hormonale. Ce qui suit peut être pertinent selon la cause probable de ta situation.", items:["Zinc Bisglycinate"]},
@@ -3902,7 +3868,7 @@ function showObj(id){
   if(sidebarEl) sidebarEl.innerHTML = tipHtml + filtersHtml;
 
   // Masque le message d'aide ("Clique sur une bulle...") une fois entré dans une catégorie
-  const tabHintEl = document.getElementById("tabHint");
+  const tabHintEl = document.querySelector("#accueilHero .page-sub");
   if(tabHintEl) tabHintEl.style.display = "none";
 
   // ⑥ Header compact — masquer tout
@@ -3950,7 +3916,7 @@ function backToGrid(){
   document.getElementById("objGrid").style.display="grid";
   document.getElementById("objResults").classList.remove("on");
   document.getElementById("objList").innerHTML="";
-  const tabHintEl = document.getElementById("tabHint");
+  const tabHintEl = document.querySelector("#accueilHero .page-sub");
   if(tabHintEl) tabHintEl.style.display = "";
   const hdr=document.querySelector('.header');if(hdr)hdr.style.padding='';
   const lp=document.querySelector('.logo-pill');if(lp){lp.style.width='64px';lp.style.height='64px';lp.style.minWidth='64px';lp.style.minHeight='64px';}
@@ -4018,16 +3984,6 @@ function setG(g){
   document.querySelectorAll('.page-view').forEach(p=>p.classList.remove('on'));
   const pageAccueil = document.getElementById('page-accueil');
   if(pageAccueil) pageAccueil.classList.add('on');
-  const tabsBar = document.getElementById('tabsBar');
-  if(tabsBar) tabsBar.style.display = '';
-
-  // ⑥bis Revenir toujours sur l'onglet "Ton besoin" (pas "Par famille")
-  document.querySelectorAll(".tab").forEach(b=>b.classList.remove("on"));
-  const objTabBtn = document.querySelector('.tab[onclick*="obj"]');
-  if(objTabBtn) objTabBtn.classList.add("on");
-  document.querySelectorAll(".panel").forEach(p=>p.classList.remove("on"));
-  const objPanel = document.getElementById("panel-obj");
-  if(objPanel) objPanel.classList.add("on");
 
   // ⑦ Rebuild grid et AZ
   clearS(); backToGrid();
@@ -4206,45 +4162,6 @@ function _renderFamSection(fam, items){
 }
 
 
-
-function switchTab(id,btn){
-  document.querySelectorAll(".tab").forEach(b=>b.classList.remove("on"));
-  btn.classList.add("on");
-  document.querySelectorAll(".panel").forEach(p=>p.classList.remove("on"));
-  document.getElementById("panel-"+id).classList.add("on");
-  document.getElementById("searchPanel").classList.remove("on");
-  document.getElementById("si").value="";
-  document.getElementById("sc").style.display="none";
-  if(id==="obj") backToGrid();
-  updateTabHint(id);
-  // Scroll top immédiat AVANT navGo
-  window.scrollTo(0,0);
-  document.documentElement.scrollTop=0;
-  document.body.scrollTop=0;
-  // Surligne le bon bouton dans la nav : "Par famille" si on affiche l'AZ, "Accueil" sinon
-  var navBtnForActive = (id === 'az' ? document.getElementById('navFamille') : document.getElementById('navAccueil')) || document.querySelector('.nav-btn');
-  navGo('accueil', navBtnForActive, true);
-  // Double RAF pour garantir après reflow
-  requestAnimationFrame(()=>{ window.scrollTo(0,0); });
-
-  // ═══ Met à jour l'URL (bouton retour du navigateur) ═══
-  if(!window._skipUrlSync){
-    if(id==="az") history.pushState({tab:"az"}, "", "#tab-az");
-    else history.pushState({}, "", window.location.pathname + window.location.search);
-  }
-}
-
-// Petit texte d'aide sous les onglets pour clarifier leur rôle respectif
-function updateTabHint(id){
-  var el = document.getElementById('tabHint');
-  if(!el) return;
-  el.style.display = ""; // un changement d'onglet ramène toujours au niveau "liste", jamais dans une catégorie
-  el.textContent = id === 'az'
-    ? "Explore les catégories si tu cherches une molécule précise."
-    : "Clique sur une bulle qui correspond à ton besoin et découvre les compléments les plus adaptés.";
-}
-document.addEventListener('DOMContentLoaded', function(){ updateTabHint('obj'); });
-
 function doSearch(val){
   const sp=document.getElementById("searchPanel");
   document.getElementById("sc").style.display=val?"block":"none";
@@ -4256,15 +4173,12 @@ function doSearch(val){
       document.querySelectorAll('.page-view').forEach(p=>p.classList.remove('on'));
       const pa=document.getElementById('page-accueil');
       if(pa) pa.classList.add('on');
-      const tb=document.getElementById('tabsBar');
-      if(tb) tb.style.display='';
     }
     // Restaurer header si masqué
     const hdr=document.querySelector('.header');
     if(hdr) hdr.style.display='';
   }
-  if(!val.trim()){sp.classList.remove("on");document.getElementById("panel-obj").classList.add("on");return;}
-  document.querySelectorAll(".panel").forEach(p=>p.classList.remove("on"));
+  if(!val.trim()){sp.classList.remove("on");return;}
   sp.classList.add("on");
   const q=val.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
   function _n(s){return s?s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,''):''}
@@ -4293,8 +4207,6 @@ function clearS(){
   document.getElementById("si").value="";
   document.getElementById("sc").style.display="none";
   document.getElementById("searchPanel").classList.remove("on");
-  document.querySelectorAll(".panel").forEach(p=>p.classList.remove("on"));
-  document.getElementById("panel-obj").classList.add("on");
 }
 
 
@@ -4397,23 +4309,13 @@ function openFiche(nm){
   if(overlay){ overlay.classList.remove('on'); }
   document.body.style.overflow = '';
 
-  // 2. Aller sur l'onglet A-Z
-  var tabAZ = document.querySelector('.tab:not(.on)');
-  document.querySelectorAll('.tab').forEach(function(t){
-    if(t.textContent.trim().indexOf('A') === 0) tabAZ = t;
-  });
-  // Activer le panel A-Z directement
-  document.querySelectorAll('.tab').forEach(function(b){ b.classList.remove('on'); });
-  document.querySelectorAll('.panel').forEach(function(p){ p.classList.remove('on'); });
-  var panelAZ = document.getElementById('panel-az');
-  if(panelAZ){ panelAZ.classList.add('on'); }
-  // Marquer le tab A-Z comme actif
-  document.querySelectorAll('.tab').forEach(function(t){
-    if(t.textContent.trim().replace(/[^A-Za-zÀ-ÿ]/g,'').toLowerCase().indexOf('az') >= 0 ||
-       t.textContent.indexOf('A') >= 0 && t.textContent.indexOf('Z') >= 0){
-      t.classList.add('on');
-    }
-  });
+  // 2. Aller sur la page "Par famille" (page indépendante). Verrou interne :
+  // openFiche ne pousse jamais sa propre entrée d'historique — c'est à l'appelant
+  // (goToFicheFromVitPage, openFicheFromHash...) de gérer l'URL finale.
+  var _wasSkip = window._skipUrlSync;
+  window._skipUrlSync = true;
+  navGo('famille', document.getElementById('navFamille'));
+  window._skipUrlSync = _wasSkip;
 
   // 3. S'assurer que buildAZ a tourné
   function doOpen(){
@@ -4532,18 +4434,11 @@ function openFicheFromHash(skipPush){
   });
   if(!target) return;
 
-  // Activer l'onglet "Par famille" via switchTab (la fonction officielle)
-  var tabAZ = document.getElementById('tabAz');
-  if(tabAZ && typeof switchTab === 'function'){
-    switchTab('az', tabAZ);
-  } else {
-    // Fallback manuel
-    document.querySelectorAll('.tab').forEach(function(b){ b.classList.remove('on'); });
-    document.querySelectorAll('.panel').forEach(function(p){ p.classList.remove('on'); });
-    var panelAZ = document.getElementById('panel-az');
-    if(panelAZ) panelAZ.classList.add('on');
-    if(tabAZ) tabAZ.classList.add('on');
-  }
+  // Activer la page "Par famille" (page indépendante), sans pousser d'entrée d'historique
+  var _wasSkip = window._skipUrlSync;
+  window._skipUrlSync = true;
+  navGo('famille', document.getElementById('navFamille'));
+  window._skipUrlSync = _wasSkip;
 
   // Ouvrir la section famille
   var famSection = target.closest('.az-fam-section');
@@ -4610,17 +4505,12 @@ function _routeFromHash(hash){
     }
     return true;
   }
-  if(hash === '#page-parcours' || hash === '#page-vitamines' || hash === '#page-experts' || hash === '#page-concept' || hash === '#page-legal'){
+  if(hash === '#page-parcours' || hash === '#page-vitamines' || hash === '#page-famille' || hash === '#page-experts' || hash === '#page-concept' || hash === '#page-legal'){
     _activatePage(hash.slice('#page-'.length));
     return true;
   }
   if(hash.indexOf('#cat-') === 0){
     _openCategoryFromHash(hash.slice(5));
-    return true;
-  }
-  if(hash === '#tab-az'){
-    var azBtn = document.getElementById('tabAz');
-    if(azBtn) switchTab('az', azBtn);
     return true;
   }
   return false;
@@ -4644,11 +4534,6 @@ window.addEventListener('popstate', function(){
     var activePage = document.querySelector('.page-view.on');
     if(activePage && activePage.id !== 'page-accueil'){
       _activatePage('accueil');
-    }
-    var azTabOn = document.getElementById('panel-az');
-    if(azTabOn && azTabOn.classList.contains('on')){
-      var objBtn = document.getElementById('tabObj');
-      if(objBtn) switchTab('obj', objBtn);
     }
   }
   setTimeout(function(){ window._skipUrlSync = false; }, 0);
@@ -5653,7 +5538,7 @@ function openDrawer(){
     else{df.style.background='#FFF';df.style.color='#BC9569';dm.style.background='';dm.style.color='';}
   }
   // Sync active item
-  ['accueil','parcours','vitamines','experts','concept','legal'].forEach(function(id){
+  ['accueil','parcours','vitamines','famille','experts','concept','legal'].forEach(function(id){
     var el=document.getElementById('ditem-'+id);
     if(el){
       var isActive=document.getElementById('page-'+id) && document.getElementById('page-'+id).classList.contains('on');
@@ -5671,7 +5556,7 @@ function closeDrawer(){
 function drawerGo(pageId){
   closeDrawer();
   // Map des IDs de boutons nav
-  var navIds = {accueil:'navAccueil', parcours:'navParcours', vitamines:'navVitamines', experts:'navExperts', concept:'navConcept', legal:'navLegal'};
+  var navIds = {accueil:'navAccueil', parcours:'navParcours', vitamines:'navVitamines', famille:'navFamille', experts:'navExperts', concept:'navConcept', legal:'navLegal'};
   var btn = navIds[pageId] ? document.getElementById(navIds[pageId]) : null;
   navGo(pageId, btn);
 }
@@ -5793,19 +5678,6 @@ const VIT_MIN_LIST = [
     sources:"Carotte, patate douce, épinards",
     carence:"Troubles de la vision nocturne, peau sèche, immunité affaiblie"}
 ];
-
-// Accès direct à "Par famille" depuis la nav (desktop) ou le tiroir (mobile).
-// Réutilise exactement le même mécanisme interne que la recherche, les favoris
-// et les liens directs (switchTab('az', ...)), donc rien d'autre à modifier
-// pour que l'ouverture de fiche, l'historique et le retour arrière continuent
-// de fonctionner normalement.
-function goToFamille(){
-  window._skipUrlSync = true;
-  navGo('accueil', document.getElementById('navFamille'));
-  window._skipUrlSync = false;
-  var azBtn = document.getElementById('tabAz');
-  if(azBtn) switchTab('az', azBtn);
-}
 
 function goToFicheFromVitPage(nm){
   window._skipUrlSync = true;
