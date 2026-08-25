@@ -4113,7 +4113,7 @@ function buildAZ(){
 
   const total = fdAll().length + PROTEINES.length;
 
-  let html = `<div class="az-fam-total">${total} compléments — par famille</div>`;
+  let html = `<div class="az-fam-total" id="azFamTotal">${total} compléments — par famille</div>`;
 
   let _famIdx = 0;
   FAMILLES.forEach(fam=>{
@@ -4203,6 +4203,12 @@ function selectFamSidebar(famId, btnEl){
     sec.classList.toggle("desktop-active", isTarget);
     if(isTarget) sec.classList.remove("collapsed");
   });
+  const fam = FAMILLES.find(f=>f.id===famId);
+  const titleEl = document.getElementById("azFamTotal");
+  if(fam && titleEl){
+    const count = btnEl ? btnEl.querySelector(".az-sidebar-count").textContent : "";
+    titleEl.textContent = `${fam.label} · ${count} compléments`;
+  }
 }
 
 function _renderFamSection(fam, items, idx){
