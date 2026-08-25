@@ -467,6 +467,8 @@ body.F .footer-logo span{color:inherit;-webkit-text-fill-color:inherit}
 }
 
 /* ═══ RESPONSIVE ═══ */
+.az-sidebar{display:none}
+.az-placeholder{display:none}
 @media(min-width:600px){
   html,body{max-width:100% !important;}
   body{display:block;background:#363739 !important;}
@@ -500,6 +502,18 @@ body.F .footer-logo span{color:inherit;-webkit-text-fill-color:inherit}
   .obj-filters{display:flex !important;flex-direction:column;flex-wrap:nowrap}
   .obj-filter-toggle{display:none !important}
   .obj-filter-btn{text-align:left;width:100%}
+  /* Page Par famille desktop : familles à gauche (sticky), fiches à droite — même logique que la page catégorie */
+  .az-results-grid{display:grid;grid-template-columns:280px minmax(0,520px);gap:24px;align-items:start;width:fit-content;max-width:100%;margin:0 auto}
+  .az-sidebar{display:flex;flex-direction:column;gap:6px;position:sticky;top:16px}
+  .az-sidebar-btn{text-align:left;width:100%;padding:10px 14px;border-radius:8px;border:none;background:#EAE0C8;color:#2B2620;font-size:12px;font-weight:700;font-family:"DM Sans",sans-serif;cursor:pointer;transition:all 0.18s;display:flex;align-items:center;gap:8px}
+  .az-sidebar-btn:nth-child(even){background:#EDEDEB}
+  .az-sidebar-btn.active{background:#D6B98A;color:#1F1B14}
+  .az-sidebar-btn:active{transform:scale(0.98)}
+  .az-sidebar-count{margin-left:auto;font-size:10.5px;opacity:0.65;font-weight:600}
+  .az-placeholder{display:block;color:rgba(255,255,255,0.9);font-size:14px;font-weight:600;padding:50px 20px;text-align:center}
+  .az-fam-section{display:none}
+  .az-fam-section.desktop-active{display:block}
+  .az-fam-section.desktop-active .az-fam-header{display:none}
   /* Page Vitamines & Minéraux desktop : grille centrée à taille raisonnable, pas étirée sur toute la largeur */
   #vitGrid{max-width:700px;margin:0 auto;grid-template-columns:1fr 1fr 1fr}
   .vit-filterbar{max-width:700px;margin:0 auto 14px}
@@ -534,10 +548,10 @@ img{pointer-events:none;-webkit-user-drag:none;user-drag:none;}
 
 /* ── AZ FAMILLES ── */
 .az-fam-section{margin-bottom:8px}
-.az-fam-header{display:flex;align-items:center;gap:10px;padding:14px 14px 8px;cursor:pointer;user-select:none;position:sticky;top:0;z-index:10;background:#363739}
+.az-fam-header{display:flex;align-items:center;gap:10px;padding:14px 14px 8px;cursor:pointer;user-select:none;position:sticky;top:0;z-index:10;background:#363739;margin:0 14px;border-radius:8px;overflow:hidden}
 .az-fam-accent{width:5px;height:32px;border-radius:3px;flex-shrink:0}
 .az-fam-title{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:0.13em;color:#fff;flex:1}
-.az-fam-count{font-size:11px;color:rgba(255,255,255,0.68);font-weight:600}
+.az-fam-count{font-size:11px;color:rgba(255,255,255,0.85);font-weight:600}
 .az-fam-chevron{font-size:22px;font-weight:900;color:#D6B98A;transition:transform 0.2s;margin-left:auto}
 .az-fam-section.collapsed .az-fam-chevron{transform:rotate(-90deg)}
 .az-fam-items{padding:10px 14px 8px}
@@ -547,17 +561,16 @@ img{pointer-events:none;-webkit-user-drag:none;user-drag:none;}
 .az-li.active-li{background:#EDEDEB;border-color:#BC9569}
 .az-li::before{display:none}
 .az-li:active{background:rgba(0,0,0,0.05)}
-.az-li-dot{width:8px;height:8px;border-radius:50%;background:var(--c);flex-shrink:0}
 .az-li-nm{font-size:13px;font-weight:700;color:#2B2620;line-height:1.3;word-break:break-word}
 .az-li-fn{font-size:11px;color:rgba(43,38,32,0.65);line-height:1.35;margin-top:2px}
-.az-li-tag{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:#FFF;background:var(--c);border-radius:4px;padding:3px 6px;flex-shrink:0;max-width:90px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;align-self:flex-start;margin-top:2px}
+.az-li-tag{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:#5A4A32;background:rgba(0,0,0,0.06);border-radius:20px;padding:3px 8px;flex-shrink:0;max-width:90px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;align-self:flex-start;margin-top:2px}
 .az-li-arrow{font-size:34px;font-weight:900;color:#8A5A2B;flex-shrink:0;line-height:1;transition:transform 0.2s}
 .az-li.active-li .az-li-arrow{transform:rotate(90deg)}
 .az-li-wrap{padding:0 0 4px}
 /* When AZ-item is expanded -> show sc card below */
 .az-li-card{display:none;margin-bottom:6px}
 .az-li-card.open{display:block}
-.az-fam-total{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;color:rgba(255,255,255,0.20);padding:10px 14px 4px}
+.az-fam-total{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;color:rgba(255,255,255,0.85);padding:10px 14px 4px}
 
 /* ── CWV PERFORMANCE ── */
 /* Reduce layout recalc on off-screen page sections */
@@ -1440,7 +1453,13 @@ html{overflow-x:hidden}
     <div class="page-title">Par famille</div>
     <div class="page-sub">Explore les catégories si tu cherches une molécule précise.</div>
   </div>
-  <div id="azContent"></div>
+  <div class="az-results-grid">
+    <aside class="az-sidebar" id="azSidebar"></aside>
+    <div class="az-content-wrap">
+      <div class="az-placeholder" id="azPlaceholder">Sélectionne une famille à gauche pour voir les compléments.</div>
+      <div id="azContent"></div>
+    </div>
+  </div>
 </div>
 
 <!-- ═══ PAGE PARCOURS SPORTIFS ═══ -->
@@ -3147,17 +3166,17 @@ const FAM_MAP = {
 };
 
 const FAMILLES = [
-  {id:"vitmin",            label:"Vitamines & Minéraux",       emoji:"☀️", color:"var(--energie)"},
-  {id:"aa-perf",           label:"Acides Aminés",emoji:"💪", color:"var(--muscu)"},
-  {id:"omega",             label:"Oméga & Lipides",           emoji:"🐟", color:"var(--coeur)"},
-  {id:"adaptogenes",       label:"Adaptogènes",               emoji:"🌿", color:"var(--mental)"},
-  {id:"probiotiques",      label:"Probiotiques & Détox",      emoji:"🦠", color:"var(--digest)"},
-  {id:"antioxydants",      label:"Antioxydants",              emoji:"🛡️", color:"var(--anti)"},
-  {id:"hormonal",          label:"Hormonal & Testo",          emoji:"🔥", color:"var(--testo)"},
-  {id:"antiage",           label:"Anti-âge & Longévité",      emoji:"⏳", color:"var(--antiage-fam)"},
-  {id:"peau",              label:"Peau & Beauté",             emoji:"✨", color:"var(--peau)"},
-  {id:"proteines",         label:"Protéines",                 emoji:"🥛", color:"var(--protein-fam)"},
-  {id:"special",           label:"Spécial",                   emoji:"⭐", color:"var(--special-fam)"},
+  {id:"vitmin",            label:"Vitamines & Minéraux",       emoji:"☀️", color:"#7FB3A8"},
+  {id:"aa-perf",           label:"Acides Aminés",emoji:"💪", color:"#7FB894"},
+  {id:"omega",             label:"Oméga & Lipides",           emoji:"🐟", color:"#D98A87"},
+  {id:"adaptogenes",       label:"Adaptogènes",               emoji:"🌿", color:"#A587BE"},
+  {id:"probiotiques",      label:"Probiotiques & Détox",      emoji:"🦠", color:"#7FBEC7"},
+  {id:"antioxydants",      label:"Antioxydants",              emoji:"🛡️", color:"#D9B26B"},
+  {id:"hormonal",          label:"Hormonal & Testo",          emoji:"🔥", color:"#7FA7D1"},
+  {id:"antiage",           label:"Anti-âge & Longévité",      emoji:"⏳", color:"#C98CA0"},
+  {id:"peau",              label:"Peau & Beauté",             emoji:"✨", color:"#D99C85"},
+  {id:"proteines",         label:"Protéines",                 emoji:"🥛", color:"#A08876"},
+  {id:"special",           label:"Spécial",                   emoji:"⭐", color:"#8B9FA8"},
 ];
 
 const FAM_CFG = {};
@@ -4096,13 +4115,24 @@ function buildAZ(){
 
   let html = `<div class="az-fam-total">${total} compléments — par famille</div>`;
 
+  let _famIdx = 0;
   FAMILLES.forEach(fam=>{
     const items = groups[fam.label]||[];
     if(!items.length) return;
-    html += _renderFamSection(fam, items);
+    html += _renderFamSection(fam, items, _famIdx);
+    _famIdx++;
   });
 
   document.getElementById("azContent").innerHTML = html;
+
+  // Sidebar desktop : un bouton par famille, clic = ouvre cette famille à droite et referme les autres
+  const sidebarEl = document.getElementById("azSidebar");
+  if(sidebarEl){
+    sidebarEl.innerHTML = FAMILLES.filter(fam=>(groups[fam.label]||[]).length).map(fam=>{
+      const n = (groups[fam.label]||[]).length;
+      return `<button class="az-sidebar-btn" data-fam="${fam.id}" onclick="selectFamSidebar('${fam.id}',this)">${fam.label}<span class="az-sidebar-count">${n}</span></button>`;
+    }).join("");
+  }
 
   // Bind collapse toggles
   document.querySelectorAll(".az-fam-header").forEach(hdr=>{
@@ -4162,7 +4192,21 @@ function _guessFamily(s){
   return "Spécial";
 }
 
-function _renderFamSection(fam, items){
+// Desktop uniquement : clic sur un bouton de la sidebar Par famille -> affiche uniquement cette famille à droite (pas de doublon avec la sidebar)
+function selectFamSidebar(famId, btnEl){
+  document.querySelectorAll(".az-sidebar-btn").forEach(b=>b.classList.remove("active"));
+  if(btnEl) btnEl.classList.add("active");
+  const ph = document.getElementById("azPlaceholder");
+  if(ph) ph.style.display = "none";
+  document.querySelectorAll(".az-fam-section").forEach(sec=>{
+    const isTarget = sec.id === "azfam-"+famId;
+    sec.classList.toggle("desktop-active", isTarget);
+    if(isTarget) sec.classList.remove("collapsed");
+  });
+}
+
+function _renderFamSection(fam, items, idx){
+  const bg = (idx % 2 === 0) ? "#EAE0C8" : "#EDEDEB";
   const cardItems = items.map(item=>{
     const d = item.data;
     const nm = d.nm;
@@ -4171,7 +4215,6 @@ function _renderFamSection(fam, items){
     const cardHtml = item.type==="supp" ? card(d,null,true) : protCard(d);
     return `<div class="az-li-wrap">
       <div class="az-li" style="--c:${fam.color}" data-nm="${nm}">
-        <div class="az-li-dot"></div>
         <div style="flex:1;min-width:0">
           <div class="az-li-nm">${nm}</div>
           <div class="az-li-fn">${fnShort}</div>
@@ -4184,12 +4227,10 @@ function _renderFamSection(fam, items){
   }).join("");
 
   return `<div class="az-fam-section collapsed" id="azfam-${fam.id}">
-    <div class="az-fam-header">
-      <div style="position:absolute;inset:0;background:${fam.color};opacity:0.16;pointer-events:none"></div>
-      <div class="az-fam-accent" style="background:${fam.color};position:relative"></div>
-      <div class="az-fam-title" style="position:relative">${fam.emoji} ${fam.label}</div>
-      <div class="az-fam-count" style="position:relative">${items.length}</div>
-      <span class="az-fam-chevron" style="position:relative">▾</span>
+    <div class="az-fam-header" style="background:${bg}">
+      <div class="az-fam-title" style="position:relative;color:#2B2620">${fam.label}</div>
+      <div class="az-fam-count" style="position:relative;color:rgba(43,38,32,0.65)">${items.length}</div>
+      <span class="az-fam-chevron" style="position:relative;color:#8A5A2B">▾</span>
     </div>
     <div class="az-fam-items">${cardItems}</div>
   </div>`;
