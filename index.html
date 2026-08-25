@@ -144,6 +144,7 @@ body.F .search{background:#1D1E20}
 .obj-tile:active{transform:scale(0.96)}
 .obj-ico{width:32px;height:32px;margin-bottom:10px;display:block}.obj-ico svg{width:32px;height:32px;stroke:rgba(255,255,255,0.92)}.obj-back-ico-reduced{width:16px;height:16px;display:inline-block}
 .obj-nm{font-size:14px;font-weight:800;color:#FFF;line-height:1.3;flex:1}
+.obj-nm-sub{font-size:10.5px;color:rgba(255,255,255,0.72);font-weight:600;margin-top:2px}
 .obj-count{font-size:11px;color:rgba(255,255,255,0.65);font-weight:600;margin-top:4px}
 .obj-results{padding:0 14px 14px;display:none}
 .obj-results.on{display:block}
@@ -318,6 +319,10 @@ body.F .az-letter{background:#1D1E20;color:#DEC49C}
 .obj-back{display:flex;flex-direction:row;align-items:center;gap:10px;padding:10px 0 12px;margin-bottom:12px;cursor:pointer}
 .obj-back-ico{width:36px;height:36px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:rgba(255,255,255,0.15);border-radius:10px;font-size:20px}.obj-back-ico svg{width:22px;height:22px;stroke:rgba(255,255,255,0.95)}
 .obj-subhd{display:flex;align-items:center;gap:8px;padding:14px 2px 8px;font-size:14px;font-weight:900;text-transform:uppercase;letter-spacing:0.08em;color:#FFFFFF}
+.obj-group{margin-bottom:6px}
+@media(max-width:599px){
+  .obj-group{margin-bottom:26px}
+}
 .obj-subhd:first-child{padding-top:2px}
 .obj-subhd-badge{font-size:10px;font-weight:700;letter-spacing:0.02em;text-transform:none;color:#D6B98A;background:rgba(214,185,138,0.14);border:1px solid rgba(214,185,138,0.35);border-radius:20px;padding:2px 9px;margin-left:auto}
 .obj-subnote{font-size:12.5px;color:#FFFFFF;line-height:1.6;padding:0 2px 10px;margin-top:-4px}
@@ -3655,92 +3660,93 @@ function showTimingResults(timing){
 const OBJ_SUBGROUPS = {
   muscu: [
     {label:"Les plus utilisés", note:"Ce sont les deux compléments sportifs les plus étudiés scientifiquement. Ce qui suit peut être pertinent selon ton profil, sans qu'il soit nécessaire de tout cumuler.", items:["Créatine Monohydrate"]},
-    {label:"Endurance & Performance", items:["Bêta-Alanine","L-Citrulline","Hydratation & Électrolytes"]},
-    {label:"Récupération", items:["Magnésium Bisglycinate","BCAA (Acides Aminés Ramifiés)","EAA (Acides Aminés Essentiels)","L-Glutamine","Glycine","HMB (Hydroxy-Méthyl-Butyrate)"]},
-    {label:"Soutien & Polyvalents", items:["Oméga-3 (EPA/DHA)","Vitamine C","Zinc Bisglycinate","L-Carnitine","MSM (Méthylsulfonylméthane)","Astaxanthine","Tribulus Terrestris"]}
+    {label:"Endurance & Performance", note:"Ces actifs retardent la fatigue musculaire et soutiennent l'effort prolongé, utile si tes séances dépassent 45 minutes.", items:["Bêta-Alanine","L-Citrulline","Hydratation & Électrolytes"]},
+    {label:"Récupération", note:"Ces actifs limitent les courbatures et accélèrent la récupération entre les séances, pertinent si tu t'entraînes plusieurs fois par semaine.", items:["Magnésium Bisglycinate","BCAA (Acides Aminés Ramifiés)","EAA (Acides Aminés Essentiels)","L-Glutamine","Glycine","HMB (Hydroxy-Méthyl-Butyrate)"]},
+    {label:"Soutien & Polyvalents", note:"Ces actifs soutiennent l'organisme de façon plus générale, en complément d'une base déjà en place plutôt qu'en priorité.", items:["Oméga-3 (EPA/DHA)","Vitamine C","Zinc Bisglycinate","L-Carnitine","MSM (Méthylsulfonylméthane)","Astaxanthine","Tribulus Terrestris"]}
   ],
   sommeil: [
     {label:"Les plus utilisés", note:"C'est la carence la plus fréquente en lien avec le sommeil. Les options suivantes peuvent être pertinentes selon la cause de tes difficultés.", items:["Magnésium Bisglycinate"]},
-    {label:"Relaxation & endormissement", items:["L-Théanine","Glycine"]},
-    {label:"Régulation du rythme circadien", items:["Mélatonine"]},
-    {label:"Terrain de fond", items:["Ashwagandha (KSM-66)","Vitamine D3 + K2"]}
+    {label:"Relaxation & endormissement", note:"Ces actifs favorisent la détente avant le coucher, utile si le mental tourne encore au moment de t'endormir.", items:["L-Théanine","Glycine"]},
+    {label:"Régulation du rythme circadien", note:"Cet actif resynchronise l'horloge interne, pertinent en cas de décalage horaire ou d'horaires irréguliers.", items:["Mélatonine"]},
+    {label:"Terrain de fond", note:"Ces actifs agissent sur le terrain général plutôt que sur l'endormissement immédiat, à prendre sur la durée.", items:["Ashwagandha (KSM-66)","Vitamine D3 + K2"]}
   ],
   coeur: [
     {label:"Les plus utilisés", note:"C'est l'actif le plus étudié pour la santé cardiovasculaire. Ce qui suit peut être pertinent selon ton bilan.", items:["Oméga-3 (EPA/DHA)"]},
-    {label:"Cholestérol & glycémie", items:["Berbérine"]},
-    {label:"Énergie cardiaque", items:["CoQ10 (Ubiquinol)","L-Carnitine"]},
-    {label:"Circulation", items:["L-Citrulline"]},
-    {label:"Homocystéine", sub:"acide aminé lié au risque cardiovasculaire", items:["Vitamine B9 (Folate, 5-MTHF)"]},
-    {label:"Protection antioxydante", items:["Resvératrol","Astaxanthine","Quercétine","Vitamine E (Tocophérol)"]}
+    {label:"Cholestérol & glycémie", note:"Cet actif agit sur la glycémie et le profil lipidique, pertinent en cas de bilan sanguin déséquilibré.", items:["Berbérine"]},
+    {label:"Énergie cardiaque", note:"Ces actifs soutiennent la production d'énergie du muscle cardiaque, notamment utile avec l'âge ou sous statines.", items:["CoQ10 (Ubiquinol)","L-Carnitine"]},
+    {label:"Circulation", note:"Cet actif favorise la dilatation des vaisseaux, pertinent en cas de mauvaise circulation ou d'extrémités froides.", items:["L-Citrulline"]},
+    {label:"Homocystéine", sub:"acide aminé lié au risque cardiovasculaire", note:"Cet actif régule un marqueur sanguin lié au risque cardiovasculaire, pertinent en cas de taux élevé constaté.", items:["Vitamine B9 (Folate, 5-MTHF)"]},
+    {label:"Protection antioxydante", note:"Ces actifs protègent les vaisseaux du stress oxydatif, en soutien sur le long terme plutôt qu'en action immédiate.", items:["Resvératrol","Astaxanthine","Quercétine","Vitamine E (Tocophérol)"]}
   ],
   mental: [
     {label:"Les plus utilisés", note:"Ce sont les deux pistes les plus documentées pour la gestion du stress. Lis les fiches pour voir ce qui correspond à ta situation.", items:["Ashwagandha (KSM-66)","Magnésium Bisglycinate"]},
-    {label:"Relaxation immédiate", items:["L-Théanine"]},
-    {label:"Adaptogènes anti-stress", items:["Rhodiola Rosea"]},
-    {label:"Carences fréquentes", items:["Vitamine D3 + K2","Fer Bisglycinate","Vitamine B6 (P5P)","Complexe B (B1, B2, B3, B5)"]},
-    {label:"Équilibre hormonal féminin", items:["Inositol (Myo-Inositol)","Gattilier (Vitex agnus-castus)","Damiana (Turnera diffusa)"]},
+    {label:"Relaxation immédiate", note:"Cet actif détend rapidement sans effet sédatif, utile en cas de stress ponctuel ou avant un moment stressant.", items:["L-Théanine"]},
+    {label:"Adaptogènes anti-stress", note:"Cette plante aide le corps à mieux tolérer un stress chronique, plutôt qu'à calmer une crise sur le moment.", items:["Rhodiola Rosea"]},
+    {label:"Carences fréquentes", note:"Ces carences aggravent souvent l'anxiété sans qu'on le sache, à corriger en priorité si un bilan les confirme.", items:["Vitamine D3 + K2","Fer Bisglycinate","Vitamine B6 (P5P)","Complexe B (B1, B2, B3, B5)"]},
+    {label:"Équilibre hormonal féminin", note:"Ces actifs régulent les fluctuations hormonales, pertinent si l'anxiété varie avec ton cycle.", items:["Inositol (Myo-Inositol)","Gattilier (Vitex agnus-castus)","Damiana (Turnera diffusa)"]},
     {label:"Autres pistes", items:["Oméga-3 (EPA/DHA)","Curcumine (Curcuma)","Probiotiques","NAC (N-Acétyl Cystéine)","Maca (Lepidium meyenii)","Tongkat Ali (Eurycoma longifolia)"]}
   ],
   cerveau: [
     {label:"Les plus utilisés", note:"C'est l'actif le plus étudié pour les fonctions cognitives. Ce qui suit peut être pertinent selon ton besoin.", items:["Oméga-3 (EPA/DHA)"]},
-    {label:"Focus immédiat", items:["L-Théanine"]},
-    {label:"Énergie cellulaire", items:["Créatine Monohydrate","CoQ10 (Ubiquinol)","Complexe B (B1, B2, B3, B5)"]},
-    {label:"Carences fréquentes", items:["Vitamine B12 (Méthylcobalamine)","Vitamine B9 (Folate, 5-MTHF)","Vitamine B6 (P5P)","Magnésium Bisglycinate"]},
-    {label:"Adaptogènes & longévité", items:["Rhodiola Rosea","Resvératrol","Myrtille (Anthocyanines)","NMN (Nicotinamide Mononucléotide)","Shilajit"]}
+    {label:"Focus immédiat", note:"Cet actif améliore la concentration sans excitation, utile pour un pic de focus ponctuel.", items:["L-Théanine"]},
+    {label:"Énergie cellulaire", note:"Ces actifs soutiennent la production d'énergie des neurones, pertinent en cas de fatigue mentale persistante.", items:["Créatine Monohydrate","CoQ10 (Ubiquinol)","Complexe B (B1, B2, B3, B5)"]},
+    {label:"Carences fréquentes", note:"Ces carences ralentissent les fonctions cognitives sans symptôme évident, à corriger en priorité si un bilan les confirme.", items:["Vitamine B12 (Méthylcobalamine)","Vitamine B9 (Folate, 5-MTHF)","Vitamine B6 (P5P)","Magnésium Bisglycinate"]},
+    {label:"Adaptogènes & longévité", note:"Ces actifs protègent les cellules cérébrales sur le long terme, en soutien de fond plutôt qu'en effet immédiat.", items:["Rhodiola Rosea","Resvératrol","Myrtille (Anthocyanines)","NMN (Nicotinamide Mononucléotide)","Shilajit"]}
   ],
   poids: [
     {label:"Glycémie & métabolisme", note:"C'est l'axe le plus étudié pour agir sur le poids. Ce qui suit peut être pertinent selon la cause probable de ta situation.", items:["Berbérine","Inositol (Myo-Inositol)"]},
-    {label:"Thyroïde", items:["Thyroïde (Iode + Sélénium)"]},
-    {label:"Digestion & satiété", items:["Probiotiques","Gingembre"]},
-    {label:"Gestion du stress (cortisol)", items:["Ashwagandha (KSM-66)","Rhodiola Rosea"]},
+    {label:"Thyroïde", note:"Cet actif soutient une thyroïde qui tourne au ralenti, pertinent si ton métabolisme semble bloqué malgré tes efforts.", items:["Thyroïde (Iode + Sélénium)"]},
+    {label:"Digestion & satiété", note:"Ces actifs améliorent la digestion et la sensation de satiété, utile en cas de ballonnements ou de faim qui revient vite.", items:["Probiotiques","Gingembre"]},
+    {label:"Gestion du stress (cortisol)", note:"Ces plantes régulent le cortisol, pertinent si le stress chronique favorise le stockage abdominal.", items:["Ashwagandha (KSM-66)","Rhodiola Rosea"]},
     {label:"Autres pistes", items:["L-Carnitine","Maca (Lepidium meyenii)","NMN (Nicotinamide Mononucléotide)","Fenugrec","DIM (Diindolylméthane)"]}
   ],
   peau: [
     {label:"Les plus utilisés", note:"Ce sont les deux actifs les plus utilisés pour la peau. Ce qui suit peut être pertinent selon ton objectif précis.", items:["Collagène Marin","Acide Hyaluronique"]},
-    {label:"Cofacteurs essentiels", items:["Vitamine C","Vitamine E (Tocophérol)","Zinc Bisglycinate"]},
-    {label:"Protection antioxydante", items:["Astaxanthine","Resvératrol","Lutéine + Zéaxanthine","Myrtille (Anthocyanines)"]},
-    {label:"Structure & fermeté", items:["MSM (Méthylsulfonylméthane)","Silicium Organique","Glycine"]},
+    {label:"Cofacteurs essentiels", note:"Ces nutriments sont indispensables à la synthèse du collagène, sans eux les autres actifs perdent en efficacité.", items:["Vitamine C","Vitamine E (Tocophérol)","Zinc Bisglycinate"]},
+    {label:"Protection antioxydante", note:"Ces actifs protègent la peau du vieillissement causé par le soleil et la pollution.", items:["Astaxanthine","Resvératrol","Lutéine + Zéaxanthine","Myrtille (Anthocyanines)"]},
+    {label:"Structure & fermeté", note:"Ces actifs soutiennent la production de collagène pour une peau plus ferme et élastique.", items:["MSM (Méthylsulfonylméthane)","Silicium Organique","Glycine"]},
     {label:"Autres pistes", items:["Oméga-3 (EPA/DHA)","Biotine (Vitamine B8)","Curcumine (Curcuma)","Probiotiques","CoQ10 (Ubiquinol)","NAC (N-Acétyl Cystéine)","Vitamine A (Bêta-carotène)","Spiruline","Bronzage & Préparation Solaire"]}
   ],
   cheveux: [
     {label:"Les plus utilisés", note:"C'est l'actif le plus utilisé pour la solidité des cheveux et ongles. Ce qui suit peut être pertinent selon la cause de ta situation.", items:["Biotine (Vitamine B8)"]},
-    {label:"Carences fréquentes", items:["Fer Bisglycinate","Zinc Bisglycinate"]},
-    {label:"Structure", items:["Silicium Organique","MSM (Méthylsulfonylméthane)","Collagène Marin"]},
+    {label:"Carences fréquentes", note:"Ces carences sont parmi les premières causes de chute de cheveux, à corriger en priorité si un bilan les confirme.", items:["Fer Bisglycinate","Zinc Bisglycinate"]},
+    {label:"Structure", note:"Ces actifs renforcent la fibre capillaire et la solidité des ongles sur la durée.", items:["Silicium Organique","MSM (Méthylsulfonylméthane)","Collagène Marin"]},
     {label:"Autres pistes", items:["Acide Hyaluronique","Vitamine B12 (Méthylcobalamine)","Sélénium","Spiruline","Thyroïde (Iode + Sélénium)"]}
   ],
   articulations: [
     {label:"Les plus utilisés", note:"Ce sont les deux actifs les plus utilisés pour le confort articulaire. Ce qui suit peut être pertinent selon ton besoin.", items:["Collagène Marin","Curcumine (Curcuma)"]},
-    {label:"Lubrification", items:["Acide Hyaluronique"]},
-    {label:"Anti-inflammatoire", items:["Gingembre","Quercétine"]},
-    {label:"Structure osseuse", items:["Vitamine D3 + K2","Calcium (Citrate/Bisglycinate)","Silicium Organique","Bore (Boron)"]},
+    {label:"Arthrose", note:"En cas d'arthrose diagnostiquée, ces actifs sont les plus documentés pour soutenir le cartilage et limiter l'inflammation. Ils viennent en complément d'un suivi médical, pas à sa place.", items:["Collagène Marin","Curcumine (Curcuma)","Acide Hyaluronique","MSM (Méthylsulfonylméthane)"]},
+    {label:"Lubrification", note:"Cet actif retient l'eau dans le cartilage pour un mouvement plus fluide.", items:["Acide Hyaluronique"]},
+    {label:"Anti-inflammatoire", note:"Ces actifs calment l'inflammation locale responsable des douleurs et raideurs.", items:["Gingembre","Quercétine"]},
+    {label:"Structure osseuse", note:"Ces actifs renforcent la densité osseuse, pertinent en prévention de l'ostéoporose.", items:["Vitamine D3 + K2","Calcium (Citrate/Bisglycinate)","Silicium Organique","Bore (Boron)"]},
     {label:"Autres pistes", items:["MSM (Méthylsulfonylméthane)","HMB (Hydroxy-Méthyl-Butyrate)","Glycine"]}
   ],
   digest: [
     {label:"Les plus utilisés", note:"C'est l'actif le plus utilisé pour la santé digestive. Ce qui suit peut être pertinent selon ton besoin.", items:["Probiotiques"]},
-    {label:"Anti-inflammatoire", items:["Curcumine (Curcuma)","Gingembre"]},
-    {label:"Barrière intestinale", items:["L-Glutamine"]},
+    {label:"Anti-inflammatoire", note:"Ces actifs apaisent l'inflammation intestinale, utile en cas d'inconfort digestif chronique.", items:["Curcumine (Curcuma)","Gingembre"]},
+    {label:"Barrière intestinale", note:"Cet actif renforce la paroi intestinale, pertinent en cas d'intestin poreux ou de digestion sensible.", items:["L-Glutamine"]},
     {label:"Autres pistes", items:["Berbérine","Inositol (Myo-Inositol)","Chardon-Marie (Silymarine)"]}
   ],
   testo: [
     {label:"Les plus utilisés", note:"Ce sont les carences les plus fréquentes et les mieux documentées dans ce contexte. Ce qui suit peut être pertinent selon ta situation.", items:["Vitamine D3 + K2","Zinc Bisglycinate","Magnésium Bisglycinate"]},
-    {label:"Gestion du stress", items:["Ashwagandha (KSM-66)"]},
-    {label:"Soutien hormonal spécifique", items:["DHEA","Tribulus Terrestris","Fenugrec","Bore (Boron)","Tongkat Ali (Eurycoma longifolia)","Shilajit","Maca (Lepidium meyenii)"]},
+    {label:"Gestion du stress", note:"Cette plante réduit le cortisol, une hormone qui freine la production de testostérone quand elle reste élevée.", items:["Ashwagandha (KSM-66)"]},
+    {label:"Soutien hormonal spécifique", note:"Ces actifs agissent directement sur la production ou la disponibilité de testostérone, à choisir selon ta situation plutôt qu'à cumuler.", items:["DHEA","Tribulus Terrestris","Fenugrec","Bore (Boron)","Tongkat Ali (Eurycoma longifolia)","Shilajit","Maca (Lepidium meyenii)"]},
     {label:"Autres pistes", items:["Oméga-3 (EPA/DHA)","Inositol (Myo-Inositol)","Sélénium"]}
   ],
   libido: [
     {label:"Les plus utilisés", note:"Ce sont les pistes les plus étudiées dans ce contexte. Lis les fiches pour voir ce qui correspond à ta situation.", items:["Ashwagandha (KSM-66)","Maca (Lepidium meyenii)"]},
-    {label:"Soutien hormonal", items:["Tribulus Terrestris","Tongkat Ali (Eurycoma longifolia)","Fenugrec","DHEA"]},
+    {label:"Soutien hormonal", note:"Ces actifs soutiennent la production hormonale liée au désir, à choisir selon ta situation plutôt qu'à cumuler.", items:["Tribulus Terrestris","Tongkat Ali (Eurycoma longifolia)","Fenugrec","DHEA"]},
     {label:"Autres pistes", items:["Zinc Bisglycinate","Gingembre","Damiana (Turnera diffusa)"]}
   ],
   vision: [
     {label:"Les plus utilisés", note:"C'est l'actif le plus étudié pour la santé oculaire. Ce qui suit peut être pertinent en complément.", items:["Lutéine + Zéaxanthine"]},
-    {label:"Protection antioxydante", items:["Astaxanthine","Myrtille (Anthocyanines)"]},
+    {label:"Protection antioxydante", note:"Ces actifs protègent la rétine du stress oxydatif lié aux écrans et à la lumière.", items:["Astaxanthine","Myrtille (Anthocyanines)"]},
     {label:"Autres pistes", items:["Oméga-3 (EPA/DHA)","Vitamine A (Bêta-carotène)","Bronzage & Préparation Solaire"]}
   ],
   anti: [
     {label:"Les plus utilisés", note:"Ce sont les actifs les plus documentés dans ce contexte. Ce qui suit peut être pertinent selon ton objectif.", items:["Vitamine C","Resvératrol"]},
-    {label:"Protection oxydative", items:["Astaxanthine","Quercétine","Lutéine + Zéaxanthine","Myrtille (Anthocyanines)","Vitamine E (Tocophérol)"]},
-    {label:"Régénération cellulaire", items:["NMN (Nicotinamide Mononucléotide)"]},
+    {label:"Protection oxydative", note:"Ces actifs neutralisent les radicaux libres responsables du vieillissement cellulaire.", items:["Astaxanthine","Quercétine","Lutéine + Zéaxanthine","Myrtille (Anthocyanines)","Vitamine E (Tocophérol)"]},
+    {label:"Régénération cellulaire", note:"Cet actif soutient la production d'énergie cellulaire, un mécanisme qui décline naturellement avec l'âge.", items:["NMN (Nicotinamide Mononucléotide)"]},
     {label:"Autres pistes", items:["Mélatonine","Sélénium","Shilajit","DHEA","Glycine","Bronzage & Préparation Solaire"]}
   ],
   detox: [
@@ -3749,53 +3755,53 @@ const OBJ_SUBGROUPS = {
   ],
   cycle: [
     {label:"Les plus utilisés", note:"Ce sont les actifs les plus documentés dans ce contexte. Ce qui suit peut être pertinent selon ton symptôme principal.", items:["Magnésium Bisglycinate","Vitamine B6 (P5P)","Oméga-3 (EPA/DHA)"]},
-    {label:"Anti-inflammatoire", items:["Curcumine (Curcuma)","Gingembre"]},
-    {label:"Équilibre hormonal", items:["Gattilier (Vitex agnus-castus)","DIM (Diindolylméthane)","Inositol (Myo-Inositol)"]},
-    {label:"Carences fréquentes", items:["Fer Bisglycinate","Vitamine D3 + K2","Zinc Bisglycinate"]},
+    {label:"Anti-inflammatoire", note:"Ces actifs calment les douleurs inflammatoires liées aux règles.", items:["Curcumine (Curcuma)","Gingembre"]},
+    {label:"Équilibre hormonal", note:"Ces actifs régulent les fluctuations hormonales du cycle, pertinent en cas de SPM marqué.", items:["Gattilier (Vitex agnus-castus)","DIM (Diindolylméthane)","Inositol (Myo-Inositol)"]},
+    {label:"Carences fréquentes", note:"Ces carences sont fréquentes en cas de règles abondantes, à corriger en priorité si un bilan les confirme.", items:["Fer Bisglycinate","Vitamine D3 + K2","Zinc Bisglycinate"]},
     {label:"Autres pistes", items:["Ashwagandha (KSM-66)","Probiotiques","NAC (N-Acétyl Cystéine)"]}
   ],
   immun: [
     {label:"Les plus utilisés", note:"Ce sont les carences les plus fréquentes et les mieux documentées pour l'immunité. Ce qui suit peut être pertinent selon ta situation.", items:["Vitamine D3 + K2","Vitamine C","Zinc Bisglycinate"]},
-    {label:"Barrière antioxydante", items:["Quercétine","Vitamine A (Bêta-carotène)","Sélénium"]},
-    {label:"Microbiote", items:["Probiotiques"]},
-    {label:"Carences fréquentes", items:["Fer Bisglycinate","Vitamine B12 (Méthylcobalamine)"]},
-    {label:"Récupération générale", items:["Oméga-3 (EPA/DHA)","Curcumine (Curcuma)","L-Glutamine","BCAA (Acides Aminés Ramifiés)","Hydratation & Électrolytes"]},
+    {label:"Barrière antioxydante", note:"Ces actifs protègent les cellules immunitaires du stress oxydatif.", items:["Quercétine","Vitamine A (Bêta-carotène)","Sélénium"]},
+    {label:"Microbiote", note:"Cet actif soutient la flore intestinale, à la base d'une bonne part de l'immunité.", items:["Probiotiques"]},
+    {label:"Carences fréquentes", note:"Ces carences affaiblissent l'immunité sans symptôme évident, à corriger en priorité si un bilan les confirme.", items:["Fer Bisglycinate","Vitamine B12 (Méthylcobalamine)"]},
+    {label:"Récupération générale", note:"Ces actifs soutiennent la récupération générale de l'organisme, utile en période de fatigue ou de sollicitation intense.", items:["Oméga-3 (EPA/DHA)","Curcumine (Curcuma)","L-Glutamine","BCAA (Acides Aminés Ramifiés)","Hydratation & Électrolytes"]},
     {label:"Cas spécifiques", items:["NAC (N-Acétyl Cystéine)","Gingembre","Mélatonine","Spiruline","Thyroïde (Iode + Sélénium)","Croissance & Immunité Enfant","Chardon-Marie (Silymarine)"]}
   ],
   perf: [
     {label:"Les plus utilisés", note:"Ce sont les carences les plus fréquentes en cas de fatigue. Ce qui suit peut être pertinent selon la cause probable de la tienne.", items:["Fer Bisglycinate","Magnésium Bisglycinate","Vitamine B12 (Méthylcobalamine)"]},
-    {label:"Gestion du stress chronique", items:["Ashwagandha (KSM-66)","Rhodiola Rosea"]},
-    {label:"Récupération sportive", items:["Créatine Monohydrate","Caféine","L-Citrulline","Bêta-Alanine","BCAA (Acides Aminés Ramifiés)","EAA (Acides Aminés Essentiels)","L-Glutamine","HMB (Hydroxy-Méthyl-Butyrate)","Hydratation & Électrolytes"]},
-    {label:"Énergie cellulaire", items:["CoQ10 (Ubiquinol)","Vitamine D3 + K2","Vitamine C","Complexe B (B1, B2, B3, B5)","Thyroïde (Iode + Sélénium)"]},
-    {label:"Adaptogènes & vitalité", items:["Maca (Lepidium meyenii)","Tribulus Terrestris","Tongkat Ali (Eurycoma longifolia)","Shilajit","Fenugrec","Damiana (Turnera diffusa)","NMN (Nicotinamide Mononucléotide)","DHEA"]},
+    {label:"Gestion du stress chronique", note:"Ces plantes aident le corps à mieux tolérer un stress installé depuis plusieurs semaines.", items:["Ashwagandha (KSM-66)","Rhodiola Rosea"]},
+    {label:"Récupération sportive", note:"Ces actifs soutiennent l'effort et la récupération sportive, pertinent si ta fatigue est surtout liée à l'entraînement.", items:["Créatine Monohydrate","Caféine","L-Citrulline","Bêta-Alanine","BCAA (Acides Aminés Ramifiés)","EAA (Acides Aminés Essentiels)","L-Glutamine","HMB (Hydroxy-Méthyl-Butyrate)","Hydratation & Électrolytes"]},
+    {label:"Énergie cellulaire", note:"Ces actifs soutiennent la production d'énergie au niveau cellulaire, pertinent en cas de fatigue de fond.", items:["CoQ10 (Ubiquinol)","Vitamine D3 + K2","Vitamine C","Complexe B (B1, B2, B3, B5)","Thyroïde (Iode + Sélénium)"]},
+    {label:"Adaptogènes & vitalité", note:"Ces actifs soutiennent la vitalité générale et l'équilibre hormonal, à choisir selon ta situation plutôt qu'à cumuler.", items:["Maca (Lepidium meyenii)","Tribulus Terrestris","Tongkat Ali (Eurycoma longifolia)","Shilajit","Fenugrec","Damiana (Turnera diffusa)","NMN (Nicotinamide Mononucléotide)","DHEA"]},
     {label:"Autres pistes", items:["L-Théanine","Spiruline"]}
   ],
   acne: [
     {label:"Les plus utilisés", note:"C'est la carence la plus fréquente en lien avec l'acné hormonale. Ce qui suit peut être pertinent selon la cause probable de ta situation.", items:["Zinc Bisglycinate"]},
-    {label:"Équilibre hormonal", items:["Gattilier (Vitex agnus-castus)","DIM (Diindolylméthane)","Inositol (Myo-Inositol)"]},
+    {label:"Équilibre hormonal", note:"Ces actifs régulent les hormones responsables de l'acné hormonale, pertinent si tes poussées suivent ton cycle.", items:["Gattilier (Vitex agnus-castus)","DIM (Diindolylméthane)","Inositol (Myo-Inositol)"]},
     {label:"Autres pistes", items:["Magnésium Bisglycinate","NAC (N-Acétyl Cystéine)"]}
   ],
   grossesse: [
     {label:"Les plus utilisés", note:"Ce sont les apports les plus souvent recommandés en grossesse. Suis les repères de ta sage-femme ou de ton médecin en priorité.", items:["Vitamine D3 + K2","Fer Bisglycinate","Oméga-3 (EPA/DHA)","Vitamine B9 (Folate, 5-MTHF)"]},
-    {label:"Carences ciblées", items:["Vitamine B12 (Méthylcobalamine)","Probiotiques"]},
-    {label:"Confort (nausées)", items:["Vitamine B6 (P5P)"]},
-    {label:"Énergie", items:["CoQ10 (Ubiquinol)"]},
-    {label:"Fertilité (pré-conception)", items:["Inositol (Myo-Inositol)"]}
+    {label:"Carences ciblées", note:"Ces actifs comblent des besoins spécifiques de la grossesse, à ajuster avec ta sage-femme ou ton médecin.", items:["Vitamine B12 (Méthylcobalamine)","Probiotiques"]},
+    {label:"Confort (nausées)", note:"Cet actif est souvent recommandé pour atténuer les nausées du premier trimestre.", items:["Vitamine B6 (P5P)"]},
+    {label:"Énergie", note:"Cet actif soutient la production d'énergie cellulaire, utile en cas de fatigue marquée.", items:["CoQ10 (Ubiquinol)"]},
+    {label:"Fertilité (pré-conception)", note:"Cet actif soutient l'équilibre hormonal en phase de pré-conception.", items:["Inositol (Myo-Inositol)"]}
   ],
   menopause: [
     {label:"Les plus utilisés", note:"C'est l'un des actifs les plus pertinents dans ce contexte, en lien direct avec la baisse hormonale. Ce qui suit peut être pertinent en complément.", items:["DHEA"]},
-    {label:"Structure & confort", items:["Collagène Marin","Vitamine D3 + K2","Calcium (Citrate/Bisglycinate)","Silicium Organique"]},
-    {label:"Adaptogènes", items:["Ashwagandha (KSM-66)","Maca (Lepidium meyenii)"]}
+    {label:"Structure & confort", note:"Ces actifs soutiennent la densité osseuse et la fermeté cutanée, deux points fragilisés par la baisse hormonale.", items:["Collagène Marin","Vitamine D3 + K2","Calcium (Citrate/Bisglycinate)","Silicium Organique"]},
+    {label:"Adaptogènes", note:"Ces plantes soutiennent l'équilibre général du corps face aux fluctuations hormonales de cette période.", items:["Ashwagandha (KSM-66)","Maca (Lepidium meyenii)"]}
   ],
   endometriose: [
     {label:"Les plus utilisés", note:"Ce sont les deux actifs anti-inflammatoires les plus documentés dans ce contexte.", items:["Oméga-3 (EPA/DHA)","Curcumine (Curcuma)"]},
-    {label:"Équilibre hormonal", items:["DIM (Diindolylméthane)"]},
-    {label:"Confort digestif & carences", items:["Probiotiques","Magnésium Bisglycinate","Vitamine D3 + K2"]},
+    {label:"Équilibre hormonal", note:"Cet actif régule le métabolisme des œstrogènes, un facteur impliqué dans l'endométriose.", items:["DIM (Diindolylméthane)"]},
+    {label:"Confort digestif & carences", note:"Ces actifs soutiennent le confort digestif et comblent des carences fréquentes en cas de douleurs chroniques.", items:["Probiotiques","Magnésium Bisglycinate","Vitamine D3 + K2"]},
     {label:"Autres pistes", items:["NAC (N-Acétyl Cystéine)"]}
   ],
   anemie: [
     {label:"Les plus utilisés", note:"C'est la cause la plus fréquente d'anémie. Vitamine C, B9 et B12 sont des cofacteurs qui peuvent compléter selon la cause identifiée par une prise de sang.", items:["Fer Bisglycinate"]},
-    {label:"Cofacteurs", items:["Vitamine C","Vitamine B12 (Méthylcobalamine)","Vitamine B9 (Folate, 5-MTHF)"]}
+    {label:"Cofacteurs", note:"Ces nutriments améliorent l'absorption du fer et comblent d'autres carences fréquentes associées à l'anémie.", items:["Vitamine C","Vitamine B12 (Méthylcobalamine)","Vitamine B9 (Folate, 5-MTHF)"]}
   ]
 };
 
