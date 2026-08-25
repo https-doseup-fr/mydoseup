@@ -70,7 +70,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="MyDoseUp">
-<meta name="theme-color" content="#363739">
+<meta name="theme-color" content="#DEDCD5">
 <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192.png">
 <link rel="icon" type="image/png" sizes="512x512" href="/icons/icon-512.png">
@@ -86,10 +86,10 @@
 <style>
 :root{--peau:#E07A5F;--cheveux:#9C27B0;--energie:#2A9D8F;--testo:#1565C0;--muscu:#2D936C;--sommeil:#1976D2;--poids:#E76F51;--immun:#00897B;--cerveau:#5E35B1;--os:#43A047;--coeur:#E53935;--digest:#00ACC1;--libido:#8E24AA;--detox:#43A047;--mental:#7B1FA2;--protein:#F57C00;--anti:#FF8F00;--vision:#0288D1;--antiage-fam:#C2185B;--protein-fam:#8D6E63;--special-fam:#607D8B}
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;-webkit-font-smoothing:antialiased}
-html{scroll-behavior:auto;background:#363739}
-body{font-family:"DM Sans",sans-serif;font-size:15px;line-height:1.6;max-width:430px;margin:0 auto;overflow-x:hidden;min-height:100vh;background:#363739 !important;color:#EDE9DF}
-body.F{background:#363739 !important;color:#EDE9DF}
-@media(min-width:768px){body{max-width:100%;background:#363739 !important;display:block}.app-wrapper{max-width:430px;width:100%;background:#363739;margin:0 auto;overflow-x:hidden}body.F .app-wrapper{background:#363739}}
+html{scroll-behavior:auto;background:#DEDCD5}
+body{font-family:"DM Sans",sans-serif;font-size:15px;line-height:1.6;max-width:430px;margin:0 auto;overflow-x:hidden;min-height:100vh;background:#DEDCD5 !important;color:#2B2620}
+body.F{background:#DEDCD5 !important;color:#2B2620}
+@media(min-width:768px){body{max-width:100%;background:#DEDCD5 !important;display:block}.app-wrapper{max-width:430px;width:100%;background:#DEDCD5;margin:0 auto;overflow-x:hidden}body.F .app-wrapper{background:#DEDCD5}}
 /* HEADER */
 .header{padding:28px 20px 8px;position:relative;overflow:hidden}
 body.M .header{background:#151617}
@@ -164,15 +164,15 @@ body.F .search{background:#1D1E20}
 @media (min-width:701px){
   .obj-tip-stack{max-width:100%;margin-left:0;margin-right:0}
 }
-.obj-back-btn{height:34px;padding:0 14px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.85);white-space:nowrap;gap:4px;letter-spacing:0.02em;cursor:pointer}
-.obj-back-title{font-size:16px;font-weight:700;color:#FFF}
+.obj-back-btn{height:34px;padding:0 14px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;border:1px solid rgba(43,38,32,0.15);background:rgba(43,38,32,0.06);color:rgba(43,38,32,0.85);white-space:nowrap;gap:4px;letter-spacing:0.02em;cursor:pointer}
+.obj-back-title{font-size:16px;font-weight:700;color:#2B2620}
 /* Colonne filtres (mobile: puces horizontales au-dessus de la liste ; desktop: colonne fixe à gauche) */
 .obj-sidebar{margin-bottom:6px}
 .obj-filters{display:none;flex-wrap:wrap;gap:8px;margin-top:10px}
 .obj-filters.open{display:flex}
-.obj-filter-toggle{display:inline-flex;align-items:center;gap:6px;margin-top:12px;padding:9px 16px;border-radius:20px;border:1px solid rgba(255,255,255,0.16);background:rgba(255,255,255,0.06);color:#FFFFFF;font-size:12px;font-weight:700;font-family:"DM Sans",sans-serif;cursor:pointer}
+.obj-filter-toggle{display:inline-flex;align-items:center;gap:6px;margin-top:12px;padding:9px 16px;border-radius:20px;border:1px solid rgba(43,38,32,0.18);background:rgba(43,38,32,0.06);color:#2B2620;font-size:12px;font-weight:700;font-family:"DM Sans",sans-serif;cursor:pointer}
 #objFilterActiveLabel{color:#D6B98A;font-weight:800}
-.obj-filter-btn{padding:8px 14px;border-radius:20px;border:1px solid rgba(255,255,255,0.14);background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.78);font-size:12px;font-weight:700;font-family:"DM Sans",sans-serif;cursor:pointer;transition:all 0.18s;white-space:nowrap}
+.obj-filter-btn{padding:8px 14px;border-radius:20px;border:1px solid rgba(43,38,32,0.18);background:rgba(43,38,32,0.06);color:rgba(43,38,32,0.78);font-size:12px;font-weight:700;font-family:"DM Sans",sans-serif;cursor:pointer;transition:all 0.18s;white-space:nowrap}
 .obj-filter-btn.active{background:#D6B98A;border-color:#D6B98A;color:#1F1B14}
 .obj-filter-btn:active{transform:scale(0.96)}
 /* SUPPLEMENT CARD */
@@ -270,8 +270,8 @@ body.F .az-letter{background:#1D1E20;color:#DEC49C}
 .az-list{padding:8px 14px}
 .sp{display:none;padding:14px}
 .sp.on{display:block}
-.sp-count{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.60);padding:4px 0 12px}
-.no-res{text-align:center;padding:40px 20px;font-size:14px;color:rgba(255,255,255,0.20)}
+.sp-count{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:rgba(43,38,32,0.65);padding:4px 0 12px}
+.no-res{text-align:center;padding:40px 20px;font-size:14px;color:rgba(43,38,32,0.45)}
 .prot-sep{margin-top:20px;padding-top:16px}
 .prot-sep-t{font-size:14px;font-weight:900;text-transform:uppercase;letter-spacing:0.08em;color:#FFFFFF;margin-bottom:12px}
 
@@ -317,17 +317,17 @@ body.F .az-letter{background:#1D1E20;color:#DEC49C}
 .obj-tile:hover .obj-arrow,.obj-tile:active .obj-arrow{transform:translateX(1px)}
 /* Header catégorie compact : icône + titre côte à côte */
 .obj-back{display:flex;flex-direction:row;align-items:center;gap:8px;padding:6px 0 8px;margin-bottom:8px;cursor:pointer}
-.obj-back-ico{width:28px;height:28px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:rgba(255,255,255,0.15);border-radius:8px;font-size:16px}.obj-back-ico svg{width:17px;height:17px;stroke:rgba(255,255,255,0.95)}
-.obj-subhd{display:flex;align-items:center;gap:8px;padding:10px 2px 6px;font-size:12.5px;font-weight:900;text-transform:uppercase;letter-spacing:0.08em;color:#FFFFFF}
+.obj-back-ico{width:28px;height:28px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:rgba(43,38,32,0.10);border-radius:8px;font-size:16px}.obj-back-ico svg{width:17px;height:17px;stroke:rgba(43,38,32,0.85)}
+.obj-subhd{display:flex;align-items:center;gap:8px;padding:10px 2px 6px;font-size:12.5px;font-weight:900;text-transform:uppercase;letter-spacing:0.08em;color:#2B2620}
 .obj-group{margin-bottom:18px}
 @media(max-width:599px){
   .obj-group{margin-bottom:18px}
 }
 .obj-subhd:first-child{padding-top:2px}
 .obj-subhd-badge{font-size:10px;font-weight:700;letter-spacing:0.02em;text-transform:none;color:#D6B98A;background:rgba(214,185,138,0.14);border:1px solid rgba(214,185,138,0.35);border-radius:20px;padding:2px 9px;margin-left:auto}
-.obj-subnote{font-size:11.5px;color:#FFFFFF;line-height:1.5;padding:0 2px 8px;margin-top:-4px}
+.obj-subnote{font-size:11.5px;color:#4A4238;line-height:1.5;padding:0 2px 8px;margin-top:-4px}
 .obj-back-content{display:flex;align-items:center;justify-content:flex-start;gap:8px;flex:1;min-width:0}
-.obj-back-title{font-size:14px;font-weight:800;color:#FFF;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.obj-back-title{font-size:14px;font-weight:800;color:#2B2620;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .obj-back-arr{width:26px;height:26px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:13px;border:1px solid rgba(255,255,255,0.20);background:rgba(255,255,255,0.08);color:#FFF;font-weight:900;flex-shrink:0}
 
 /* ─── NAV BANDEAU ─── */
@@ -365,12 +365,12 @@ body.F .az-letter{background:#1D1E20;color:#DEC49C}
 .page-view{display:none;padding-bottom:80px}
 .page-view.on{display:block;animation:fadeUp 0.2s ease}
 .page-hero{padding:18px 20px 12px;text-align:center}
-.page-title{font-size:19px;font-weight:800;color:#EDE9DF;margin-bottom:5px}
-.page-sub{font-size:12px;font-weight:700;color:#FFFFFF;line-height:1.45}
-.page-card{margin:0 12px 12px;border-radius:14px;padding:16px 14px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.09)}
-.page-card-title{font-size:13px;font-weight:700;color:rgba(255,255,255,0.90);margin-bottom:7px;display:flex;align-items:center;gap:7px;letter-spacing:0.01em}
-.page-card-txt{font-size:13px;color:rgba(255,255,255,0.75);line-height:1.65}
-.vit-filter{padding:8px 16px;border-radius:20px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.75);font-size:13px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .15s}
+.page-title{font-size:19px;font-weight:800;color:#2B2620;margin-bottom:5px}
+.page-sub{font-size:12px;font-weight:700;color:#4A4238;line-height:1.45}
+.page-card{margin:0 12px 12px;border-radius:14px;padding:16px 14px;background:rgba(255,255,255,0.55);border:1px solid rgba(43,38,32,0.10)}
+.page-card-title{font-size:13px;font-weight:700;color:#2B2620;margin-bottom:7px;display:flex;align-items:center;gap:7px;letter-spacing:0.01em}
+.page-card-txt{font-size:13px;color:rgba(43,38,32,0.80);line-height:1.65}
+.vit-filter{padding:8px 16px;border-radius:20px;border:1px solid rgba(43,38,32,0.18);background:rgba(43,38,32,0.06);color:rgba(43,38,32,0.75);font-size:13px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .15s}
 .vit-filter.on{background:#DEC49C;color:#5A4020;border-color:#DEC49C}
 #vitGrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:0 12px}
 .vitform-card{background:#EDEDEB;border-radius:11px;padding:10px 11px;margin:0;display:flex;flex-direction:column}
@@ -431,19 +431,19 @@ body.F .az-letter{background:#1D1E20;color:#DEC49C}
 @media (min-width:701px){
   .footer-cols-desktop{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;width:100%;margin:0 0 24px;text-align:left;flex-wrap:wrap}
   .footer-col{flex:1 1 220px;max-width:300px}
-  .footer-col-title{font-size:11px;font-weight:900;letter-spacing:0.1em;text-transform:uppercase;color:#D6B98A;margin-bottom:14px}
-  .footer-col-link{display:block;font-size:13px;color:rgba(255,255,255,0.72);margin-bottom:10px;text-decoration:none;cursor:pointer;background:none;border:none;padding:0;font-family:'DM Sans',sans-serif;text-align:left}
+  .footer-col-title{font-size:11px;font-weight:900;letter-spacing:0.1em;text-transform:uppercase;color:#8A5A2B;margin-bottom:14px}
+  .footer-col-link{display:block;font-size:13px;color:rgba(43,38,32,0.72);margin-bottom:10px;text-decoration:none;cursor:pointer;background:none;border:none;padding:0;font-family:'DM Sans',sans-serif;text-align:left}
   .footer-col-link:hover{color:#FFFFFF}
-  .footer-col-text{font-size:13px;color:rgba(255,255,255,0.6);line-height:1.6}
+  .footer-col-text{font-size:13px;color:rgba(43,38,32,0.65);line-height:1.6}
   .footer-brand-mobile{display:none !important}
   .footer-btn-row{display:none !important}
   .footer-legal-btn{display:none !important}
   .footer-legal{display:none !important}
   .footer-credits{display:none !important}
   .footer-subbar-desktop{display:flex !important;justify-content:space-between;align-items:center;width:100%;padding-top:18px;border-top:1px solid rgba(255,255,255,0.08);margin-top:8px}
-  .footer-subbar-text{font-size:12px;color:rgba(255,255,255,0.55);text-align:left}
+  .footer-subbar-text{font-size:12px;color:rgba(43,38,32,0.55);text-align:left}
   .src-btn{display:none !important}
-  .footer-src-btn-desktop{display:inline-flex !important;padding:7px 12px;border:1px solid rgba(255,255,255,0.15);border-radius:8px;background:transparent;color:rgba(255,255,255,0.6);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;cursor:pointer;font-family:'DM Sans',sans-serif}
+  .footer-src-btn-desktop{display:inline-flex !important;padding:7px 12px;border:1px solid rgba(43,38,32,0.18);border-radius:8px;background:transparent;color:rgba(43,38,32,0.65);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;cursor:pointer;font-family:'DM Sans',sans-serif}
   .footer{text-align:left;max-width:900px;margin:0 auto;padding-left:20px;padding-right:20px}
 }
 .footer-src-btn-desktop{display:none}
@@ -451,11 +451,11 @@ body.F .az-letter{background:#1D1E20;color:#DEC49C}
 .footer-logo{font-size:22px;font-weight:900;margin-bottom:4px;color:#EDE9DF}
 body.M .footer-logo span{color:inherit;-webkit-text-fill-color:inherit}
 body.F .footer-logo span{color:inherit;-webkit-text-fill-color:inherit}
-.footer-sub{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.14em;color:rgba(255,255,255,0.72);margin-bottom:16px}
-.footer-legal{font-size:13px;color:#FFF;line-height:1.9;margin-bottom:12px}
-.footer-credits{font-size:13px;color:#FFF;font-weight:600;margin-bottom:24px}
-.src-btn{width:100%;padding:12px;border:1px solid rgba(255,255,255,0.15);border-radius:10px;background:transparent;color:rgba(255,255,255,0.60);font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;cursor:pointer;font-family:"DM Sans",sans-serif;margin-top:8px}
-.src-panel{display:none;margin-top:14px;text-align:left;font-size:11px;color:rgba(255,255,255,0.72);line-height:2.0}
+.footer-sub{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.14em;color:rgba(43,38,32,0.72);margin-bottom:16px}
+.footer-legal{font-size:13px;color:#2B2620;line-height:1.9;margin-bottom:12px}
+.footer-credits{font-size:13px;color:#2B2620;font-weight:600;margin-bottom:24px}
+.src-btn{width:100%;padding:12px;border:1px solid rgba(43,38,32,0.18);border-radius:10px;background:transparent;color:rgba(43,38,32,0.65);font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;cursor:pointer;font-family:"DM Sans",sans-serif;margin-top:8px}
+.src-panel{display:none;margin-top:14px;text-align:left;font-size:11px;color:rgba(43,38,32,0.72);line-height:2.0}
 .src-panel.open{display:block}
 .src-nm{color:rgba(255,255,255,0.65);font-weight:700;margin:12px 0 4px;font-size:12px}
 @media(max-width:767px){::-webkit-scrollbar{width:0;height:0}}
@@ -471,9 +471,9 @@ body.F .footer-logo span{color:inherit;-webkit-text-fill-color:inherit}
 .az-placeholder{display:none}
 @media(min-width:600px){
   html,body{max-width:100% !important;}
-  body{display:block;background:#363739 !important;}
-  body.F{background:#363739 !important;}
-  body.M{background:#363739 !important;}
+  body{display:block;background:#DEDCD5 !important;}
+  body.F{background:#DEDCD5 !important;}
+  body.M{background:#DEDCD5 !important;}
   .app-wrapper{max-width:680px;width:100%;min-height:100vh;margin:0 auto;}
 }
 @media(min-width:900px){
@@ -517,7 +517,7 @@ body.F .footer-logo span{color:inherit;-webkit-text-fill-color:inherit}
   .az-sidebar-btn.active{background:#D6B98A;color:#1F1B14}
   .az-sidebar-btn:active{transform:scale(0.98)}
   .az-sidebar-count{margin-left:auto;font-size:10.5px;opacity:0.65;font-weight:600}
-  .az-placeholder{display:block;color:rgba(255,255,255,0.9);font-size:14px;font-weight:600;padding:50px 20px;text-align:center}
+  .az-placeholder{display:block;color:rgba(43,38,32,0.75);font-size:14px;font-weight:600;padding:50px 20px;text-align:center}
   .az-fam-section{display:none}
   .az-fam-section.desktop-active{display:block}
   .az-fam-section.desktop-active .az-fam-header{display:none}
@@ -588,7 +588,7 @@ img{pointer-events:none;-webkit-user-drag:none;user-drag:none;}
 
 /* ── AZ FAMILLES ── */
 .az-fam-section{margin-bottom:8px}
-.az-fam-header{display:flex;align-items:center;gap:10px;padding:14px 14px 8px;cursor:pointer;user-select:none;position:sticky;top:0;z-index:10;background:#363739;margin:0 14px;border-radius:8px;overflow:hidden}
+.az-fam-header{display:flex;align-items:center;gap:10px;padding:14px 14px 8px;cursor:pointer;user-select:none;position:sticky;top:0;z-index:10;background:#DEDCD5;margin:0 14px;border-radius:8px;overflow:hidden}
 .az-fam-accent{width:5px;height:32px;border-radius:3px;flex-shrink:0}
 .az-fam-title{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:0.13em;color:#fff;flex:1}
 .az-fam-count{font-size:11px;color:rgba(255,255,255,0.85);font-weight:600}
@@ -610,7 +610,7 @@ img{pointer-events:none;-webkit-user-drag:none;user-drag:none;}
 /* When AZ-item is expanded -> show sc card below */
 .az-li-card{display:none;margin-bottom:6px}
 .az-li-card.open{display:block}
-.az-fam-total{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;color:rgba(255,255,255,0.85);padding:10px 14px 4px}
+.az-fam-total{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;color:rgba(43,38,32,0.75);padding:10px 14px 4px}
 
 /* ── CWV PERFORMANCE ── */
 /* Reduce layout recalc on off-screen page sections */
@@ -629,7 +629,7 @@ img{pointer-events:none;-webkit-user-drag:none;user-drag:none;}
 }
 /* HEADER */
 .qz-top{
-  background:#363739;
+  background:#DEDCD5;
   padding:20px 16px 18px;position:relative;overflow:hidden;
   border-bottom:1px solid rgba(214,185,138,0.18);
   display:flex;flex-direction:column;gap:0;
@@ -803,7 +803,7 @@ img{pointer-events:none;-webkit-user-drag:none;user-drag:none;}
 /* RESULT */
 .qz-result-hd{
   padding:16px 16px 14px;
-  background:linear-gradient(170deg,#1A1B1D 0%,#363739 60%,#1A1B1D 100%);
+  background:linear-gradient(170deg,#1A1B1D 0%,#242527 60%,#1A1B1D 100%);
   border-bottom:1px solid rgba(214,185,138,0.10);
 }
 .qz-result-tag{
@@ -929,9 +929,9 @@ img{pointer-events:none;-webkit-user-drag:none;user-drag:none;}
 
 /* ═══ QUIZ REDESIGN — ÉPURÉ & LISIBLE ═══ */
 #quiz-overlay{background:rgba(0,0,0,0.80)!important;backdrop-filter:blur(8px)!important}
-.qz-panel{background:#363739}
+.qz-panel{background:#DEDCD5}
 .qz-top{
-  background:#363739!important;
+  background:#DEDCD5!important;
   border-bottom:1px solid rgba(255,255,255,0.10)!important;
   padding:16px 16px 14px!important;
 }
@@ -942,7 +942,7 @@ img{pointer-events:none;-webkit-user-drag:none;user-drag:none;}
 .qz-hero-title{font-size:1.35rem!important;margin-bottom:4px!important}
 .qz-hero-title span{color:#DEC49C!important;background:none!important;-webkit-text-fill-color:#DEC49C!important}
 .qz-hero-sub{color:rgba(255,255,255,0.55)!important;font-size:11px!important}
-.qz-progress{background:#363739!important;border-bottom:1px solid rgba(255,255,255,0.08)!important;padding:10px 16px 0!important}
+.qz-progress{background:#DEDCD5!important;border-bottom:1px solid rgba(255,255,255,0.08)!important;padding:10px 16px 0!important}
 .qz-prog-lbl{color:#D6B98A!important;font-size:10px!important}
 .qz-prog-pct{color:rgba(255,255,255,0.65)!important}
 .qz-bar{background:rgba(255,255,255,0.10)!important}
@@ -970,7 +970,7 @@ img{pointer-events:none;-webkit-user-drag:none;user-drag:none;}
 .qz-load-msg{color:rgba(255,255,255,0.60)!important}
 .qz-load-bar{background:linear-gradient(90deg,#D6B98A,#D6B98A)!important;box-shadow:none!important}
 /* Résultat */
-.qz-result-hd{background:#363739!important;border-bottom-color:rgba(255,255,255,0.10)!important;padding:14px 16px!important}
+.qz-result-hd{background:#DEDCD5!important;border-bottom-color:rgba(255,255,255,0.10)!important;padding:14px 16px!important}
 .qz-result-tag{background:rgba(214,185,138,0.10)!important;border-color:rgba(214,185,138,0.22)!important;color:#D6B98A!important;font-size:9px!important}
 .qz-result-tag::before{background:#D6B98A!important;animation:none!important}
 .qz-result-title{font-size:1rem!important;color:#F0F6FF!important}
@@ -1038,12 +1038,12 @@ img{pointer-events:none;-webkit-user-drag:none;user-drag:none;}
 
 /* ═══ ECLAIRCISSEMENT GLOBAL ═══ */
 /* Fond principal légèrement plus clair */
-html{background:#363739}
-body{background:#363739 !important}
-body.F{background:#363739 !important}
+html{background:#DEDCD5}
+body{background:#DEDCD5 !important}
+body.F{background:#DEDCD5 !important}
 @media(min-width:768px){
-  .app-wrapper{background:#363739 !important}
-  body.F .app-wrapper{background:#363739 !important}
+  .app-wrapper{background:#DEDCD5 !important}
+  body.F .app-wrapper{background:#DEDCD5 !important}
 }
 /* Header moins sombre */
 body.M .header{background:#151617 !important}
@@ -1104,7 +1104,7 @@ body.F .az-letter{background:#1D1E20 !important}
 .qz-btn-next{background:#BC9569 !important;box-shadow:0 2px 8px rgba(0,0,0,0.30) !important}
 .qz-btn-next:hover{box-shadow:0 3px 10px rgba(0,0,0,0.35) !important;transform:translateY(-1px)}
 .qz-spin{border-top-color:#DEC49C !important;border-color:rgba(214,185,138,0.15) !important}
-.qz-result-hd{background:#363739 !important;border-bottom:1px solid rgba(214,185,138,0.14) !important}
+.qz-result-hd{background:#DEDCD5 !important;border-bottom:1px solid rgba(214,185,138,0.14) !important}
 .qz-result-tag{background:rgba(214,185,138,0.08) !important;border-color:rgba(214,185,138,0.2) !important;color:#D6B98A !important}
 .qz-result-tag::before{background:#D6B98A !important}
 .qz-supp{background:#242820 !important;border:none !important}
@@ -1119,7 +1119,7 @@ body.F .az-letter{background:#1D1E20 !important}
 .qb-b{background:rgba(188,149,105,0.12) !important;color:#D6B98A !important;border-color:rgba(214,185,138,0.15) !important}
 .qz-btn-share{background:#BC9569 !important;box-shadow:0 2px 8px rgba(0,0,0,0.30) !important}
 .qz-btn-share:hover{box-shadow:0 3px 10px rgba(0,0,0,0.35) !important;transform:translateY(-1px)}
-.qz-toast{background:#FFF !important;color:#363739 !important;box-shadow:0 4px 16px rgba(0,0,0,0.3) !important}
+.qz-toast{background:#FFF !important;color:#DEDCD5 !important;box-shadow:0 4px 16px rgba(0,0,0,0.3) !important}
 
 /* Bouton fermer : plus visible */
 .qz-close-btn{
@@ -1346,7 +1346,7 @@ html{overflow-x:hidden}
 /* ══ DRAWER MENU (restauré) ══ */
 .drawer-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.70);z-index:9998;backdrop-filter:blur(4px)}
 .drawer-overlay.open{display:block}
-.drawer-panel{position:fixed;top:0;right:0;bottom:0;width:85%;max-width:340px;background:#363739;z-index:9999;transform:translateX(100%);transition:transform 0.30s cubic-bezier(0.4,0,0.2,1);display:flex;flex-direction:column;padding:0}
+.drawer-panel{position:fixed;top:0;right:0;bottom:0;width:85%;max-width:340px;background:#DEDCD5;z-index:9999;transform:translateX(100%);transition:transform 0.30s cubic-bezier(0.4,0,0.2,1);display:flex;flex-direction:column;padding:0}
 .drawer-panel.open{transform:translateX(0)}
 .drawer-panel{will-change:transform}
 .drawer-panel{background:#2B2D2F !important}
@@ -1616,7 +1616,7 @@ html{overflow-x:hidden}
   </div>
   <div class="page-card" style="border-color:rgba(255,183,77,0.30);background:rgba(255,183,77,0.06)">
     <div class="page-card-title">Avertissement médical</div>
-    <div class="page-card-txt" style="color:rgba(255,220,140,0.85)">Les informations présentées sur MyDoseUp® sont à titre éducatif uniquement. Elles ne constituent pas un avis médical, un diagnostic ou une prescription. Consultez toujours un professionnel de santé qualifié avant toute supplémentation.</div>
+    <div class="page-card-txt" style="color:#8A5A2B">Les informations présentées sur MyDoseUp® sont à titre éducatif uniquement. Elles ne constituent pas un avis médical, un diagnostic ou une prescription. Consultez toujours un professionnel de santé qualifié avant toute supplémentation.</div>
   </div>
 </div>
 
@@ -1628,36 +1628,36 @@ html{overflow-x:hidden}
   </div>
   <div class="page-card">
     <div class="page-card-title">Notre mission</div>
-    <div class="page-card-txt">MyDoseUp® est né d'un constat simple : l'univers des compléments alimentaires est saturé de marketing, de promesses vides et d'informations contradictoires. <br><br>Notre mission : offrir un guide <strong style="color:#FFF">100% indépendant</strong>, basé sur la science, personnalisé par genre, et accessible gratuitement à tous.</div>
+    <div class="page-card-txt">MyDoseUp® est né d'un constat simple : l'univers des compléments alimentaires est saturé de marketing, de promesses vides et d'informations contradictoires. <br><br>Notre mission : offrir un guide <strong style="color:#2B2620">100% indépendant</strong>, basé sur la science, personnalisé par genre, et accessible gratuitement à tous.</div>
   </div>
   <div class="page-card">
     <div class="page-card-title">Yanis Bensaadi, Fondateur</div>
-    <div class="page-card-txt">Passionné de nutrition, de performance et de longévité depuis plusieurs années, Yanis Bensaadi a créé MyDoseUp® pour centraliser des années de recherche personnelle et la rendre accessible à tous.<br><br>Après avoir testé de nombreux compléments sur lui-même, croisé les données scientifiques disponibles sur PubMed et Examine.com, et constaté le manque criard d'un guide sérieux en français, il a décidé de construire la référence francophone.<br><br><strong style="color:#FFF">MyDoseUp® est la réponse à toutes les questions qu'il se posait lui-même.</strong></div>
+    <div class="page-card-txt">Passionné de nutrition, de performance et de longévité depuis plusieurs années, Yanis Bensaadi a créé MyDoseUp® pour centraliser des années de recherche personnelle et la rendre accessible à tous.<br><br>Après avoir testé de nombreux compléments sur lui-même, croisé les données scientifiques disponibles sur PubMed et Examine.com, et constaté le manque criard d'un guide sérieux en français, il a décidé de construire la référence francophone.<br><br><strong style="color:#2B2620">MyDoseUp® est la réponse à toutes les questions qu'il se posait lui-même.</strong></div>
   </div>
-  <div class="page-card" style="background:rgba(255,255,255,0.04);border-color:rgba(255,255,255,0.09)">
+  <div class="page-card" style="background:rgba(255,255,255,0.55);border-color:rgba(43,38,32,0.10)">
     <div class="page-card-title">MyDoseUp en chiffres</div>
     <div class="page-card-txt" id="conceptStats" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:8px">
-      <div style="text-align:center;padding:12px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:12px">
+      <div style="text-align:center;padding:12px;background:rgba(255,255,255,0.60);border:1px solid rgba(43,38,32,0.10);border-radius:12px">
         <div id="statCompl" style="font-size:32px;font-weight:900;color:#FFFFFF">—</div>
-        <div style="font-size:11px;color:rgba(255,255,255,0.55);margin-top:4px">Compléments référencés</div>
+        <div style="font-size:11px;color:rgba(43,38,32,0.75);margin-top:4px">Compléments référencés</div>
       </div>
-      <div style="text-align:center;padding:12px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:12px">
+      <div style="text-align:center;padding:12px;background:rgba(255,255,255,0.60);border:1px solid rgba(43,38,32,0.10);border-radius:12px">
         <div id="statCat" style="font-size:32px;font-weight:900;color:#FFFFFF">—</div>
-        <div style="font-size:11px;color:rgba(255,255,255,0.55);margin-top:4px">Catégories de besoins</div>
+        <div style="font-size:11px;color:rgba(43,38,32,0.75);margin-top:4px">Catégories de besoins</div>
       </div>
-      <div style="text-align:center;padding:12px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:12px">
+      <div style="text-align:center;padding:12px;background:rgba(255,255,255,0.60);border:1px solid rgba(43,38,32,0.10);border-radius:12px">
         <div style="font-size:32px;font-weight:900;color:#FFFFFF">100%</div>
-        <div style="font-size:11px;color:rgba(255,255,255,0.55);margin-top:4px">Gratuit & Indépendant</div>
+        <div style="font-size:11px;color:rgba(43,38,32,0.75);margin-top:4px">Gratuit & Indépendant</div>
       </div>
-      <div style="text-align:center;padding:12px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:12px">
+      <div style="text-align:center;padding:12px;background:rgba(255,255,255,0.60);border:1px solid rgba(43,38,32,0.10);border-radius:12px">
         <div style="font-size:32px;font-weight:900;color:#FFFFFF">PubMed</div>
-        <div style="font-size:11px;color:rgba(255,255,255,0.55);margin-top:4px">Base scientifique</div>
+        <div style="font-size:11px;color:rgba(43,38,32,0.75);margin-top:4px">Base scientifique</div>
       </div>
     </div>
   </div>
   <div class="page-card">
     <div class="page-card-title">Notre philosophie</div>
-    <div class="page-card-txt">• <strong style="color:#FFF">Science d'abord</strong> : chaque information est sourcée sur PubMed<br>• <strong style="color:#FFF">Indépendance totale</strong> : aucun partenariat commercial, aucune publicité<br>• <strong style="color:#FFF">Personnalisation</strong> : homme et femme ont des besoins différents<br>• <strong style="color:#FFF">Clarté</strong> : vulgarisation sans sacrifier la rigueur<br>• <strong style="color:#FFF">Gratuité</strong> : l'accès à l'information ne devrait pas avoir de prix</div>
+    <div class="page-card-txt">• <strong style="color:#2B2620">Science d'abord</strong> : chaque information est sourcée sur PubMed<br>• <strong style="color:#2B2620">Indépendance totale</strong> : aucun partenariat commercial, aucune publicité<br>• <strong style="color:#2B2620">Personnalisation</strong> : homme et femme ont des besoins différents<br>• <strong style="color:#2B2620">Clarté</strong> : vulgarisation sans sacrifier la rigueur<br>• <strong style="color:#2B2620">Gratuité</strong> : l'accès à l'information ne devrait pas avoir de prix</div>
   </div>
   <div class="page-card">
     <div style="display:flex;flex-wrap:wrap;gap:7px;margin-bottom:12px">
@@ -1674,29 +1674,29 @@ html{overflow-x:hidden}
   </div>
   <!-- Sécurité & RGPD trust signals -->
   <div class="page-card" style="margin-bottom:10px">
-    <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.68);margin-bottom:12px">Sécurité &amp; Confidentialité</div>
+    <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:rgba(43,38,32,0.75);margin-bottom:12px">Sécurité &amp; Confidentialité</div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
-      <div style="background:rgba(255,255,255,0.04);border-radius:10px;padding:10px 12px;border:1px solid rgba(255,255,255,0.08)">
+      <div style="background:rgba(255,255,255,0.55);border-radius:10px;padding:10px 12px;border:1px solid rgba(43,38,32,0.10)">
         <div style="font-size:11px;font-weight:700;color:#2D936C;margin-bottom:3px">HTTPS + HSTS</div>
-        <div style="font-size:10px;color:rgba(255,255,255,0.72)">Chiffrement SSL actif en permanence</div>
+        <div style="font-size:10px;color:rgba(43,38,32,0.75)">Chiffrement SSL actif en permanence</div>
       </div>
-      <div style="background:rgba(255,255,255,0.04);border-radius:10px;padding:10px 12px;border:1px solid rgba(255,255,255,0.08)">
+      <div style="background:rgba(255,255,255,0.55);border-radius:10px;padding:10px 12px;border:1px solid rgba(43,38,32,0.10)">
         <div style="font-size:11px;font-weight:700;color:#2D936C;margin-bottom:3px">DNSSEC + DMARC</div>
-        <div style="font-size:10px;color:rgba(255,255,255,0.72)">Protection DNS et anti-spoofing email</div>
+        <div style="font-size:10px;color:rgba(43,38,32,0.75)">Protection DNS et anti-spoofing email</div>
       </div>
-      <div style="background:rgba(255,255,255,0.04);border-radius:10px;padding:10px 12px;border:1px solid rgba(255,255,255,0.08)">
+      <div style="background:rgba(255,255,255,0.55);border-radius:10px;padding:10px 12px;border:1px solid rgba(43,38,32,0.10)">
         <div style="font-size:11px;font-weight:700;color:#BC9569;margin-bottom:3px">RGPD</div>
-        <div style="font-size:10px;color:rgba(255,255,255,0.72)">Aucune vente de données personnelles</div>
+        <div style="font-size:10px;color:rgba(43,38,32,0.75)">Aucune vente de données personnelles</div>
       </div>
-      <div style="background:rgba(255,255,255,0.04);border-radius:10px;padding:10px 12px;border:1px solid rgba(255,255,255,0.08)">
+      <div style="background:rgba(255,255,255,0.55);border-radius:10px;padding:10px 12px;border:1px solid rgba(43,38,32,0.10)">
         <div style="font-size:11px;font-weight:700;color:#BC9569;margin-bottom:3px">0 Pub</div>
-        <div style="font-size:10px;color:rgba(255,255,255,0.72)">Aucun tracking publicitaire tiers</div>
+        <div style="font-size:10px;color:rgba(43,38,32,0.75)">Aucun tracking publicitaire tiers</div>
       </div>
     </div>
   </div>
   <div class="page-card" style="text-align:center">
-    <div style="font-size:13px;color:rgba(255,255,255,0.50);margin-bottom:6px">Marque déposée INPI n° 5239885</div>
-    <div style="font-size:12px;color:rgba(255,255,255,0.65)">© 2026 MyDoseUp® · Yanis Bensaadi · Tous droits réservés</div>
+    <div style="font-size:13px;color:rgba(43,38,32,0.75);margin-bottom:6px">Marque déposée INPI n° 5239885</div>
+    <div style="font-size:12px;color:rgba(43,38,32,0.75)">© 2026 MyDoseUp® · Yanis Bensaadi · Tous droits réservés</div>
   </div>
 </div>
 
@@ -1726,11 +1726,11 @@ html{overflow-x:hidden}
   <div class="page-card">
     <div class="page-card-title">Éditeur du site</div>
     <div class="page-card-txt">
-      <strong style="color:#FFF">MyDoseUp®</strong> est un site personnel édité par :<br><br>
+      <strong style="color:#2B2620">MyDoseUp®</strong> est un site personnel édité par :<br><br>
       <strong style="color:#BC9569">Yanis Bensaadi</strong><br>
       Particulier domicilié en France<br>
       📩 contact&#64;mydoseup&#46;com<br><br>
-      <strong style="color:#FFF">Marque déposée à l'INPI sous le numéro 5239885</strong><br>
+      <strong style="color:#2B2620">Marque déposée à l'INPI sous le numéro 5239885</strong><br>
       Classes 5 (compléments alimentaires) et 44 (services de santé et nutrition)
     </div>
   </div>
@@ -1738,7 +1738,7 @@ html{overflow-x:hidden}
   <div class="page-card">
     <div class="page-card-title">🌐 Hébergement</div>
     <div class="page-card-txt">
-      Ce site est hébergé par <strong style="color:#FFF">GitHub Pages</strong><br>
+      Ce site est hébergé par <strong style="color:#2B2620">GitHub Pages</strong><br>
       GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA<br><br>
       Nom de domaine : <strong style="color:#BC9569">mydoseup.com</strong> et <strong style="color:#BC9569">doseup.fr</strong>
     </div>
@@ -1747,7 +1747,7 @@ html{overflow-x:hidden}
   <div class="page-card" style="border-color:rgba(255,100,100,0.30);background:rgba(255,100,100,0.05)">
     <div class="page-card-title">©️ Propriété intellectuelle & Protection du contenu</div>
     <div class="page-card-txt">
-      L'ensemble du contenu de ce site (textes, fiches produits, structure éditoriale, design, logo MyDoseUp®, code source, organisation des données, sélection et présentation des informations) constitue une <strong style="color:#FFF">œuvre de l'esprit protégée</strong> par :<br><br>
+      L'ensemble du contenu de ce site (textes, fiches produits, structure éditoriale, design, logo MyDoseUp®, code source, organisation des données, sélection et présentation des informations) constitue une <strong style="color:#2B2620">œuvre de l'esprit protégée</strong> par :<br><br>
       • Le <strong style="color:#BC9569">Code de la Propriété Intellectuelle français</strong> (Articles L.111-1 et suivants)<br>
       • La <strong style="color:#BC9569">Convention de Berne</strong> sur la protection des œuvres littéraires et artistiques<br>
       • Les <strong style="color:#BC9569">traités internationaux ADPIC</strong> relatifs au droit d'auteur<br><br>
@@ -1757,14 +1757,14 @@ html{overflow-x:hidden}
       • Reproduction du design ou de la structure<br>
       • Utilisation commerciale sans autorisation écrite<br><br>
       <strong style="color:#EF9A9A">...est strictement interdite et constitue un acte de contrefaçon susceptible d'engager la responsabilité civile et pénale de son auteur (Art. L.335-2 CPI, jusqu'à 300 000 € d'amende et 3 ans d'emprisonnement).</strong><br><br>
-      Pour toute demande d'autorisation : <strong style="color:#FFF">contact&#64;mydoseup&#46;com</strong>
+      Pour toute demande d'autorisation : <strong style="color:#2B2620">contact&#64;mydoseup&#46;com</strong>
     </div>
   </div>
 
   <div class="page-card" id="avertissement-medical">
     <div class="page-card-title">⚕️ Avertissement médical & Responsabilité</div>
     <div class="page-card-txt">
-      MyDoseUp® est un <strong style="color:#FFF">guide informatif à titre éducatif uniquement</strong>.<br><br>
+      MyDoseUp® est un <strong style="color:#2B2620">guide informatif à titre éducatif uniquement</strong>.<br><br>
       Yanis Bensaadi n'est ni médecin, ni pharmacien, ni diététicien-nutritionniste.<br><br>
       Les informations présentées :<br>
       • Ne constituent pas un avis médical, un diagnostic ou une prescription<br>
@@ -1777,26 +1777,26 @@ html{overflow-x:hidden}
   <div class="page-card">
     <div class="page-card-title">Données personnelles & Cookies (RGPD)</div>
     <div class="page-card-txt">
-      Ce site <strong style="color:#FFF">ne collecte aucune donnée personnelle</strong> et n'utilise <strong style="color:#FFF">aucun cookie publicitaire ou de traçage</strong>.<br><br>
+      Ce site <strong style="color:#2B2620">ne collecte aucune donnée personnelle</strong> et n'utilise <strong style="color:#2B2620">aucun cookie publicitaire ou de traçage</strong>.<br><br>
       • Aucune inscription ni compte utilisateur requis<br>
       • Aucune donnée transmise à des tiers commerciaux<br>
       • Aucune publicité ni affiliation commerciale<br><br>
       GitHub Pages peut collecter des logs serveur anonymisés conformément à sa <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" style="color:#DEC49C">politique de confidentialité</a>.<br><br>
-      Conformément au <strong style="color:#FFF">RGPD (Règlement UE 2016/679)</strong>, vous disposez d'un droit d'accès, de rectification et de suppression des données vous concernant. Contact : contact&#64;mydoseup&#46;com
+      Conformément au <strong style="color:#2B2620">RGPD (Règlement UE 2016/679)</strong>, vous disposez d'un droit d'accès, de rectification et de suppression des données vous concernant. Contact : contact&#64;mydoseup&#46;com
     </div>
   </div>
 
   <div class="page-card">
     <div class="page-card-title">⚖️ Droit applicable & Juridiction</div>
     <div class="page-card-txt">
-      Ce site est soumis au <strong style="color:#FFF">droit français</strong>.<br>
-      Tout litige relatif à son utilisation sera soumis aux tribunaux compétents de <strong style="color:#FFF">France</strong>.<br><br>
+      Ce site est soumis au <strong style="color:#2B2620">droit français</strong>.<br>
+      Tout litige relatif à son utilisation sera soumis aux tribunaux compétents de <strong style="color:#2B2620">France</strong>.<br><br>
       En cas de litige relatif à la propriété intellectuelle : tribunal judiciaire territorialement compétent en France.
     </div>
   </div>
 
   <div class="page-card" style="text-align:center">
-    <div style="font-size:12px;color:rgba(255,255,255,0.68)">© 2026 MyDoseUp® · Yanis Bensaadi<br>Marque déposée INPI n° 5239885 · Tous droits réservés<br>Dernière mise à jour : Août 2026</div>
+    <div style="font-size:12px;color:rgba(43,38,32,0.75)">© 2026 MyDoseUp® · Yanis Bensaadi<br>Marque déposée INPI n° 5239885 · Tous droits réservés<br>Dernière mise à jour : Août 2026</div>
   </div>
 </div>
 
@@ -1950,20 +1950,20 @@ html{overflow-x:hidden}
     <path d="M34 16 C37 10, 44 4, 53 4 C52 12, 46 18, 39 20 C36.8 20.6, 35 19.5, 34 16 Z" fill="#D6B98A" stroke="#9C7C52" stroke-width="1.1" stroke-linejoin="round"/>
     <path d="M35 15.5 L51 6" stroke="#9C7C52" stroke-width="1" stroke-linecap="round" opacity="0.7" fill="none"/>
   </svg>
-  <div style="font-size:20px;font-weight:500;letter-spacing:-0.5px;color:#EDE9DF">My<span style="font-weight:900">Dose</span>Up</div>
+  <div style="font-size:20px;font-weight:500;letter-spacing:-0.5px;color:#2B2620">My<span style="font-weight:900">Dose</span>Up</div>
 </div>
   <div class="footer-sub footer-brand-mobile">Guide des Compléments Alimentaires</div>
-  <div class="footer-legal-disclaimer footer-brand-mobile" style="font-size:12px;color:rgba(255,255,255,0.55);line-height:1.6;margin-bottom:2px;padding-top:18px;border-top:1px solid rgba(255,255,255,0.08);width:100%;max-width:320px">
+  <div class="footer-legal-disclaimer footer-brand-mobile" style="font-size:12px;color:rgba(43,38,32,0.60);line-height:1.6;margin-bottom:2px;padding-top:18px;border-top:1px solid rgba(43,38,32,0.12);width:100%;max-width:320px">
     Informations à titre éducatif uniquement. Consultez un professionnel de santé avant tout usage.
   </div>
-  <div class="footer-legal" style="font-size:12px;color:rgba(255,255,255,0.55);line-height:1.6">
+  <div class="footer-legal" style="font-size:12px;color:rgba(43,38,32,0.60);line-height:1.6">
     © 2026 MyDoseUp® · Yanis Bensaadi · INPI n° 5239885 · Tous droits réservés
   </div>
   <div class="footer-credits">contact&#64;mydoseup&#46;com</div>
   <div class="footer-mobile-nav footer-brand-mobile" style="display:flex;flex-direction:column;align-items:center;gap:12px;margin:4px 0 20px">
-    <button onclick="navGo('accueil', null)" style="background:none;border:none;color:rgba(255,255,255,0.75);font-size:13px;font-family:'DM Sans',sans-serif;cursor:pointer;padding:0">Guide des actifs</button>
-    <button onclick="openQuiz()" style="background:none;border:none;color:rgba(255,255,255,0.75);font-size:13px;font-family:'DM Sans',sans-serif;cursor:pointer;padding:0">Routine sur-mesure</button>
-    <button onclick="navGo('legal', null)" style="background:none;border:none;color:rgba(255,255,255,0.75);font-size:13px;font-family:'DM Sans',sans-serif;cursor:pointer;padding:0">Mentions légales</button>
+    <button onclick="navGo('accueil', null)" style="background:none;border:none;color:rgba(43,38,32,0.75);font-size:13px;font-family:'DM Sans',sans-serif;cursor:pointer;padding:0">Guide des actifs</button>
+    <button onclick="openQuiz()" style="background:none;border:none;color:rgba(43,38,32,0.75);font-size:13px;font-family:'DM Sans',sans-serif;cursor:pointer;padding:0">Routine sur-mesure</button>
+    <button onclick="navGo('legal', null)" style="background:none;border:none;color:rgba(43,38,32,0.75);font-size:13px;font-family:'DM Sans',sans-serif;cursor:pointer;padding:0">Mentions légales</button>
   </div>
   <div style="width:100%;order:3">
     <div class="footer-btn-row" style="max-width:280px;margin:0 auto 12px">
@@ -2057,18 +2057,18 @@ html{overflow-x:hidden}
 
     <div style="color:#DEC49C;font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:8px">Éditeur du site</div>
     <p style="color:#B8B2A6;margin-bottom:16px">
-      MyDoseUp est un site personnel édité par <strong style="color:#FFF">Yanis Bensaadi</strong>, particulier domicilié en France.<br>
+      MyDoseUp est un site personnel édité par <strong style="color:#2B2620">Yanis Bensaadi</strong>, particulier domicilié en France.<br>
       Contact : contact&#64;mydoseup&#46;com
     </p>
 
     <div style="color:#DEC49C;font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:8px">Hébergement</div>
     <p style="color:#B8B2A6;margin-bottom:16px">
-      Ce site est hébergé par <strong style="color:#FFF">GitHub Pages</strong> (GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA).
+      Ce site est hébergé par <strong style="color:#2B2620">GitHub Pages</strong> (GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA).
     </p>
 
     <div style="color:#DEC49C;font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:8px">Nature du contenu</div>
     <p style="color:#B8B2A6;margin-bottom:16px">
-      MyDoseUp est un <strong style="color:#FFF">guide informatif sur les compléments alimentaires</strong>. Les informations présentées sont issues de publications scientifiques publiques (PubMed, Cochrane, Examine.com) et sont mises à disposition à titre indicatif uniquement.<br><br>
+      MyDoseUp est un <strong style="color:#2B2620">guide informatif sur les compléments alimentaires</strong>. Les informations présentées sont issues de publications scientifiques publiques (PubMed, Cochrane, Examine.com) et sont mises à disposition à titre indicatif uniquement.<br><br>
       <strong style="color:#EF9A9A">Yanis Bensaadi n'est ni médecin, ni pharmacien, ni diététicien.</strong> Ce site ne constitue en aucun cas un avis médical, un diagnostic ou une prescription. Consultez toujours un professionnel de santé qualifié avant de prendre des compléments alimentaires.
     </p>
 
@@ -2079,12 +2079,12 @@ html{overflow-x:hidden}
 
     <div style="color:#DEC49C;font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:8px">Propriété intellectuelle</div>
     <p style="color:#B8B2A6;margin-bottom:16px">
-      L'ensemble du contenu de ce site (textes, structure, design, logo MyDoseUp) est la propriété exclusive de Yanis Bensaadi et est protégé par le droit d'auteur français et international. Toute reproduction, même partielle, est interdite sans autorisation écrite préalable.<br><br><strong style="color:#FFF">MyDoseUp® est une marque déposée à l'INPI (n° 5239885)</strong>, protégée en classes 5 (compléments alimentaires) et 44 (services de santé et nutrition). Toute utilisation du nom ou du logo sans autorisation est interdite.
+      L'ensemble du contenu de ce site (textes, structure, design, logo MyDoseUp) est la propriété exclusive de Yanis Bensaadi et est protégé par le droit d'auteur français et international. Toute reproduction, même partielle, est interdite sans autorisation écrite préalable.<br><br><strong style="color:#2B2620">MyDoseUp® est une marque déposée à l'INPI (n° 5239885)</strong>, protégée en classes 5 (compléments alimentaires) et 44 (services de santé et nutrition). Toute utilisation du nom ou du logo sans autorisation est interdite.
     </p>
 
     <div style="color:#DEC49C;font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:8px">Données personnelles & Cookies</div>
     <p style="color:#B8B2A6;margin-bottom:16px">
-      Ce site ne collecte <strong style="color:#FFF">aucune donnée personnelle</strong> et n'utilise <strong style="color:#FFF">aucun cookie</strong> de traçage. Aucune inscription ni compte utilisateur n'est requis.<br><br>
+      Ce site ne collecte <strong style="color:#2B2620">aucune donnée personnelle</strong> et n'utilise <strong style="color:#2B2620">aucun cookie</strong> de traçage. Aucune inscription ni compte utilisateur n'est requis.<br><br>
       GitHub Pages peut collecter des données techniques anonymisées (logs serveur) conformément à sa propre politique de confidentialité.
     </p>
 
@@ -2151,7 +2151,7 @@ function refuseCookies(){
     document.addEventListener('DOMContentLoaded', function(){
       var b = document.createElement('div');
       b.setAttribute('role','alert');
-      b.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:99999;background:#363739;color:#FFF;font-family:sans-serif;text-align:center;padding:10px 16px;font-size:13px;box-shadow:0 2px 8px rgba(0,0,0,0.4)';
+      b.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:99999;background:#DEDCD5;color:#FFF;font-family:sans-serif;text-align:center;padding:10px 16px;font-size:13px;box-shadow:0 2px 8px rgba(0,0,0,0.4)';
       b.innerHTML = 'Site officiel : <a href="https://mydoseup.com" style="color:#DEC49C;text-decoration:underline;font-weight:700">mydoseup.com</a>';
       document.body.insertBefore(b, document.body.firstChild);
     });
@@ -4052,8 +4052,8 @@ function setG(g){
   const gswSetG = document.querySelector('.g-switch');
   if(gswSetG) gswSetG.classList.remove('neutral');
   document.body.className = g;
-  document.documentElement.style.background = g==="M" ? "#363739" : "#363739";
-  document.body.style.background = g==="M" ? "#363739" : "#363739";
+  document.documentElement.style.background = g==="M" ? "#DEDCD5" : "#DEDCD5";
+  document.body.style.background = g==="M" ? "#DEDCD5" : "#DEDCD5";
 
   // ③ Logo-tag texte
   const tag = document.querySelector(".logo-tag");
@@ -4448,8 +4448,8 @@ document.addEventListener('touchstart', function(e){
   }
 }, {passive:false});
 
-document.documentElement.style.background="#363739";
-document.body.style.background="#363739";
+document.documentElement.style.background="#DEDCD5";
+document.body.style.background="#DEDCD5";
 
 // ═══ OUVRIR UNE FICHE DEPUIS LE QUIZ ═══
 function openFiche(nm){
