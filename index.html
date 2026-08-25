@@ -514,6 +514,7 @@ body.F .footer-logo span{color:inherit;-webkit-text-fill-color:inherit}
   .az-fam-section{display:none}
   .az-fam-section.desktop-active{display:block}
   .az-fam-section.desktop-active .az-fam-header{display:none}
+  #azFamTotal{display:none}
   /* Page Vitamines & Minéraux desktop : grille centrée à taille raisonnable, pas étirée sur toute la largeur */
   #vitGrid{max-width:700px;margin:0 auto;grid-template-columns:1fr 1fr 1fr}
   .vit-filterbar{max-width:700px;margin:0 auto 14px}
@@ -3403,6 +3404,10 @@ function navGo(pageId, btn, _fromSwitchTab){
     if(tr){ tr.classList.remove('on'); if(tr.querySelector('#timingResultsList')) document.getElementById('timingResultsList').innerHTML=''; }
     currentSport = null;
   }
+  // ── Reset page Par famille à chaque arrivée : revient à l'état neutre (rien de sélectionné) ──
+  if(pageId === 'famille'){
+    resetFamPage();
+  }
   // Afficher/cacher les sections
   document.querySelectorAll('.page-view').forEach(p=>p.classList.remove('on'));
   const page = document.getElementById('page-'+pageId);
@@ -4113,7 +4118,7 @@ function buildAZ(){
 
   const total = fdAll().length + PROTEINES.length;
 
-  let html = `<div class="az-fam-total" id="azFamTotal">${total} compléments — par famille</div>`;
+  let html = `<div class="az-fam-total" id="azFamTotal" data-default="${total} compléments — par famille">${total} compléments — par famille</div>`;
 
   let _famIdx = 0;
   FAMILLES.forEach(fam=>{
@@ -4192,8 +4197,31 @@ function _guessFamily(s){
   return "Spécial";
 }
 
+// Remet la page "Par famille" à son état neutre : aucune famille sélectionnée,
+// aucun accordéon ouvert, sidebar desktop désélectionnée, placeholder de retour
+function resetFamPage(){
+  document.querySelectorAll(".az-sidebar-btn").forEach(b=>b.classList.remove("active"));
+  document.querySelectorAll(".az-fam-section").forEach(sec=>{
+    sec.classList.add("collapsed");
+    sec.classList.remove("desktop-active");
+  });
+  const ph = document.getElementById("azPlaceholder");
+  if(ph) ph.style.display = "";
+  const titleEl = document.getElementById("azFamTotal");
+  if(titleEl){
+    titleEl.textContent = titleEl.getAttribute("data-default") || titleEl.textContent;
+    titleEl.style.display = "";
+  }
+}
+
 // Desktop uniquement : clic sur un bouton de la sidebar Par famille -> affiche uniquement cette famille à droite (pas de doublon avec la sidebar)
+// Reclic sur la même famille déjà active -> referme et revient à l'état neutre
 function selectFamSidebar(famId, btnEl){
+  const alreadyActive = btnEl && btnEl.classList.contains("active");
+  if(alreadyActive){
+    resetFamPage();
+    return;
+  }
   document.querySelectorAll(".az-sidebar-btn").forEach(b=>b.classList.remove("active"));
   if(btnEl) btnEl.classList.add("active");
   const ph = document.getElementById("azPlaceholder");
@@ -4208,6 +4236,7 @@ function selectFamSidebar(famId, btnEl){
   if(fam && titleEl){
     const count = btnEl ? btnEl.querySelector(".az-sidebar-count").textContent : "";
     titleEl.textContent = `${fam.label} · ${count} compléments`;
+    titleEl.style.display = "block";
   }
 }
 
