@@ -118,6 +118,11 @@ body.F .g-switch::before{background:#D6B98A;box-shadow:0 2px 8px rgba(0,0,0,0.30
 .g-pill.on .pill-icon{transform:scale(1.15)}
 body.M .g-pill.on{background:transparent;color:#FFF;font-size:15px}
 body.F .g-pill.on{background:transparent;color:#FFF;font-size:15px}
+.g-switch.neutral::before{display:none}
+.g-switch.neutral .g-pill{color:rgba(255,255,255,0.55)}
+.g-switch.neutral .g-pill.on{color:rgba(255,255,255,0.76);font-size:14px}
+.g-switch.neutral .g-pill.on .pill-icon{transform:none}
+.g-switch.neutral .g-pill:first-child{border-right:1px solid rgba(255,255,255,0.14)}
 /* SEARCH */
 .search-wrap{position:relative;padding-bottom:6px;display:flex;gap:8px;align-items:center}
 .search-inner{position:relative;flex:0 0 60%}
@@ -3378,6 +3383,15 @@ function navGo(pageId, btn, _fromSwitchTab){
   document.querySelectorAll('.page-view').forEach(p=>p.classList.remove('on'));
   const page = document.getElementById('page-'+pageId);
   if(page) page.classList.add('on');
+  // ── Switch Homme/Femme neutre sur les pages où le genre ne s'applique pas ──
+  const gswNav = document.querySelector('.g-switch');
+  if(gswNav){
+    if(pageId==='parcours' || pageId==='vitamines' || pageId==='famille' || pageId==='experts' || pageId==='concept' || pageId==='legal'){
+      gswNav.classList.add('neutral');
+    } else {
+      gswNav.classList.remove('neutral');
+    }
+  }
   // Reset vue accueil (grille + résultats) - seulement si appelé depuis le menu
   if(pageId === 'accueil' && !_fromSwitchTab) {
     backToGrid();
@@ -3955,6 +3969,8 @@ function setG(g){
   });
   const gBtn = document.getElementById("g"+g);
   if(gBtn) gBtn.classList.add("on");
+  const gswSetG = document.querySelector('.g-switch');
+  if(gswSetG) gswSetG.classList.remove('neutral');
   document.body.className = g;
   document.documentElement.style.background = g==="M" ? "#363739" : "#363739";
   document.body.style.background = g==="M" ? "#363739" : "#363739";
