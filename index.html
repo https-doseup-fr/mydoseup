@@ -399,7 +399,7 @@ body.F .az-letter{background:#1D1E20;color:#DEC49C}
 .sport-tile:hover .sport-chevron,.sport-tile:active .sport-chevron{transform:translateX(1px)}
 
 .timing-view{display:none;padding:0 14px 20px}
-.timing-sport-title{font-size:18px;font-weight:700;color:#FFF}
+.timing-sport-title{font-size:18px;font-weight:700;color:#2B2620}
 .timing-options{display:flex;flex-direction:column;gap:10px;margin-bottom:20px}
 .timing-btn{border-radius:12px;padding:14px 16px;border:none;background:#EAE0C8;cursor:pointer;text-align:left;font-family:"DM Sans",sans-serif;transition:all 0.2s;display:flex;align-items:center;gap:14px}
 .timing-btn:active{transform:scale(0.98)}
@@ -454,7 +454,7 @@ body.F .footer-logo span{color:inherit;-webkit-text-fill-color:inherit}
 .footer-sub{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.14em;color:rgba(43,38,32,0.72);margin-bottom:16px}
 .footer-legal{font-size:13px;color:#2B2620;line-height:1.9;margin-bottom:12px}
 .footer-credits{font-size:13px;color:#2B2620;font-weight:600;margin-bottom:24px}
-.src-btn{width:100%;padding:12px;border:1px solid rgba(43,38,32,0.18);border-radius:10px;background:transparent;color:rgba(43,38,32,0.65);font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;cursor:pointer;font-family:"DM Sans",sans-serif;margin-top:8px}
+.src-btn{width:100%;padding:12px;border:1px solid rgba(43,38,32,0.25);border-radius:10px;background:rgba(43,38,32,0.06);color:#4A4238;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;cursor:pointer;font-family:"DM Sans",sans-serif;margin-top:8px}
 .src-panel{display:none;margin-top:14px;text-align:left;font-size:11px;color:rgba(43,38,32,0.72);line-height:2.0}
 .src-panel.open{display:block}
 .src-nm{color:rgba(255,255,255,0.65);font-weight:700;margin:12px 0 4px;font-size:12px}
@@ -1638,19 +1638,19 @@ html{overflow-x:hidden}
     <div class="page-card-title">MyDoseUp en chiffres</div>
     <div class="page-card-txt" id="conceptStats" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:8px">
       <div style="text-align:center;padding:12px;background:rgba(255,255,255,0.60);border:1px solid rgba(43,38,32,0.10);border-radius:12px">
-        <div id="statCompl" style="font-size:32px;font-weight:900;color:#FFFFFF">—</div>
+        <div id="statCompl" style="font-size:32px;font-weight:900;color:#2B2620">—</div>
         <div style="font-size:11px;color:rgba(43,38,32,0.75);margin-top:4px">Compléments référencés</div>
       </div>
       <div style="text-align:center;padding:12px;background:rgba(255,255,255,0.60);border:1px solid rgba(43,38,32,0.10);border-radius:12px">
-        <div id="statCat" style="font-size:32px;font-weight:900;color:#FFFFFF">—</div>
+        <div id="statCat" style="font-size:32px;font-weight:900;color:#2B2620">—</div>
         <div style="font-size:11px;color:rgba(43,38,32,0.75);margin-top:4px">Catégories de besoins</div>
       </div>
       <div style="text-align:center;padding:12px;background:rgba(255,255,255,0.60);border:1px solid rgba(43,38,32,0.10);border-radius:12px">
-        <div style="font-size:32px;font-weight:900;color:#FFFFFF">100%</div>
+        <div style="font-size:32px;font-weight:900;color:#2B2620">100%</div>
         <div style="font-size:11px;color:rgba(43,38,32,0.75);margin-top:4px">Gratuit & Indépendant</div>
       </div>
       <div style="text-align:center;padding:12px;background:rgba(255,255,255,0.60);border:1px solid rgba(43,38,32,0.10);border-radius:12px">
-        <div style="font-size:32px;font-weight:900;color:#FFFFFF">PubMed</div>
+        <div style="font-size:32px;font-weight:900;color:#2B2620">PubMed</div>
         <div style="font-size:11px;color:rgba(43,38,32,0.75);margin-top:4px">Base scientifique</div>
       </div>
     </div>
@@ -3702,12 +3702,12 @@ function showTimingResults(timing){
       const found = DATA.find(s=>s.nm===nm);
       if(found && (found.gender==='MF'||found.gender===G)) items.push(found);
     });
-    const sciNote = `<div style="background:rgba(188,149,105,0.15);border:1px solid rgba(214,185,138,0.20);border-radius:10px;padding:10px 12px;margin-bottom:12px;font-size:11px;color:rgba(230,228,220,0.80);line-height:1.6">🔬 <strong>Sélection basée sur les études sportives</strong> : seuls les compléments ayant une preuve scientifique pour ce timing et ce sport sont affichés.</div>`;
+    const sciNote = `<div style="background:rgba(188,149,105,0.15);border:1px solid rgba(214,185,138,0.30);border-radius:10px;padding:10px 12px;margin-bottom:12px;font-size:11px;color:#5A4A32;line-height:1.6">🔬 <strong>Sélection basée sur les études sportives</strong> : seuls les compléments ayant une preuve scientifique pour ce timing et ce sport sont affichés.</div>`;
     let html = sciNote + items.map(s=>card(s,null,false)).join('');
     // Ajouter section protéines après l'effort
     if(showProteines){
       html += `<div class="prot-sep" style="margin-top:16px"><div class="prot-sep-t">🥛 Protéines en Poudre : Indispensable après l'effort</div>`;
-      html += `<div style="background:rgba(188,149,105,0.12);border:1px solid rgba(214,185,138,0.18);border-radius:12px;padding:10px 12px;margin-bottom:12px;font-size:12px;color:rgba(230,228,220,0.80);line-height:1.65">La <strong>fenêtre anabolique</strong> (30-60 min post-effort) est le moment optimal pour apporter des protéines : synthèse protéique musculaire maximisée. <strong>Whey Isolat</strong> ou <strong>Concentrée</strong> recommandés.</div>`;
+      html += `<div style="background:rgba(188,149,105,0.12);border:1px solid rgba(214,185,138,0.28);border-radius:12px;padding:10px 12px;margin-bottom:12px;font-size:12px;color:#5A4A32;line-height:1.65">La <strong>fenêtre anabolique</strong> (30-60 min post-effort) est le moment optimal pour apporter des protéines : synthèse protéique musculaire maximisée. <strong>Whey Isolat</strong> ou <strong>Concentrée</strong> recommandés.</div>`;
       html += PROTEINES.filter(p=>['Whey Isolat (WPI)','Whey Concentrée (WPC)','Whey Native','Caséine Micellaire','Gainer (Mass Gainer)','Protéine de Pois (Isolat)'].includes(p.nm)).map(protCard).join('');
       html += `</div>`;
     }
