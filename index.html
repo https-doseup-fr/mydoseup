@@ -319,7 +319,7 @@ body.F .az-letter{background:#1D1E20;color:#DEC49C}
 .obj-back{display:flex;flex-direction:row;align-items:center;gap:10px;padding:10px 0 12px;margin-bottom:12px;cursor:pointer}
 .obj-back-ico{width:36px;height:36px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:rgba(255,255,255,0.15);border-radius:10px;font-size:20px}.obj-back-ico svg{width:22px;height:22px;stroke:rgba(255,255,255,0.95)}
 .obj-subhd{display:flex;align-items:center;gap:8px;padding:14px 2px 8px;font-size:14px;font-weight:900;text-transform:uppercase;letter-spacing:0.08em;color:#FFFFFF}
-.obj-group{margin-bottom:6px}
+.obj-group{margin-bottom:26px}
 @media(max-width:599px){
   .obj-group{margin-bottom:26px}
 }
@@ -1374,8 +1374,8 @@ html{overflow-x:hidden}
 </svg>
 </div>
     <div>
-      <h1 class="logo-txt" style="margin:0;padding:0;display:block">My<span class="logo-dose">Dose</span>Up</h1>
-      <div class="logo-tag">Guide des Compléments Alimentaires</div>
+      <div class="logo-txt" style="margin:0;padding:0;display:block" aria-hidden="true">My<span class="logo-dose">Dose</span>Up</div>
+      <h1 class="logo-tag" style="margin-top:4px">Guide des Compléments Alimentaires</h1>
     </div>
   </div>
   <div class="header-controls">
@@ -3283,7 +3283,7 @@ function card(s, letter, azMode, neutral){
   return `<div class="sc" data-nm="${s.nm.replace(/"/g,'&quot;')}" style="--c:${famColorFor(s.nm) || s.c}" onclick="toggleFicheCard(this)">
     ${azMode ? "" : `<div class="sc-hd"><div class="sc-accent"></div>
       <div class="sc-main">
-        <div class="sc-nm">${ltr}${s.nm}</div>
+        <div class="sc-nm">${ltr}<a href="/fiche/${nmToSlug(s.nm)}.html" onclick="event.preventDefault()" style="color:inherit;text-decoration:none">${s.nm}</a></div>
         <div class="sc-fam">${NM_FAM[s.nm] || ""}</div>
       </div><span class="sc-chv"><span class="sc-chv-closed">Dérouler</span><span class="sc-chv-open">Replier</span></span>
     </div>`}
@@ -3321,7 +3321,7 @@ function protCard(p){
   const roleBlock = p.fn ? `<div class="sb"><div class="sb-lbl">Rôle</div><div class="sb-txt" style="background:rgba(0,0,0,0.03);border-radius:6px;border:1px solid rgba(0,0,0,0.10);padding:12px;font-size:13px;font-weight:600;color:#1F2933;line-height:1.65">${p.fn}</div></div>` : "";
   return `<div class="sc" data-nm="${p.nm.replace(/"/g,'&quot;')}" style="--c:${FAM_CFG["Protéines"].color}" onclick="toggleFicheCard(this);event.stopPropagation()">
     <div class="sc-hd"><div class="sc-accent"></div>
-      <div class="sc-main"><div class="sc-nm">${p.nm}</div><div class="sc-fam">Protéines</div></div>
+      <div class="sc-main"><div class="sc-nm"><a href="/fiche/${nmToSlug(p.nm)}.html" onclick="event.preventDefault()" style="color:inherit;text-decoration:none">${p.nm}</a></div><div class="sc-fam">Protéines</div></div>
       <span class="sc-chv"><span class="sc-chv-closed">Dérouler</span><span class="sc-chv-open">Replier</span></span>
     </div>
     <div class="sc-body">
@@ -3660,7 +3660,7 @@ function showTimingResults(timing){
 const OBJ_SUBGROUPS = {
   muscu: [
     {label:"Les plus utilisés", note:"Ce sont les deux compléments sportifs les plus étudiés scientifiquement. Ce qui suit peut être pertinent selon ton profil, sans qu'il soit nécessaire de tout cumuler.", items:["Créatine Monohydrate"]},
-    {label:"Endurance & Performance", note:"Ces actifs retardent la fatigue musculaire et soutiennent l'effort prolongé, utile si tes séances dépassent 45 minutes.", items:["Bêta-Alanine","L-Citrulline","Hydratation & Électrolytes"]},
+    {label:"Endurance & Performance", note:"Ces actifs retardent la fatigue musculaire et soutiennent l'effort prolongé, utile si tes séances dépassent 45 minutes.", items:["Bêta-Alanine","L-Citrulline","Caféine","Hydratation & Électrolytes"]},
     {label:"Récupération", note:"Ces actifs limitent les courbatures et accélèrent la récupération entre les séances, pertinent si tu t'entraînes plusieurs fois par semaine.", items:["Magnésium Bisglycinate","BCAA (Acides Aminés Ramifiés)","EAA (Acides Aminés Essentiels)","L-Glutamine","Glycine","HMB (Hydroxy-Méthyl-Butyrate)"]},
     {label:"Soutien & Polyvalents", note:"Ces actifs soutiennent l'organisme de façon plus générale, en complément d'une base déjà en place plutôt qu'en priorité.", items:["Oméga-3 (EPA/DHA)","Vitamine C","Zinc Bisglycinate","L-Carnitine","MSM (Méthylsulfonylméthane)","Astaxanthine","Tribulus Terrestris"]}
   ],
@@ -3684,7 +3684,7 @@ const OBJ_SUBGROUPS = {
     {label:"Adaptogènes anti-stress", note:"Cette plante aide le corps à mieux tolérer un stress chronique, plutôt qu'à calmer une crise sur le moment.", items:["Rhodiola Rosea"]},
     {label:"Carences fréquentes", note:"Ces carences aggravent souvent l'anxiété sans qu'on le sache, à corriger en priorité si un bilan les confirme.", items:["Vitamine D3 + K2","Fer Bisglycinate","Vitamine B6 (P5P)","Complexe B (B1, B2, B3, B5)"]},
     {label:"Équilibre hormonal féminin", note:"Ces actifs régulent les fluctuations hormonales, pertinent si l'anxiété varie avec ton cycle.", items:["Inositol (Myo-Inositol)","Gattilier (Vitex agnus-castus)","Damiana (Turnera diffusa)"]},
-    {label:"Autres pistes", items:["Oméga-3 (EPA/DHA)","Curcumine (Curcuma)","Probiotiques","NAC (N-Acétyl Cystéine)","Maca (Lepidium meyenii)","Tongkat Ali (Eurycoma longifolia)"]}
+    {label:"Autres pistes", items:["Oméga-3 (EPA/DHA)","Curcumine (Curcuma)","Probiotiques","NAC (N-Acétyl Cystéine)","Maca (Lepidium meyenii)","Tongkat Ali (Eurycoma longifolia)","Caféine"]}
   ],
   cerveau: [
     {label:"Les plus utilisés", note:"C'est l'actif le plus étudié pour les fonctions cognitives. Ce qui suit peut être pertinent selon ton besoin.", items:["Oméga-3 (EPA/DHA)"]},
@@ -3704,22 +3704,23 @@ const OBJ_SUBGROUPS = {
     {label:"Les plus utilisés", note:"Ce sont les deux actifs les plus utilisés pour la peau. Ce qui suit peut être pertinent selon ton objectif précis.", items:["Collagène Marin","Acide Hyaluronique"]},
     {label:"Cofacteurs essentiels", note:"Ces nutriments sont indispensables à la synthèse du collagène, sans eux les autres actifs perdent en efficacité.", items:["Vitamine C","Vitamine E (Tocophérol)","Zinc Bisglycinate"]},
     {label:"Protection antioxydante", note:"Ces actifs protègent la peau du vieillissement causé par le soleil et la pollution.", items:["Astaxanthine","Resvératrol","Lutéine + Zéaxanthine","Myrtille (Anthocyanines)"]},
-    {label:"Structure & fermeté", note:"Ces actifs soutiennent la production de collagène pour une peau plus ferme et élastique.", items:["MSM (Méthylsulfonylméthane)","Silicium Organique","Glycine"]},
-    {label:"Autres pistes", items:["Oméga-3 (EPA/DHA)","Biotine (Vitamine B8)","Curcumine (Curcuma)","Probiotiques","CoQ10 (Ubiquinol)","NAC (N-Acétyl Cystéine)","Vitamine A (Bêta-carotène)","Spiruline","Bronzage & Préparation Solaire"]}
+    {label:"Structure & fermeté", note:"Ces actifs soutiennent la production de collagène et de kératine pour une peau plus ferme et élastique.", items:["MSM (Méthylsulfonylméthane)","Silicium Organique","Glycine","Biotine (Vitamine B8)"]},
+    {label:"Autres pistes", items:["Oméga-3 (EPA/DHA)","Curcumine (Curcuma)","Probiotiques","CoQ10 (Ubiquinol)","NAC (N-Acétyl Cystéine)","Vitamine A (Bêta-carotène)","Spiruline","Bronzage & Préparation Solaire"]}
   ],
   cheveux: [
     {label:"Les plus utilisés", note:"C'est l'actif le plus utilisé pour la solidité des cheveux et ongles. Ce qui suit peut être pertinent selon la cause de ta situation.", items:["Biotine (Vitamine B8)"]},
-    {label:"Carences fréquentes", note:"Ces carences sont parmi les premières causes de chute de cheveux, à corriger en priorité si un bilan les confirme.", items:["Fer Bisglycinate","Zinc Bisglycinate"]},
-    {label:"Structure", note:"Ces actifs renforcent la fibre capillaire et la solidité des ongles sur la durée.", items:["Silicium Organique","MSM (Méthylsulfonylméthane)","Collagène Marin"]},
-    {label:"Autres pistes", items:["Acide Hyaluronique","Vitamine B12 (Méthylcobalamine)","Sélénium","Spiruline","Thyroïde (Iode + Sélénium)"]}
+    {label:"Carences fréquentes", note:"Ces carences sont parmi les premières causes de chute de cheveux, à corriger en priorité si un bilan les confirme.", items:["Fer Bisglycinate","Zinc Bisglycinate","Vitamine B12 (Méthylcobalamine)"]},
+    {label:"Structure", note:"Ces actifs renforcent la fibre capillaire et la solidité des ongles sur la durée.", items:["Silicium Organique","MSM (Méthylsulfonylméthane)","Collagène Marin","Cuivre"]},
+    {label:"Thyroïde", note:"Une thyroïde qui tourne au ralenti est une cause fréquente de chute de cheveux, souvent négligée. À vérifier par une prise de sang avant de te supplémenter.", items:["Sélénium","Thyroïde (Iode + Sélénium)"]},
+    {label:"Autres pistes", items:["Acide Hyaluronique","Spiruline"]}
   ],
   articulations: [
     {label:"Les plus utilisés", note:"Ce sont les deux actifs les plus utilisés pour le confort articulaire. Ce qui suit peut être pertinent selon ton besoin.", items:["Collagène Marin","Curcumine (Curcuma)"]},
     {label:"Arthrose", note:"En cas d'arthrose diagnostiquée, ces actifs sont les plus documentés pour soutenir le cartilage et limiter l'inflammation. Ils viennent en complément d'un suivi médical, pas à sa place.", items:["Collagène Marin","Curcumine (Curcuma)","Acide Hyaluronique","MSM (Méthylsulfonylméthane)"]},
     {label:"Lubrification", note:"Cet actif retient l'eau dans le cartilage pour un mouvement plus fluide.", items:["Acide Hyaluronique"]},
     {label:"Anti-inflammatoire", note:"Ces actifs calment l'inflammation locale responsable des douleurs et raideurs.", items:["Gingembre","Quercétine"]},
-    {label:"Structure osseuse", note:"Ces actifs renforcent la densité osseuse, pertinent en prévention de l'ostéoporose.", items:["Vitamine D3 + K2","Calcium (Citrate/Bisglycinate)","Silicium Organique","Bore (Boron)"]},
-    {label:"Autres pistes", items:["MSM (Méthylsulfonylméthane)","HMB (Hydroxy-Méthyl-Butyrate)","Glycine"]}
+    {label:"Structure osseuse", note:"Ces actifs renforcent la densité osseuse, pertinent en prévention de l'ostéoporose.", items:["Vitamine D3 + K2","Calcium (Citrate/Bisglycinate)","Silicium Organique","Bore (Boron)","Manganèse"]},
+    {label:"Autres pistes", items:["HMB (Hydroxy-Méthyl-Butyrate)","Glycine"]}
   ],
   digest: [
     {label:"Les plus utilisés", note:"C'est l'actif le plus utilisé pour la santé digestive. Ce qui suit peut être pertinent selon ton besoin.", items:["Probiotiques"]},
@@ -3740,14 +3741,15 @@ const OBJ_SUBGROUPS = {
   ],
   vision: [
     {label:"Les plus utilisés", note:"C'est l'actif le plus étudié pour la santé oculaire. Ce qui suit peut être pertinent en complément.", items:["Lutéine + Zéaxanthine"]},
+    {label:"Vision nocturne", note:"Cet actif est directement impliqué dans la fabrication du pigment qui permet de voir dans le noir, un rôle que peu de nutriments jouent aussi directement.", items:["Vitamine A (Bêta-carotène)"]},
     {label:"Protection antioxydante", note:"Ces actifs protègent la rétine du stress oxydatif lié aux écrans et à la lumière.", items:["Astaxanthine","Myrtille (Anthocyanines)"]},
-    {label:"Autres pistes", items:["Oméga-3 (EPA/DHA)","Vitamine A (Bêta-carotène)","Bronzage & Préparation Solaire"]}
+    {label:"Autres pistes", items:["Oméga-3 (EPA/DHA)","Bronzage & Préparation Solaire"]}
   ],
   anti: [
     {label:"Les plus utilisés", note:"Ce sont les actifs les plus documentés dans ce contexte. Ce qui suit peut être pertinent selon ton objectif.", items:["Vitamine C","Resvératrol"]},
-    {label:"Protection oxydative", note:"Ces actifs neutralisent les radicaux libres responsables du vieillissement cellulaire.", items:["Astaxanthine","Quercétine","Lutéine + Zéaxanthine","Myrtille (Anthocyanines)","Vitamine E (Tocophérol)"]},
+    {label:"Protection oxydative", note:"Ces actifs neutralisent les radicaux libres responsables du vieillissement cellulaire.", items:["Astaxanthine","Quercétine","Lutéine + Zéaxanthine","Myrtille (Anthocyanines)","Vitamine E (Tocophérol)","Sélénium"]},
     {label:"Régénération cellulaire", note:"Cet actif soutient la production d'énergie cellulaire, un mécanisme qui décline naturellement avec l'âge.", items:["NMN (Nicotinamide Mononucléotide)"]},
-    {label:"Autres pistes", items:["Mélatonine","Sélénium","Shilajit","DHEA","Glycine","Bronzage & Préparation Solaire"]}
+    {label:"Autres pistes", items:["Mélatonine","Shilajit","DHEA","Glycine","Bronzage & Préparation Solaire"]}
   ],
   detox: [
     {label:"Les plus utilisés", note:"Ce sont les deux actifs les plus utilisés pour soutenir le foie. Une fiche ciblée suffit généralement.", items:["NAC (N-Acétyl Cystéine)","Chardon-Marie (Silymarine)"]},
@@ -3762,7 +3764,7 @@ const OBJ_SUBGROUPS = {
   ],
   immun: [
     {label:"Les plus utilisés", note:"Ce sont les carences les plus fréquentes et les mieux documentées pour l'immunité. Ce qui suit peut être pertinent selon ta situation.", items:["Vitamine D3 + K2","Vitamine C","Zinc Bisglycinate"]},
-    {label:"Barrière antioxydante", note:"Ces actifs protègent les cellules immunitaires du stress oxydatif.", items:["Quercétine","Vitamine A (Bêta-carotène)","Sélénium"]},
+    {label:"Barrière antioxydante", note:"Ces actifs protègent les cellules immunitaires du stress oxydatif.", items:["Quercétine","Vitamine A (Bêta-carotène)","Sélénium","Cuivre"]},
     {label:"Microbiote", note:"Cet actif soutient la flore intestinale, à la base d'une bonne part de l'immunité.", items:["Probiotiques"]},
     {label:"Carences fréquentes", note:"Ces carences affaiblissent l'immunité sans symptôme évident, à corriger en priorité si un bilan les confirme.", items:["Fer Bisglycinate","Vitamine B12 (Méthylcobalamine)"]},
     {label:"Récupération générale", note:"Ces actifs soutiennent la récupération générale de l'organisme, utile en période de fatigue ou de sollicitation intense.", items:["Oméga-3 (EPA/DHA)","Curcumine (Curcuma)","L-Glutamine","BCAA (Acides Aminés Ramifiés)","Hydratation & Électrolytes"]},
@@ -3772,7 +3774,7 @@ const OBJ_SUBGROUPS = {
     {label:"Les plus utilisés", note:"Ce sont les carences les plus fréquentes en cas de fatigue. Ce qui suit peut être pertinent selon la cause probable de la tienne.", items:["Fer Bisglycinate","Magnésium Bisglycinate","Vitamine B12 (Méthylcobalamine)"]},
     {label:"Gestion du stress chronique", note:"Ces plantes aident le corps à mieux tolérer un stress installé depuis plusieurs semaines.", items:["Ashwagandha (KSM-66)","Rhodiola Rosea"]},
     {label:"Récupération sportive", note:"Ces actifs soutiennent l'effort et la récupération sportive, pertinent si ta fatigue est surtout liée à l'entraînement.", items:["Créatine Monohydrate","Caféine","L-Citrulline","Bêta-Alanine","BCAA (Acides Aminés Ramifiés)","EAA (Acides Aminés Essentiels)","L-Glutamine","HMB (Hydroxy-Méthyl-Butyrate)","Hydratation & Électrolytes"]},
-    {label:"Énergie cellulaire", note:"Ces actifs soutiennent la production d'énergie au niveau cellulaire, pertinent en cas de fatigue de fond.", items:["CoQ10 (Ubiquinol)","Vitamine D3 + K2","Vitamine C","Complexe B (B1, B2, B3, B5)","Thyroïde (Iode + Sélénium)"]},
+    {label:"Énergie cellulaire", note:"Ces actifs soutiennent la production d'énergie au niveau cellulaire, pertinent en cas de fatigue de fond.", items:["CoQ10 (Ubiquinol)","Vitamine D3 + K2","Vitamine C","Complexe B (B1, B2, B3, B5)","Thyroïde (Iode + Sélénium)","L-Carnitine"]},
     {label:"Adaptogènes & vitalité", note:"Ces actifs soutiennent la vitalité générale et l'équilibre hormonal, à choisir selon ta situation plutôt qu'à cumuler.", items:["Maca (Lepidium meyenii)","Tribulus Terrestris","Tongkat Ali (Eurycoma longifolia)","Shilajit","Fenugrec","Damiana (Turnera diffusa)","NMN (Nicotinamide Mononucléotide)","DHEA"]},
     {label:"Autres pistes", items:["L-Théanine","Spiruline"]}
   ],
@@ -3841,28 +3843,37 @@ function showObj(id){
     const byName = {};
     items.forEach(s=>{byName[s.nm]=s;});
     const used = new Set();
-    let grouped = "";
+    // On construit chaque groupe en mémoire (au lieu d'écrire le HTML tout de suite)
+    // pour pouvoir fusionner les actifs non classés dans "Autres pistes" s'il existe déjà,
+    // plutôt que de créer un second groupe fourre-tout redondant ("Autres actifs").
+    const blocks = [];
     subgroups.forEach((g,gi)=>{
       const groupItems = g.items.map(nm=>byName[nm]).filter(Boolean);
       groupItems.forEach(s=>used.add(s.nm));
       const proteinHtml = (gi===0 && id==="muscu") ? PROTEINES.filter(p=>p.nm==="Whey Isolat (WPI)").map(protCard).join("") : "";
       if(!groupItems.length && !proteinHtml) return;
-      const groupKey = nmToSlug(g.label) || ("grp-"+gi);
-      filters.push({key:groupKey, label:g.label});
-      grouped += `<div class="obj-group" data-group="${groupKey}">`;
-      grouped += `<div class="obj-subhd">${g.label}${g.sub?` <span style="text-transform:none;font-weight:400;font-size:11px;color:#FFFFFF;opacity:.85">(${g.sub})</span>`:''}</div>`;
-      if(g.note) grouped += `<div class="obj-subnote">${g.note}</div>`;
-      grouped += proteinHtml + groupItems.map(s=>card(s,null,false)).join("");
-      grouped += `</div>`;
+      blocks.push({label:g.label, sub:g.sub, note:g.note, cardsHtml: proteinHtml + groupItems.map(s=>card(s,null,false)).join("")});
     });
     const rest = items.filter(s=>!used.has(s.nm));
     if(rest.length){
-      filters.push({key:"autres", label:"Autres actifs"});
-      grouped += `<div class="obj-group" data-group="autres">`;
-      grouped += `<div class="obj-subhd">Autres actifs</div>`;
-      grouped += rest.map(s=>card(s,null,false)).join("");
-      grouped += `</div>`;
+      const restHtml = rest.map(s=>card(s,null,false)).join("");
+      const catchAll = blocks.find(b=>b.label==="Autres pistes");
+      if(catchAll){
+        catchAll.cardsHtml += restHtml;
+      } else {
+        blocks.push({label:"Autres pistes", cardsHtml: restHtml});
+      }
     }
+    let grouped = "";
+    blocks.forEach((b,gi)=>{
+      const groupKey = nmToSlug(b.label) || ("grp-"+gi);
+      filters.push({key:groupKey, label:b.label});
+      grouped += `<div class="obj-group" data-group="${groupKey}">`;
+      grouped += `<div class="obj-subhd">${b.label}${b.sub?` <span style="text-transform:none;font-weight:400;font-size:11px;color:#FFFFFF;opacity:.85">(${b.sub})</span>`:''}</div>`;
+      if(b.note) grouped += `<div class="obj-subnote">${b.note}</div>`;
+      grouped += b.cardsHtml;
+      grouped += `</div>`;
+    });
     if(id==="muscu"){
       const otherProt = PROTEINES.filter(p=>p.nm!=="Whey Isolat (WPI)");
       if(otherProt.length){
