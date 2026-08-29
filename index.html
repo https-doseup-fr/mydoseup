@@ -91,48 +91,61 @@ body{font-family:"DM Sans",sans-serif;font-size:15px;line-height:1.6;max-width:4
 body.F{background:#DEDCD5 !important;color:#2B2620}
 @media(min-width:768px){body{max-width:100%;background:#DEDCD5 !important;display:block}.app-wrapper{max-width:430px;width:100%;background:#DEDCD5;margin:0 auto;overflow-x:hidden}body.F .app-wrapper{background:#DEDCD5}}
 /* HEADER */
-.header{padding:28px 20px 8px;position:relative;overflow:hidden}
-body.M .header{background:#151617}
-body.F .header{background:#151617}
+.header{padding:16px 20px 8px;position:relative;overflow:hidden}
+.mobile-top-bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+@media(max-width:899px){
+  .logo-wrap-mobile-inline{flex-direction:row !important;align-items:center !important;gap:8px !important;margin-bottom:0 !important;text-align:left !important}
+  .logo-wrap-mobile-inline .logo-pill{width:38px !important;height:38px !important;min-width:38px !important;min-height:38px !important}
+  .logo-wrap-mobile-inline .logo-pill svg{width:38px !important;height:38px !important}
+  .logo-wrap-mobile-inline .logo-txt{font-size:19px !important}
+  .logo-wrap-mobile-inline .logo-tag{display:none !important}
+}
+.mobile-search-toggle{width:40px;height:40px;flex-shrink:0;border-radius:10px;border:1px solid rgba(0,0,0,0.14);background:rgba(0,0,0,0.04);color:rgba(43,38,32,0.85);display:flex;align-items:center;justify-content:center;font-size:16px;cursor:pointer;transition:all 0.2s}
+.mobile-top-bar .menu-btn{flex:0 0 auto;width:auto;padding:0 16px}
+#mobileSearchSlot{max-height:0;overflow:hidden;transition:max-height 0.25s ease}
+#mobileSearchSlot.open{max-height:80px;margin-bottom:10px}
+#mobileSearchSlot .search-wrap{padding-bottom:0}
+body.M .header{background:#EDEAE1}
+body.F .header{background:#EDEAE1}
 .header::before{display:none}
 body.M .header::before{display:none}
 body.F .header::before{display:none}
-.logo-wrap{display:flex;flex-direction:column;align-items:center;gap:6px;margin-bottom:16px;text-align:center;min-height:100px}
+.logo-wrap{display:flex;flex-direction:column;align-items:center;gap:6px;margin-bottom:8px;text-align:center}
 .logo-pill{width:64px;height:64px;display:flex;align-items:center;justify-content:center;flex-shrink:0;min-width:64px;min-height:64px}
 body.M .logo-pill{background:transparent;box-shadow:none}
 body.F .logo-pill{background:transparent;box-shadow:none}
-.logo-txt{font-size:34px;font-weight:500;letter-spacing:-0.5px;font-family:"DM Sans",sans-serif;line-height:1;color:#EDE9DF}
+.logo-txt{font-size:34px;font-weight:500;letter-spacing:-0.5px;font-family:"DM Sans",sans-serif;line-height:1;color:#2B2620}
 body.M .logo-txt span{color:inherit;-webkit-text-fill-color:inherit}
 body.F .logo-txt span{color:inherit;-webkit-text-fill-color:inherit}
-.logo-tag{font-size:9px;font-weight:700;letter-spacing:0.12em;color:#D6B98A;margin-top:4px;text-align:center;text-transform:uppercase}
+.logo-tag{font-size:9px;font-weight:700;letter-spacing:0.12em;color:#8A5A2B;margin-top:4px;text-align:center;text-transform:uppercase}
 .logo-dose{font-weight:900}
 .logo-com{font-size:20px;font-weight:400;color:#D6B98A;opacity:0.85;letter-spacing:0}
 /* SWITCH */
-.g-switch{display:flex;background:rgba(255,255,255,0.06);border-radius:14px;padding:4px;gap:0;margin-bottom:0;width:100%;box-shadow:0 2px 12px rgba(0,0,0,0.30);border:1px solid rgba(255,255,255,0.12);position:relative;overflow:hidden}
+.g-switch{display:flex;background:rgba(0,0,0,0.05);border-radius:14px;padding:4px;gap:0;margin-bottom:0;width:100%;box-shadow:none;border:1px solid rgba(0,0,0,0.10);position:relative;overflow:hidden}
 .g-switch::before{content:"";position:absolute;top:4px;bottom:4px;width:calc(50% - 4px);border-radius:10px;transition:transform 0.3s cubic-bezier(0.4,0,0.2,1),background 0.3s;z-index:0}
 body.M .g-switch::before{background:#D6B98A;box-shadow:0 2px 8px rgba(0,0,0,0.30);transform:translateX(4px)}
 body.F .g-switch::before{background:#D6B98A;box-shadow:0 2px 8px rgba(0,0,0,0.30);transform:translateX(100%)}
-.g-pill{flex:1;padding:12px 8px;border-radius:10px;border:none;font-size:14px;font-weight:800;font-family:"DM Sans",sans-serif;cursor:pointer;transition:color 0.3s;color:rgba(255,255,255,0.76);background:transparent;text-align:center;letter-spacing:0.01em;position:relative;z-index:1;display:flex;align-items:center;justify-content:center;gap:6px}
+.g-pill{flex:1;padding:12px 8px;border-radius:10px;border:none;font-size:14px;font-weight:800;font-family:"DM Sans",sans-serif;cursor:pointer;transition:color 0.3s;color:rgba(43,38,32,0.65);background:transparent;text-align:center;letter-spacing:0.01em;position:relative;z-index:1;display:flex;align-items:center;justify-content:center;gap:6px}
 .g-pill.on{color:#FFF}
 .pill-icon{font-size:15px;transition:transform 0.3s}
 .g-pill.on .pill-icon{transform:scale(1.15)}
 body.M .g-pill.on{background:transparent;color:#FFF;font-size:15px}
 body.F .g-pill.on{background:transparent;color:#FFF;font-size:15px}
 .g-switch.neutral::before{display:none}
-.g-switch.neutral .g-pill{color:rgba(255,255,255,0.55)}
-.g-switch.neutral .g-pill.on{color:rgba(255,255,255,0.76);font-size:14px}
+.g-switch.neutral .g-pill{color:rgba(43,38,32,0.65)}
+.g-switch.neutral .g-pill.on{color:rgba(43,38,32,0.65);font-size:14px;font-weight:800}
 .g-switch.neutral .g-pill.on .pill-icon{transform:none}
-.g-switch.neutral .g-pill:first-child{border-right:1px solid rgba(255,255,255,0.14)}
+.g-switch.neutral .g-pill:first-child{border-right:1px solid rgba(43,38,32,0.12)}
 /* SEARCH */
 .search-wrap{position:relative;padding-bottom:6px;display:flex;gap:8px;align-items:center}
 .search-inner{position:relative;flex:0 0 60%}
-.menu-btn{flex:0 0 calc(40% - 8px);height:38px;border-radius:10px;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.85);font-size:13px;font-weight:800;font-family:"DM Sans",sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;letter-spacing:0.04em;transition:all 0.2s}
+.menu-btn{flex:0 0 calc(40% - 8px);height:38px;border-radius:10px;border:1px solid rgba(0,0,0,0.14);background:rgba(0,0,0,0.04);color:rgba(43,38,32,0.85);font-size:13px;font-weight:800;font-family:"DM Sans",sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;letter-spacing:0.04em;transition:all 0.2s}
 .menu-btn:active{background:rgba(255,255,255,0.15)}
 .menu-btn-ico{display:flex;flex-direction:column;gap:4px}
-.menu-btn-ico span{display:block;width:16px;height:2px;background:#FFF;border-radius:2px}
-.search{width:100%;padding:9px 16px 9px 38px;font-size:13px;font-family:"DM Sans",sans-serif;outline:none;border:1px solid rgba(255,255,255,0.12);border-radius:10px;color:#FFFFFF;height:38px}
-body.M .search{background:#1D1E20}
-body.F .search{background:#1D1E20}
+.menu-btn-ico span{display:block;width:16px;height:2px;background:#2B2620;border-radius:2px}
+.search{width:100%;padding:9px 16px 9px 38px;font-size:13px;font-family:"DM Sans",sans-serif;outline:none;border:1px solid rgba(0,0,0,0.14);border-radius:10px;color:#2B2620;height:38px;background:#FFFFFF}
+body.M .search{background:#FFFFFF}
+body.F .search{background:#FFFFFF}
 .search::placeholder{color:rgba(255,255,255,0.60)}
 .s-ico{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:16px;pointer-events:none;z-index:1}
 .s-clr{position:absolute;right:10px;top:50%;transform:translateY(-50%);font-size:14px;cursor:pointer;color:rgba(255,255,255,0.45);display:none}
@@ -333,7 +346,7 @@ body.F .az-letter{background:#1D1E20;color:#DEC49C}
 /* ─── NAV BANDEAU ─── */
 
 /* ── MENU MOBILE HAMBURGER ── */
-.nav-bandeau{position:sticky;top:0;z-index:200;background:#151617;box-shadow:none;border-bottom:1px solid rgba(255,255,255,0.10);margin-top:0}
+.nav-bandeau{position:sticky;top:0;z-index:200;background:#EDEAE1;box-shadow:none;border-bottom:1px solid rgba(0,0,0,0.08);margin-top:0}
 @media(max-width:599px){.nav-bandeau{display:none}}
 .nav-top-bar{display:none}
 
@@ -344,8 +357,12 @@ body.F .az-letter{background:#1D1E20;color:#DEC49C}
 .nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 .nav-dropdown{display:none;flex-direction:column;border-top:1px solid rgba(255,255,255,0.10);padding:6px}
 .nav-dropdown.open{display:flex}
-.nav-btn{padding:12px 14px;font-size:13px;font-weight:800;letter-spacing:0.03em;text-transform:uppercase;background:transparent;border:none;border-radius:12px;color:rgba(255,255,255,0.65);cursor:pointer;font-family:"DM Sans",sans-serif;transition:all 0.18s;text-align:center;display:flex;align-items:center;justify-content:center;gap:8px}
-.nav-btn.active{color:#D6B98A;background:transparent;border:1.5px solid #D6B98A}
+.nav-btn{padding:12px 14px;font-size:12.5px;font-weight:600;letter-spacing:0.01em;text-transform:none;background:transparent;border:none;border-radius:0;color:rgba(43,38,32,0.65);cursor:pointer;font-family:"DM Sans",sans-serif;transition:color 0.2s ease;text-align:center;display:flex;align-items:center;justify-content:center;gap:8px;position:relative}
+.nav-btn::after{content:'';position:absolute;left:12px;right:12px;bottom:5px;height:2px;background:#BC9569;transform:scaleX(0);transition:transform 0.22s cubic-bezier(0.4,0,0.2,1);border-radius:2px;transform-origin:center}
+.nav-btn:hover{color:#2B2620}
+.nav-btn:hover::after{transform:scaleX(0.55)}
+.nav-btn.active{color:#8A5A2B;background:transparent;border:none;font-weight:700}
+.nav-btn.active::after{transform:scaleX(1)}
 .nav-btn:active{background:rgba(255,255,255,0.20)}
 /* Desktop : menu horizontal */
 @media(min-width:600px){
@@ -363,6 +380,7 @@ body.F .az-letter{background:#1D1E20;color:#DEC49C}
 
 /* ─── PAGE CONTENT ─── */
 .page-view{display:none;padding-bottom:80px}
+#page-accueil{padding-bottom:0}
 .page-view.on{display:block;animation:fadeUp 0.2s ease}
 .page-hero{padding:18px 20px 12px;text-align:center}
 .page-title{font-size:19px;font-weight:800;color:#2B2620;margin-bottom:5px}
@@ -418,7 +436,7 @@ body.F .az-letter{background:#1D1E20;color:#DEC49C}
 .header{min-height:auto}
 .logo-pill svg{display:block}
 
-.footer{padding:20px 20px 40px;text-align:center;border-top:1px solid rgba(255,255,255,0.08);display:flex;flex-direction:column;align-items:center}
+.footer{padding:16px 20px 24px;text-align:center;border-top:1px solid rgba(255,255,255,0.08);display:flex;flex-direction:column;align-items:center}
 .footer-brand-mobile{order:1}
 .footer-mobile-nav{order:2}
 .footer-btn-row{order:3}
@@ -451,10 +469,10 @@ body.F .az-letter{background:#1D1E20;color:#DEC49C}
 .footer-logo{font-size:22px;font-weight:900;margin-bottom:4px;color:#EDE9DF}
 body.M .footer-logo span{color:inherit;-webkit-text-fill-color:inherit}
 body.F .footer-logo span{color:inherit;-webkit-text-fill-color:inherit}
-.footer-sub{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.14em;color:rgba(43,38,32,0.72);margin-bottom:16px}
-.footer-legal{font-size:13px;color:#2B2620;line-height:1.9;margin-bottom:12px}
-.footer-credits{font-size:13px;color:#2B2620;font-weight:600;margin-bottom:24px}
-.src-btn{width:100%;padding:12px;border:1px solid rgba(43,38,32,0.25);border-radius:10px;background:rgba(43,38,32,0.06);color:#4A4238;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;cursor:pointer;font-family:"DM Sans",sans-serif;margin-top:8px}
+.footer-sub{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.14em;color:rgba(43,38,32,0.72);margin-bottom:8px}
+.footer-legal{font-size:13px;color:#2B2620;line-height:1.9;margin-bottom:8px}
+.footer-credits{font-size:13px;color:#2B2620;font-weight:600;margin-bottom:14px}
+.src-btn{width:100%;max-width:280px;margin-left:auto;margin-right:auto;padding:12px;border:1px solid rgba(43,38,32,0.25);border-radius:10px;background:rgba(43,38,32,0.06);color:#4A4238;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;cursor:pointer;font-family:"DM Sans",sans-serif;margin-top:8px;display:block}
 .src-panel{display:none;margin-top:14px;text-align:left;font-size:11px;color:rgba(43,38,32,0.72);line-height:2.0}
 .src-panel.open{display:block}
 .src-nm{color:rgba(43,38,32,0.75);font-weight:700;margin:12px 0 4px;font-size:12px}
@@ -477,7 +495,7 @@ body.F .footer-logo span{color:inherit;-webkit-text-fill-color:inherit}
   .app-wrapper{max-width:680px;width:100%;min-height:100vh;margin:0 auto;}
 }
 @media(min-width:900px){
-  .app-wrapper{max-width:800px;border-radius:20px;margin:20px auto;min-height:auto;}
+  .app-wrapper{max-width:min(1400px, 94vw);border-radius:20px;margin:20px auto;min-height:auto;}
   .obj-grid{grid-template-columns:repeat(3,1fr);gap:14px;}
   /* Parcours Sportifs desktop : grille sport à 3 colonnes, vue timing en 2 colonnes (options à gauche, résultats à droite) — même logique que la page catégorie */
   .sport-grid{grid-template-columns:repeat(4,1fr);max-width:900px;margin:0 auto;padding:16px 0;gap:12px}
@@ -559,18 +577,61 @@ body.F .footer-logo span{color:inherit;-webkit-text-fill-color:inherit}
   .page-sub{font-size:13px;line-height:1.5}
 }
 @media(min-width:1200px){
-  .app-wrapper{max-width:1080px;}
-  .obj-grid{grid-template-columns:repeat(5,1fr);gap:12px;}
-  .obj-tile{padding:12px 10px 14px;border-radius:16px;}
+  .app-wrapper{max-width:min(1600px, 95vw);}
+  .obj-grid{grid-template-columns:repeat(5,1fr);gap:12px;max-width:1080px;margin:0 auto;}
+  .obj-tile{padding:12px 10px 14px;border-radius:16px;aspect-ratio:16/9;}
   .obj-ico{width:26px;height:26px;margin-bottom:7px}
   .obj-ico svg{width:26px;height:26px}
   .obj-nm{font-size:12.5px}
   .obj-count{font-size:10px;margin-top:2px}
   .obj-results-grid{grid-template-columns:300px minmax(0,560px);}
   .obj-back{max-width:884px;}
+
+  /* ═══ Header fusionné en une seule ligne, comme un vrai site ═══ */
+  .header{display:flex;align-items:center;gap:16px;padding:14px 22px !important;flex-wrap:nowrap;overflow:visible !important}
+  .mobile-top-bar{display:none}
+  #mobileSearchSlot{display:none}
+  .logo-wrap{flex:0 0 auto;flex-direction:row !important;align-items:center !important;gap:9px;min-height:auto !important;margin-bottom:0 !important;text-align:left}
+  .logo-wrap .logo-pill{width:34px !important;height:34px !important;min-width:34px !important;min-height:34px !important}
+  .logo-wrap .logo-pill svg{width:34px !important;height:34px !important}
+  .logo-txt{font-size:18px !important}
+  .logo-tag{display:none !important}
+  .nav-bandeau{display:none} /* le contenu est déplacé en JS dans .header sur desktop large */
+  #navDropdown{flex:1 1 auto;min-width:0;display:flex !important;justify-content:flex-start !important;align-items:center;flex-wrap:nowrap;gap:4px;padding:0 !important;border:none !important}
+  .nav-search-slot{margin-left:auto !important}
+  .header-controls{display:flex;flex:0 0 auto;justify-content:flex-end;align-items:center;gap:12px}
+  .header-controls .g-switch{width:190px;margin-top:0 !important;margin-bottom:0 !important;}
+  .header-controls .g-pill{padding:9px 10px !important;font-size:12px !important;gap:5px !important}
+  .header-controls .menu-btn{display:none !important}
+
+  .nav-btn{padding:12px 3px !important;font-size:12px !important;letter-spacing:0 !important}
+  .nav-btn::after{left:3px;right:3px}
+  .nav-search-slot{display:flex;flex:0 0 auto;width:36px;height:36px;border-radius:50%;margin-left:0;overflow:hidden;transition:width 0.25s ease,border-radius 0.25s ease}
+  .nav-search-slot:hover,.nav-search-slot:focus-within{width:170px;border-radius:20px}
+  .nav-search-slot .search-wrap{width:100%;padding-bottom:0;display:flex !important}
+  .nav-search-slot .search-inner{flex:1;min-width:0;width:100%;overflow:hidden;border-radius:20px}
+  .nav-search-slot .search{border-radius:20px !important;min-width:0;width:100%;box-sizing:border-box}
+
+  /* Menu déroulant au survol : Nos Experts / Le Concept regroupés sous "À propos" */
+  .nav-hover-group{position:relative;flex:0 0 auto}
+  .nav-hover-trigger{display:flex;align-items:center;gap:4px}
+  .nav-hover-trigger::before{content:'';order:2;width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-top:4.5px solid currentColor;opacity:0.55;margin-top:1px;transition:transform 0.2s ease}
+  .nav-hover-group:hover .nav-hover-trigger::before{transform:rotate(180deg)}
+  .nav-hover-panel{
+    display:none;position:absolute;top:100%;left:50%;transform:translateX(-50%);
+    margin-top:14px;background:#FFFFFF;border:1px solid rgba(0,0,0,0.10);border-radius:12px;
+    box-shadow:0 16px 40px rgba(0,0,0,0.18);padding:8px;min-width:230px;z-index:300
+  }
+  .nav-hover-group:hover .nav-hover-panel{display:block}
+  .nav-hover-group:hover .nav-hover-trigger{color:#8A5A2B !important}
+  .nav-hover-item{display:flex;align-items:center;gap:10px;width:100%;background:transparent;border:none;padding:10px 12px;border-radius:8px;cursor:pointer;text-align:left;font-family:"DM Sans",sans-serif}
+  .nav-hover-item:hover{background:rgba(188,149,105,0.12)}
+  .nav-hover-item-ico{font-size:16px;flex-shrink:0}
+  .nav-hover-item-nm{display:block;font-size:13px;font-weight:800;color:#2B2620}
+  .nav-hover-item-sub{display:block;font-size:11px;color:rgba(43,38,32,0.55);margin-top:1px;font-weight:600}
 }
 @media(min-width:1600px){
-  .app-wrapper{max-width:1240px;}
+  .app-wrapper{max-width:min(1720px, 96vw);}
 }
 /* ====== ANTI-COPIE / PROTECTION CONTENU ====== */
 .card,.modal,.fiche,.suppl-card,.content,.dose-table,h1,h2,h3,p,li,td,th,.fn-text,.hM,.hF,.prec-text,.synergie,.plus,.moins{user-select:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;}
@@ -1046,8 +1107,8 @@ body.F{background:#DEDCD5 !important}
   body.F .app-wrapper{background:#DEDCD5 !important}
 }
 /* Header moins sombre */
-body.M .header{background:#151617 !important}
-body.F .header{background:#151617 !important}
+body.M .header{background:#EDEAE1 !important}
+body.F .header{background:#EDEAE1 !important}
 /* Cards suppléments légèrement plus claires */
 .sc{border:none !important}
 /* Texte descriptions plus lisible */
@@ -1402,6 +1463,186 @@ html{overflow-x:hidden}
 .drawer-header{border-bottom-color:rgba(0,0,0,0.10) !important;}
 .drawer-logo{color:#2B2620 !important;}
 .drawer-close{background:rgba(0,0,0,0.06) !important;border-color:rgba(0,0,0,0.14) !important;color:#2B2620 !important;}
+/* ═══════════════════════════════════════════════════════════════
+   PAGE D'ACCUEIL ÉDITORIALE — desktop uniquement (≥900px)
+   Palette blanc cassé dédiée, header/nav du site inchangés.
+   ═══════════════════════════════════════════════════════════════ */
+.pc-home{
+  display:block;font-family:'Inter','DM Sans',system-ui,sans-serif;
+  background:#FAF9F6;color:#24211C;padding-bottom:40px;
+}
+.pc-home-hero{padding:14px 20px 28px;text-align:center;background:#FAF9F6}
+.pc-badge{display:none}
+.pc-eyebrow{font-size:22px;font-weight:800;color:#1C1A16;margin:0 0 12px;letter-spacing:-0.01em;line-height:1.2}
+.pc-h1{font-size:16.5px;font-weight:700;line-height:1.4;color:#6B6355;margin:0 auto 14px;letter-spacing:0}
+.pc-sub{font-size:14px;line-height:1.55;color:#6B6355;margin:0 auto 22px}
+.pc-cta{display:inline-flex;align-items:center;gap:8px;background:#1C1A16;color:#FFFFFF;border:none;font-family:inherit;font-size:13.5px;font-weight:700;padding:13px 24px;border-radius:9px;cursor:pointer;transition:transform .15s,background .15s}
+.pc-cta:hover{background:#332F28;transform:translateY(-1px)}
+.pc-hero-stats{display:flex;justify-content:center;gap:24px;margin-top:26px;flex-wrap:wrap}
+.pc-hero-stat{text-align:center}
+.pc-hero-stat b{display:block;font-size:22px;font-weight:800;color:#1C1A16}
+.pc-hero-stat span{font-size:10.5px;color:#8A8272;font-weight:600}
+.pc-sources-note{font-size:10.5px;color:#B0A996;text-align:center;margin-top:16px;font-weight:600;padding:0 20px}
+.pc-home-hero-wrap{display:block}
+.pc-hero-side{display:none}
+
+.pc-search-block{padding:0 20px 30px}
+.pc-search-wrap{position:relative;margin-bottom:14px}
+.pc-search-results{
+  display:none;position:absolute;top:calc(100% + 6px);left:0;right:0;
+  background:#FFFFFF;border:1px solid #E7E2D8;border-radius:12px;
+  box-shadow:0 12px 30px rgba(28,26,22,0.14);max-height:300px;overflow-y:auto;z-index:50
+}
+.pc-search-results.on{display:block}
+.pc-search-result-item{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:11px 14px;cursor:pointer;border-bottom:1px solid #F1EEE6;text-align:left;background:transparent;width:100%;box-sizing:border-box}
+.pc-search-result-item:last-child{border-bottom:none}
+.pc-search-result-item:hover{background:#F8F6F1}
+.pc-search-result-nm{font-size:13px;font-weight:800;color:#1C1A16}
+.pc-search-result-tag{font-size:10px;font-weight:700;color:#8A8272;text-transform:uppercase;letter-spacing:0.03em;flex-shrink:0}
+.pc-search-no-res{padding:14px;font-size:12.5px;color:#8A8272;text-align:center}
+.pc-search-input{width:100%;box-sizing:border-box;padding:13px 16px 13px 42px;font-size:14px;font-family:inherit;border:1.5px solid #E7E2D8;border-radius:11px;color:#1C1A16;background:#FFFFFF;outline:none;transition:border-color .15s}
+.pc-search-input:focus{border-color:#1C1A16}
+.pc-search-ico{position:absolute;left:15px;top:50%;transform:translateY(-50%);color:#B0A996;font-size:14px}
+.pc-filters{display:flex;gap:7px;justify-content:center;flex-wrap:wrap}
+.pc-filter{font-family:inherit;font-size:11.5px;font-weight:700;color:#6B6355;background:#F1EEE6;border:1px solid #E7E2D8;border-radius:20px;padding:7px 13px;cursor:pointer;transition:all .15s}
+.pc-filter:hover{background:#1C1A16;color:#FFFFFF;border-color:#1C1A16}
+
+.pc-section{padding:34px 20px;box-sizing:border-box}
+.pc-howto-mini{display:flex;align-items:flex-start;gap:12px;background:#F1EEE6;border:1px solid #E7E2D8;border-radius:12px;padding:16px 18px;margin:0 20px 30px}
+.pc-howto-mini-ico{font-size:18px;flex-shrink:0;line-height:1.4}
+.pc-howto-mini h4{font-size:13px;font-weight:800;color:#1C1A16;margin:0 0 4px}
+.pc-howto-mini p{font-size:12px;line-height:1.5;color:#6B6355;margin:0}
+.pc-section-lbl{font-size:10px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;color:#8A8272;text-align:center;margin-bottom:8px}
+.pc-section-title{font-size:20px;font-weight:800;color:#1C1A16;text-align:center;margin-bottom:22px;letter-spacing:-0.01em}
+
+.pc-cards{display:grid;grid-template-columns:1fr;gap:14px}
+.pc-card{background:#FFFFFF;border:1px solid #E7E2D8;border-radius:12px;padding:20px;transition:box-shadow .15s,transform .15s;cursor:pointer}
+.pc-card:hover{box-shadow:0 8px 24px rgba(28,26,22,0.08);transform:translateY(-2px)}
+.pc-card-tag{display:inline-block;font-size:10px;font-weight:800;letter-spacing:0.03em;text-transform:uppercase;color:#1C1A16;background:#F1EEE6;border-radius:5px;padding:4px 8px;margin-bottom:10px}
+.pc-card-nm{font-size:15.5px;font-weight:800;color:#1C1A16;margin-bottom:7px}
+.pc-card-txt{font-size:12.5px;line-height:1.55;color:#6B6355;margin-bottom:12px}
+.pc-card-link{font-size:12.5px;font-weight:700;color:#1C1A16;display:inline-flex;align-items:center;gap:5px}
+
+.pc-spotlight{background:#F1EEE6;border:1px solid #E7E2D8;border-radius:14px;padding:24px 20px;display:flex;flex-direction:column;gap:20px}
+.pc-spotlight-eyebrow{font-size:10px;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;color:#1C1A16;margin-bottom:8px}
+.pc-spotlight h3{font-size:17px;font-weight:800;color:#1C1A16;margin:0 0 10px;line-height:1.3}
+.pc-spotlight p{font-size:13px;line-height:1.6;color:#6B6355;margin:0 0 12px}
+.pc-spotlight-cite{font-size:11px;color:#8A8272}
+.pc-spotlight-cite a{color:#1C1A16;font-weight:700;text-decoration:underline}
+.pc-spotlight-num{background:#1C1A16;border-radius:12px;padding:18px 14px;text-align:center}
+.pc-spotlight-num b{display:block;font-size:30px;font-weight:800;color:#FFFFFF;line-height:1}
+.pc-spotlight-num span{display:block;font-size:11px;color:#D6CFC0;font-weight:600;margin-top:6px;line-height:1.4}
+
+.pc-pillars{display:grid;grid-template-columns:1fr;gap:22px}
+.pc-pillar-num{font-size:12px;font-weight:800;color:#B0A996;margin-bottom:8px}
+.pc-pillar h4{font-size:15px;font-weight:800;color:#1C1A16;margin:0 0 6px}
+.pc-pillar p{font-size:12.5px;line-height:1.55;color:#6B6355;margin:0}
+
+.pc-guide{display:none}
+.pc-guide h4{font-size:13px;font-weight:800;color:#1C1A16;margin:0 0 8px;display:flex;align-items:center;gap:6px}
+.pc-guide p{font-size:12.5px;line-height:1.6;color:#6B6355;margin:0}
+
+.pc-explore{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:8px}
+.pc-explore-card{background:#FFFFFF;border:1px solid #E7E2D8;border-radius:12px;padding:18px 14px;text-align:center;cursor:pointer;transition:transform .15s,box-shadow .15s}
+.pc-explore-card:hover{transform:translateY(-3px);box-shadow:0 10px 26px rgba(28,26,22,0.09)}
+.pc-explore-ico{font-size:22px;margin-bottom:8px}
+.pc-explore-nm{font-size:13px;font-weight:800;color:#1C1A16;margin-bottom:5px}
+.pc-explore-txt{font-size:11px;line-height:1.45;color:#6B6355}
+@media(min-width:900px){
+  /* La page d'accueil utilise une largeur plus généreuse que le reste de l'app,
+     pour ne pas se sentir coincée dans la même colonne étroite que les fiches. */
+
+  .pc-howto-mini{display:none}
+
+  .pc-home{
+    display:block;font-family:'Inter','DM Sans',system-ui,sans-serif;
+    background:#FAF9F6;color:#24211C;
+  }
+  .pc-home-hero{padding:64px 64px 52px;text-align:center;background:#FAF9F6}
+  .pc-badge{display:none}
+  .pc-badge img{width:14px;height:14px}
+  .pc-eyebrow{font-size:30px;font-weight:800;color:#1C1A16;margin:0 0 16px;letter-spacing:-0.01em;line-height:1.2}
+  .pc-h1{font-size:19px;font-weight:700;line-height:1.4;color:#6B6355;max-width:640px;margin:0 auto 18px;letter-spacing:0}
+  .pc-sub{font-size:16px;line-height:1.6;color:#6B6355;max-width:580px;margin:0 auto 30px}
+  .pc-cta{display:inline-flex;align-items:center;gap:8px;background:#1C1A16;color:#FFFFFF;border:none;font-family:inherit;font-size:14.5px;font-weight:700;padding:14px 28px;border-radius:9px;cursor:pointer;transition:transform .15s,background .15s}
+  .pc-cta:hover{background:#332F28;transform:translateY(-1px)}
+  .pc-hero-stats{display:flex;justify-content:center;gap:44px;margin-top:38px;flex-wrap:wrap}
+  .pc-hero-stat{text-align:center}
+  .pc-hero-stat b{display:block;font-size:27px;font-weight:800;color:#1C1A16}
+  .pc-hero-stat span{font-size:12px;color:#8A8272;font-weight:600}
+  .pc-sources-note{font-size:11.5px;color:#B0A996;text-align:center;margin-top:22px;font-weight:600}
+
+  @media(min-width:1300px){
+    .pc-home-hero-wrap{display:grid;grid-template-columns:200px 1fr 240px;gap:28px;align-items:center;padding:0 40px;max-width:1560px;margin:0 auto}
+    .pc-hero-side{display:flex;flex-direction:column;gap:10px}
+    .pc-hero-side-lbl{font-size:11px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;color:#8A8272;margin-bottom:4px}
+    .pc-hero-quicklink{display:flex;align-items:center;gap:8px;background:#FFFFFF;border:1px solid #E7E2D8;border-radius:10px;padding:11px 12px;font-family:inherit;font-size:12.5px;font-weight:700;color:#4A4238;cursor:pointer;text-align:left;transition:all .15s}
+    .pc-hero-quicklink:hover{border-color:#1C1A16;transform:translateX(2px)}
+    .pc-hero-quicklink-ico{font-size:14px;flex-shrink:0}
+    .pc-hero-feature-card{background:#FFFFFF;border:1px solid #E7E2D8;border-radius:12px;padding:20px;cursor:pointer;transition:all .15s}
+    .pc-hero-feature-card:hover{box-shadow:0 8px 24px rgba(28,26,22,0.08);transform:translateY(-2px)}
+    .pc-home-hero{padding:20px 0}
+  }
+
+  .pc-search-block{padding:0 64px 46px;max-width:800px;margin:0 auto}
+  .pc-search-wrap{position:relative;margin-bottom:16px}
+  .pc-search-results{
+    display:none;position:absolute;top:calc(100% + 6px);left:0;right:0;
+    background:#FFFFFF;border:1px solid #E7E2D8;border-radius:12px;
+    box-shadow:0 16px 40px rgba(28,26,22,0.14);max-height:340px;overflow-y:auto;z-index:50
+  }
+  .pc-search-results.on{display:block}
+  .pc-search-result-item{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;cursor:pointer;border-bottom:1px solid #F1EEE6;text-align:left;background:transparent}
+  .pc-search-result-item:last-child{border-bottom:none}
+  .pc-search-result-item:hover{background:#F8F6F1}
+  .pc-search-result-nm{font-size:13.5px;font-weight:800;color:#1C1A16}
+  .pc-search-result-tag{font-size:10.5px;font-weight:700;color:#8A8272;text-transform:uppercase;letter-spacing:0.04em;flex-shrink:0}
+  .pc-search-no-res{padding:16px;font-size:13px;color:#8A8272;text-align:center}
+  .pc-search-input{width:100%;box-sizing:border-box;padding:15px 18px 15px 46px;font-size:14.5px;font-family:inherit;border:1.5px solid #E7E2D8;border-radius:11px;color:#1C1A16;background:#FFFFFF;outline:none;transition:border-color .15s}
+  .pc-search-input:focus{border-color:#1C1A16}
+  .pc-search-ico{position:absolute;left:17px;top:50%;transform:translateY(-50%);color:#B0A996;font-size:15px}
+  .pc-filters{display:flex;gap:9px;justify-content:center;flex-wrap:wrap}
+  .pc-filter{font-family:inherit;font-size:12.5px;font-weight:700;color:#6B6355;background:#F1EEE6;border:1px solid #E7E2D8;border-radius:20px;padding:8px 16px;cursor:pointer;transition:all .15s}
+  .pc-filter:hover{background:#1C1A16;color:#FFFFFF;border-color:#1C1A16}
+
+  .pc-section{padding:52px 64px;max-width:1560px;margin:0 auto;box-sizing:border-box}
+  .pc-section-lbl{font-size:11px;font-weight:800;letter-spacing:0.09em;text-transform:uppercase;color:#8A8272;text-align:center;margin-bottom:10px}
+  .pc-section-title{font-size:27px;font-weight:800;color:#1C1A16;text-align:center;margin-bottom:38px;letter-spacing:-0.01em}
+
+  .pc-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .pc-card{background:#FFFFFF;border:1px solid #E7E2D8;border-radius:12px;padding:24px;transition:box-shadow .15s,transform .15s;cursor:pointer}
+  .pc-card:hover{box-shadow:0 8px 24px rgba(28,26,22,0.08);transform:translateY(-2px)}
+  .pc-card-tag{display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;color:#1C1A16;background:#F1EEE6;border-radius:5px;padding:4px 9px;margin-bottom:12px}
+  .pc-card-nm{font-size:17px;font-weight:800;color:#1C1A16;margin-bottom:9px}
+  .pc-card-txt{font-size:13px;line-height:1.6;color:#6B6355;margin-bottom:16px}
+  .pc-card-link{font-size:13px;font-weight:700;color:#1C1A16;display:inline-flex;align-items:center;gap:5px}
+
+  .pc-spotlight{background:#F1EEE6;border:1px solid #E7E2D8;border-radius:14px;padding:32px 38px;display:grid;grid-template-columns:1fr 220px;gap:32px;align-items:center}
+  .pc-spotlight-eyebrow{font-size:11px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;color:#1C1A16;margin-bottom:10px}
+  .pc-spotlight h3{font-size:20px;font-weight:800;color:#1C1A16;margin:0 0 12px;line-height:1.3}
+  .pc-spotlight p{font-size:14px;line-height:1.65;color:#6B6355;margin:0 0 14px}
+  .pc-spotlight-cite{font-size:12px;color:#8A8272}
+  .pc-spotlight-cite a{color:#1C1A16;font-weight:700;text-decoration:underline}
+  .pc-spotlight-num{background:#1C1A16;border-radius:12px;padding:22px 16px;text-align:center}
+  .pc-spotlight-num b{display:block;font-size:38px;font-weight:800;color:#FFFFFF;line-height:1}
+  .pc-spotlight-num span{display:block;font-size:12px;color:#D6CFC0;font-weight:600;margin-top:8px;line-height:1.4}
+
+  .pc-pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:36px}
+  .pc-pillar-num{font-size:13px;font-weight:800;color:#B0A996;margin-bottom:10px}
+  .pc-pillar h4{font-size:16px;font-weight:800;color:#1C1A16;margin:0 0 8px}
+  .pc-pillar p{font-size:13.5px;line-height:1.6;color:#6B6355;margin:0}
+
+  .pc-guide{background:#F1EEE6;border:1px solid #E7E2D8;border-radius:14px;padding:32px 40px;display:grid;grid-template-columns:1fr;max-width:760px;margin:0 auto 20px;box-sizing:border-box}
+  .pc-guide h4{font-size:14px;font-weight:800;color:#1C1A16;margin:0 0 10px;display:flex;align-items:center;gap:8px}
+  .pc-guide p{font-size:13.5px;line-height:1.65;color:#6B6355;margin:0}
+
+  .pc-explore{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .pc-explore-card{background:#FFFFFF;border:1px solid #E7E2D8;border-radius:12px;padding:24px 20px;text-align:center;cursor:pointer;transition:transform .15s,box-shadow .15s}
+  .pc-explore-card:hover{transform:translateY(-3px);box-shadow:0 10px 26px rgba(28,26,22,0.09)}
+  .pc-explore-ico{font-size:26px;margin-bottom:12px}
+  .pc-explore-nm{font-size:14.5px;font-weight:800;color:#1C1A16;margin-bottom:7px}
+  .pc-explore-txt{font-size:12px;line-height:1.55;color:#6B6355}
+}
 </style>
 
 
@@ -1412,8 +1653,12 @@ html{overflow-x:hidden}
 <div class="app-wrapper">
 
 <div class="header">
-  <div class="logo-wrap">
-    <div class="logo-pill" style="width:64px;height:64px;flex-shrink:0;background:transparent;display:flex;align-items:center;justify-content:center">
+  <div class="mobile-top-bar">
+    <button class="mobile-search-toggle" onclick="toggleMobileSearch()" aria-label="Rechercher" id="mobileSearchToggleBtn">
+      <span>🔍</span>
+    </button>
+    <div class="logo-wrap logo-wrap-mobile-inline">
+      <div class="logo-pill" style="width:64px;height:64px;flex-shrink:0;background:transparent;display:flex;align-items:center;justify-content:center">
 <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Logo MyDoseUp : une gélule et une feuille">
   <defs>
     <clipPath id="capsuleLowerHalf"><rect x="0" y="34" width="64" height="26"/></clipPath>
@@ -1426,11 +1671,17 @@ html{overflow-x:hidden}
   <path d="M35 15.5 L51 6" stroke="#9C7C52" stroke-width="1" stroke-linecap="round" opacity="0.7" fill="none"/>
 </svg>
 </div>
-    <div>
-      <div class="logo-txt" style="margin:0;padding:0;display:block" aria-hidden="true">My<span class="logo-dose">Dose</span>Up</div>
-      <h1 class="logo-tag" style="margin-top:4px">Guide des Compléments Alimentaires</h1>
+      <div>
+        <div class="logo-txt" style="margin:0;padding:0;display:block" aria-hidden="true">My<span class="logo-dose">Dose</span>Up</div>
+        <div class="logo-tag" style="margin-top:4px">Guide des Compléments Alimentaires</div>
+      </div>
     </div>
+    <button class="menu-btn" onclick="openDrawer()" aria-label="Menu">
+      <div class="menu-btn-ico"><span></span><span></span><span></span></div>
+      Menu
+    </button>
   </div>
+  <div id="mobileSearchSlot"></div>
   <div class="header-controls">
     <div class="search-wrap">
       <div class="search-inner">
@@ -1438,10 +1689,6 @@ html{overflow-x:hidden}
         <input class="search" id="si" type="text" placeholder="Rechercher..." oninput="doSearch(this.value)" maxlength="100" style="font-size:16px" autocomplete="off" spellcheck="false" aria-label="Rechercher un complément alimentaire">
         <span class="s-clr" id="sc" onclick="clearS()">✕</span>
       </div>
-      <button class="menu-btn" onclick="openDrawer()" aria-label="Menu">
-        <div class="menu-btn-ico"><span></span><span></span><span></span></div>
-        Menu
-      </button>
     </div>
     <div class="g-switch" style="margin-bottom:2px;margin-top:4px">
       <button class="g-pill" id="gM" onclick="setG('M')"><span class="pill-icon">♂</span>Homme</button>
@@ -1456,12 +1703,24 @@ html{overflow-x:hidden}
   <!-- Dropdown (mobile) / Row (desktop) -->
   <div class="nav-dropdown" id="navDropdown">
     <button class="nav-btn active" id="navAccueil" onclick="navGo('accueil',this)">Accueil</button>
+    <button class="nav-btn" id="navTonbesoin" onclick="navGo('tonbesoin',this)">Ton besoin</button>
     <button class="nav-btn" id="navQuiz" onclick="openQuiz()" aria-label="Ouvrir Ma Routine Personnalisée">Ma Routine</button>
     <button class="nav-btn" id="navParcours" onclick="navGo('parcours',this)">Parcours Sportifs</button>
     <button class="nav-btn" id="navVitamines" onclick="navGo('vitamines',this)">Vitamines & Minéraux</button>
     <button class="nav-btn" id="navFamille" onclick="navGo('famille',this)">Par famille</button>
-    <button class="nav-btn" id="navExperts" onclick="navGo('experts',this)">Nos Experts</button>
-    <button class="nav-btn" id="navConcept" onclick="navGo('concept',this)">Le Concept</button>
+    <div class="nav-hover-group" id="navMoreGroup">
+      <button class="nav-btn nav-hover-trigger" id="navMore" aria-haspopup="true">À propos</button>
+      <div class="nav-hover-panel">
+        <button class="nav-hover-item" id="navExperts" onclick="navGo('experts',this);this.blur()">
+          <span class="nav-hover-item-ico">👤</span>
+          <span><span class="nav-hover-item-nm">Nos Experts</span><span class="nav-hover-item-sub">Qui valide le contenu du site</span></span>
+        </button>
+        <button class="nav-hover-item" id="navConcept" onclick="navGo('concept',this);this.blur()">
+          <span class="nav-hover-item-ico">💡</span>
+          <span><span class="nav-hover-item-nm">Le Concept</span><span class="nav-hover-item-sub">Pourquoi MyDoseUp existe</span></span>
+        </button>
+      </div>
+    </div>
     <div class="nav-search-slot" id="navSearchSlot"></div>
   </div>
 </nav>
@@ -1470,9 +1729,209 @@ html{overflow-x:hidden}
 
 <!-- ═══ PAGE ACCUEIL (Ton besoin) ═══ -->
 <div class="page-view on" id="page-accueil">
+
+  <div class="pc-home">
+
+    <section class="pc-home-hero-wrap">
+      <aside class="pc-hero-side pc-hero-side-left">
+        <div class="pc-hero-side-lbl">Accès rapide</div>
+        <button class="pc-hero-quicklink" onclick="navGo('tonbesoin', document.getElementById('navTonbesoin'));showObj('sommeil')">
+          <span class="pc-hero-quicklink-ico">🌙</span> Sommeil &amp; Récupération
+        </button>
+        <button class="pc-hero-quicklink" onclick="navGo('tonbesoin', document.getElementById('navTonbesoin'));showObj('perf')">
+          <span class="pc-hero-quicklink-ico">⚡</span> Énergie &amp; Vitalité
+        </button>
+        <button class="pc-hero-quicklink" onclick="navGo('tonbesoin', document.getElementById('navTonbesoin'));showObj('immun')">
+          <span class="pc-hero-quicklink-ico">🛡️</span> Immunité
+        </button>
+        <button class="pc-hero-quicklink" onclick="navGo('tonbesoin', document.getElementById('navTonbesoin'));showObj('cerveau')">
+          <span class="pc-hero-quicklink-ico">💡</span> Cerveau &amp; Focus
+        </button>
+        <button class="pc-hero-quicklink" onclick="navGo('tonbesoin', document.getElementById('navTonbesoin'));showObj('poids')">
+          <span class="pc-hero-quicklink-ico">⚖️</span> Poids &amp; Métabolisme
+        </button>
+      </aside>
+
+      <section class="pc-home-hero">
+      <div class="pc-badge">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236B6355' stroke-width='2'%3E%3Cpath d='M12 2v20M2 12h20'/%3E%3C/svg%3E" alt="">
+        Base de données nutritionnelle &amp; micronutriments
+      </div>
+      <h1 class="pc-eyebrow">MyDoseUp &middot; Guide des compléments alimentaires</h1>
+      <p class="pc-sub">Retrouve les fiches pratiques, les rôles essentiels et les repères de dosage pour chaque vitamine et minéral. Le switch Homme/Femme en haut ajuste les recommandations à ton profil.</p>
+      <button class="pc-cta" onclick="navGo('tonbesoin', document.getElementById('navTonbesoin'))">Consulter les fiches &rsaquo;</button>
+      <div class="pc-hero-stats">
+        <div class="pc-hero-stat"><b>72</b><span>Fiches complètes</span></div>
+        <div class="pc-hero-stat"><b>27</b><span>Objectifs couverts</span></div>
+        <div class="pc-hero-stat"><b>0</b><span>Discours commercial</span></div>
+      </div>
+      <div class="pc-sources-note">Sources citées sur chaque fiche : EFSA &middot; ANSES &middot; PubMed &middot; Cochrane</div>
+      </section>
+
+      <aside class="pc-hero-side pc-hero-side-right">
+        <div class="pc-hero-side-lbl">Fiche du moment</div>
+        <div class="pc-hero-feature-card" onclick="openFiche('Ashwagandha (KSM-66)')">
+          <span class="pc-card-tag">Adaptogène</span>
+          <div class="pc-card-nm">Ashwagandha (KSM-66)</div>
+          <div class="pc-card-txt">Une plante qui aide ton corps à mieux gérer le stress, en agissant sur le cortisol.</div>
+          <span class="pc-card-link">Voir la fiche &rsaquo;</span>
+        </div>
+      </aside>
+    </section>
+
+    <section class="pc-search-block">
+      <div class="pc-search-wrap">
+        <span class="pc-search-ico">🔍</span>
+        <input class="pc-search-input" id="pcSearchInput" type="text" placeholder="Rechercher une vitamine, un minéral ou un besoin..." autocomplete="off" spellcheck="false" oninput="pcSearchDo(this.value)">
+        <div class="pc-search-results" id="pcSearchResults"></div>
+      </div>
+      <div class="pc-filters">
+        <button class="pc-filter" onclick="navGo('tonbesoin', document.getElementById('navTonbesoin'))">Tous</button>
+        <button class="pc-filter" onclick="navGo('vitamines', document.getElementById('navVitamines'))">Vitamines</button>
+        <button class="pc-filter" onclick="navGo('vitamines', document.getElementById('navVitamines'))">Minéraux</button>
+        <button class="pc-filter" onclick="navGo('tonbesoin', document.getElementById('navTonbesoin'));showObj('perf')">Récupération</button>
+        <button class="pc-filter" onclick="navGo('tonbesoin', document.getElementById('navTonbesoin'));showObj('immun')">Immunité</button>
+      </div>
+    </section>
+
+    <section class="pc-section" style="padding-top:0">
+      <div class="pc-section-lbl">Fiches populaires</div>
+      <div class="pc-section-title">Pour bien démarrer</div>
+      <div class="pc-cards">
+        <div class="pc-card" onclick="openFiche('Vitamine D3 + K2')">
+          <span class="pc-card-tag">Immunité &amp; Squelette</span>
+          <div class="pc-card-nm">Vitamine D3 + K2</div>
+          <div class="pc-card-txt">Ta peau la fabrique elle-même sous l'effet du soleil, l'alimentation ne couvre qu'une petite part de tes besoins. Le manque est très répandu, en particulier l'hiver.</div>
+          <span class="pc-card-link">Voir la fiche &rsaquo;</span>
+        </div>
+        <div class="pc-card" onclick="openFiche('Magnésium Bisglycinate')">
+          <span class="pc-card-tag">Système nerveux &amp; Récupération</span>
+          <div class="pc-card-nm">Magnésium Bisglycinate</div>
+          <div class="pc-card-txt">Intervient dans plus de 300 réactions de ton corps : énergie, contraction musculaire, transmission nerveuse. La plupart des Français en manquent un peu.</div>
+          <span class="pc-card-link">Voir la fiche &rsaquo;</span>
+        </div>
+        <div class="pc-card" onclick="openFiche('Zinc Bisglycinate')">
+          <span class="pc-card-tag">Métabolisme &amp; Peau</span>
+          <div class="pc-card-nm">Zinc Bisglycinate</div>
+          <div class="pc-card-txt">Impliqué dans ton immunité, la synthèse des protéines, la cicatrisation et la régulation hormonale, notamment la testostérone chez l'homme.</div>
+          <span class="pc-card-link">Voir la fiche &rsaquo;</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="pc-howto-mini">
+      <span class="pc-howto-mini-ico">🧭</span>
+      <div>
+        <h4>Comment utiliser le site</h4>
+        <p>Oriente ta recherche selon ton objectif via "Ton besoin" dans le menu, ou explore le catalogue trié par famille si tu cherches une molécule précise.</p>
+      </div>
+    </section>
+
+    <section class="pc-section" style="padding-top:0">
+      <div class="pc-spotlight">
+        <div>
+          <div class="pc-spotlight-eyebrow">Zoom sur un complément</div>
+          <h3>Créatine monohydrate : le plus étudié de tous</h3>
+          <p>Recharge tes réserves d'énergie musculaire (ATP), pour des efforts plus intenses et une récupération plus facile. C'est la forme la plus étudiée : les formes alternatives (Kre-Alkalyn, HCl) n'ont pas montré de bénéfice supérieur dans les études disponibles.</p>
+          <div class="pc-spotlight-cite">Source : Lanhers et al., <em>Sports Medicine</em>, 2017. <a href="https://pubmed.ncbi.nlm.nih.gov/27328852/" target="_blank" rel="noopener">Voir l'étude sur PubMed &rsaquo;</a></div>
+        </div>
+        <div class="pc-spotlight-num">
+          <b>+8%</b>
+          <span>de force en 4 à 6 semaines, sur sujets entraînés</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="pc-section" style="padding-top:0">
+      <div class="pc-section-lbl">Encore trois essentiels</div>
+      <div class="pc-section-title">Et pour aller plus loin</div>
+      <div class="pc-cards">
+        <div class="pc-card" onclick="openFiche('Oméga-3 (EPA/DHA)')">
+          <span class="pc-card-tag">Cœur &amp; Cerveau</span>
+          <div class="pc-card-nm">Oméga-3 (EPA/DHA)</div>
+          <div class="pc-card-txt">Des acides gras essentiels que ton corps ne sait pas fabriquer. L'EPA aide à réguler l'inflammation, le DHA soutient le cerveau et la vue.</div>
+          <span class="pc-card-link">Voir la fiche &rsaquo;</span>
+        </div>
+        <div class="pc-card" onclick="openFiche('Vitamine B12 (Méthylcobalamine)')">
+          <span class="pc-card-tag">Énergie &amp; Système nerveux</span>
+          <div class="pc-card-nm">Vitamine B12</div>
+          <div class="pc-card-txt">L'alimentation végétale ne t'en apporte pas naturellement. Un manque peut donner fatigue, fourmillements et troubles de mémoire.</div>
+          <span class="pc-card-link">Voir la fiche &rsaquo;</span>
+        </div>
+        <div class="pc-card" onclick="openFiche('Probiotiques')">
+          <span class="pc-card-tag">Digestion &amp; Microbiome</span>
+          <div class="pc-card-nm">Probiotiques</div>
+          <div class="pc-card-txt">Des micro-organismes vivants qui, pris en quantité suffisante, apportent un bénéfice pour ta santé (définition de l'OMS). Tout dépend de la souche.</div>
+          <span class="pc-card-link">Voir la fiche &rsaquo;</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="pc-section" style="padding-top:0">
+      <div class="pc-section-lbl">Pourquoi MyDoseUp</div>
+      <div class="pc-section-title">Trois principes, sans exception</div>
+      <div class="pc-pillars">
+        <div class="pc-pillar">
+          <div class="pc-pillar-num">01</div>
+          <h4>Information neutre</h4>
+          <p>Pas d'affiliation agressive ni de discours commercial. L'objectif est uniquement d'informer clairement sur chaque molécule.</p>
+        </div>
+        <div class="pc-pillar">
+          <div class="pc-pillar-num">02</div>
+          <h4>Synthèse condensée</h4>
+          <p>Fini les articles de 4 000 mots illisibles. Des données condensées : rôle, apports de référence, moments de prise.</p>
+        </div>
+        <div class="pc-pillar">
+          <div class="pc-pillar-num">03</div>
+          <h4>Usage pratique</h4>
+          <p>Des explications concrètes sur les synergies à privilégier et les erreurs de dosage à éviter.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="pc-section" style="padding-top:0">
+      <div class="pc-section-lbl">Va plus loin</div>
+      <div class="pc-section-title">Explore le site autrement</div>
+      <div class="pc-explore">
+        <div class="pc-explore-card" onclick="openQuiz()">
+          <div class="pc-explore-ico">🧭</div>
+          <div class="pc-explore-nm">Ma Routine</div>
+          <div class="pc-explore-txt">Réponds à quelques questions, reçois une routine personnalisée adaptée à ton profil.</div>
+        </div>
+        <div class="pc-explore-card" onclick="navGo('parcours', document.getElementById('navParcours'))">
+          <div class="pc-explore-ico">🏃</div>
+          <div class="pc-explore-nm">Parcours Sportifs</div>
+          <div class="pc-explore-txt">8 sports, des recommandations avant, pendant et après l'effort, basées sur les études.</div>
+        </div>
+        <div class="pc-explore-card" onclick="navGo('vitamines', document.getElementById('navVitamines'))">
+          <div class="pc-explore-ico">☀️</div>
+          <div class="pc-explore-nm">Vitamines & Minéraux</div>
+          <div class="pc-explore-txt">Compare les meilleures formes et les pièges à éviter, en un coup d'œil.</div>
+        </div>
+        <div class="pc-explore-card" onclick="navGo('famille', document.getElementById('navFamille'))">
+          <div class="pc-explore-ico">📚</div>
+          <div class="pc-explore-nm">Par famille</div>
+          <div class="pc-explore-txt">Le catalogue complet, classé par famille, si tu cherches une molécule précise.</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="pc-guide">
+      <div>
+        <h4>🧭 Comment utiliser le site</h4>
+        <p>Oriente ta recherche selon ton objectif (sport, fatigue passagère, équilibre quotidien) via "Ton besoin" dans le menu, ou explore le catalogue complet trié par famille si tu cherches une molécule précise.</p>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- ═══ PAGE TON BESOIN (page indépendante, comme Par famille) ═══ -->
+<div class="page-view" id="page-tonbesoin">
   <div class="page-hero" id="accueilHero">
     <div class="page-title">Ton besoin</div>
-    <div class="page-sub">Clique sur une bulle qui correspond à ton besoin et découvre les compléments les plus adaptés.</div>
+    <div class="page-sub">Clique sur une bulle qui correspond à ton besoin et découvre les compléments les plus adaptés. Le switch Homme/Femme en haut ajuste aussi les recommandations à ton profil.</div>
   </div>
   <div class="obj-grid" id="objGrid"></div>
   <div class="obj-results" id="objResults">
@@ -1819,7 +2278,18 @@ html{overflow-x:hidden}
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D6B98A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
       </div>
       <div class="drawer-text">
-        <div class="drawer-nm">Guide des compl&eacute;ments alimentaires</div>
+        <div class="drawer-nm">Accueil</div>
+        <div class="drawer-sub">D&eacute;couvre MyDoseUp en un coup d'oeil</div>
+      </div>
+      <div class="drawer-arr">&rsaquo;</div>
+    </div>
+
+    <div class="drawer-item" id="ditem-tonbesoin" onclick="drawerGo('tonbesoin')">
+      <div class="drawer-ico" style="background:#2B2D2F;box-shadow:inset 0 0 0 1px rgba(214,185,138,0.30)">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D6B98A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="0.6" fill="#D6B98A"/></svg>
+      </div>
+      <div class="drawer-text">
+        <div class="drawer-nm">Ton besoin</div>
         <div class="drawer-sub">Trouve ton complément par objectif</div>
       </div>
       <div class="drawer-arr">&rsaquo;</div>
@@ -1953,14 +2423,14 @@ html{overflow-x:hidden}
   <div style="font-size:20px;font-weight:500;letter-spacing:-0.5px;color:#2B2620">My<span style="font-weight:900">Dose</span>Up</div>
 </div>
   <div class="footer-sub footer-brand-mobile">Guide des Compléments Alimentaires</div>
-  <div class="footer-legal-disclaimer footer-brand-mobile" style="font-size:12px;color:rgba(43,38,32,0.60);line-height:1.6;margin-bottom:2px;padding-top:18px;border-top:1px solid rgba(43,38,32,0.12);width:100%;max-width:320px">
+  <div class="footer-legal-disclaimer footer-brand-mobile" style="font-size:12px;color:rgba(43,38,32,0.60);line-height:1.6;margin-bottom:2px;padding-top:12px;border-top:1px solid rgba(43,38,32,0.12);width:100%;max-width:320px">
     Informations à titre éducatif uniquement. Consultez un professionnel de santé avant tout usage.
   </div>
   <div class="footer-legal" style="font-size:12px;color:rgba(43,38,32,0.60);line-height:1.6">
     © 2026 MyDoseUp® · Yanis Bensaadi · INPI n° 5239885 · Tous droits réservés
   </div>
   <div class="footer-credits">contact&#64;mydoseup&#46;com</div>
-  <div class="footer-mobile-nav footer-brand-mobile" style="display:flex;flex-direction:column;align-items:center;gap:12px;margin:4px 0 20px">
+  <div class="footer-mobile-nav footer-brand-mobile" style="display:flex;flex-direction:column;align-items:center;gap:8px;margin:2px 0 14px">
     <button onclick="navGo('accueil', null)" style="background:none;border:none;color:rgba(43,38,32,0.75);font-size:13px;font-family:'DM Sans',sans-serif;cursor:pointer;padding:0">Guide des actifs</button>
     <button onclick="openQuiz()" style="background:none;border:none;color:rgba(43,38,32,0.75);font-size:13px;font-family:'DM Sans',sans-serif;cursor:pointer;padding:0">Routine sur-mesure</button>
     <button onclick="navGo('legal', null)" style="background:none;border:none;color:rgba(43,38,32,0.75);font-size:13px;font-family:'DM Sans',sans-serif;cursor:pointer;padding:0">Mentions légales</button>
@@ -3433,6 +3903,11 @@ function navGo(pageId, btn, _fromSwitchTab){
   // Mettre à jour les boutons
   document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
   if(btn) btn.classList.add('active');
+  // Le déclencheur "À propos" s'allume aussi pour ses sous-pages (Experts/Concept)
+  if(pageId === 'experts' || pageId === 'concept'){
+    const navMoreBtn = document.getElementById('navMore');
+    if(navMoreBtn) navMoreBtn.classList.add('active');
+  }
   // ── Reset page Parcours Sportifs si on la quitte ou y revient ──
   if(pageId === 'parcours' || pageId !== 'parcours'){
     const sg = document.getElementById('sportGrid');
@@ -3451,17 +3926,20 @@ function navGo(pageId, btn, _fromSwitchTab){
   document.querySelectorAll('.page-view').forEach(p=>p.classList.remove('on'));
   const page = document.getElementById('page-'+pageId);
   if(page) page.classList.add('on');
+  // La page d'accueil éditoriale utilise une largeur plus généreuse
+  const appWrapNav = document.querySelector('.app-wrapper');
+  if(appWrapNav) appWrapNav.classList.toggle('wide-home', pageId === 'accueil');
   // ── Switch Homme/Femme neutre sur les pages où le genre ne s'applique pas ──
   const gswNav = document.querySelector('.g-switch');
   if(gswNav){
-    if(pageId==='parcours' || pageId==='vitamines' || pageId==='famille' || pageId==='experts' || pageId==='concept' || pageId==='legal'){
+    if(pageId==='accueil' || pageId==='parcours' || pageId==='vitamines' || pageId==='famille' || pageId==='experts' || pageId==='concept' || pageId==='legal'){
       gswNav.classList.add('neutral');
     } else {
       gswNav.classList.remove('neutral');
     }
   }
-  // Reset vue accueil (grille + résultats) - seulement si appelé depuis le menu
-  if(pageId === 'accueil' && !_fromSwitchTab) {
+  // Reset vue "Ton besoin" (grille + résultats) - seulement si appelé depuis le menu
+  if(pageId === 'tonbesoin' && !_fromSwitchTab) {
     backToGrid();
   }
   // Scroll top immédiat
@@ -4059,14 +4537,11 @@ function setG(g){
   const tag = document.querySelector(".logo-tag");
   if(tag) tag.textContent = "Guide des Compléments Alimentaires";
 
-  // ④ Revenir TOUJOURS à l'accueil — fermer menu mobile
+  // ④ Fermer menu mobile
   const hb = document.getElementById('navHamburger');
   const dd = document.getElementById('navDropdown');
   if(hb) hb.classList.remove('open');
   if(dd) dd.classList.remove('open');
-  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
-  const navAccueilBtn = document.getElementById('navAccueil');
-  if(navAccueilBtn) navAccueilBtn.classList.add('active');
 
   // ⑤ Reset parcours sportifs
   const sg = document.getElementById('sportGrid');
@@ -4077,14 +4552,24 @@ function setG(g){
   if(tr) tr.classList.remove('on');
   currentSport = null;
 
-  // ⑥ Afficher page accueil
+  // ⑥ Afficher page Ton besoin (c'est là que le genre a un effet réel)
   document.querySelectorAll('.page-view').forEach(p=>p.classList.remove('on'));
-  const pageAccueil = document.getElementById('page-accueil');
-  if(pageAccueil) pageAccueil.classList.add('on');
+  const pageTonbesoin = document.getElementById('page-tonbesoin');
+  if(pageTonbesoin) pageTonbesoin.classList.add('on');
+  const appWrapSetG = document.querySelector('.app-wrapper');
+  if(appWrapSetG) appWrapSetG.classList.remove('wide-home');
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+  const navTonbesoinBtn = document.getElementById('navTonbesoin');
+  if(navTonbesoinBtn) navTonbesoinBtn.classList.add('active');
 
   // ⑦ Rebuild grid et AZ
   clearS(); backToGrid();
   buildGrid(); buildAZ();
+
+  // ⑨ URL cohérente avec la page Ton besoin, sans dupliquer l'historique
+  if(!window._skipUrlSync){
+    history.pushState({page:'tonbesoin'}, "", "#page-tonbesoin");
+  }
 
   // ⑧ Double scroll après reflow pour garantir y=0
   requestAnimationFrame(()=>{
@@ -4311,17 +4796,62 @@ function _renderFamSection(fam, items, idx){
 }
 
 
+// ═══ Recherche de la page d'accueil : petit menu déroulant ancré sous la barre,
+// clic sur un résultat → ouvre directement la fiche dans "Par famille" ═══
+function pcSearchDo(val){
+  const box = document.getElementById('pcSearchResults');
+  if(!box) return;
+  if(!val || !val.trim()){ box.classList.remove('on'); box.innerHTML=''; return; }
+  const q = val.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+  function _n(s){return s?s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,''):''}
+  function _matchPrefix(s,qq){
+    if(!s||!qq) return false;
+    const t=_n(s);
+    const esc=qq.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+    return new RegExp('(^|[^a-z0-9])'+esc,'i').test(t);
+  }
+  const res = fdAll().filter(s=>_matchPrefix(s.nm,q)||_matchPrefix(s.tag,q)).slice(0,8);
+  if(!res.length){
+    box.innerHTML = `<div class="pc-search-no-res">Aucun résultat pour "${val}"</div>`;
+    box.classList.add('on');
+    return;
+  }
+  box.innerHTML = res.map(s=>
+    `<button class="pc-search-result-item" onclick="pcSearchOpen('${s.nm.replace(/'/g,"\\'")}')">
+      <span class="pc-search-result-nm">${s.nm}</span>
+      <span class="pc-search-result-tag">${s.tag}</span>
+    </button>`
+  ).join('');
+  box.classList.add('on');
+}
+function pcSearchOpen(nm){
+  const box = document.getElementById('pcSearchResults');
+  if(box){ box.classList.remove('on'); box.innerHTML=''; }
+  document.getElementById('pcSearchInput').value = '';
+  openFiche(nm);
+}
+// Fermer le menu déroulant si on clique ailleurs sur la page
+document.addEventListener('click', function(e){
+  const wrap = document.querySelector('.pc-search-wrap');
+  if(wrap && !wrap.contains(e.target)){
+    const box = document.getElementById('pcSearchResults');
+    if(box) box.classList.remove('on');
+  }
+});
+
 function doSearch(val){
   const sp=document.getElementById("searchPanel");
   document.getElementById("sc").style.display=val?"block":"none";
   if(val && val.trim()){
-    // S'assurer qu'on est sur la page accueil SANS reset (flag true)
+    // S'assurer qu'on est sur une page valide pour afficher des résultats (Ton besoin ou Accueil), sans reset
     const currentPage=document.querySelector('.page-view.on');
-    if(!currentPage || currentPage.id !== 'page-accueil'){
-      // Afficher accueil sans backToGrid
+    if(!currentPage || (currentPage.id !== 'page-tonbesoin' && currentPage.id !== 'page-accueil')){
+      // Afficher Ton besoin sans backToGrid
       document.querySelectorAll('.page-view').forEach(p=>p.classList.remove('on'));
-      const pa=document.getElementById('page-accueil');
+      const pa=document.getElementById('page-tonbesoin');
       if(pa) pa.classList.add('on');
+      const appWrapSearch = document.querySelector('.app-wrapper');
+      if(appWrapSearch) appWrapSearch.classList.remove('wide-home');
     }
     // Restaurer header si masqué
     const hdr=document.querySelector('.header');
@@ -4425,6 +4955,17 @@ function updateConceptStats(){
 }
 
 buildGrid();
+// Largeur élargie par défaut : la page charge sur l'accueil éditorial (desktop)
+(function(){
+  var aw = document.querySelector('.app-wrapper');
+  if(aw) aw.classList.add('wide-home');
+})();
+// La page charge sur l'accueil : switch Homme/Femme en mode neutre dès le départ,
+// cohérent avec le comportement de navGo (le genre n'a pas d'effet sur cette page).
+(function(){
+  var gsw = document.querySelector('.g-switch');
+  if(gsw) gsw.classList.add('neutral');
+})();
 // Defer non-critical renders to after first paint (improves LCP + INP)
 (function(){
   var idle = window.requestIdleCallback || function(cb){setTimeout(cb,1)};
@@ -4668,7 +5209,7 @@ function _routeFromHash(hash){
     }
     return true;
   }
-  if(hash === '#page-parcours' || hash === '#page-vitamines' || hash === '#page-famille' || hash === '#page-experts' || hash === '#page-concept' || hash === '#page-legal'){
+  if(hash === '#page-tonbesoin' || hash === '#page-parcours' || hash === '#page-vitamines' || hash === '#page-famille' || hash === '#page-experts' || hash === '#page-concept' || hash === '#page-legal'){
     _activatePage(hash.slice('#page-'.length));
     return true;
   }
@@ -5651,19 +6192,67 @@ document.addEventListener('click', function(e){
 // mobile/tablette, dans la barre de menu (à côté des boutons) sur desktop ═══
 function _placeSearchBar(){
   var navSlot = document.getElementById('navSearchSlot');
-  var headerControls = document.querySelector('.header-controls');
+  var mobileSlot = document.getElementById('mobileSearchSlot');
   var searchWrap = document.querySelector('.search-wrap');
-  if(!navSlot || !headerControls || !searchWrap) return;
+  if(!navSlot || !mobileSlot || !searchWrap) return;
   var wantNav = window.matchMedia('(min-width:900px)').matches;
   if(wantNav){
     if(searchWrap.parentElement !== navSlot) navSlot.appendChild(searchWrap);
   } else {
-    if(searchWrap.parentElement !== headerControls) headerControls.insertBefore(searchWrap, headerControls.firstChild);
+    if(searchWrap.parentElement !== mobileSlot) mobileSlot.appendChild(searchWrap);
   }
 }
 window.addEventListener('DOMContentLoaded', _placeSearchBar);
 window.addEventListener('load', _placeSearchBar);
 window.addEventListener('resize', _placeSearchBar);
+
+// ═══ Recherche mobile repliable : icône seule en haut, tap pour déplier ═══
+function toggleMobileSearch(){
+  var slot = document.getElementById('mobileSearchSlot');
+  if(!slot) return;
+  var isOpen = slot.classList.toggle('open');
+  if(isOpen){
+    var input = document.getElementById('si');
+    if(input) setTimeout(function(){ input.focus(); }, 50);
+  }
+}
+
+// ═══ Fusion header + barre de menu en une seule ligne sur desktop uniquement ═══
+function _placeNavRow(){
+  var header = document.querySelector('.header');
+  var navBandeau = document.getElementById('navBandeau');
+  var navDropdown = document.getElementById('navDropdown');
+  var headerControls = document.querySelector('.header-controls');
+  if(!header || !navBandeau || !navDropdown || !headerControls) return;
+  var wantMerged = window.matchMedia('(min-width:1200px)').matches;
+  if(wantMerged){
+    if(navDropdown.parentElement !== header) header.insertBefore(navDropdown, headerControls);
+  } else {
+    if(navDropdown.parentElement !== navBandeau) navBandeau.appendChild(navDropdown);
+  }
+}
+window.addEventListener('DOMContentLoaded', _placeNavRow);
+window.addEventListener('load', _placeNavRow);
+window.addEventListener('resize', _placeNavRow);
+
+// ═══ Positionnement du logo : dans la barre du haut sur mobile (entre loupe et menu),
+// en premier enfant direct du header sur desktop (structure attendue par le menu fusionné) ═══
+function _placeLogo(){
+  var header = document.querySelector('.header');
+  var mobileTopBar = document.querySelector('.mobile-top-bar');
+  var logoWrap = document.querySelector('.logo-wrap');
+  var menuBtnInBar = mobileTopBar ? mobileTopBar.querySelector('.menu-btn') : null;
+  if(!header || !mobileTopBar || !logoWrap || !menuBtnInBar) return;
+  var wantDesktop = window.matchMedia('(min-width:900px)').matches;
+  if(wantDesktop){
+    if(logoWrap.parentElement !== header) header.insertBefore(logoWrap, header.firstChild);
+  } else {
+    if(logoWrap.parentElement !== mobileTopBar) mobileTopBar.insertBefore(logoWrap, menuBtnInBar);
+  }
+}
+window.addEventListener('DOMContentLoaded', _placeLogo);
+window.addEventListener('load', _placeLogo);
+window.addEventListener('resize', _placeLogo);
 
 if('serviceWorker' in navigator){
   window.addEventListener('load', function(){
@@ -5701,7 +6290,7 @@ function openDrawer(){
     else{df.style.background='#FFF';df.style.color='#BC9569';dm.style.background='';dm.style.color='';}
   }
   // Sync active item
-  ['accueil','parcours','vitamines','famille','experts','concept','legal'].forEach(function(id){
+  ['accueil','tonbesoin','parcours','vitamines','famille','experts','concept','legal'].forEach(function(id){
     var el=document.getElementById('ditem-'+id);
     if(el){
       var isActive=document.getElementById('page-'+id) && document.getElementById('page-'+id).classList.contains('on');
@@ -5719,7 +6308,7 @@ function closeDrawer(){
 function drawerGo(pageId){
   closeDrawer();
   // Map des IDs de boutons nav
-  var navIds = {accueil:'navAccueil', parcours:'navParcours', vitamines:'navVitamines', famille:'navFamille', experts:'navExperts', concept:'navConcept', legal:'navLegal'};
+  var navIds = {accueil:'navAccueil', tonbesoin:'navTonbesoin', parcours:'navParcours', vitamines:'navVitamines', famille:'navFamille', experts:'navExperts', concept:'navConcept', legal:'navLegal'};
   var btn = navIds[pageId] ? document.getElementById(navIds[pageId]) : null;
   navGo(pageId, btn);
 }
