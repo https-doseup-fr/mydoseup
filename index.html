@@ -618,8 +618,11 @@ body.F .footer-logo span{color:inherit;-webkit-text-fill-color:inherit}
   .nav-hover-group:hover .nav-hover-trigger::before{transform:rotate(180deg)}
   .nav-hover-panel{
     display:none;position:absolute;top:100%;left:50%;transform:translateX(-50%);
-    margin-top:14px;background:#FFFFFF;border:1px solid rgba(0,0,0,0.10);border-radius:12px;
-    box-shadow:0 16px 40px rgba(0,0,0,0.18);padding:8px;min-width:230px;z-index:300
+    padding-top:14px;z-index:300
+  }
+  .nav-hover-panel-inner{
+    background:#FFFFFF;border:1px solid rgba(0,0,0,0.10);border-radius:12px;
+    box-shadow:0 16px 40px rgba(0,0,0,0.18);padding:8px;min-width:230px;
   }
   .nav-hover-group:hover .nav-hover-panel{display:block}
   .nav-hover-group:hover .nav-hover-trigger{color:#8A5A2B !important}
@@ -1649,7 +1652,7 @@ html{overflow-x:hidden}
     <button class="mobile-search-toggle" onclick="toggleMobileSearch()" aria-label="Rechercher" id="mobileSearchToggleBtn">
       <span>🔍</span>
     </button>
-    <div class="logo-wrap logo-wrap-mobile-inline">
+    <div class="logo-wrap logo-wrap-mobile-inline" onclick="navGo('accueil', document.getElementById('navAccueil'))" role="link" tabindex="0" aria-label="Retour à l'accueil MyDoseUp" style="cursor:pointer" onkeydown="if(event.key==='Enter'){navGo('accueil', document.getElementById('navAccueil'))}">
       <div class="logo-pill" style="width:64px;height:64px;flex-shrink:0;background:transparent;display:flex;align-items:center;justify-content:center">
 <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Logo MyDoseUp : une gélule et une feuille">
   <defs>
@@ -1704,6 +1707,7 @@ html{overflow-x:hidden}
       <div class="nav-hover-group" id="navMoreGroup">
         <button class="nav-btn nav-hover-trigger" id="navMore" aria-haspopup="true">À propos</button>
         <div class="nav-hover-panel">
+          <div class="nav-hover-panel-inner">
           <button class="nav-hover-item" id="navExperts" onclick="navGo('experts',this);this.blur()">
             <span class="nav-hover-item-ico">👤</span>
             <span><span class="nav-hover-item-nm">Nos Experts</span><span class="nav-hover-item-sub">Qui valide le contenu du site</span></span>
@@ -1712,6 +1716,7 @@ html{overflow-x:hidden}
             <span class="nav-hover-item-ico">💡</span>
             <span><span class="nav-hover-item-nm">Le Concept</span><span class="nav-hover-item-sub">Pourquoi MyDoseUp existe</span></span>
           </button>
+          </div>
         </div>
       </div>
     </div>
@@ -1770,37 +1775,37 @@ html{overflow-x:hidden}
       <div class="pc-section-lbl">Fiches à consulter</div>
       <div class="pc-section-title">Six essentiels pour démarrer</div>
       <div class="pc-cards pc-cards-6">
-        <div class="pc-card" onclick="openFiche('Vitamine D3 + K2')">
+        <div class="pc-card" onclick="pcOpenFiche('Vitamine D3 + K2')">
           <span class="pc-card-tag">Immunité &amp; Squelette</span>
           <div class="pc-card-nm">Vitamine D3 + K2</div>
           <div class="pc-card-txt">Ta peau la fabrique elle-même sous l'effet du soleil, l'alimentation ne couvre qu'une petite part de tes besoins. Le manque est très répandu, en particulier l'hiver.</div>
           <span class="pc-card-link">Voir la fiche &rsaquo;</span>
         </div>
-        <div class="pc-card" onclick="openFiche('Magnésium Bisglycinate')">
+        <div class="pc-card" onclick="pcOpenFiche('Magnésium Bisglycinate')">
           <span class="pc-card-tag">Système nerveux &amp; Récupération</span>
           <div class="pc-card-nm">Magnésium Bisglycinate</div>
           <div class="pc-card-txt">Intervient dans plus de 300 réactions de ton corps : énergie, contraction musculaire, transmission nerveuse. La plupart des Français en manquent un peu.</div>
           <span class="pc-card-link">Voir la fiche &rsaquo;</span>
         </div>
-        <div class="pc-card" onclick="openFiche('Zinc Bisglycinate')">
+        <div class="pc-card" onclick="pcOpenFiche('Zinc Bisglycinate')">
           <span class="pc-card-tag">Métabolisme &amp; Peau</span>
           <div class="pc-card-nm">Zinc Bisglycinate</div>
           <div class="pc-card-txt">Impliqué dans ton immunité, la synthèse des protéines, la cicatrisation et la régulation hormonale, notamment la testostérone chez l'homme.</div>
           <span class="pc-card-link">Voir la fiche &rsaquo;</span>
         </div>
-        <div class="pc-card" onclick="openFiche('Oméga-3 (EPA/DHA)')">
+        <div class="pc-card" onclick="pcOpenFiche('Oméga-3 (EPA/DHA)')">
           <span class="pc-card-tag">Cœur &amp; Cerveau</span>
           <div class="pc-card-nm">Oméga-3 (EPA/DHA)</div>
           <div class="pc-card-txt">Des acides gras essentiels que ton corps ne sait pas fabriquer. L'EPA aide à réguler l'inflammation, le DHA soutient le cerveau et la vue.</div>
           <span class="pc-card-link">Voir la fiche &rsaquo;</span>
         </div>
-        <div class="pc-card" onclick="openFiche('Vitamine B12 (Méthylcobalamine)')">
+        <div class="pc-card" onclick="pcOpenFiche('Vitamine B12 (Méthylcobalamine)')">
           <span class="pc-card-tag">Énergie &amp; Système nerveux</span>
           <div class="pc-card-nm">Vitamine B12</div>
           <div class="pc-card-txt">L'alimentation végétale ne t'en apporte pas naturellement. Un manque peut donner fatigue, fourmillements et troubles de mémoire.</div>
           <span class="pc-card-link">Voir la fiche &rsaquo;</span>
         </div>
-        <div class="pc-card" onclick="openFiche('Probiotiques')">
+        <div class="pc-card" onclick="pcOpenFiche('Probiotiques')">
           <span class="pc-card-tag">Digestion &amp; Microbiome</span>
           <div class="pc-card-nm">Probiotiques</div>
           <div class="pc-card-txt">Des micro-organismes vivants qui, pris en quantité suffisante, apportent un bénéfice pour ta santé (définition de l'OMS). Tout dépend de la souche.</div>
@@ -4778,6 +4783,7 @@ function pcSearchOpen(nm){
   if(box){ box.classList.remove('on'); box.innerHTML=''; }
   document.getElementById('pcSearchInput').value = '';
   openFiche(nm);
+  _syncUrlOnOpen(nm);
 }
 // Fermer le menu déroulant si on clique ailleurs sur la page
 document.addEventListener('click', function(e){
@@ -5046,6 +5052,12 @@ function _syncUrlOnOpen(nm){
   if(window._skipUrlSync) return;
   var slug = nmToSlug(nm);
   if(slug) history.pushState({fiche:slug}, "", "#"+slug);
+}
+// Ouvre une fiche depuis l'accueil en gérant correctement l'historique
+// (openFiche seule ne pousse jamais d'entrée d'URL, sinon le bouton retour du navigateur casse)
+function pcOpenFiche(nm){
+  openFiche(nm);
+  _syncUrlOnOpen(nm);
 }
 function _syncUrlOnClose(nm){
   if(window._skipUrlSync) return;
@@ -6172,6 +6184,14 @@ function toggleMobileSearch(){
     if(input) setTimeout(function(){ input.focus(); }, 50);
   }
 }
+// Fermer la recherche mobile si on clique ailleurs sur la page
+document.addEventListener('click', function(e){
+  var slot = document.getElementById('mobileSearchSlot');
+  if(!slot || !slot.classList.contains('open')) return;
+  var toggleBtn = document.getElementById('mobileSearchToggleBtn');
+  if(slot.contains(e.target) || (toggleBtn && toggleBtn.contains(e.target))) return;
+  slot.classList.remove('open');
+});
 
 // ═══ Fusion header + barre de menu en une seule ligne sur desktop uniquement ═══
 function _placeNavRow(){
