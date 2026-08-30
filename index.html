@@ -4132,10 +4132,10 @@ function showTimingResults(timing){
     const items = [];
     nms.forEach(nm=>{
       const found = DATA.find(s=>s.nm===nm);
-      if(found && (found.gender==='MF'||found.gender===G)) items.push(found);
+      if(found) items.push(found);
     });
     const sciNote = `<div style="background:rgba(188,149,105,0.15);border:1px solid rgba(214,185,138,0.30);border-radius:10px;padding:10px 12px;margin-bottom:12px;font-size:11px;color:#5A4A32;line-height:1.6">🔬 <strong>Sélection basée sur les études sportives</strong> : seuls les compléments ayant une preuve scientifique pour ce timing et ce sport sont affichés.</div>`;
-    let html = sciNote + items.map(s=>card(s,null,false)).join('');
+    let html = sciNote + items.map(s=>card(s,null,false,true)).join('');
     // Ajouter section protéines après l'effort
     if(showProteines){
       html += `<div class="prot-sep" style="margin-top:16px"><div class="prot-sep-t">🥛 Protéines en Poudre : Indispensable après l'effort</div>`;
